@@ -1,0 +1,1802 @@
+---
+import Layout from '../../../../../../layouts/Layout.astro';
+
+const pageTitle = 'Lesson 2: Algebraic Conventions & Order of Operations — Cambridge Stage 8 Mathematics';
+const pageDescription = 'Interactive IFP teaching deck for Cambridge Lower Secondary Stage 8 Mathematics 8Ae.02: algebraic notation, substitution, order of operations, squares, and cubes.';
+const pageTitleEn = 'Lesson 2: Algebraic Conventions & Order of Operations — Cambridge Stage 8 Mathematics';
+const pageDescriptionEn = 'Interactive IFP teaching deck for Cambridge Lower Secondary Stage 8 Mathematics 8Ae.02: algebraic notation, substitution, order of operations, squares, and cubes.';
+---
+
+<Layout
+	title={pageTitle}
+	description={pageDescription}
+	titleEn={pageTitleEn}
+	descriptionEn={pageDescriptionEn}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogTitleEn={pageTitleEn}
+	ogDescriptionEn={pageDescriptionEn}
+	currentPage="math"
+>
+	<main id="top" class="lesson-page ifp-fullscreen lesson-2-page">
+		<section class="lesson-shell" data-lesson-root tabindex="-1">
+			<div class="lesson-topbar">
+				<div class="lesson-topbar-left">
+					<a class="back-link" href="/e-learning/matematika/matematika_cambridge/matematika_cambridge_stage8/8.2-topic-1">← Back to Topic 1</a>
+					<p class="eyebrow">Cambridge Lower Secondary Mathematics · Stage 8 · 8Ae.02</p>
+					<h1>Lesson 2: Algebraic Conventions & Order of Operations</h1>
+				</div>
+				<div class="lesson-topbar-right" aria-label="Lesson controls">
+					<span class="objective-pill">8Ae.02</span>
+					<button class="score-pill" type="button" data-total-score aria-live="polite">Score 0</button>
+					<button class="mode-toggle" type="button" data-mode-toggle aria-pressed="false">Teach Mode</button>
+					<button class="fullscreen-toggle" type="button" data-fullscreen-toggle aria-pressed="false">⛶ Present Full Screen</button>
+				</div>
+			</div>
+
+			<div class="progress-area" aria-label="Lesson progress">
+				<div class="progress-meta">
+					<span data-progress-label>Slide 1 of 12</span>
+					<span>50 minutes</span>
+				</div>
+				<div class="progress-track"><span data-progress-bar></span></div>
+			</div>
+
+			<div class="deck-layout">
+				<aside class="slide-map" aria-label="Lesson sections">
+					<button type="button" class="slide-dot is-active" data-go-slide="0"><span>1</span> Goal</button>
+					<button type="button" class="slide-dot" data-go-slide="1"><span>2</span> Hook</button>
+					<button type="button" class="slide-dot" data-go-slide="2"><span>3</span> Rules</button>
+					<button type="button" class="slide-dot" data-go-slide="3"><span>4</span> Fixer</button>
+					<button type="button" class="slide-dot" data-go-slide="4"><span>5</span> Meaning</button>
+					<button type="button" class="slide-dot" data-go-slide="5"><span>6</span> Machine</button>
+					<button type="button" class="slide-dot" data-go-slide="6"><span>7</span> Order</button>
+					<button type="button" class="slide-dot" data-go-slide="7"><span>8</span> Battle</button>
+					<button type="button" class="slide-dot" data-go-slide="8"><span>9</span> Powers</button>
+					<button type="button" class="slide-dot" data-go-slide="9"><span>10</span> Detective</button>
+					<button type="button" class="slide-dot" data-go-slide="10"><span>11</span> Boss</button>
+					<button type="button" class="slide-dot" data-go-slide="11"><span>12</span> Exit</button>
+				</aside>
+
+				<section class="slide-stage" aria-live="polite">
+					<article class="lesson-slide is-active" data-slide data-slide-title="Learning Goal">
+						<div class="slide-label"><span>Slide 1</span><strong>Learning Goal</strong></div>
+						<div class="hero-grid">
+							<div>
+								<p class="mini-kicker">Lesson objective</p>
+								<h2>Algebra still follows arithmetic rules.</h2>
+								<p class="slide-lede">Today we will write algebraic expressions neatly, substitute values, and follow the correct order of operations.</p>
+								<div class="outcome-box">
+									<h3>By the end, I can...</h3>
+									<ul>
+										<li>write multiplication in algebraic notation</li>
+										<li>substitute values into expressions</li>
+										<li>evaluate expressions with powers and operations in the correct order</li>
+									</ul>
+								</div>
+							</div>
+							<div class="lesson-badge-card">
+								<span class="badge-number">4</span>
+								<span>game rounds</span>
+								<hr />
+								<p>Notation Fixer · Algebra Machine · Order Battle · Error Detective</p>
+							</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Hook: Same or Different?">
+						<div class="slide-label"><span>Slide 2</span><strong>Hook</strong></div>
+						<p class="mini-kicker">Algebra looks shorter</p>
+						<h2>Are these the same?</h2>
+						<div class="compare-board">
+							<div class="math-tile"><span class="math-render">$3 &bsol;times x + 2$</span></div>
+							<div class="equal-arrow">→</div>
+							<div class="math-tile"><span class="math-render">$3x + 2$</span></div>
+						</div>
+						<div class="choice-grid" data-choice-group>
+							<button type="button" class="choice-button" data-correct="true" data-points="5" data-feedback="Yes. In algebra, 3x means 3 multiplied by x.">Same meaning</button>
+							<button type="button" class="choice-button" data-correct="false" data-points="0" data-feedback="Not quite. The multiplication sign is usually removed, but the meaning is still multiplication.">Different meaning</button>
+						</div>
+						<p class="feedback-line" data-feedback-line>Ask students to vote first, then tap one answer.</p>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Algebra Writing Rules">
+						<div class="slide-label"><span>Slide 3</span><strong>Concept</strong></div>
+						<p class="mini-kicker">Notation rules</p>
+						<h2>Algebra has writing shortcuts.</h2>
+						<div class="rule-grid">
+							<button type="button" class="rule-card" data-reveal-card><strong>Number × letter</strong><span class="math-render">$5 &bsol;times x = 5x$</span><em>Write the number first, then the letter.</em></button>
+							<button type="button" class="rule-card" data-reveal-card><strong>Letter × letter</strong><span class="math-render">$a &bsol;times b = ab$</span><em>Two letters next to each other mean multiplication.</em></button>
+							<button type="button" class="rule-card" data-reveal-card><strong>Square</strong><span class="math-render">$x &bsol;times x = x^2$</span><em>The same variable multiplied twice gives a square.</em></button>
+							<button type="button" class="rule-card" data-reveal-card><strong>Cube</strong><span class="math-render">$y &bsol;times y &bsol;times y = y^3$</span><em>The same variable multiplied three times gives a cube.</em></button>
+						</div>
+						<div class="teacher-prompt">IFP prompt: ask one student to explain why <span class="math-render">$x^2$</span> is not the same as <span class="math-render">$2x$</span>.</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Game 1: Notation Fixer">
+						<div class="slide-label"><span>Slide 4</span><strong>Game 1</strong></div>
+						<p class="mini-kicker">Repair the broken notation</p>
+						<h2>Notation Fixer</h2>
+						<div class="game-panel notation-game" data-notation-game>
+							<div class="game-head">
+								<div><span class="round-label" data-notation-round>Round 1 / 5</span><h3>Fix this algebra notation.</h3></div>
+								<div class="local-score"><span>Score</span><strong data-notation-score>0</strong></div>
+							</div>
+							<div class="broken-box"><span>Broken:</span><strong data-notation-prompt class="math-render">$7 &bsol;times y$</strong></div>
+							<div class="option-row" data-notation-options></div>
+							<p class="feedback-line" data-notation-feedback>Choose the neat algebraic form.</p>
+							<div class="activity-actions"><button type="button" class="secondary-button" data-notation-next>Next notation</button><button type="button" class="secondary-button" data-notation-reset>Reset game</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="What Does Multiplication Mean?">
+						<div class="slide-label"><span>Slide 5</span><strong>Meaning</strong></div>
+						<p class="mini-kicker">Do not read algebra like a normal number</p>
+						<h2><span class="math-render">$3x$</span> means <span class="math-render">$3 &bsol;times x$</span>.</h2>
+						<div class="meaning-board">
+							<div class="do-card"><span>Correct</span><strong class="math-render">$x = 4$</strong><p class="math-render">$3x = 3 &bsol;times 4 = 12$</p></div>
+							<div class="dont-card"><span>Common mistake</span><strong>Do not read it as “34”.</strong><p>When <span class="math-render">$x = 4$</span>, <span class="math-render">$3x$</span> is multiplication, not a two-digit number.</p></div>
+						</div>
+						<div class="quick-reveal">
+							<button type="button" class="primary-button" data-toggle-target="meaning-check">Reveal quick check</button>
+							<p id="meaning-check" class="hidden-answer"><strong>Quick check:</strong> If <span class="math-render">$a = 6$</span>, then <span class="math-render">$4a = 4 &bsol;times 6 = 24$</span>.</p>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Game 2: Algebra Machine">
+						<div class="slide-label"><span>Slide 6</span><strong>Game 2</strong></div>
+						<p class="mini-kicker">Substitution animation</p>
+						<h2>Algebra Machine</h2>
+						<div class="machine-game" data-machine-game>
+							<div class="machine-left">
+								<div class="machine-card input-card" data-machine-input><span>Input</span><strong class="math-render">$x = 4$</strong></div>
+								<div class="machine-card expression-card"><span>Expression</span><strong data-machine-expression class="math-render">$3x + 2$</strong></div>
+							</div>
+							<div class="machine-center" aria-hidden="true">
+								<div class="machine-body"><span>Algebra<br />Machine</span><div class="machine-light"></div></div>
+							</div>
+							<div class="machine-right">
+								<div class="machine-card output-card"><span>Output</span><strong data-machine-output>?</strong></div>
+								<div class="machine-steps" data-machine-steps><p>Tap the buttons below to reveal the working step by step.</p></div>
+							</div>
+							<div class="machine-actions">
+								<button type="button" class="primary-button" data-machine-step>Substitute</button>
+								<button type="button" class="secondary-button" data-machine-new>New example</button>
+								<button type="button" class="secondary-button" data-machine-reset>Reset</button>
+							</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Order of Operations">
+						<div class="slide-label"><span>Slide 7</span><strong>Order</strong></div>
+						<p class="mini-kicker">Arithmetic laws still apply</p>
+						<h2>Do the operations in the correct order.</h2>
+						<div class="order-ladder">
+							<div><span>1</span><strong>Brackets</strong><em class="math-render">$(2 + x)$</em></div>
+							<div><span>2</span><strong>Powers</strong><em class="math-render">$x^2, x^3$</em></div>
+							<div><span>3</span><strong>Multiply / Divide</strong><em class="math-render">$3(5)$</em></div>
+							<div><span>4</span><strong>Add / Subtract</strong><em class="math-render">$2 + 15$</em></div>
+						</div>
+						<div class="worked-line"><span class="math-render">$2 + 3(5)$</span><span>→ multiply first</span><span class="math-render">$2 + 15 = 17$</span></div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Game 3: Order Battle">
+						<div class="slide-label"><span>Slide 8</span><strong>Game 3</strong></div>
+						<p class="mini-kicker">Choose the first correct step</p>
+						<h2>Order Battle</h2>
+						<div class="game-panel order-game" data-order-game>
+							<div class="game-head"><div><span class="round-label" data-order-round>Battle 1 / 4</span><h3 data-order-question>Evaluate when <span class="math-render">$x = 6$</span>.</h3></div><div class="local-score"><span>Score</span><strong data-order-score>0</strong></div></div>
+							<div class="battle-expression"><span data-order-expression class="math-render">$4 + 2x$</span><small>After substitution: <b data-order-substitution class="math-render">$4 + 2(6)$</b></small></div>
+							<h3 class="question-title">Which part should be done first?</h3>
+							<div class="option-row" data-order-options></div>
+							<p class="feedback-line" data-order-feedback>Pick the first operation.</p>
+							<div class="activity-actions"><button type="button" class="secondary-button" data-order-next>Next battle</button><button type="button" class="secondary-button" data-order-reset>Reset battle</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Mini Game: Power Cards">
+						<div class="slide-label"><span>Slide 9</span><strong>Mini Game</strong></div>
+						<p class="mini-kicker">Squares and cubes</p>
+						<h2>Power Cards</h2>
+						<div class="power-game" data-power-game>
+							<div class="power-card-display"><span>Convert this repeated multiplication:</span><strong data-power-prompt class="math-render">$x &bsol;times x$</strong></div>
+							<div class="power-options" data-power-options></div>
+							<div class="power-footer"><p class="feedback-line" data-power-feedback>Choose the index form.</p><div class="local-score"><span>Streak</span><strong data-power-streak>0</strong></div></div>
+							<div class="activity-actions"><button type="button" class="secondary-button" data-power-next>Next card</button><button type="button" class="secondary-button" data-power-reset>Reset cards</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Game 4: Error Detective">
+						<div class="slide-label"><span>Slide 10</span><strong>Game 4</strong></div>
+						<p class="mini-kicker">Find the mistake</p>
+						<h2>Error Detective</h2>
+						<div class="detective-game" data-detective-game>
+							<div class="student-work">
+								<span>Student work</span>
+								<div data-detective-work class="math-work"></div>
+							</div>
+							<h3>What is the mistake?</h3>
+							<div class="option-row" data-detective-options></div>
+							<p class="feedback-line" data-detective-feedback>Choose the best explanation.</p>
+							<div class="activity-actions"><button type="button" class="secondary-button" data-detective-next>Next case</button><button type="button" class="secondary-button" data-detective-reset>Reset cases</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Boss Challenge">
+						<div class="slide-label"><span>Slide 11</span><strong>Boss Round</strong></div>
+						<p class="mini-kicker">Final game check</p>
+						<h2>Boss Challenge</h2>
+						<div class="boss-game" data-boss-game>
+							<div class="boss-question"><span data-boss-round>Question 1 / 4</span><strong data-boss-prompt class="math-render">$6 &bsol;times p$</strong><em data-boss-task>Write this in algebraic notation.</em></div>
+							<div class="option-row boss-options" data-boss-options></div>
+							<p class="feedback-line" data-boss-feedback>Choose an answer.</p>
+							<div class="boss-rank"><span data-boss-rank>Rank: Algebra Rookie</span><strong data-boss-score>0</strong></div>
+							<div class="activity-actions"><button type="button" class="secondary-button" data-boss-next>Next boss question</button><button type="button" class="secondary-button" data-boss-reset>Reset boss</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Exit Ticket">
+						<div class="slide-label"><span>Slide 12</span><strong>Exit Ticket</strong></div>
+						<p class="mini-kicker">Final reflection</p>
+						<h2>Exit Ticket</h2>
+						<div class="exit-grid">
+							<div class="exit-card"><strong>1</strong><p>What does <span class="math-render">$4x$</span> mean?</p></div>
+							<div class="exit-card"><strong>2</strong><p>Evaluate <span class="math-render">$3x + 1$</span> when <span class="math-render">$x = 5$</span>.</p></div>
+							<div class="exit-card"><strong>3</strong><p>Write <span class="math-render">$y &bsol;times y &bsol;times y$</span> using an index.</p></div>
+						</div>
+						<button type="button" class="primary-button" data-toggle-target="exit-samples">Show sample answers</button>
+						<div id="exit-samples" class="sample-answer hidden-answer">
+							<p><strong>1.</strong> <span class="math-render">$4x$</span> means <span class="math-render">$4 &bsol;times x$</span>.</p>
+							<p><strong>2.</strong> <span class="math-render">$3(5) + 1 = 15 + 1 = 16$</span>.</p>
+							<p><strong>3.</strong> <span class="math-render">$y &bsol;times y &bsol;times y = y^3$</span>.</p>
+						</div>
+					</article>
+				</section>
+			</div>
+
+			<div class="deck-controls">
+				<button type="button" class="secondary-button" data-prev-slide>Back</button>
+				<button type="button" class="teacher-note-button" data-teacher-notes-toggle>Teacher Notes</button>
+				<button type="button" class="secondary-button" data-reset-slide>Reset Slide</button>
+				<button type="button" class="primary-button" data-next-slide>Next</button>
+			</div>
+
+			<aside class="teacher-notes" data-teacher-notes hidden>
+				<div class="teacher-notes-card">
+					<div class="teacher-notes-head">
+						<strong>Teacher Notes</strong>
+						<button type="button" data-teacher-notes-close aria-label="Close teacher notes">×</button>
+					</div>
+					<p data-teacher-notes-text>Use this slide to set the learning target clearly.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+</Layout>
+
+<script is:inline>
+	window.MathJax = {
+		tex: {
+			inlineMath: [['$', '$']],
+			displayMath: [['$$', '$$']],
+			processEscapes: false
+		},
+		svg: { fontCache: 'global' },
+		startup: { typeset: false }
+	};
+</script>
+<script is:inline async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+	:global(body) {
+		overflow: hidden !important;
+	}
+
+	:global(.site-header),
+	:global(.site-footer),
+	:global(.floating-whatsapp),
+	:global(.whatsapp-float) {
+		display: none !important;
+	}
+
+	.lesson-page {
+		position: fixed;
+		inset: 0;
+		z-index: 10000;
+		width: 100vw;
+		height: 100vh;
+		height: 100dvh;
+		overflow: hidden;
+		background:
+			radial-gradient(circle at 8% 10%, rgba(62, 182, 234, 0.22), transparent 28rem),
+			radial-gradient(circle at 92% 90%, rgba(242, 118, 30, 0.18), transparent 28rem),
+			#fffaf4;
+	}
+
+	.lesson-shell {
+		width: 100%;
+		height: 100%;
+		padding: 12px;
+		display: grid;
+		grid-template-rows: 78px 12px minmax(0, 1fr) 68px;
+		gap: 10px;
+		box-sizing: border-box;
+		font-family: inherit;
+		color: #23304d;
+	}
+
+	.lesson-topbar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding: 10px 16px;
+		background: rgba(255, 255, 255, 0.92);
+		border: 1px solid rgba(43, 53, 77, 0.12);
+		border-radius: 20px;
+		box-shadow: 0 16px 40px rgba(30, 41, 59, 0.08);
+	}
+
+	.lesson-topbar-left {
+		min-width: 0;
+	}
+
+	.back-link {
+		display: inline-flex;
+		align-items: center;
+		margin: 0 0 4px;
+		font-size: 0.85rem;
+		line-height: 1;
+		font-weight: 900;
+		color: #2b5b76;
+		text-decoration: none;
+	}
+
+	.eyebrow,
+	.mini-kicker {
+		margin: 0 0 5px;
+		font-size: 0.72rem;
+		font-weight: 950;
+		letter-spacing: 0.13em;
+		text-transform: uppercase;
+		color: #f2761e;
+	}
+
+	.lesson-topbar h1 {
+		margin: 0;
+		font-size: clamp(1.35rem, 2vw, 2.2rem);
+		line-height: 1;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #23304d;
+	}
+
+	.lesson-topbar-right {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 8px;
+		flex-wrap: wrap;
+	}
+
+	.objective-pill,
+	.mode-toggle,
+	.fullscreen-toggle,
+	.score-pill {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 44px;
+		padding: 8px 14px;
+		border-radius: 999px;
+		font-weight: 950;
+		font-size: 0.92rem;
+		border: 0;
+		white-space: nowrap;
+	}
+
+	.objective-pill,
+	.fullscreen-toggle,
+	.score-pill {
+		background: #23304d;
+		color: #ffffff;
+	}
+
+	.mode-toggle,
+	.primary-button {
+		background: #f2761e;
+		color: #ffffff;
+	}
+
+	button {
+		font: inherit;
+		cursor: pointer;
+	}
+
+	button:disabled {
+		cursor: not-allowed;
+		opacity: 0.55;
+	}
+
+	.progress-area {
+		margin: 0;
+		padding: 0;
+		background: transparent;
+	}
+
+	.progress-meta {
+		display: none;
+	}
+
+	.progress-track {
+		height: 12px;
+		background: rgba(35, 48, 77, 0.12);
+		border-radius: 999px;
+		overflow: hidden;
+	}
+
+	.progress-track span {
+		display: block;
+		height: 100%;
+		width: 8.3%;
+		background: linear-gradient(90deg, #f2761e, #3eb6ea);
+		border-radius: inherit;
+		transition: width 0.25s ease;
+	}
+
+	.deck-layout {
+		height: 100%;
+		min-height: 0;
+		display: grid;
+		grid-template-columns: minmax(116px, 10.5vw) minmax(0, 1fr);
+		gap: 10px;
+		align-items: stretch;
+	}
+
+	.slide-map {
+		height: 100%;
+		min-height: 0;
+		overflow: hidden;
+		display: grid;
+		gap: 5px;
+		align-content: start;
+		padding: 8px;
+		background: rgba(255, 255, 255, 0.88);
+		border: 1px solid rgba(43, 53, 77, 0.1);
+		border-radius: 18px;
+		box-shadow: 0 18px 50px rgba(30, 41, 59, 0.08);
+	}
+
+	.slide-dot {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		width: 100%;
+		height: min(5vh, 39px);
+		min-height: 0;
+		padding: 5px 7px;
+		border: 1px solid transparent;
+		border-radius: 12px;
+		background: transparent;
+		color: #46536b;
+		font-weight: 900;
+		font-size: clamp(0.6rem, 0.75vw, 0.78rem);
+		line-height: 1.05;
+		text-align: left;
+	}
+
+	.slide-dot span {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 23px;
+		height: 23px;
+		border-radius: 50%;
+		background: rgba(35, 48, 77, 0.1);
+		color: #23304d;
+		font-size: 0.72rem;
+		font-weight: 950;
+		flex: 0 0 auto;
+	}
+
+	.slide-dot.is-active {
+		background: #23304d;
+		color: #ffffff;
+		border-color: #23304d;
+	}
+
+	.slide-dot.is-active span {
+		background: #ffffff;
+		color: #23304d;
+	}
+
+	.slide-stage {
+		height: 100%;
+		min-height: 0;
+		min-width: 0;
+	}
+
+	.lesson-slide {
+		display: none;
+		height: 100%;
+		min-height: 0;
+		overflow: hidden;
+		padding: clamp(18px, 2.4vw, 38px);
+		background: rgba(255, 255, 255, 0.96);
+		border: 1px solid rgba(43, 53, 77, 0.12);
+		border-radius: 24px;
+		box-shadow: 0 20px 65px rgba(30, 41, 59, 0.1);
+		box-sizing: border-box;
+	}
+
+	.lesson-slide.is-active {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.slide-label {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin-bottom: clamp(8px, 1.2vh, 14px);
+		font-weight: 950;
+		color: #526077;
+		font-size: clamp(0.8rem, 0.95vw, 1rem);
+		flex: 0 0 auto;
+	}
+
+	.slide-label span {
+		background: #fff3e9;
+		color: #f2761e;
+		border: 1px solid rgba(242, 118, 30, 0.18);
+		padding: 6px 10px;
+		border-radius: 999px;
+	}
+
+	.lesson-slide h2 {
+		margin: 0 0 clamp(8px, 1.3vh, 14px);
+		font-size: clamp(2.2rem, 5.1vw, 5rem);
+		line-height: 0.94;
+		color: #23304d;
+		letter-spacing: -0.045em;
+	}
+
+	.lesson-slide h3 {
+		margin: 0 0 8px;
+		color: #23304d;
+	}
+
+	.slide-lede {
+		max-width: 850px;
+		margin: 0 0 12px;
+		font-size: clamp(1.05rem, 1.7vw, 1.38rem);
+		line-height: 1.35;
+		color: #4b5870;
+	}
+
+	.hero-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(220px, 23vw);
+		gap: clamp(14px, 2vw, 28px);
+		align-items: stretch;
+		height: 100%;
+		min-height: 0;
+	}
+
+	.outcome-box,
+	.teacher-prompt,
+	.sample-answer,
+	.hidden-answer,
+	.game-panel,
+	.machine-game,
+	.power-game,
+	.detective-game,
+	.boss-game {
+		border-radius: 20px;
+		border: 1px solid rgba(43, 53, 77, 0.12);
+	}
+
+	.outcome-box {
+		margin-top: 14px;
+		padding: clamp(14px, 1.8vw, 22px);
+		background: #f3fbff;
+	}
+
+	.outcome-box ul {
+		margin: 10px 0 0;
+		padding-left: 22px;
+		font-size: clamp(0.95rem, 1.15vw, 1.12rem);
+		line-height: 1.45;
+		color: #334155;
+	}
+
+	.lesson-badge-card {
+		display: grid;
+		place-items: center;
+		align-content: center;
+		text-align: center;
+		padding: 22px;
+		border-radius: 24px;
+		background: linear-gradient(145deg, #23304d, #35507d);
+		color: #ffffff;
+	}
+
+	.lesson-badge-card .badge-number {
+		font-size: clamp(4rem, 8vw, 7rem);
+		line-height: 0.9;
+		font-weight: 950;
+		color: #ffffff;
+	}
+
+	.lesson-badge-card span,
+	.lesson-badge-card p {
+		color: #ffffff;
+	}
+
+	.lesson-badge-card p {
+		margin: 0;
+		line-height: 1.45;
+	}
+
+	.lesson-badge-card hr {
+		width: 80%;
+		border: 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.25);
+		margin: 14px 0;
+	}
+
+	.math-render {
+		display: inline-block;
+		font-size: 1.08em;
+		line-height: 1.15;
+		color: inherit;
+	}
+
+	.compare-board {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+		gap: 18px;
+		align-items: center;
+		margin: 20px 0;
+	}
+
+	.math-tile,
+	.broken-box,
+	.battle-expression,
+	.power-card-display,
+	.boss-question,
+	.student-work,
+	.meaning-board > div {
+		border-radius: 24px;
+		background: #fff8ee;
+		border: 2px solid rgba(242, 118, 30, 0.18);
+	}
+
+	.math-tile {
+		display: grid;
+		place-items: center;
+		min-height: clamp(150px, 23vh, 260px);
+		font-size: clamp(2.6rem, 6vw, 6rem);
+		font-weight: 950;
+	}
+
+	.equal-arrow {
+		font-size: clamp(2.5rem, 5vw, 5.5rem);
+		font-weight: 950;
+		color: #f2761e;
+	}
+
+	.choice-grid,
+	.option-row {
+		display: grid;
+		gap: 12px;
+	}
+
+	.choice-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.option-row {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.choice-button,
+	.game-option,
+	.rule-card,
+	.primary-button,
+	.secondary-button,
+	.teacher-note-button,
+	.fullscreen-toggle {
+		min-height: 54px;
+		border-radius: 16px;
+		font-weight: 950;
+		border: 0;
+		transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+	}
+
+	.choice-button,
+	.game-option,
+	.rule-card {
+		padding: 14px 16px;
+		background: #ffffff;
+		border: 2px solid rgba(35, 48, 77, 0.12);
+		color: #23304d;
+		font-size: clamp(0.98rem, 1.25vw, 1.24rem);
+	}
+
+	.game-option .math-render {
+		font-size: 1.25em;
+	}
+
+	.choice-button:hover,
+	.choice-button:focus-visible,
+	.game-option:hover,
+	.game-option:focus-visible,
+	.rule-card:hover,
+	.rule-card:focus-visible {
+		transform: translateY(-1px);
+		border-color: #3eb6ea;
+	}
+
+	.choice-button.is-correct,
+	.game-option.is-correct {
+		background: #ecfdf3;
+		border-color: #40a76f;
+	}
+
+	.choice-button.is-wrong,
+	.game-option.is-wrong {
+		background: #fff1f1;
+		border-color: #e66565;
+	}
+
+	.feedback-line {
+		margin: 10px 0 0;
+		padding: 12px 14px;
+		border-radius: 16px;
+		background: #f7f8fb;
+		color: #344257;
+		font-weight: 850;
+		font-size: clamp(0.92rem, 1.05vw, 1.08rem);
+		line-height: 1.35;
+	}
+
+	.rule-grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 12px;
+		margin-top: 12px;
+	}
+
+	.rule-card {
+		display: grid;
+		align-content: start;
+		gap: 8px;
+		text-align: left;
+		min-height: clamp(170px, 24vh, 220px);
+	}
+
+	.rule-card strong {
+		font-size: clamp(1.05rem, 1.45vw, 1.4rem);
+	}
+
+	.rule-card span {
+		font-size: clamp(1.45rem, 2.5vw, 2.5rem);
+		color: #f2761e;
+		font-weight: 950;
+	}
+
+	.rule-card em {
+		display: none;
+		font-style: normal;
+		line-height: 1.4;
+		color: #46536b;
+	}
+
+	.rule-card.is-revealed {
+		background: #fff8ee;
+		border-color: #f2761e;
+	}
+
+	.rule-card.is-revealed em {
+		display: block;
+	}
+
+	.teacher-prompt {
+		margin-top: 12px;
+		padding: 14px;
+		background: #f3fbff;
+		color: #27475b;
+		font-weight: 850;
+		line-height: 1.35;
+	}
+
+	.game-panel,
+	.machine-game,
+	.power-game,
+	.detective-game,
+	.boss-game {
+		padding: clamp(14px, 1.7vw, 22px);
+		background: #ffffff;
+		min-height: 0;
+	}
+
+	.game-head {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 16px;
+		margin-bottom: 12px;
+	}
+
+	.game-head h3 {
+		font-size: clamp(1.25rem, 2vw, 2rem);
+	}
+
+	.round-label {
+		display: inline-flex;
+		margin-bottom: 6px;
+		padding: 7px 12px;
+		border-radius: 999px;
+		background: #fff3e9;
+		color: #f2761e;
+		font-weight: 950;
+	}
+
+	.local-score {
+		display: grid;
+		place-items: center;
+		min-width: 110px;
+		padding: 10px 14px;
+		border-radius: 18px;
+		background: #23304d;
+		color: #ffffff;
+	}
+
+	.local-score span,
+	.local-score strong {
+		color: #ffffff;
+	}
+
+	.local-score strong {
+		font-size: clamp(2rem, 3vw, 3rem);
+		line-height: 0.95;
+	}
+
+	.broken-box,
+	.battle-expression,
+	.power-card-display,
+	.boss-question {
+		display: grid;
+		place-items: center;
+		gap: 6px;
+		min-height: clamp(120px, 20vh, 190px);
+		margin: 10px 0 14px;
+		padding: 16px;
+		text-align: center;
+	}
+
+	.broken-box > span,
+	.power-card-display > span,
+	.boss-question > span {
+		font-size: 0.95rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		font-weight: 950;
+		color: #f2761e;
+	}
+
+	.broken-box strong,
+	.battle-expression > span,
+	.power-card-display strong,
+	.boss-question strong {
+		font-size: clamp(2.8rem, 6.4vw, 6rem);
+		line-height: 1;
+		color: #23304d;
+	}
+
+	.activity-actions {
+		display: flex;
+		gap: 10px;
+		flex-wrap: wrap;
+		margin-top: 10px;
+	}
+
+	.primary-button,
+	.secondary-button,
+	.teacher-note-button {
+		padding: 10px 22px;
+		min-height: 52px;
+		white-space: nowrap;
+	}
+
+	.secondary-button {
+		background: #eef4f8;
+		color: #23304d;
+	}
+
+	.teacher-note-button {
+		background: #23304d;
+		color: #ffffff;
+	}
+
+	.meaning-board {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 18px;
+		margin: 20px 0;
+	}
+
+	.meaning-board > div {
+		padding: 22px;
+		min-height: clamp(180px, 26vh, 260px);
+	}
+
+	.meaning-board span {
+		font-weight: 950;
+		color: #f2761e;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.meaning-board strong {
+		display: block;
+		margin: 12px 0;
+		font-size: clamp(1.4rem, 2.4vw, 2.6rem);
+		color: #23304d;
+	}
+
+	.meaning-board p {
+		font-size: clamp(1rem, 1.45vw, 1.25rem);
+		line-height: 1.45;
+		font-weight: 800;
+		color: #344257;
+	}
+
+	.hidden-answer {
+		display: none;
+		margin: 12px 0 0;
+		padding: 14px 16px;
+		background: #f3fbff;
+		color: #23304d;
+		font-weight: 850;
+		line-height: 1.45;
+	}
+
+	.hidden-answer.is-visible {
+		display: block;
+	}
+
+	.machine-game {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(170px, 20vw) minmax(0, 1fr);
+		grid-template-rows: minmax(0, 1fr) auto;
+		gap: 14px;
+		align-items: stretch;
+		height: 100%;
+		min-height: 0;
+	}
+
+	.machine-left,
+	.machine-right {
+		display: grid;
+		gap: 12px;
+	}
+
+	.machine-card {
+		display: grid;
+		place-items: center;
+		align-content: center;
+		gap: 8px;
+		padding: 16px;
+		border-radius: 22px;
+		background: #f7f8fb;
+		border: 2px solid rgba(35, 48, 77, 0.1);
+		text-align: center;
+	}
+
+	.machine-card span {
+		font-weight: 950;
+		color: #f2761e;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+	}
+
+	.machine-card strong {
+		font-size: clamp(2rem, 4vw, 4rem);
+		color: #23304d;
+	}
+
+	.input-card.is-running {
+		animation: pulse-move 0.9s ease;
+	}
+
+	@keyframes pulse-move {
+		0% { transform: translateX(0); }
+		50% { transform: translateX(24px); box-shadow: 0 12px 40px rgba(242, 118, 30, 0.24); }
+		100% { transform: translateX(0); }
+	}
+
+	.machine-center {
+		display: grid;
+		place-items: center;
+	}
+
+	.machine-body {
+		width: 100%;
+		aspect-ratio: 1;
+		max-height: 260px;
+		border-radius: 34px;
+		background: linear-gradient(145deg, #23304d, #35507d);
+		color: #ffffff;
+		display: grid;
+		place-items: center;
+		text-align: center;
+		font-weight: 950;
+		font-size: clamp(1.1rem, 1.8vw, 2rem);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.machine-body span {
+		color: #ffffff;
+	}
+
+	.machine-light {
+		position: absolute;
+		bottom: 18px;
+		width: 22px;
+		height: 22px;
+		border-radius: 50%;
+		background: #f2761e;
+		box-shadow: 0 0 0 8px rgba(242, 118, 30, 0.18);
+	}
+
+	.machine-steps {
+		padding: 16px;
+		border-radius: 22px;
+		background: #fff8ee;
+		border: 2px solid rgba(242, 118, 30, 0.18);
+		font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+		line-height: 1.5;
+		font-weight: 850;
+		color: #23304d;
+	}
+
+	.machine-actions {
+		grid-column: 1 / -1;
+		display: flex;
+		gap: 10px;
+		flex-wrap: wrap;
+	}
+
+	.order-ladder {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 12px;
+		margin: 18px 0;
+	}
+
+	.order-ladder div {
+		display: grid;
+		gap: 8px;
+		padding: 20px;
+		border-radius: 22px;
+		background: #ffffff;
+		border: 2px solid rgba(35, 48, 77, 0.1);
+	}
+
+	.order-ladder span {
+		display: inline-grid;
+		place-items: center;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background: #f2761e;
+		color: #ffffff;
+		font-weight: 950;
+	}
+
+	.order-ladder strong {
+		font-size: clamp(1.15rem, 1.7vw, 1.7rem);
+		color: #23304d;
+	}
+
+	.order-ladder em {
+		font-style: normal;
+		font-size: clamp(1.3rem, 2vw, 2rem);
+		font-weight: 950;
+		color: #f2761e;
+	}
+
+	.worked-line {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+		gap: 12px;
+		align-items: center;
+		padding: 22px;
+		border-radius: 22px;
+		background: #23304d;
+		color: #ffffff;
+		font-size: clamp(1.4rem, 2.4vw, 2.5rem);
+		font-weight: 950;
+		text-align: center;
+	}
+
+	.worked-line span {
+		color: #ffffff;
+	}
+
+	.power-game {
+		display: grid;
+		gap: 12px;
+	}
+
+	.power-options {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 12px;
+	}
+
+	.power-footer {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 12px;
+		align-items: start;
+	}
+
+	.student-work {
+		padding: 18px;
+		margin-bottom: 12px;
+		min-height: clamp(170px, 26vh, 250px);
+	}
+
+	.student-work > span {
+		display: inline-flex;
+		margin-bottom: 8px;
+		font-weight: 950;
+		color: #f2761e;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.math-work {
+		display: grid;
+		gap: 8px;
+		font-size: clamp(1.5rem, 3vw, 3rem);
+		line-height: 1.25;
+		text-align: center;
+		color: #23304d;
+	}
+
+	.boss-question em {
+		font-style: normal;
+		font-weight: 850;
+		color: #344257;
+	}
+
+	.boss-rank {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 12px;
+		margin-top: 10px;
+		padding: 14px 16px;
+		border-radius: 18px;
+		background: #23304d;
+		color: #ffffff;
+		font-weight: 950;
+	}
+
+	.boss-rank span,
+	.boss-rank strong {
+		color: #ffffff;
+	}
+
+	.boss-rank strong {
+		font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+	}
+
+	.exit-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 14px;
+		margin: 18px 0;
+	}
+
+	.exit-card {
+		padding: 22px;
+		border-radius: 22px;
+		background: #fff8ee;
+		border: 2px solid rgba(242, 118, 30, 0.18);
+		min-height: clamp(150px, 22vh, 230px);
+	}
+
+	.exit-card strong {
+		display: inline-grid;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		background: #f2761e;
+		color: #ffffff;
+	}
+
+	.exit-card p {
+		font-size: clamp(1.15rem, 1.8vw, 1.65rem);
+		font-weight: 850;
+		line-height: 1.35;
+		color: #23304d;
+	}
+
+	.sample-answer {
+		margin-top: 12px;
+		padding: 14px 16px;
+		background: #f3fbff;
+	}
+
+	.sample-answer p {
+		margin: 0 0 8px;
+		line-height: 1.4;
+		font-weight: 850;
+		color: #23304d;
+	}
+
+	.sample-answer p:last-child {
+		margin-bottom: 0;
+	}
+
+	.deck-controls {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 10px;
+		flex-wrap: nowrap;
+		margin: 0;
+		padding: 8px;
+		border-radius: 18px;
+		background: rgba(255, 255, 255, 0.9);
+		border: 1px solid rgba(43, 53, 77, 0.1);
+		box-shadow: 0 12px 36px rgba(30, 41, 59, 0.08);
+	}
+
+	.teacher-notes {
+		position: fixed;
+		right: 18px;
+		bottom: 84px;
+		z-index: 10020;
+		width: min(480px, calc(100vw - 36px));
+	}
+
+	.teacher-notes-card {
+		padding: 20px;
+		border-radius: 22px;
+		background: #23304d;
+		color: #ffffff;
+		box-shadow: 0 24px 80px rgba(30, 41, 59, 0.24);
+	}
+
+	.teacher-notes-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		margin-bottom: 12px;
+	}
+
+	.teacher-notes-head strong,
+	.teacher-notes p {
+		color: #ffffff;
+	}
+
+	.teacher-notes-head button {
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		border: 0;
+		background: rgba(255, 255, 255, 0.18);
+		color: #ffffff;
+		font-size: 1.5rem;
+	}
+
+	.teacher-notes p {
+		margin: 0;
+		line-height: 1.55;
+	}
+
+	@media (max-width: 1020px) {
+		.lesson-shell {
+			grid-template-rows: 74px 10px minmax(0, 1fr) 64px;
+			padding: 8px;
+			gap: 8px;
+		}
+
+		.deck-layout,
+		.hero-grid,
+		.machine-game,
+		.exit-grid,
+		.meaning-board,
+		.compare-board,
+		.order-ladder,
+		.worked-line {
+			grid-template-columns: 1fr;
+		}
+
+		.slide-map,
+		.lesson-badge-card,
+		.machine-center {
+			display: none;
+		}
+
+		.option-row,
+		.power-options,
+		.rule-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 720px) {
+		.lesson-topbar h1 {
+			font-size: 1.15rem;
+		}
+
+		.objective-pill,
+		.mode-toggle,
+		.score-pill {
+			display: none;
+		}
+
+		.choice-grid,
+		.option-row,
+		.power-options,
+		.rule-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.primary-button,
+		.secondary-button,
+		.teacher-note-button,
+		.fullscreen-toggle {
+			padding: 8px 10px;
+			min-height: 48px;
+			font-size: 0.82rem;
+		}
+	}
+</style>
+
+<script is: inline>
+	const root = document.querySelector('[data-lesson-root]');
+
+	if (root) {
+		const slides = Array.from(root.querySelectorAll('[data-slide]'));
+		const dots = Array.from(root.querySelectorAll('[data-go-slide]'));
+		const progressLabel = root.querySelector('[data-progress-label]');
+		const progressBar = root.querySelector('[data-progress-bar]');
+		const nextButton = root.querySelector('[data-next-slide]');
+		const prevButton = root.querySelector('[data-prev-slide]');
+		const resetSlideButton = root.querySelector('[data-reset-slide]');
+		const modeToggle = root.querySelector('[data-mode-toggle]');
+		const fullscreenButton = root.querySelector('[data-fullscreen-toggle]');
+		const fullscreenTarget = document.querySelector('.lesson-page.ifp-fullscreen') || root;
+		const teacherNotes = root.querySelector('[data-teacher-notes]');
+		const teacherNotesText = root.querySelector('[data-teacher-notes-text]');
+		const teacherNotesToggle = root.querySelector('[data-teacher-notes-toggle]');
+		const teacherNotesClose = root.querySelector('[data-teacher-notes-close]');
+		const totalScoreButton = root.querySelector('[data-total-score]');
+
+		const notes = [
+			'Set the aim clearly. This lesson is more procedural than Lesson 1, so keep the first slide short.',
+			'Let students vote before revealing. The main idea: algebra removes the multiplication sign but keeps multiplication meaning.',
+			'Tap cards one by one. Ask students to give another example for each rule before revealing the explanation.',
+			'Game round. Invite students to the IFP. One student taps the answer, another explains why.',
+			'Slow down here. Students often read 3x as a two-digit number after substitution. Make the multiplication meaning explicit.',
+			'Use the animated machine as a modelling moment. Reveal substitute, calculate, and answer one step at a time.',
+			'Remind students that algebra follows arithmetic. Powers come before multiplication and addition.',
+			'Order Battle checks whether students know which operation happens first after substitution.',
+			'Power Cards is a quick energy round. Emphasise x squared is x times x, not 2 times x.',
+			'Error Detective is for misconception discussion. Ask why the mistake is tempting before showing the correct reason.',
+			'Boss Challenge combines notation, substitution, powers, and order of operations.',
+			'For live class, students answer in notebooks. For self-study, they can compare with sample answers.'
+		];
+
+		let currentSlide = 0;
+		let totalScore = 0;
+
+		const escapeHtml = (value) => String(value)
+			.replace(/&/g, '&amp;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;')
+			.replace(/"/g, '&quot;')
+			.replace(/'/g, '&#039;');
+
+		const math = (tex) => `<span class="math-render">$${escapeHtml(tex)}$</span>`;
+
+		const typesetMath = () => {
+			const run = () => {
+				if (window.MathJax && window.MathJax.typesetPromise) {
+					window.MathJax.typesetPromise([root]).catch(() => {});
+				}
+			};
+			window.setTimeout(run, 0);
+		};
+
+		const addScore = (points) => {
+			const safePoints = Number(points) || 0;
+			if (safePoints > 0) totalScore += safePoints;
+			if (totalScoreButton) totalScoreButton.textContent = `Score ${totalScore}`;
+		};
+
+		const updateSlide = (index) => {
+			currentSlide = Math.max(0, Math.min(index, slides.length - 1));
+			slides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === currentSlide));
+			dots.forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === currentSlide));
+			if (progressLabel) progressLabel.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
+			if (progressBar) progressBar.style.width = `${((currentSlide + 1) / slides.length) * 100}%`;
+			if (prevButton) prevButton.disabled = currentSlide === 0;
+			if (nextButton) nextButton.textContent = currentSlide === slides.length - 1 ? 'Finish' : 'Next';
+			if (teacherNotesText) teacherNotesText.textContent = notes[currentSlide] || '';
+			typesetMath();
+		};
+
+		dots.forEach((dot) => dot.addEventListener('click', () => updateSlide(Number(dot.dataset.goSlide || 0))));
+		nextButton?.addEventListener('click', () => updateSlide(currentSlide + 1));
+		prevButton?.addEventListener('click', () => updateSlide(currentSlide - 1));
+
+		modeToggle?.addEventListener('click', () => {
+			const isSelfStudy = root.classList.toggle('is-self-study');
+			modeToggle.setAttribute('aria-pressed', String(isSelfStudy));
+			modeToggle.textContent = isSelfStudy ? 'Self-Study Mode' : 'Teach Mode';
+		});
+
+		const getFullscreenElement = () => document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+		const updateFullscreenButton = () => {
+			if (!fullscreenButton) return;
+			const isFullscreen = Boolean(getFullscreenElement());
+			fullscreenButton.classList.toggle('is-active', isFullscreen);
+			fullscreenButton.setAttribute('aria-pressed', String(isFullscreen));
+			fullscreenButton.textContent = isFullscreen ? 'Exit Full Screen' : '⛶ Present Full Screen';
+		};
+		const enterFullscreen = async () => {
+			if (fullscreenTarget.requestFullscreen) return fullscreenTarget.requestFullscreen();
+			if (fullscreenTarget.webkitRequestFullscreen) return fullscreenTarget.webkitRequestFullscreen();
+			if (fullscreenTarget.msRequestFullscreen) return fullscreenTarget.msRequestFullscreen();
+			throw new Error('Fullscreen is not supported in this browser.');
+		};
+		const exitFullscreen = async () => {
+			if (document.exitFullscreen) return document.exitFullscreen();
+			if (document.webkitExitFullscreen) return document.webkitExitFullscreen();
+			if (document.msExitFullscreen) return document.msExitFullscreen();
+		};
+		fullscreenButton?.addEventListener('click', async () => {
+			try {
+				if (getFullscreenElement()) await exitFullscreen();
+				else await enterFullscreen();
+				updateFullscreenButton();
+			} catch (error) {
+				fullscreenButton.textContent = 'Fullscreen unavailable';
+				fullscreenButton.disabled = true;
+			}
+		});
+		document.addEventListener('fullscreenchange', updateFullscreenButton);
+		document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+		document.addEventListener('MSFullscreenChange', updateFullscreenButton);
+
+		teacherNotesToggle?.addEventListener('click', () => {
+			if (!teacherNotes) return;
+			teacherNotes.hidden = !teacherNotes.hidden;
+		});
+		teacherNotesClose?.addEventListener('click', () => {
+			if (teacherNotes) teacherNotes.hidden = true;
+		});
+
+		root.querySelectorAll('[data-choice-group]').forEach((group) => {
+			const buttons = Array.from(group.querySelectorAll('.choice-button'));
+			const feedbackLine = group.parentElement?.querySelector('[data-feedback-line]');
+			buttons.forEach((button) => {
+				button.addEventListener('click', () => {
+					if (button.dataset.answered === 'true') return;
+					buttons.forEach((item) => item.classList.remove('is-correct', 'is-wrong'));
+					const isCorrect = button.dataset.correct === 'true';
+					button.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+					if (isCorrect) addScore(button.dataset.points || 0);
+					button.dataset.answered = 'true';
+					if (feedbackLine) feedbackLine.textContent = button.dataset.feedback || '';
+				});
+			});
+		});
+
+		root.querySelectorAll('[data-reveal-card]').forEach((card) => {
+			card.addEventListener('click', () => {
+				card.classList.toggle('is-revealed');
+				typesetMath();
+			});
+		});
+
+		root.querySelectorAll('[data-toggle-target]').forEach((button) => {
+			button.addEventListener('click', () => {
+				const targetId = button.dataset.toggleTarget || '';
+				const target = root.querySelector(`#${CSS.escape(targetId)}`);
+				if (target) target.classList.toggle('is-visible');
+				typesetMath();
+			});
+		});
+
+		const makeOptionButton = (option, correctValue, feedbackTarget, onCorrect) => {
+			const button = document.createElement('button');
+			button.type = 'button';
+			button.className = 'game-option';
+			button.innerHTML = math(option.value);
+			button.addEventListener('click', () => {
+				const parent = button.parentElement;
+				parent?.querySelectorAll('.game-option').forEach((item) => item.classList.remove('is-correct', 'is-wrong'));
+				const isCorrect = option.value === correctValue;
+				button.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+				if (feedbackTarget) feedbackTarget.textContent = isCorrect ? option.correctText : option.wrongText;
+				if (isCorrect && !button.dataset.scored) {
+					button.dataset.scored = 'true';
+					onCorrect?.();
+				}
+			});
+			return button;
+		};
+
+		const notationGame = root.querySelector('[data-notation-game]');
+		if (notationGame) {
+			const questions = [
+				{ prompt: '7 × y', answer: '7y', options: ['7y', 'y7', '7 + y', '7 ÷ y'] },
+				{ prompt: 'm × m', answer: 'm^2', options: ['m^2', '2m', 'm + m', 'm^3'] },
+				{ prompt: 'a × b', answer: 'ab', options: ['ab', 'a + b', 'a^b', 'a ÷ b'] },
+				{ prompt: 'x × x × x', answer: 'x^3', options: ['x^3', '3x', 'x^2', 'x + 3'] },
+				{ prompt: '2 × p × p', answer: '2p^2', options: ['2p^2', '2p^3', '4p', 'p^2 + 2'] }
+			];
+			let index = 0;
+			let score = 0;
+			const round = notationGame.querySelector('[data-notation-round]');
+			const prompt = notationGame.querySelector('[data-notation-prompt]');
+			const optionsBox = notationGame.querySelector('[data-notation-options]');
+			const feedback = notationGame.querySelector('[data-notation-feedback]');
+			const scoreBox = notationGame.querySelector('[data-notation-score]');
+			const render = () => {
+				const q = questions[index];
+				if (round) round.textContent = `Round ${index + 1} / ${questions.length}`;
+				if (prompt) prompt.innerHTML = `$${escapeHtml(q.prompt)}$`;
+				if (feedback) feedback.textContent = 'Choose the neat algebraic form.';
+				if (optionsBox) {
+					optionsBox.innerHTML = '';
+					q.options.forEach((value) => optionsBox.appendChild(makeOptionButton(
+						{ value, correctText: 'Fixed. This is the correct algebraic notation.', wrongText: 'Check the multiplication rule or repeated variable again.' },
+						q.answer,
+						feedback,
+						() => { score += 5; addScore(5); if (scoreBox) scoreBox.textContent = String(score); }
+					)));
+				}
+				typesetMath();
+			};
+			notationGame.querySelector('[data-notation-next]')?.addEventListener('click', () => { index = (index + 1) % questions.length; render(); });
+			notationGame.querySelector('[data-notation-reset]')?.addEventListener('click', () => { index = 0; score = 0; if (scoreBox) scoreBox.textContent = '0'; render(); });
+			render();
+		}
+
+		const machineGame = root.querySelector('[data-machine-game]');
+		if (machineGame) {
+			const examples = [
+				{ variable: 'x = 4', expression: '3x + 2', steps: ['3(4) + 2', '12 + 2', '14'] },
+				{ variable: 'a = 5', expression: '2a^2 + 1', steps: ['2(5^2) + 1', '2(25) + 1', '51'] },
+				{ variable: 'm = 3', expression: '4m + 7', steps: ['4(3) + 7', '12 + 7', '19'] }
+			];
+			let exampleIndex = 0;
+			let stepIndex = 0;
+			const input = machineGame.querySelector('[data-machine-input] strong');
+			const inputCard = machineGame.querySelector('[data-machine-input]');
+			const expression = machineGame.querySelector('[data-machine-expression]');
+			const output = machineGame.querySelector('[data-machine-output]');
+			const stepsBox = machineGame.querySelector('[data-machine-steps]');
+			const stepButton = machineGame.querySelector('[data-machine-step]');
+			const render = () => {
+				const item = examples[exampleIndex];
+				if (input) input.innerHTML = `$${escapeHtml(item.variable)}$`;
+				if (expression) expression.innerHTML = `$${escapeHtml(item.expression)}$`;
+				if (output) output.textContent = '?';
+				if (stepsBox) stepsBox.innerHTML = '<p>Tap Substitute to reveal the working step by step.</p>';
+				if (stepButton) stepButton.textContent = 'Substitute';
+				stepIndex = 0;
+				typesetMath();
+			};
+			stepButton?.addEventListener('click', () => {
+				const item = examples[exampleIndex];
+				inputCard?.classList.remove('is-running');
+				void inputCard?.offsetWidth;
+				inputCard?.classList.add('is-running');
+				const visibleSteps = item.steps.slice(0, stepIndex + 1);
+				if (stepsBox) stepsBox.innerHTML = visibleSteps.map((line, i) => `<p>${i === 0 ? '=' : '='} ${math(line)}</p>`).join('');
+				if (stepIndex >= item.steps.length - 1 && output) output.innerHTML = math(item.steps[item.steps.length - 1]);
+				stepIndex = Math.min(stepIndex + 1, item.steps.length - 1);
+				if (stepButton) stepButton.textContent = stepIndex >= item.steps.length - 1 ? 'Reveal answer' : 'Calculate';
+				typesetMath();
+			});
+			machineGame.querySelector('[data-machine-new]')?.addEventListener('click', () => { exampleIndex = (exampleIndex + 1) % examples.length; render(); });
+			machineGame.querySelector('[data-machine-reset]')?.addEventListener('click', render);
+			render();
+		}
+
+		const orderGame = root.querySelector('[data-order-game]');
+		if (orderGame) {
+			const battles = [
+				{ question: 'Evaluate when x = 6.', expression: '4 + 2x', substitution: '4 + 2(6)', answer: '2(6)', options: ['4 + 2', '2(6)', '6 + 4', '4 × 6'] },
+				{ question: 'Evaluate when a = 3.', expression: '5a^2 + 1', substitution: '5(3^2) + 1', answer: '3^2', options: ['5 + 3', '3^2', '5(3)', '1 + 3'] },
+				{ question: 'Evaluate when p = 4.', expression: '2(p + 3)', substitution: '2(4 + 3)', answer: '4 + 3', options: ['2 × 4', '4 + 3', '2 + 3', '2 + 4'] },
+				{ question: 'Evaluate when y = 2.', expression: '10 - y^3', substitution: '10 - 2^3', answer: '2^3', options: ['10 - 2', '2^3', '10 ÷ 2', '10 + 3'] }
+			];
+			let index = 0;
+			let score = 0;
+			const round = orderGame.querySelector('[data-order-round]');
+			const question = orderGame.querySelector('[data-order-question]');
+			const expression = orderGame.querySelector('[data-order-expression]');
+			const substitution = orderGame.querySelector('[data-order-substitution]');
+			const optionsBox = orderGame.querySelector('[data-order-options]');
+			const feedback = orderGame.querySelector('[data-order-feedback]');
+			const scoreBox = orderGame.querySelector('[data-order-score]');
+			const render = () => {
+				const item = battles[index];
+				if (round) round.textContent = `Battle ${index + 1} / ${battles.length}`;
+				if (question) question.textContent = item.question;
+				if (expression) expression.innerHTML = `$${escapeHtml(item.expression)}$`;
+				if (substitution) substitution.innerHTML = `$${escapeHtml(item.substitution)}$`;
+				if (feedback) feedback.textContent = 'Pick the first operation.';
+				if (optionsBox) {
+					optionsBox.innerHTML = '';
+					item.options.forEach((value) => optionsBox.appendChild(makeOptionButton(
+						{ value, correctText: 'Yes. That operation should be completed before moving on.', wrongText: 'Not first. Check brackets, powers, multiplication/division, then addition/subtraction.' },
+						item.answer,
+						feedback,
+						() => { score += 5; addScore(5); if (scoreBox) scoreBox.textContent = String(score); }
+					)));
+				}
+				typesetMath();
+			};
+			orderGame.querySelector('[data-order-next]')?.addEventListener('click', () => { index = (index + 1) % battles.length; render(); });
+			orderGame.querySelector('[data-order-reset]')?.addEventListener('click', () => { index = 0; score = 0; if (scoreBox) scoreBox.textContent = '0'; render(); });
+			render();
+		}
+
+		const powerGame = root.querySelector('[data-power-game]');
+		if (powerGame) {
+			const cards = [
+				{ prompt: 'x × x', answer: 'x^2', options: ['x^2', '2x', 'x^3', 'x + 2'] },
+				{ prompt: 'a × a × a', answer: 'a^3', options: ['a^3', '3a', 'a^2', 'a + 3'] },
+				{ prompt: '3 × y × y', answer: '3y^2', options: ['3y^2', '3y^3', '6y', 'y^2 + 3'] },
+				{ prompt: '2 × p × p × p', answer: '2p^3', options: ['2p^3', '2p^2', '6p', 'p^3 + 2'] }
+			];
+			let index = 0;
+			let streak = 0;
+			const prompt = powerGame.querySelector('[data-power-prompt]');
+			const optionsBox = powerGame.querySelector('[data-power-options]');
+			const feedback = powerGame.querySelector('[data-power-feedback]');
+			const streakBox = powerGame.querySelector('[data-power-streak]');
+			const render = () => {
+				const card = cards[index];
+				if (prompt) prompt.innerHTML = `$${escapeHtml(card.prompt)}$`;
+				if (feedback) feedback.textContent = 'Choose the index form.';
+				if (optionsBox) {
+					optionsBox.innerHTML = '';
+					card.options.forEach((value) => optionsBox.appendChild(makeOptionButton(
+						{ value, correctText: 'Power up. Repeated multiplication is written using an index.', wrongText: 'Count how many times the variable is multiplied by itself.' },
+						card.answer,
+						feedback,
+						() => { streak += 1; addScore(3); if (streakBox) streakBox.textContent = String(streak); }
+					)));
+				}
+				typesetMath();
+			};
+			powerGame.querySelector('[data-power-next]')?.addEventListener('click', () => { index = (index + 1) % cards.length; render(); });
+			powerGame.querySelector('[data-power-reset]')?.addEventListener('click', () => { index = 0; streak = 0; if (streakBox) streakBox.textContent = '0'; render(); });
+			render();
+		}
+
+		const detectiveGame = root.querySelector('[data-detective-game]');
+		if (detectiveGame) {
+			const cases = [
+				{ work: ['If x = 5', 'x^2 = 2 × 5 = 10'], answer: 'x^2 means x × x', options: ['x^2 means x × x', 'x^2 means x + x', 'x^2 means 2 × x', 'x^2 means x ÷ 2'] },
+				{ work: ['If x = 4', '3x + 2 = 34 + 2 = 36'], answer: '3x means 3 × x', options: ['3x means 3 × x', '3x means the number 34', '3x means 3 + x', '3x means x^3'] },
+				{ work: ['If a = 3', '5a^2 = (5a)^2 = 225'], answer: 'Do a^2 before multiplying by 5', options: ['Do a^2 before multiplying by 5', 'Add 5 and a first', 'Square only the 5', 'Ignore the exponent'] }
+			];
+			let index = 0;
+			const workBox = detectiveGame.querySelector('[data-detective-work]');
+			const optionsBox = detectiveGame.querySelector('[data-detective-options]');
+			const feedback = detectiveGame.querySelector('[data-detective-feedback]');
+			const render = () => {
+				const item = cases[index];
+				if (workBox) workBox.innerHTML = item.work.map((line) => `<p>${math(line)}</p>`).join('');
+				if (feedback) feedback.textContent = 'Choose the best explanation.';
+				if (optionsBox) {
+					optionsBox.innerHTML = '';
+					item.options.forEach((value) => optionsBox.appendChild(makeOptionButton(
+						{ value, correctText: 'Detective solved. That explanation identifies the exact misconception.', wrongText: 'That does not explain the mistake shown in the student work.' },
+						item.answer,
+						feedback,
+						() => addScore(5)
+					)));
+				}
+				typesetMath();
+			};
+			detectiveGame.querySelector('[data-detective-next]')?.addEventListener('click', () => { index = (index + 1) % cases.length; render(); });
+			detectiveGame.querySelector('[data-detective-reset]')?.addEventListener('click', () => { index = 0; render(); });
+			render();
+		}
+
+		const bossGame = root.querySelector('[data-boss-game]');
+		if (bossGame) {
+			const questions = [
+				{ task: 'Write this in algebraic notation.', prompt: '6 × p', answer: '6p', options: ['6p', 'p6', '6 + p', '6 ÷ p'] },
+				{ task: 'Evaluate when x = 3.', prompt: '2x + 5', answer: '11', options: ['11', '10', '21', '2^3 + 5'] },
+				{ task: 'Write this using an index.', prompt: 'y × y × y', answer: 'y^3', options: ['y^3', '3y', 'y^2', 'y + 3'] },
+				{ task: 'Choose the correct value when a = 2.', prompt: '3a^2 + 4', answer: '16', options: ['16', '10', '40', '12'] }
+			];
+			let index = 0;
+			let score = 0;
+			const round = bossGame.querySelector('[data-boss-round]');
+			const prompt = bossGame.querySelector('[data-boss-prompt]');
+			const task = bossGame.querySelector('[data-boss-task]');
+			const optionsBox = bossGame.querySelector('[data-boss-options]');
+			const feedback = bossGame.querySelector('[data-boss-feedback]');
+			const scoreBox = bossGame.querySelector('[data-boss-score]');
+			const rank = bossGame.querySelector('[data-boss-rank]');
+			const updateRank = () => {
+				if (!rank) return;
+				if (score >= 16) rank.textContent = 'Rank: Algebra Master';
+				else if (score >= 10) rank.textContent = 'Rank: Algebra Pro';
+				else if (score >= 5) rank.textContent = 'Rank: Algebra Apprentice';
+				else rank.textContent = 'Rank: Algebra Rookie';
+			};
+			const render = () => {
+				const item = questions[index];
+				if (round) round.textContent = `Question ${index + 1} / ${questions.length}`;
+				if (prompt) prompt.innerHTML = `$${escapeHtml(item.prompt)}$`;
+				if (task) task.textContent = item.task;
+				if (feedback) feedback.textContent = 'Choose an answer.';
+				if (optionsBox) {
+					optionsBox.innerHTML = '';
+					item.options.forEach((value) => optionsBox.appendChild(makeOptionButton(
+						{ value, correctText: 'Boss hit. This answer follows the notation or operation rule.', wrongText: 'Not this one. Check notation, substitution, powers, and order of operations.' },
+						item.answer,
+						feedback,
+						() => { score += 5; addScore(5); if (scoreBox) scoreBox.textContent = String(score); updateRank(); }
+					)));
+				}
+				typesetMath();
+			};
+			bossGame.querySelector('[data-boss-next]')?.addEventListener('click', () => { index = (index + 1) % questions.length; render(); });
+			bossGame.querySelector('[data-boss-reset]')?.addEventListener('click', () => { index = 0; score = 0; if (scoreBox) scoreBox.textContent = '0'; updateRank(); render(); });
+			render();
+		}
+
+		const resetCurrentSlide = () => {
+			const slide = slides[currentSlide];
+			if (!slide) return;
+			slide.querySelectorAll('.is-revealed').forEach((item) => item.classList.remove('is-revealed'));
+			slide.querySelectorAll('.hidden-answer.is-visible').forEach((item) => item.classList.remove('is-visible'));
+			slide.querySelectorAll('.choice-button, .game-option').forEach((button) => {
+				button.classList.remove('is-correct', 'is-wrong');
+				delete button.dataset.answered;
+				delete button.dataset.scored;
+			});
+			slide.querySelectorAll('[data-feedback-line]').forEach((line) => {
+				line.textContent = 'Ask students to vote first, then tap one answer.';
+			});
+			typesetMath();
+		};
+		resetSlideButton?.addEventListener('click', resetCurrentSlide);
+
+		root.addEventListener('keydown', (event) => {
+			const target = event.target;
+			if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) return;
+			if (event.key === 'ArrowRight') updateSlide(currentSlide + 1);
+			if (event.key === 'ArrowLeft') updateSlide(currentSlide - 1);
+		});
+
+		window.setTimeout(typesetMath, 500);
+		updateSlide(0);
+		updateFullscreenButton();
+	}
+</script>

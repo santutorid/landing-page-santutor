@@ -1,0 +1,1213 @@
+---
+import Layout from '../../../../../../layouts/Layout.astro';
+
+const pageTitle = 'Lesson 1: Letters in Algebra — Cambridge Stage 8 Mathematics';
+const pageDescription = 'IFP full-screen interactive teaching deck for Cambridge Lower Secondary Stage 8 Mathematics 8Ae.01.';
+const pageTitleEn = pageTitle;
+const pageDescriptionEn = pageDescription;
+---
+
+<Layout
+	title={pageTitle}
+	description={pageDescription}
+	titleEn={pageTitleEn}
+	descriptionEn={pageDescriptionEn}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogTitleEn={pageTitleEn}
+	ogDescriptionEn={pageDescriptionEn}
+	currentPage="math"
+>
+	<main id="top" class="lesson-page ifp-fullscreen">
+		<section class="lesson-shell" data-lesson-root>
+			<div class="lesson-topbar">
+				<div class="lesson-topbar-left">
+					<a class="back-link" href="/e-learning/matematika/matematika_cambridge/matematika_cambridge_stage8/8.2-topic-1">← Back to Topic 1</a>
+					<p class="eyebrow">Cambridge Lower Secondary Mathematics · Stage 8</p>
+					<h1>Lesson 1: Letters in Algebra</h1>
+				</div>
+				<div class="lesson-topbar-right" aria-label="Lesson controls">
+					<span class="objective-pill">8Ae.01</span>
+					<button class="mode-toggle" type="button" data-mode-toggle aria-pressed="false">Teach Mode</button>
+					<button class="fullscreen-toggle" type="button" data-fullscreen-toggle aria-pressed="false">⛶ Present Full Screen</button>
+				</div>
+			</div>
+
+			<div class="progress-area" aria-label="Lesson progress">
+				<div class="progress-meta">
+					<span data-progress-label>Slide 1 of 11</span>
+					<span>50 minutes</span>
+				</div>
+				<div class="progress-track"><span data-progress-bar></span></div>
+			</div>
+
+			<div class="deck-layout">
+				<aside class="slide-map" aria-label="Lesson sections">
+					<button type="button" class="slide-dot is-active" data-go-slide="0"><span>1</span> Goal</button>
+					<button type="button" class="slide-dot" data-go-slide="1"><span>2</span> Hook</button>
+					<button type="button" class="slide-dot" data-go-slide="2"><span>3</span> Meaning</button>
+					<button type="button" class="slide-dot" data-go-slide="3"><span>4</span> Vocabulary</button>
+					<button type="button" class="slide-dot" data-go-slide="4"><span>5</span> Parts</button>
+					<button type="button" class="slide-dot" data-go-slide="5"><span>6</span> Forms</button>
+					<button type="button" class="slide-dot" data-go-slide="6"><span>7</span> Sort Race</button>
+					<button type="button" class="slide-dot" data-go-slide="7"><span>8</span> Label Game</button>
+					<button type="button" class="slide-dot" data-go-slide="8"><span>9</span> Myth Buster</button>
+					<button type="button" class="slide-dot" data-go-slide="9"><span>10</span> Boss Quiz</button>
+					<button type="button" class="slide-dot" data-go-slide="10"><span>11</span> Exit</button>
+				</aside>
+
+				<section class="slide-stage" aria-live="polite">
+					<article class="lesson-slide is-active" data-slide data-slide-title="Learning Goal">
+						<div class="slide-label"><span>Slide 1</span><strong>Learning Goal</strong></div>
+						<div class="hero-slide-grid">
+							<div>
+								<p class="mini-kicker">Lesson objective</p>
+								<h2>Letters can mean different things in algebra.</h2>
+								<p class="slide-lede">Today we will distinguish letters as unknowns, variables, constants, coefficients, terms, expressions, formulae, and equations.</p>
+								<div class="success-box">
+									<h3>By the end, I can...</h3>
+									<ul>
+										<li>explain what a letter can represent</li>
+										<li>identify the parts of <span class="math">5x + 3</span></li>
+										<li>sort expressions, formulae, and equations</li>
+									</ul>
+								</div>
+							</div>
+							<div class="time-card">
+								<span class="time-number">50</span>
+								<span>minutes</span>
+								<hr />
+								<p>Full-screen IFP deck with built-in games and math notation.</p>
+							</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Hook: Everyday Algebra">
+						<div class="slide-label"><span>Slide 2</span><strong>Hook</strong></div>
+						<p class="mini-kicker">Everyday algebra language</p>
+						<h2>A notebook costs <span class="math">n</span> rupiah.</h2>
+						<div class="context-card">
+							<p>One notebook costs <span class="math">n</span> rupiah.</p>
+							<p>Three notebooks cost <span class="math">3n</span> rupiah.</p>
+						</div>
+						<h3 class="question-title">What does <span class="math">n</span> represent?</h3>
+						<div class="choice-grid" data-choice-group>
+							<button type="button" class="choice-button" data-correct="false" data-feedback="Not quite. The number of notebooks is already shown by 3 in 3n.">The number of notebooks</button>
+							<button type="button" class="choice-button" data-correct="true" data-feedback="Yes. n represents the price of one notebook, so 3n means three times that price.">The price of one notebook</button>
+							<button type="button" class="choice-button" data-correct="false" data-feedback="Not quite. The total price for three notebooks is represented by 3n, not n alone.">The total price</button>
+							<button type="button" class="choice-button" data-correct="false" data-feedback="Not quite. A letter is not always the final answer; it can represent a quantity.">The final answer</button>
+						</div>
+						<p class="feedback-line" data-feedback-line>Ask students to vote before revealing the answer.</p>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="What Can Letters Mean?">
+						<div class="slide-label"><span>Slide 3</span><strong>Concept</strong></div>
+						<p class="mini-kicker">Meaning of letters</p>
+						<h2>A letter is not always “the answer”.</h2>
+						<div class="meaning-grid">
+							<button type="button" class="meaning-card" data-reveal-card>
+								<strong>Unknown</strong>
+								<span>Tap to reveal</span>
+								<em>A value we need to find. Example: <span class="math">x + 5 = 12</span>.</em>
+							</button>
+							<button type="button" class="meaning-card" data-reveal-card>
+								<strong>Variable</strong>
+								<span>Tap to reveal</span>
+								<em>A value that can change. Example: <span class="math">y = 2x + 1</span>.</em>
+							</button>
+							<button type="button" class="meaning-card" data-reveal-card>
+								<strong>Formula quantity</strong>
+								<span>Tap to reveal</span>
+								<em>A letter can represent a measurement. Example: <span class="math">A = l × w</span>.</em>
+							</button>
+						</div>
+						<div class="teacher-prompt">Class talk: Can the same letter have different values in different questions?</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Vocabulary Cards">
+						<div class="slide-label"><span>Slide 4</span><strong>Vocabulary</strong></div>
+						<p class="mini-kicker">Tap-to-learn cards</p>
+						<h2>Build the algebra vocabulary.</h2>
+						<div class="vocab-grid">
+							<button type="button" class="vocab-card" data-reveal-card><strong>Variable</strong><span>Letter that can change.</span><em>In <span class="math">3x + 5</span>, <span class="math">x</span> is the variable.</em></button>
+							<button type="button" class="vocab-card" data-reveal-card><strong>Constant</strong><span>A fixed value.</span><em>In <span class="math">3x + 5</span>, <span class="math">5</span> is the constant.</em></button>
+							<button type="button" class="vocab-card" data-reveal-card><strong>Coefficient</strong><span>Number multiplying a variable.</span><em>In <span class="math">3x</span>, the coefficient is <span class="math">3</span>.</em></button>
+							<button type="button" class="vocab-card" data-reveal-card><strong>Term</strong><span>A single algebra part.</span><em>In <span class="math">3x + 5</span>, the terms are <span class="math">3x</span> and <span class="math">5</span>.</em></button>
+							<button type="button" class="vocab-card" data-reveal-card><strong>Expression</strong><span>No equals sign.</span><em>Example: <span class="math">3x + 5</span>.</em></button>
+							<button type="button" class="vocab-card" data-reveal-card><strong>Equation</strong><span>Shows equality.</span><em>Example: <span class="math">3x + 5 = 20</span>.</em></button>
+							<button type="button" class="vocab-card" data-reveal-card><strong>Formula</strong><span>A rule connecting quantities.</span><em>Example: <span class="math">A = l × w</span>.</em></button>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Identify the Parts">
+						<div class="slide-label"><span>Slide 5</span><strong>Identify Parts</strong></div>
+						<p class="mini-kicker">Guided check</p>
+						<h2>Look carefully at this expression.</h2>
+						<div class="big-expression" aria-label="5x plus 3"><span class="math">5x + 3</span></div>
+						<div class="reveal-grid">
+							<button type="button" class="reveal-chip" data-toggle-target="answer-variable">Variable?</button>
+							<button type="button" class="reveal-chip" data-toggle-target="answer-coefficient">Coefficient?</button>
+							<button type="button" class="reveal-chip" data-toggle-target="answer-constant">Constant?</button>
+							<button type="button" class="reveal-chip" data-toggle-target="answer-terms">Terms?</button>
+						</div>
+						<div class="answer-grid">
+							<p id="answer-variable" class="hidden-answer"><strong>Variable:</strong> <span class="math">x</span></p>
+							<p id="answer-coefficient" class="hidden-answer"><strong>Coefficient:</strong> <span class="math">5</span></p>
+							<p id="answer-constant" class="hidden-answer"><strong>Constant:</strong> <span class="math">3</span></p>
+							<p id="answer-terms" class="hidden-answer"><strong>Terms:</strong> <span class="math">5x</span> and <span class="math">3</span></p>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Expression, Formula, or Equation?">
+						<div class="slide-label"><span>Slide 6</span><strong>Forms</strong></div>
+						<p class="mini-kicker">Three important forms</p>
+						<h2>Expression, formula, or equation?</h2>
+						<div class="definition-row">
+							<div><strong>Expression</strong><span>No equals sign</span><em><span class="math">3x + 5</span></em></div>
+							<div><strong>Equation</strong><span>Has an equals sign</span><em><span class="math">3x + 5 = 20</span></em></div>
+							<div><strong>Formula</strong><span>A rule connecting quantities</span><em><span class="math">A = l × w</span></em></div>
+						</div>
+						<div class="callout-warning">
+							<strong>Careful:</strong> A formula often looks like an equation because it has <span class="math">=</span>. In this lesson, sort by its main purpose.
+						</div>
+					</article>
+
+					<article class="lesson-slide game-slide" data-slide data-slide-title="Game: Algebra Sort Race">
+						<div class="slide-label"><span>Slide 7</span><strong>Game 1</strong></div>
+						<div class="game-header">
+							<div>
+								<p class="mini-kicker">IFP game</p>
+								<h2>Algebra Sort Race</h2>
+							</div>
+							<div class="score-card"><span>Score</span><strong data-sort-score>0</strong></div>
+						</div>
+						<p class="slide-lede">Tap a card, then choose its category. Correct answer = +10 points.</p>
+						<div class="sort-activity" data-sort-activity>
+							<div class="sort-card-bank" aria-label="Cards to sort">
+								<button type="button" class="sort-card" data-card="3x + 5" data-answer="Expression"><span class="math">3x + 5</span></button>
+								<button type="button" class="sort-card" data-card="A = l × w" data-answer="Formula"><span class="math">A = l × w</span></button>
+								<button type="button" class="sort-card" data-card="2x + 7 = 15" data-answer="Equation"><span class="math">2x + 7 = 15</span></button>
+								<button type="button" class="sort-card" data-card="p + q" data-answer="Expression"><span class="math">p + q</span></button>
+								<button type="button" class="sort-card" data-card="C = 2πr" data-answer="Formula"><span class="math">C = 2πr</span></button>
+								<button type="button" class="sort-card" data-card="y = 4x − 1" data-answer="Equation"><span class="math">y = 4x − 1</span></button>
+							</div>
+							<div class="category-buttons" aria-label="Categories">
+								<button type="button" data-category="Expression">Expression</button>
+								<button type="button" data-category="Formula">Formula</button>
+								<button type="button" data-category="Equation">Equation</button>
+							</div>
+							<p class="sort-status" data-sort-status>Select a card first.</p>
+							<div class="sort-columns">
+								<div><h3>Expression</h3><ul data-sort-list="Expression"></ul></div>
+								<div><h3>Formula</h3><ul data-sort-list="Formula"></ul></div>
+								<div><h3>Equation</h3><ul data-sort-list="Equation"></ul></div>
+							</div>
+							<div class="activity-actions">
+								<button type="button" class="secondary-button" data-reset-sort>Reset game</button>
+							</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide game-slide" data-slide data-slide-title="Game: Label the Expression">
+						<div class="slide-label"><span>Slide 8</span><strong>Game 2</strong></div>
+						<div class="game-header">
+							<div>
+								<p class="mini-kicker">Tap challenge</p>
+								<h2>Label the Expression</h2>
+							</div>
+							<div class="score-card"><span>Streak</span><strong data-label-streak>0</strong></div>
+						</div>
+						<div class="label-game" data-label-game>
+							<div class="big-expression game-expression" data-label-expression><span class="math">7m + 2</span></div>
+							<h3 class="question-title" data-label-question>Find the coefficient.</h3>
+							<div class="choice-grid compact" data-label-options></div>
+							<p class="feedback-line" data-label-feedback>Choose the correct answer, then move to the next challenge.</p>
+							<div class="activity-actions">
+								<button type="button" class="primary-button" data-next-label>Next challenge</button>
+								<button type="button" class="secondary-button" data-reset-label>Reset streak</button>
+							</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide game-slide" data-slide data-slide-title="Game: Myth Buster">
+						<div class="slide-label"><span>Slide 9</span><strong>Game 3</strong></div>
+						<div class="game-header">
+							<div>
+								<p class="mini-kicker">Misconception check</p>
+								<h2>Myth Buster</h2>
+							</div>
+							<div class="score-card"><span>Score</span><strong data-myth-score>0</strong></div>
+						</div>
+						<div class="myth-game" data-myth-game>
+							<div class="myth-statement" data-myth-statement><span class="myth-statement-inner">“<span class="math">5x</span> means <span class="math">5 + x</span>.”</span></div>
+							<div class="myth-buttons">
+								<button type="button" class="primary-button" data-myth-answer="fact">Fact</button>
+								<button type="button" class="primary-button danger" data-myth-answer="myth">Myth</button>
+							</div>
+							<p class="feedback-line" data-myth-feedback>Choose Fact or Myth.</p>
+							<div class="activity-actions">
+								<button type="button" class="secondary-button" data-next-myth>Next statement</button>
+								<button type="button" class="secondary-button" data-reset-myth>Reset game</button>
+							</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide game-slide" data-slide data-slide-title="Mini Boss Quiz">
+						<div class="slide-label"><span>Slide 10</span><strong>Boss Quiz</strong></div>
+						<div class="game-header">
+							<div>
+								<p class="mini-kicker">Final class challenge</p>
+								<h2>Mini Boss Quiz</h2>
+							</div>
+							<div class="score-card"><span>Points</span><strong data-boss-score>0</strong></div>
+						</div>
+						<div class="boss-grid" data-boss-quiz>
+							<div class="boss-question">
+								<h3>1. Which is the variable in <span class="math">9a + 4</span>?</h3>
+								<div class="choice-grid compact" data-boss-group>
+									<button type="button" class="choice-button" data-correct="false" data-feedback="9 is the coefficient."><span class="math">9</span></button>
+									<button type="button" class="choice-button" data-correct="true" data-feedback="a is the letter that can change value."><span class="math">a</span></button>
+									<button type="button" class="choice-button" data-correct="false" data-feedback="4 is the constant."><span class="math">4</span></button>
+									<button type="button" class="choice-button" data-correct="false" data-feedback="9a is a term."><span class="math">9a</span></button>
+								</div>
+							</div>
+							<div class="boss-question">
+								<h3>2. Which is a formula?</h3>
+								<div class="choice-grid compact" data-boss-group>
+									<button type="button" class="choice-button" data-correct="false" data-feedback="This is an expression because it has no equals sign."><span class="math">4x − 1</span></button>
+									<button type="button" class="choice-button" data-correct="true" data-feedback="P = 2l + 2w is a rule for perimeter, so it is a formula."><span class="math">P = 2l + 2w</span></button>
+									<button type="button" class="choice-button" data-correct="false" data-feedback="This is an equation, but not mainly presented as a real-world formula here."><span class="math">x + 5 = 12</span></button>
+									<button type="button" class="choice-button" data-correct="false" data-feedback="This is an expression because it has no equals sign."><span class="math">p + q</span></button>
+								</div>
+							</div>
+							<div class="boss-question">
+								<h3>3. In <span class="math">6x + 4</span>, what are the terms?</h3>
+								<div class="choice-grid compact" data-boss-group>
+									<button type="button" class="choice-button" data-correct="false" data-feedback="x is the variable, not the full list of terms."><span class="math">x</span></button>
+									<button type="button" class="choice-button" data-correct="false" data-feedback="6 is the coefficient and 4 is the constant, but 6 alone is not a term in the expression."><span class="math">6</span> and <span class="math">4</span></button>
+									<button type="button" class="choice-button" data-correct="true" data-feedback="The terms are the algebra parts separated by plus or minus signs: 6x and 4."><span class="math">6x</span> and <span class="math">4</span></button>
+									<button type="button" class="choice-button" data-correct="false" data-feedback="6x + 4 is the whole expression, not the separate terms."><span class="math">6x + 4</span></button>
+								</div>
+							</div>
+						</div>
+						<p class="feedback-line" data-boss-feedback>Let students come to the board. Each correct first tap gives +10 points.</p>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Exit Ticket">
+						<div class="slide-label"><span>Slide 11</span><strong>Exit Ticket</strong></div>
+						<p class="mini-kicker">Final check</p>
+						<h2>Exit ticket</h2>
+						<p class="slide-lede">Students answer in their notebook, then compare with the sample answers.</p>
+						<form class="exit-form" data-exit-form>
+							<label>
+								<span>1. What is the difference between an expression and an equation?</span>
+								<textarea rows="2" placeholder="Write your answer here..."></textarea>
+							</label>
+							<label>
+								<span>2. In <span class="math">6x + 4</span>, what is the coefficient?</span>
+								<input type="text" placeholder="Type your answer..." />
+							</label>
+							<label>
+								<span>3. Give one real-life formula.</span>
+								<input type="text" placeholder="Example: A = l × w" />
+							</label>
+						</form>
+						<button type="button" class="primary-button" data-toggle-target="sample-exit">Show sample answers</button>
+						<div id="sample-exit" class="sample-answer hidden-answer">
+							<p><strong>1.</strong> An expression has no equals sign. An equation has an equals sign and says two expressions are equal.</p>
+							<p><strong>2.</strong> The coefficient is <span class="math">6</span>.</p>
+							<p><strong>3.</strong> Example: <span class="math">A = l × w</span>, <span class="math">C = 2πr</span>, or <span class="math">speed = distance ÷ time</span>.</p>
+						</div>
+					</article>
+				</section>
+			</div>
+
+			<div class="deck-controls">
+				<button type="button" class="secondary-button" data-prev-slide>Back</button>
+				<button type="button" class="teacher-note-button" data-teacher-notes-toggle>Teacher Notes</button>
+				<button type="button" class="secondary-button" data-reset-slide>Reset Slide</button>
+				<button type="button" class="primary-button" data-next-slide>Next</button>
+			</div>
+
+			<aside class="teacher-notes" data-teacher-notes hidden>
+				<div class="teacher-notes-card">
+					<div class="teacher-notes-head">
+						<strong>Teacher Notes</strong>
+						<button type="button" data-teacher-notes-close aria-label="Close teacher notes">×</button>
+					</div>
+					<p data-teacher-notes-text>Use this slide to set the learning target clearly.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+</Layout>
+
+<script is:inline>
+	window.MathJax = {
+		startup: { typeset: false },
+		options: { enableMenu: false },
+		chtml: { scale: 1.08 }
+	};
+</script>
+<script is:inline async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+<style>
+	:global(body.lesson-active-page) {
+		overflow: hidden !important;
+	}
+
+	:global(body.lesson-active-page .site-header),
+	:global(body.lesson-active-page .site-footer),
+	:global(body.lesson-active-page .floating-whatsapp),
+	:global(body.lesson-active-page .whatsapp-float) {
+		display: none !important;
+	}
+
+	.lesson-page.ifp-fullscreen {
+		position: fixed;
+		inset: 0;
+		z-index: 10000;
+		height: 100vh;
+		width: 100vw;
+		overflow: hidden;
+		padding: 0;
+		background: radial-gradient(circle at 10% 10%, rgba(62, 182, 234, 0.22), transparent 28rem), radial-gradient(circle at 90% 90%, rgba(242, 118, 30, 0.18), transparent 28rem), #fffaf4;
+	}
+
+	.lesson-shell {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 12px;
+		display: grid;
+		grid-template-rows: 76px 12px minmax(0, 1fr) 68px;
+		gap: 10px;
+		box-sizing: border-box;
+	}
+
+	.lesson-topbar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 18px;
+		min-height: 0;
+		padding: 10px 16px;
+		background: rgba(255, 255, 255, 0.93);
+		border: 1px solid rgba(43, 53, 77, 0.12);
+		border-radius: 20px;
+		box-shadow: 0 16px 40px rgba(30, 41, 59, 0.08);
+	}
+
+	.lesson-topbar-left { min-width: 0; }
+
+	.back-link {
+		display: inline-flex;
+		margin: 0 0 4px;
+		font-size: 0.85rem;
+		line-height: 1;
+		font-weight: 800;
+		color: #2b5b76;
+		text-decoration: none;
+	}
+
+	.eyebrow,
+	.mini-kicker {
+		margin: 0 0 6px;
+		font-size: 0.7rem;
+		font-weight: 900;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: #f2761e;
+	}
+
+	.lesson-topbar h1 {
+		margin: 0;
+		font-size: clamp(1.5rem, 2.25vw, 2.45rem);
+		line-height: 0.98;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #23304d;
+	}
+
+	.lesson-topbar-right {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+	}
+
+	.objective-pill,
+	.mode-toggle,
+	.fullscreen-toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 46px;
+		padding: 8px 16px;
+		border-radius: 999px;
+		font-weight: 900;
+	}
+
+	.objective-pill { background: #23304d; color: #fff; }
+
+	.mode-toggle,
+	.fullscreen-toggle {
+		border: 0;
+		background: #f2761e;
+		color: #fff;
+		cursor: pointer;
+	}
+
+	.fullscreen-toggle { background: #23304d; }
+	.fullscreen-toggle.is-active { background: #3eb6ea; }
+	.lesson-shell.is-self-study .mode-toggle { background: #3eb6ea; }
+
+	.progress-area { margin: 0; padding: 0; border: 0; background: transparent; }
+	.progress-meta { display: none; }
+	.progress-track { height: 12px; background: rgba(35, 48, 77, 0.12); border-radius: 999px; overflow: hidden; }
+	.progress-track span { display: block; height: 100%; width: 9%; background: linear-gradient(90deg, #f2761e, #3eb6ea); border-radius: inherit; transition: width 0.25s ease; }
+
+	.deck-layout {
+		height: 100%;
+		min-height: 0;
+		display: grid;
+		grid-template-columns: minmax(116px, 10.5vw) minmax(0, 1fr);
+		gap: 10px;
+		align-items: stretch;
+	}
+
+	.slide-map {
+		display: grid;
+		gap: 5px;
+		align-content: start;
+		height: 100%;
+		overflow: hidden;
+		padding: 8px;
+		background: rgba(255, 255, 255, 0.9);
+		border: 1px solid rgba(43, 53, 77, 0.1);
+		border-radius: 18px;
+		box-shadow: 0 18px 50px rgba(30, 41, 59, 0.08);
+	}
+
+	.slide-dot {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		width: 100%;
+		height: min(5.3vh, 38px);
+		padding: 5px 7px;
+		border: 1px solid transparent;
+		border-radius: 12px;
+		background: transparent;
+		color: #46536b;
+		font-size: clamp(0.6rem, 0.76vw, 0.78rem);
+		font-weight: 850;
+		line-height: 1.05;
+		text-align: left;
+		cursor: pointer;
+	}
+
+	.slide-dot span {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 23px;
+		height: 23px;
+		border-radius: 50%;
+		background: rgba(35, 48, 77, 0.1);
+		color: #23304d;
+		font-size: 0.7rem;
+		font-weight: 900;
+		flex: 0 0 auto;
+	}
+
+	.slide-dot.is-active { background: #23304d; color: #fff; border-color: #23304d; }
+	.slide-dot.is-active span { background: #fff; color: #23304d; }
+
+	.slide-stage { height: 100%; min-height: 0; min-width: 0; }
+
+	.lesson-slide {
+		display: none;
+		height: 100%;
+		min-height: 0;
+		overflow: hidden;
+		padding: clamp(18px, 2.5vw, 40px);
+		background: rgba(255, 255, 255, 0.96);
+		border: 1px solid rgba(43, 53, 77, 0.12);
+		border-radius: 24px;
+		box-shadow: 0 20px 65px rgba(30, 41, 59, 0.1);
+		box-sizing: border-box;
+	}
+
+	.lesson-slide.is-active { display: flex; flex-direction: column; }
+	.slide-label { display: flex; align-items: center; gap: 10px; margin-bottom: clamp(8px, 1.1vh, 14px); font-size: clamp(0.78rem, 0.95vw, 0.96rem); font-weight: 900; color: #526077; }
+	.slide-label span { background: #fff3e9; color: #f2761e; border: 1px solid rgba(242, 118, 30, 0.18); padding: 6px 10px; border-radius: 999px; }
+
+	.lesson-slide h2 { margin: 0 0 clamp(8px, 1.2vh, 14px); font-size: clamp(2rem, 4.8vw, 4.9rem); line-height: 0.92; color: #23304d; letter-spacing: -0.045em; }
+	.lesson-slide h3 { color: #23304d; margin-top: 0; margin-bottom: 8px; }
+	.slide-lede { max-width: 880px; margin: 0 0 10px; font-size: clamp(1rem, 1.62vw, 1.32rem); line-height: 1.32; color: #4b5870; }
+
+	.math {
+		display: inline-flex;
+		align-items: baseline;
+		vertical-align: baseline;
+		white-space: nowrap;
+		color: inherit;
+		font-family: "Cambria Math", "STIX Two Math", "Times New Roman", serif;
+		font-style: italic;
+		font-weight: 700;
+	}
+
+	.math mjx-container {
+		margin: 0 0.06em !important;
+		font-size: 1.08em !important;
+	}
+
+	.big-expression .math mjx-container,
+	.game-expression .math mjx-container,
+	.myth-statement .math mjx-container {
+		font-size: 1em !important;
+	}
+
+	.hero-slide-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(210px, 22vw); gap: clamp(14px, 2vw, 28px); align-items: stretch; height: 100%; min-height: 0; }
+	.success-box, .context-card, .callout-warning, .teacher-prompt, .sample-answer { border-radius: 20px; padding: clamp(14px, 1.6vw, 20px); border: 1px solid rgba(43, 53, 77, 0.12); }
+	.success-box { margin-top: 12px; background: #f3fbff; }
+	.success-box ul { margin: 10px 0 0; padding-left: 22px; font-size: clamp(0.9rem, 1.05vw, 1.12rem); line-height: 1.42; color: #334155; }
+
+	.time-card { display: grid; place-items: center; align-content: center; text-align: center; padding: 18px; border-radius: 24px; background: linear-gradient(145deg, #23304d, #35507d); color: #fff; }
+	.time-card .time-number { font-size: clamp(4rem, 8vw, 7rem); line-height: 0.9; font-weight: 950; color: #fff; }
+	.time-card span, .time-card p { color: #fff; }
+	.time-card p { margin: 0; font-size: 1rem; line-height: 1.45; }
+	.time-card hr { width: 80%; border: 0; border-top: 1px solid rgba(255,255,255,0.25); margin: 16px 0; }
+
+	.context-card { display: grid; gap: 12px; max-width: 820px; margin: clamp(10px, 1.4vh, 18px) 0; background: #fff8ee; font-size: clamp(1.2rem, 2.5vw, 2.3rem); color: #23304d; }
+	.context-card p { margin: 0; }
+	.question-title { font-size: clamp(1.28rem, 2.25vw, 2.05rem); margin: 8px 0; }
+
+	.choice-grid, .meaning-grid, .vocab-grid, .definition-row, .reveal-grid, .answer-grid, .practice-stack, .boss-grid { display: grid; gap: clamp(8px, 0.9vw, 12px); }
+	.choice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 12px; }
+	.choice-grid.compact { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+	.choice-button, .meaning-card, .vocab-card, .sort-card, .category-buttons button, .reveal-chip, .primary-button, .secondary-button, .teacher-note-button { min-height: 50px; border-radius: 16px; font: inherit; font-weight: 900; cursor: pointer; transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
+	.choice-button { padding: clamp(10px, 1.25vw, 16px); background: #fff; border: 2px solid rgba(35, 48, 77, 0.12); color: #23304d; font-size: clamp(0.92rem, 1.18vw, 1.18rem); }
+	.choice-button:hover, .choice-button:focus-visible, .sort-card:hover, .sort-card:focus-visible, .category-buttons button:hover, .category-buttons button:focus-visible, .reveal-chip:hover, .reveal-chip:focus-visible { transform: translateY(-1px); border-color: #3eb6ea; }
+	.choice-button.is-correct, .sort-card.is-correct { background: #ecfdf3; border-color: #40a76f; }
+	.choice-button.is-wrong, .sort-card.is-wrong { background: #fff1f1; border-color: #e66565; }
+
+	.feedback-line, .sort-status { margin-top: 9px; padding: 10px 13px; border-radius: 16px; background: #f7f8fb; color: #46536b; font-size: clamp(0.88rem, 1.02vw, 1.05rem); font-weight: 800; }
+
+	.meaning-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.vocab-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+	.meaning-card, .vocab-card { display: grid; align-content: start; gap: 6px; padding: clamp(12px, 1.45vw, 18px); text-align: left; border: 2px solid rgba(35, 48, 77, 0.1); background: #fff; color: #23304d; }
+	.meaning-card strong, .vocab-card strong { font-size: clamp(1.05rem, 1.55vw, 1.48rem); }
+	.meaning-card em, .vocab-card em { display: none; font-style: normal; color: #46536b; font-size: clamp(0.86rem, 0.98vw, 1.02rem); line-height: 1.28; }
+	.meaning-card.is-revealed, .vocab-card.is-revealed { border-color: #f2761e; background: #fff8ee; }
+	.meaning-card.is-revealed em, .vocab-card.is-revealed em { display: block; }
+	.meaning-card.is-revealed span, .vocab-card.is-revealed span { color: #f2761e; }
+
+	.teacher-prompt { margin-top: 10px; background: #f3fbff; color: #27475b; font-weight: 850; font-size: clamp(0.9rem, 1.1vw, 1.08rem); }
+	.big-expression { display: grid; place-items: center; min-height: clamp(120px, 20vh, 195px); margin: clamp(8px, 1.2vh, 16px) 0; border-radius: 24px; background: linear-gradient(145deg, #fff3e9, #edf8ff); border: 2px solid rgba(35, 48, 77, 0.12); font-size: clamp(4rem, 10.5vw, 8.4rem); font-weight: 950; color: #23304d; letter-spacing: -0.06em; }
+
+	.reveal-grid, .answer-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+	.reveal-chip { border: 0; background: #23304d; color: #fff; padding: 12px; }
+	.hidden-answer { display: none; margin: 0; padding: clamp(11px, 1.25vw, 16px); border-radius: 18px; background: #fff; border: 2px solid rgba(35, 48, 77, 0.12); color: #23304d; font-size: clamp(0.88rem, 1vw, 1.05rem); }
+	.hidden-answer.is-visible { display: block; }
+
+	.definition-row { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 14px; }
+	.definition-row div { display: grid; gap: 10px; padding: clamp(13px, 1.55vw, 20px); border-radius: 20px; background: #fff; border: 2px solid rgba(35, 48, 77, 0.1); }
+	.definition-row strong { font-size: clamp(1.08rem, 1.62vw, 1.45rem); color: #23304d; }
+	.definition-row span { color: #46536b; font-weight: 800; }
+	.definition-row em { font-style: normal; font-size: clamp(1.08rem, 1.8vw, 1.55rem); font-weight: 950; color: #f2761e; }
+	.callout-warning { margin-top: 12px; background: #fff8ee; color: #5f3b19; font-size: clamp(0.9rem, 1.04vw, 1.05rem); line-height: 1.36; }
+
+	.game-header { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; flex: 0 0 auto; min-height: 0; }
+	.game-header > div:first-child { min-width: 0; }
+	.game-header h2 { font-size: clamp(2.2rem, 4.4vw, 4.8rem); line-height: 0.92; max-width: 980px; overflow-wrap: anywhere; }
+	.score-card { min-width: 104px; padding: 10px 12px; border-radius: 20px; background: #23304d; color: #fff; text-align: center; flex: 0 0 auto; }
+	.score-card span { display: block; color: rgba(255,255,255,0.88); font-weight: 900; font-size: clamp(0.82rem, 1vw, 1rem); }
+	.score-card strong { display: block; color: #fff; font-size: clamp(1.9rem, 3.4vw, 2.65rem); line-height: 1; }
+
+	.sort-activity { margin-top: 8px; display: grid; grid-template-rows: auto auto auto minmax(0, 1fr) auto; min-height: 0; gap: 7px; }
+	.sort-card-bank { display: flex; flex-wrap: wrap; gap: 7px; }
+	.sort-card { border: 2px solid rgba(35, 48, 77, 0.12); background: #fff; color: #23304d; padding: 9px 12px; font-size: clamp(0.95rem, 1.12vw, 1.18rem); }
+	.sort-card.is-selected { background: #23304d; border-color: #23304d; color: #fff; }
+	.sort-card.is-assigned { opacity: 0.8; }
+	.category-buttons { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+	.category-buttons button { border: 0; background: #f2761e; color: #fff; padding: 10px; }
+	.sort-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; min-height: 0; }
+	.sort-columns div { min-height: 0; padding: 11px; border-radius: 17px; background: #fff; border: 2px dashed rgba(35, 48, 77, 0.16); overflow: hidden; }
+	.sort-columns h3 { font-size: clamp(0.95rem, 1.18vw, 1.16rem); margin: 0 0 5px; }
+	.sort-columns ul { margin: 0; padding-left: 20px; line-height: 1.35; font-weight: 850; color: #23304d; }
+	.activity-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+
+	.label-game, .myth-game { display: grid; gap: 10px; min-height: 0; }
+	.game-expression { min-height: clamp(95px, 16vh, 155px); }
+	.myth-statement {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: clamp(118px, 19vh, 170px);
+		max-height: 22vh;
+		border-radius: 24px;
+		background: #fff8ee;
+		border: 2px solid rgba(242, 118, 30, 0.18);
+		color: #23304d;
+		font-size: clamp(1.05rem, 2vw, 2.2rem);
+		font-weight: 900;
+		line-height: 1.18;
+		text-align: center;
+		padding: clamp(12px, 1.5vw, 20px);
+		overflow: hidden;
+	}
+	.myth-statement-inner {
+		display: block;
+		max-width: 100%;
+		overflow-wrap: anywhere;
+	}
+	.myth-statement .math {
+		display: inline-flex;
+		vertical-align: middle;
+		margin: 0 0.08em;
+	}
+	.myth-statement .math mjx-container {
+		font-size: 0.95em !important;
+	}
+	.myth-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+
+	.boss-grid { grid-template-columns: 1fr; margin-top: 6px; }
+	.boss-question { padding: 12px; border-radius: 18px; background: #fff; border: 1px solid rgba(35, 48, 77, 0.12); }
+	.boss-question h3 { font-size: clamp(0.96rem, 1.15vw, 1.1rem); margin-bottom: 6px; }
+	.boss-question .choice-grid.compact { margin-top: 6px; }
+
+	.exit-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 12px 0; }
+	.exit-form label { display: grid; gap: 8px; font-weight: 900; color: #23304d; font-size: clamp(0.86rem, 0.98vw, 1rem); }
+	.exit-form textarea, .exit-form input { width: 100%; border: 2px solid rgba(35, 48, 77, 0.14); border-radius: 14px; padding: 11px 13px; font: inherit; font-size: 1rem; background: #fff; color: #23304d; box-sizing: border-box; }
+	.exit-form textarea { min-height: 72px; resize: none; }
+	.sample-answer { margin-top: 10px; background: #f3fbff; font-size: clamp(0.86rem, 0.96vw, 0.96rem); }
+	.sample-answer p { margin: 0 0 8px; line-height: 1.4; color: #334155; }
+
+	.deck-controls { display: flex; justify-content: space-between; gap: 12px; flex-wrap: nowrap; align-items: center; margin: 0; padding: 8px; border-radius: 18px; background: rgba(255, 255, 255, 0.92); border: 1px solid rgba(43, 53, 77, 0.1); box-shadow: 0 12px 36px rgba(30, 41, 59, 0.08); }
+	.primary-button, .secondary-button, .teacher-note-button { border: 0; min-height: 52px; padding: 10px 22px; font-size: clamp(0.95rem, 1.1vw, 1.08rem); white-space: nowrap; }
+	.primary-button { background: #f2761e; color: #fff; }
+	.primary-button.danger { background: #b92727; }
+	.secondary-button { background: #eef4f8; color: #23304d; }
+	.teacher-note-button { background: #23304d; color: #fff; }
+
+	.teacher-notes { position: fixed; right: 18px; bottom: 84px; z-index: 10020; width: min(480px, calc(100vw - 36px)); }
+	.teacher-notes-card { padding: 20px; border-radius: 22px; background: #23304d; color: #fff; box-shadow: 0 24px 80px rgba(30, 41, 59, 0.24); }
+	.teacher-notes-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+	.teacher-notes-head strong { color: #fff; }
+	.teacher-notes-head button { width: 38px; height: 38px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, 0.18); color: #fff; font-size: 1.5rem; cursor: pointer; }
+	.teacher-notes p { margin: 0; line-height: 1.55; color: rgba(255, 255, 255, 0.94); }
+
+	@media (max-width: 980px) {
+		.lesson-shell { grid-template-rows: 74px 10px minmax(0, 1fr) 64px; padding: 8px; gap: 8px; }
+		.deck-layout { grid-template-columns: 1fr; }
+		.slide-map { display: none; }
+		.lesson-topbar h1 { font-size: 1.45rem; }
+		.hero-slide-grid, .exit-form { grid-template-columns: 1fr; }
+		.time-card { display: none; }
+	}
+
+	@media (max-width: 720px) {
+		.lesson-topbar { padding: 8px 10px; }
+		.lesson-topbar-right { gap: 6px; }
+		.objective-pill, .mode-toggle { display: none; }
+		.lesson-topbar h1 { font-size: 1.25rem; }
+		.choice-grid, .meaning-grid, .definition-row, .category-buttons, .sort-columns, .vocab-grid, .choice-grid.compact, .reveal-grid, .answer-grid, .myth-buttons { grid-template-columns: 1fr; }
+		.deck-controls { gap: 6px; }
+		.primary-button, .secondary-button, .teacher-note-button, .fullscreen-toggle { padding: 8px 10px; min-height: 48px; font-size: 0.82rem; }
+	}
+</style>
+
+<script>
+	const root = document.querySelector('[data-lesson-root]');
+
+	if (root) {
+		document.body.classList.add('lesson-active-page');
+		window.addEventListener('pagehide', function () {
+			document.body.classList.remove('lesson-active-page');
+		});
+
+		const slides = Array.from(root.querySelectorAll('[data-slide]'));
+		const dots = Array.from(root.querySelectorAll('[data-go-slide]'));
+		const progressLabel = root.querySelector('[data-progress-label]');
+		const progressBar = root.querySelector('[data-progress-bar]');
+		const nextButton = root.querySelector('[data-next-slide]');
+		const prevButton = root.querySelector('[data-prev-slide]');
+		const resetSlideButton = root.querySelector('[data-reset-slide]');
+		const modeToggle = root.querySelector('[data-mode-toggle]');
+		const fullscreenButton = root.querySelector('[data-fullscreen-toggle]');
+		const fullscreenTarget = document.querySelector('.lesson-page.ifp-fullscreen') || root;
+		const teacherNotes = root.querySelector('[data-teacher-notes]');
+		const teacherNotesText = root.querySelector('[data-teacher-notes-text]');
+		const teacherNotesToggle = root.querySelector('[data-teacher-notes-toggle]');
+		const teacherNotesClose = root.querySelector('[data-teacher-notes-close]');
+
+
+		const slash = String.fromCharCode(92);
+		const texMap = {
+			'A = l × w': 'A = l ' + slash + 'times w',
+			'C = 2πr': 'C = 2' + slash + 'pi r',
+			'speed = distance ÷ time': slash + 'text{speed} = ' + slash + 'text{distance} ' + slash + 'div ' + slash + 'text{time}',
+			'4p − 9': '4p - 9',
+			'y = 4x − 1': 'y = 4x - 1',
+			'4x − 1': '4x - 1',
+			'−9': '-9'
+		};
+
+		function escapeHtml(value) {
+			return String(value)
+				.replace(/&/g, '&amp;')
+				.replace(/</g, '&lt;')
+				.replace(/>/g, '&gt;')
+				.replace(/"/g, '&quot;')
+				.replace(/'/g, '&#39;');
+		}
+
+		function texFor(value) {
+			const raw = String(value || '').trim();
+			if (texMap[raw]) return texMap[raw];
+			return raw
+				.replace(/×/g, slash + 'times ')
+				.replace(/π/g, slash + 'pi ')
+				.replace(/−/g, '-')
+				.replace(/÷/g, slash + 'div ');
+		}
+
+		function mathMarkup(value) {
+			const raw = String(value || '').trim();
+			if (raw.includes(' and ')) {
+				return raw.split(' and ').map(function (part) {
+					return mathMarkup(part);
+				}).join(' and ');
+			}
+			return '<span class="math" data-tex="' + escapeHtml(texFor(raw)) + '">' + escapeHtml(raw) + '</span>';
+		}
+
+
+		function mathTextMarkup(text) {
+			let output = escapeHtml(text || '');
+			[
+				'A = l × w',
+				'C = 2πr',
+				'P = 2l + 2w',
+				'3x + 5 = 20',
+				'3x + 5',
+				'2x + 7 = 15',
+				'x + 5 = 12',
+				'y = 4x − 1',
+				'9a + 4',
+				'7m + 2',
+				'6x + 4',
+				'5 × x',
+				'5 + x',
+				'5x',
+				'6x',
+				'9a',
+				'7m',
+				'3n'
+			].forEach(function (phrase) {
+				output = output.split(escapeHtml(phrase)).join(mathMarkup(phrase));
+			});
+			return output;
+		}
+
+		function setFeedback(element, text) {
+			if (!element) return;
+			element.innerHTML = mathTextMarkup(text || '');
+			renderMath(element);
+		}
+
+		function renderMath(container) {
+			const target = container || root;
+			if (!target) return;
+			const mathNodes = Array.from(target.querySelectorAll('.math'));
+			if (!mathNodes.length) return;
+
+			function run() {
+				if (!window.MathJax || !window.MathJax.tex2chtmlPromise) {
+					window.setTimeout(run, 80);
+					return;
+				}
+
+				mathNodes.forEach(function (node) {
+					if (node.dataset.mathRendered === 'true') return;
+					const tex = node.dataset.tex || texFor(node.textContent || '');
+					node.dataset.tex = tex;
+					window.MathJax.tex2chtmlPromise(tex, { display: false }).then(function (rendered) {
+						node.innerHTML = '';
+						node.appendChild(rendered);
+						node.dataset.mathRendered = 'true';
+						if (window.MathJax.startup && window.MathJax.startup.document) {
+							window.MathJax.startup.document.clear();
+							window.MathJax.startup.document.updateDocument();
+						}
+					}).catch(function () {
+						node.textContent = node.textContent || tex;
+					});
+				});
+			}
+
+			run();
+		}
+
+		const notes = [
+			'Set the target briefly. Ask students where they have seen letters in maths before.',
+			'Let students vote first. The key point is that n represents one notebook price, while 3n is three times that price.',
+			'Push the misconception: letters are not always the final answer.',
+			'Do not open all cards yourself. Let students come to the board and choose a card.',
+			'Ask students orally first. Reveal one part at a time.',
+			'Make the distinction clear: expression has no equals sign; equation has equals sign; formula is a rule connecting quantities.',
+			'Use this as a team race. Invite one student from each team to sort one card.',
+			'Run this as a quick board challenge. Students tap the option, then justify their answer.',
+			'Use this for misconception discussion. Ask why the myth sounds tempting before revealing.',
+			'Final class challenge. Award points only when students can explain the reason.',
+			'Students can answer in notebooks for live class. In self-study, they can type and compare with sample answers.'
+		];
+
+		let currentSlide = 0;
+
+		function updateSlide(index) {
+			currentSlide = Math.max(0, Math.min(index, slides.length - 1));
+			slides.forEach(function (slide, slideIndex) {
+				slide.classList.toggle('is-active', slideIndex === currentSlide);
+			});
+			dots.forEach(function (dot, dotIndex) {
+				dot.classList.toggle('is-active', dotIndex === currentSlide);
+			});
+			if (progressLabel) progressLabel.textContent = 'Slide ' + (currentSlide + 1) + ' of ' + slides.length;
+			if (progressBar) progressBar.style.width = (((currentSlide + 1) / slides.length) * 100) + '%';
+			if (prevButton) prevButton.disabled = currentSlide === 0;
+			if (nextButton) nextButton.textContent = currentSlide === slides.length - 1 ? 'Finish' : 'Next';
+			if (teacherNotesText) teacherNotesText.textContent = notes[currentSlide] || '';
+			renderMath(slides[currentSlide]);
+		}
+
+		dots.forEach(function (dot) {
+			dot.addEventListener('click', function () {
+				updateSlide(Number(dot.dataset.goSlide || 0));
+			});
+		});
+
+		if (nextButton) nextButton.addEventListener('click', function () { updateSlide(currentSlide + 1); });
+		if (prevButton) prevButton.addEventListener('click', function () { updateSlide(currentSlide - 1); });
+
+		if (modeToggle) {
+			modeToggle.addEventListener('click', function () {
+				const isSelfStudy = root.classList.toggle('is-self-study');
+				modeToggle.setAttribute('aria-pressed', String(isSelfStudy));
+				modeToggle.textContent = isSelfStudy ? 'Self-Study Mode' : 'Teach Mode';
+			});
+		}
+
+		function getFullscreenElement() {
+			return document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+		}
+
+		function updateFullscreenButton() {
+			if (!fullscreenButton) return;
+			const isFullscreen = Boolean(getFullscreenElement());
+			fullscreenButton.classList.toggle('is-active', isFullscreen);
+			fullscreenButton.setAttribute('aria-pressed', String(isFullscreen));
+			fullscreenButton.textContent = isFullscreen ? 'Exit Full Screen' : '⛶ Present Full Screen';
+		}
+
+		function enterFullscreen() {
+			if (fullscreenTarget.requestFullscreen) return fullscreenTarget.requestFullscreen();
+			if (fullscreenTarget.webkitRequestFullscreen) return fullscreenTarget.webkitRequestFullscreen();
+			if (fullscreenTarget.msRequestFullscreen) return fullscreenTarget.msRequestFullscreen();
+			throw new Error('Fullscreen is not supported in this browser.');
+		}
+
+		function exitFullscreen() {
+			if (document.exitFullscreen) return document.exitFullscreen();
+			if (document.webkitExitFullscreen) return document.webkitExitFullscreen();
+			if (document.msExitFullscreen) return document.msExitFullscreen();
+		}
+
+		if (fullscreenButton) {
+			fullscreenButton.addEventListener('click', function () {
+				try {
+					if (getFullscreenElement()) {
+						exitFullscreen();
+					} else {
+						enterFullscreen();
+					}
+					updateFullscreenButton();
+				} catch (error) {
+					fullscreenButton.textContent = 'Fullscreen unavailable';
+					fullscreenButton.disabled = true;
+				}
+			});
+		}
+
+		document.addEventListener('fullscreenchange', updateFullscreenButton);
+		document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+		document.addEventListener('MSFullscreenChange', updateFullscreenButton);
+
+		if (teacherNotesToggle) teacherNotesToggle.addEventListener('click', function () { if (teacherNotes) teacherNotes.hidden = !teacherNotes.hidden; });
+		if (teacherNotesClose) teacherNotesClose.addEventListener('click', function () { if (teacherNotes) teacherNotes.hidden = true; });
+
+		root.querySelectorAll('[data-choice-group]').forEach(function (group) {
+			const buttons = Array.from(group.querySelectorAll('.choice-button'));
+			const feedbackLine = group.parentElement ? group.parentElement.querySelector('[data-feedback-line]') : null;
+			buttons.forEach(function (button) {
+				button.addEventListener('click', function () {
+					buttons.forEach(function (item) { item.classList.remove('is-correct', 'is-wrong'); });
+					const isCorrect = button.dataset.correct === 'true';
+					button.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+					setFeedback(feedbackLine, button.dataset.feedback || '');
+				});
+			});
+		});
+
+		root.querySelectorAll('[data-reveal-card]').forEach(function (card) {
+			card.addEventListener('click', function () { card.classList.toggle('is-revealed'); });
+		});
+
+		root.querySelectorAll('[data-toggle-target]').forEach(function (button) {
+			button.addEventListener('click', function () {
+				const target = root.querySelector('#' + CSS.escape(button.dataset.toggleTarget || ''));
+				if (target) target.classList.toggle('is-visible');
+			});
+		});
+
+		const sortActivity = root.querySelector('[data-sort-activity]');
+		if (sortActivity) {
+			const cards = Array.from(sortActivity.querySelectorAll('[data-card]'));
+			const categories = Array.from(sortActivity.querySelectorAll('[data-category]'));
+			const status = sortActivity.querySelector('[data-sort-status]');
+			const scoreLabel = root.querySelector('[data-sort-score]');
+			let selectedCard = null;
+			let sortScore = 0;
+
+			function updateSortScore() {
+				if (scoreLabel) scoreLabel.textContent = String(sortScore);
+			}
+
+			cards.forEach(function (card) {
+				card.addEventListener('click', function () {
+					if (card.classList.contains('is-assigned')) return;
+					cards.forEach(function (item) { item.classList.remove('is-selected'); });
+					selectedCard = card;
+					card.classList.add('is-selected');
+					if (status) { status.innerHTML = 'Selected: ' + mathMarkup(card.dataset.card || '') + '. Choose a category.'; renderMath(status); }
+				});
+			});
+
+			categories.forEach(function (button) {
+				button.addEventListener('click', function () {
+					if (!selectedCard) {
+						if (status) status.textContent = 'Select a card first.';
+						return;
+					}
+					const category = button.dataset.category || '';
+					const correctCategory = selectedCard.dataset.answer || '';
+					const cardText = selectedCard.dataset.card || '';
+					const list = sortActivity.querySelector('[data-sort-list="' + category + '"]');
+					const item = document.createElement('li');
+					item.innerHTML = mathMarkup(cardText);
+					if (list) { list.appendChild(item); renderMath(item); }
+					selectedCard.classList.remove('is-selected');
+					selectedCard.classList.add('is-assigned', category === correctCategory ? 'is-correct' : 'is-wrong');
+					selectedCard.disabled = true;
+					if (category === correctCategory) {
+						sortScore += 10;
+						if (status) { status.innerHTML = 'Correct. ' + mathMarkup(cardText) + ' is a ' + correctCategory + '.'; renderMath(status); }
+					} else {
+						if (status) { status.innerHTML = 'Not quite. ' + mathMarkup(cardText) + ' is best sorted as ' + correctCategory + '.'; renderMath(status); }
+					}
+					selectedCard = null;
+					updateSortScore();
+				});
+			});
+
+			const resetSort = sortActivity.querySelector('[data-reset-sort]');
+			if (resetSort) resetSort.addEventListener('click', function () {
+				sortScore = 0;
+				selectedCard = null;
+				cards.forEach(function (card) {
+					card.disabled = false;
+					card.classList.remove('is-selected', 'is-assigned', 'is-correct', 'is-wrong');
+				});
+				sortActivity.querySelectorAll('[data-sort-list]').forEach(function (list) { list.innerHTML = ''; });
+				if (status) status.textContent = 'Select a card first.';
+				updateSortScore();
+			});
+		}
+
+		const labelGame = root.querySelector('[data-label-game]');
+		if (labelGame) {
+			const expression = labelGame.querySelector('[data-label-expression]');
+			const question = labelGame.querySelector('[data-label-question]');
+			const options = labelGame.querySelector('[data-label-options]');
+			const feedback = labelGame.querySelector('[data-label-feedback]');
+			const streakLabel = root.querySelector('[data-label-streak]');
+			const challenges = [
+				{ expression: '7m + 2', prompt: 'Find the coefficient.', answer: '7', options: ['m', '7', '2', '7m'], explanation: 'The coefficient is the number multiplying the variable.' },
+				{ expression: '4p − 9', prompt: 'Find the constant.', answer: '−9', options: ['4', 'p', '−9', '4p'], explanation: 'The constant is the fixed number term.' },
+				{ expression: '8a + 1', prompt: 'Find the variable.', answer: 'a', options: ['8', 'a', '1', '8a'], explanation: 'The variable is the letter that can change value.' },
+				{ expression: '6x + 4', prompt: 'Find the terms.', answer: '6x and 4', options: ['x', '6 and 4', '6x and 4', '6x + 4'], explanation: 'Terms are separated by plus or minus signs.' }
+			];
+			let currentChallenge = 0;
+			let streak = 0;
+			let answered = false;
+
+			function mathSpan(value) {
+				return mathMarkup(value);
+			}
+
+			function renderChallenge() {
+				const challenge = challenges[currentChallenge];
+				answered = false;
+				if (expression) expression.innerHTML = mathSpan(challenge.expression);
+				if (question) question.textContent = challenge.prompt;
+				if (options) {
+					options.innerHTML = '';
+					challenge.options.forEach(function (option) {
+						const button = document.createElement('button');
+						button.type = 'button';
+						button.className = 'choice-button';
+						button.innerHTML = mathSpan(option);
+						button.addEventListener('click', function () {
+							if (answered) return;
+							answered = true;
+							const isCorrect = option === challenge.answer;
+							button.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+							if (isCorrect) {
+								streak += 1;
+								setFeedback(feedback, 'Correct. ' + challenge.explanation);
+							} else {
+								streak = 0;
+								if (feedback) { feedback.innerHTML = 'Not quite. The answer is ' + mathMarkup(challenge.answer) + '. ' + challenge.explanation; renderMath(feedback); }
+							}
+							if (streakLabel) streakLabel.textContent = String(streak);
+						});
+						options.appendChild(button);
+					});
+				}
+				if (feedback) feedback.textContent = 'Choose the correct answer, then move to the next challenge.';
+				renderMath(labelGame);
+			}
+
+			const nextLabel = labelGame.querySelector('[data-next-label]');
+			if (nextLabel) nextLabel.addEventListener('click', function () {
+				currentChallenge = (currentChallenge + 1) % challenges.length;
+				renderChallenge();
+			});
+
+			const resetLabel = labelGame.querySelector('[data-reset-label]');
+			if (resetLabel) resetLabel.addEventListener('click', function () {
+				streak = 0;
+				currentChallenge = 0;
+				if (streakLabel) streakLabel.textContent = '0';
+				renderChallenge();
+			});
+
+			renderChallenge();
+		}
+
+		const mythGame = root.querySelector('[data-myth-game]');
+		if (mythGame) {
+			const statement = mythGame.querySelector('[data-myth-statement]');
+			const feedback = mythGame.querySelector('[data-myth-feedback]');
+			const scoreLabel = root.querySelector('[data-myth-score]');
+			const myths = [
+				{ text: 'Myth or Fact? <br><span class="math">5x</span> means <span class="math">5 + x</span>.', answer: 'myth', feedback: mathMarkup('5x') + ' means ' + mathMarkup('5 × x') + ', not ' + mathMarkup('5 + x') + '.' },
+				{ text: 'Myth or Fact? <br>In <span class="math">3x + 5</span>, <span class="math">5</span> is a constant.', answer: 'fact', feedback: 'The value 5 is fixed, so it is a constant.' },
+				{ text: 'Myth or Fact? <br>An expression must have an equals sign.', answer: 'myth', feedback: 'An expression does not have an equals sign.' },
+				{ text: 'Myth or Fact? <br>A formula connects quantities.', answer: 'fact', feedback: 'A formula is a rule connecting quantities, such as ' + mathMarkup('A = l × w') + '.' }
+			];
+			let mythIndex = 0;
+			let mythScore = 0;
+			let mythAnswered = false;
+
+			function renderMyth() {
+				mythAnswered = false;
+				if (statement) { statement.innerHTML = '<span class="myth-statement-inner">' + myths[mythIndex].text + '</span>'; renderMath(statement); }
+				if (feedback) feedback.textContent = 'Choose Fact or Myth.';
+			}
+
+			mythGame.querySelectorAll('[data-myth-answer]').forEach(function (button) {
+				button.addEventListener('click', function () {
+					if (mythAnswered) return;
+					mythAnswered = true;
+					const choice = button.dataset.mythAnswer;
+					const item = myths[mythIndex];
+					if (choice === item.answer) {
+						mythScore += 10;
+						if (feedback) { feedback.innerHTML = 'Correct. ' + item.feedback; renderMath(feedback); }
+					} else {
+						if (feedback) { feedback.innerHTML = 'Not quite. ' + item.feedback; renderMath(feedback); }
+					}
+					if (scoreLabel) scoreLabel.textContent = String(mythScore);
+				});
+			});
+
+			const nextMyth = mythGame.querySelector('[data-next-myth]');
+			if (nextMyth) nextMyth.addEventListener('click', function () {
+				mythIndex = (mythIndex + 1) % myths.length;
+				renderMyth();
+			});
+
+			const resetMyth = mythGame.querySelector('[data-reset-myth]');
+			if (resetMyth) resetMyth.addEventListener('click', function () {
+				mythIndex = 0;
+				mythScore = 0;
+				if (scoreLabel) scoreLabel.textContent = '0';
+				renderMyth();
+			});
+
+			renderMyth();
+		}
+
+		const bossQuiz = root.querySelector('[data-boss-quiz]');
+		if (bossQuiz) {
+			const scoreLabel = root.querySelector('[data-boss-score]');
+			const feedback = root.querySelector('[data-boss-feedback]');
+			let bossScore = 0;
+			bossQuiz.querySelectorAll('[data-boss-group]').forEach(function (group) {
+				let answered = false;
+				const buttons = Array.from(group.querySelectorAll('.choice-button'));
+				buttons.forEach(function (button) {
+					button.addEventListener('click', function () {
+						if (answered) return;
+						answered = true;
+						const isCorrect = button.dataset.correct === 'true';
+						button.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+						if (isCorrect) bossScore += 10;
+						if (scoreLabel) scoreLabel.textContent = String(bossScore);
+						setFeedback(feedback, button.dataset.feedback || '');
+					});
+				});
+			});
+		}
+
+		function resetCurrentSlide() {
+			const slide = slides[currentSlide];
+			if (!slide) return;
+			slide.querySelectorAll('.is-revealed').forEach(function (item) { item.classList.remove('is-revealed'); });
+			slide.querySelectorAll('.hidden-answer.is-visible').forEach(function (item) { item.classList.remove('is-visible'); });
+			slide.querySelectorAll('.choice-button').forEach(function (button) { button.classList.remove('is-correct', 'is-wrong'); });
+			slide.querySelectorAll('[data-feedback-line]').forEach(function (line) {
+				line.textContent = line.closest('.practice-card') ? 'Choose one answer.' : 'Ask students to vote before revealing the answer.';
+			});
+		}
+
+		if (resetSlideButton) resetSlideButton.addEventListener('click', resetCurrentSlide);
+
+		root.addEventListener('keydown', function (event) {
+			const target = event.target;
+			if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) return;
+			if (event.key === 'ArrowRight') updateSlide(currentSlide + 1);
+			if (event.key === 'ArrowLeft') updateSlide(currentSlide - 1);
+		});
+
+		updateSlide(0);
+		updateFullscreenButton();
+		renderMath(root);
+	}
+</script>

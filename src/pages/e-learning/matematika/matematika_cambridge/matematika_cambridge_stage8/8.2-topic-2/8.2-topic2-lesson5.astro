@@ -1,0 +1,1209 @@
+---
+import Layout from '../../../../../../layouts/Layout.astro';
+
+const pageTitle = 'Lesson 5: Open and Closed Intervals — Cambridge Stage 8 Mathematics';
+const pageDescription = 'Interactive IFP teaching deck for Cambridge Lower Secondary Stage 8 Mathematics: open and closed intervals on a number line.';
+const pageTitleEn = pageTitle;
+const pageDescriptionEn = pageDescription;
+---
+
+<Layout
+	title={pageTitle}
+	description={pageDescription}
+	titleEn={pageTitleEn}
+	descriptionEn={pageDescriptionEn}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogTitleEn={pageTitleEn}
+	ogDescriptionEn={pageDescriptionEn}
+	currentPage="math"
+>
+	<script is:inline type="text/javascript">
+		// @ts-nocheck
+		window.MathJax = {
+			startup: { typeset: false },
+			chtml: { scale: 1.04, matchFontHeight: false }
+		};
+	</script>
+	<script is:inline src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+	<main id="top" class="ifp-lesson-page topic2-lesson5">
+		<section class="lesson-shell" data-lesson-root>
+			<header class="lesson-topbar">
+				<div class="lesson-title-block">
+					<a class="back-link" href="/e-learning/matematika/matematika_cambridge/matematika_cambridge_stage8/8.2-topic-2">← Back to Topic 2</a>
+					<p class="eyebrow">Cambridge Stage 8 · Unit 8.2 Topic 2</p>
+					<h1>Lesson 5: Open and Closed Intervals</h1>
+				</div>
+				<div class="topbar-actions">
+					<span class="objective-pill">8Ae.07</span>
+					<span class="score-pill">Score <strong data-total-score>0</strong></span>
+					<button class="fullscreen-toggle" type="button" data-fullscreen-toggle>⛶ Present Full Screen</button>
+				</div>
+			</header>
+
+			<div class="deck-layout">
+				<nav class="slide-nav" aria-label="Lesson slides">
+					<button type="button" class="slide-dot is-active" data-go-slide="0"><span>1</span>Goal</button>
+					<button type="button" class="slide-dot" data-go-slide="1"><span>2</span>Theory</button>
+					<button type="button" class="slide-dot" data-go-slide="2"><span>3</span>Explore</button>
+					<button type="button" class="slide-dot" data-go-slide="3"><span>4</span>Builder</button>
+					<button type="button" class="slide-dot" data-go-slide="4"><span>5</span>Convert</button>
+					<button type="button" class="slide-dot" data-go-slide="5"><span>6</span>Dots</button>
+					<button type="button" class="slide-dot" data-go-slide="6"><span>7</span>Sort</button>
+					<button type="button" class="slide-dot" data-go-slide="7"><span>8</span>Integers</button>
+					<button type="button" class="slide-dot" data-go-slide="8"><span>9</span>Board</button>
+					<button type="button" class="slide-dot" data-go-slide="9"><span>10</span>Exit</button>
+				</nav>
+
+				<section class="slide-stage" aria-live="polite">
+					<article class="lesson-slide is-active" data-slide data-slide-title="Goal">
+						<div class="slide-label"><span>Slide 1</span><strong>Lesson Goal</strong></div>
+						<p class="mini-kicker">Today’s mission</p>
+						<div class="hero-grid">
+							<div>
+								<h2>Read intervals like a mathematician.</h2>
+								<p class="slide-lede">Students connect inequality signs, open/closed endpoints, interval notation, and number-line shading.</p>
+								<div class="success-box">
+									<h3>By the end, students can:</h3>
+									<ul>
+										<li>explain the difference between open and closed endpoints</li>
+										<li>write simple intervals using brackets and parentheses</li>
+										<li>match interval notation to inequalities and number lines</li>
+										<li>list integer solutions inside an interval</li>
+									</ul>
+								</div>
+							</div>
+							<div class="badge-card blue-card">
+								<span>8Ae.07</span>
+								<strong>open & closed intervals</strong>
+								<p>Best taught visually: endpoints first, notation second, integer solutions last.</p>
+							</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Theory Foundation">
+						<div class="slide-label"><span>Slide 2</span><strong>Theory Foundation</strong></div>
+						<p class="mini-kicker">Core concepts before the activities</p>
+						<h2>Intervals show a set of numbers.</h2>
+						<div class="theory-grid interval-theory-grid">
+							<div class="theory-card main-theory">
+								<span class="card-tag">Big idea</span>
+								<h3>An interval is a continuous part of the number line.</h3>
+								<p>It may include one endpoint, both endpoints, or no endpoints. The endpoint rule depends on the symbol.</p>
+								<div class="math-strip"><span class="mathjax" data-tex="-2 &lt; x ≤ 4"></span></div>
+								<p class="teacher-cue">Ask: “Does −2 count? Does 4 count? How do you know?”</p>
+							</div>
+							<div class="symbol-board">
+								<div><strong>(</strong><span>open left endpoint</span><small>not included</small></div>
+								<div><strong>[</strong><span>closed left endpoint</span><small>included</small></div>
+								<div><strong>)</strong><span>open right endpoint</span><small>not included</small></div>
+								<div><strong>]</strong><span>closed right endpoint</span><small>included</small></div>
+							</div>
+						</div>
+						<div class="concept-row">
+							<div><strong><span class="mathjax" data-tex="x &gt; 3"></span></strong><p>Use open circle. Interval notation: <span class="mathjax" data-tex="(3,\infty)"></span></p></div>
+							<div><strong><span class="mathjax" data-tex="x ≤ 5"></span></strong><p>Use closed circle. Interval notation: <span class="mathjax" data-tex="(-\infty,5]"></span></p></div>
+							<div><strong><span class="mathjax" data-tex="-1 &lt; x ≤ 4"></span></strong><p>One open endpoint and one closed endpoint: <span class="mathjax" data-tex="(-1,4]"></span></p></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Interval Explorer">
+						<div class="slide-label"><span>Slide 3</span><strong>Interactive Concept</strong></div>
+						<p class="mini-kicker">Open and closed endpoints</p>
+						<h2>Watch intervals appear on a number line.</h2>
+						<div class="interval-lab" data-interval-lab>
+							<div class="interval-top-grid">
+								<section class="interval-select-card" aria-label="Choose an interval">
+									<div class="lab-top compact-lab-top">
+										<div>
+											<span class="round-label">Selected interval</span>
+											<strong data-interval-title><span class="mathjax" data-tex="(-2,4]"></span></strong>
+										</div>
+										<button type="button" class="primary-button" data-interval-random>Random</button>
+									</div>
+									<p class="interval-help">Select a card. The number line will show which endpoint is included and where the solution set is shaded.</p>
+									<div class="interval-choice-grid" data-interval-choices></div>
+								</section>
+								<section class="interval-meaning-card" aria-label="Meaning of the selected interval">
+									<span class="round-label">Meaning</span>
+									<h3 data-interval-meaning-title>x is greater than −2 and less than or equal to 4.</h3>
+									<p data-interval-meaning-text>−2 is not included, but 4 is included. The solution is the part between them.</p>
+									<div class="endpoint-key">
+										<span><i class="open-dot"></i> open: not included</span>
+										<span><i class="closed-dot"></i> closed: included</span>
+									</div>
+								</section>
+							</div>
+							<div class="interval-numberline-card">
+								<div class="interval-numberline" data-interval-track>
+									<div class="line-axis"></div>
+									<div class="line-fill" data-line-fill></div>
+									<div class="left-endpoint" data-left-endpoint></div>
+									<div class="right-endpoint" data-right-endpoint></div>
+									<div class="left-arrow" data-left-arrow>←</div>
+									<div class="right-arrow" data-right-arrow>→</div>
+									<div class="test-line" data-test-line></div>
+									<div class="test-dot" data-test-dot></div>
+									<div class="test-label" data-test-label>x = 0</div>
+									<div class="interval-ticks" data-interval-ticks></div>
+								</div>
+								<div class="probe-controls compact-probe-controls">
+									<button type="button" class="secondary-button" data-test-left>← Move left</button>
+									<label>Test value <input type="range" min="-6" max="6" step="1" value="0" data-test-slider /></label>
+									<button type="button" class="secondary-button" data-test-right>Move right →</button>
+								</div>
+							</div>
+							<div class="interval-feedback" data-interval-feedback>Move the test point to check if the number belongs to the interval.</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Interval Builder">
+						<div class="slide-label"><span>Slide 4</span><strong>Builder</strong></div>
+						<p class="mini-kicker">Build the notation yourself</p>
+						<h2>Choose endpoints and brackets.</h2>
+						<div class="builder-lab" data-builder-lab>
+							<div class="builder-controls">
+								<label>Left endpoint
+									<select data-builder-left>
+										<option value="-5">−5</option><option value="-4">−4</option><option value="-3">−3</option><option value="-2" selected>−2</option><option value="-1">−1</option><option value="0">0</option><option value="1">1</option><option value="2">2</option>
+									</select>
+								</label>
+								<label>Left endpoint type
+									<select data-builder-left-closed>
+										<option value="open" selected>open: not included</option>
+										<option value="closed">closed: included</option>
+									</select>
+								</label>
+								<label>Right endpoint
+									<select data-builder-right>
+										<option value="-1">−1</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option><option value="6">6</option>
+									</select>
+								</label>
+								<label>Right endpoint type
+									<select data-builder-right-closed>
+										<option value="open">open: not included</option>
+										<option value="closed" selected>closed: included</option>
+									</select>
+								</label>
+							</div>
+							<div class="builder-output-grid">
+								<div class="builder-output-card"><span class="round-label">Interval notation</span><strong data-builder-interval><span class="mathjax" data-tex="(-2,4]"></span></strong></div>
+								<div class="builder-output-card"><span class="round-label">Inequality notation</span><strong data-builder-inequality><span class="mathjax" data-tex="-2 &lt; x ≤ 4"></span></strong></div>
+								<div class="builder-output-card explanation-card"><span class="round-label">Endpoint meaning</span><p data-builder-message>−2 is open, so it is not included. 4 is closed, so it is included.</p></div>
+							</div>
+							<div class="mini-numberline" data-builder-line>
+								<div class="line-axis"></div>
+								<div class="line-fill" data-builder-fill></div>
+								<div class="left-endpoint" data-builder-left-point></div>
+								<div class="right-endpoint" data-builder-right-point></div>
+								<div class="interval-ticks" data-builder-ticks></div>
+							</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Convert">
+						<div class="slide-label"><span>Slide 5</span><strong>Game 1</strong></div>
+						<p class="mini-kicker">Inequality to interval notation</p>
+						<h2>Convert the statement.</h2>
+						<div class="choice-game" data-convert-game>
+							<div class="game-header">
+								<div><span class="round-label" data-convert-round>Round 1 / 5</span><h3>Which interval notation matches this inequality?</h3></div>
+								<div class="local-score"><span>Score</span><strong data-convert-score>0</strong></div>
+							</div>
+							<div class="big-expression"><span data-convert-prompt class="mathjax" data-tex="x ≥ -3"></span></div>
+							<div class="option-grid compact-options" data-convert-options></div>
+							<p class="feedback-line" data-convert-feedback>Look at whether the endpoint is included.</p>
+							<div class="button-row"><button type="button" class="secondary-button" data-convert-next>Next round</button><button type="button" class="secondary-button" data-convert-reset>Reset game</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Dots">
+						<div class="slide-label"><span>Slide 6</span><strong>Game 2</strong></div>
+						<p class="mini-kicker">Open circle or closed circle?</p>
+						<h2>Choose the correct endpoint.</h2>
+						<div class="dot-game" data-dot-game>
+							<div class="dot-question-card">
+								<span class="round-label" data-dot-round>Round 1 / 6</span>
+								<strong data-dot-prompt><span class="mathjax" data-tex="x &lt; 5"></span></strong>
+								<p>At the boundary number, should the circle be open or closed?</p>
+							</div>
+							<div class="dot-choice-row">
+								<button type="button" class="dot-choice" data-dot-answer="open"><i class="open-dot big-dot"></i><strong>Open circle</strong><span>endpoint not included</span></button>
+								<button type="button" class="dot-choice" data-dot-answer="closed"><i class="closed-dot big-dot"></i><strong>Closed circle</strong><span>endpoint included</span></button>
+							</div>
+							<p class="feedback-line" data-dot-feedback>Read the symbol carefully.</p>
+							<div class="button-row"><button type="button" class="secondary-button" data-dot-next>Next prompt</button><button type="button" class="secondary-button" data-dot-reset>Reset game</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Sort">
+						<div class="slide-label"><span>Slide 7</span><strong>Game 3</strong></div>
+						<p class="mini-kicker">Classify the interval</p>
+						<h2>Sort each interval card.</h2>
+						<div class="sort-game" data-sort-game>
+							<div class="sort-card-display">
+								<span class="round-label" data-sort-round>Card 1 / 6</span>
+								<strong data-sort-card><span class="mathjax" data-tex="[-1,3)"></span></strong>
+								<p>Look at both endpoints before choosing a category.</p>
+							</div>
+							<div class="sort-buttons">
+								<button type="button" class="sort-button" data-sort-answer="open-open">open–open</button>
+								<button type="button" class="sort-button" data-sort-answer="closed-closed">closed–closed</button>
+								<button type="button" class="sort-button" data-sort-answer="open-closed">open–closed</button>
+								<button type="button" class="sort-button" data-sort-answer="closed-open">closed–open</button>
+							</div>
+							<p class="feedback-line" data-sort-feedback>Parentheses are open; square brackets are closed.</p>
+							<div class="button-row"><button type="button" class="secondary-button" data-sort-next>Next card</button><button type="button" class="secondary-button" data-sort-reset>Reset game</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Integer Solutions">
+						<div class="slide-label"><span>Slide 8</span><strong>Integer Solutions</strong></div>
+						<p class="mini-kicker">Which whole numbers are inside?</p>
+						<h2>Tap the integer solutions.</h2>
+						<div class="integer-game" data-integer-game>
+							<div class="integer-prompt-card">
+								<span class="round-label">Interval</span>
+								<strong data-integer-prompt><span class="mathjax" data-tex="(-3,2]"></span></strong>
+								<p data-integer-help>Choose all integers greater than −3 and up to 2.</p>
+							</div>
+							<div class="integer-buttons" data-integer-buttons></div>
+							<div class="button-row">
+								<button type="button" class="primary-button" data-integer-check>Check answers</button>
+								<button type="button" class="secondary-button" data-integer-new>New interval</button>
+								<button type="button" class="secondary-button" data-integer-reset>Clear</button>
+							</div>
+							<p class="feedback-line" data-integer-feedback>Tap the integers that are included in the interval.</p>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Board Challenge">
+						<div class="slide-label"><span>Slide 9</span><strong>Board Challenge</strong></div>
+						<p class="mini-kicker">Pair or team task</p>
+						<h2>Draw, write, explain.</h2>
+						<div class="board-grid">
+							<div class="board-card">
+								<span class="round-label">Challenge A</span>
+								<strong><span class="mathjax" data-tex="[-4,1)"></span></strong>
+								<p>Draw the number line and list the integer solutions.</p>
+							</div>
+							<div class="board-card">
+								<span class="round-label">Challenge B</span>
+								<strong><span class="mathjax" data-tex="-2 ≤ x &lt; 5"></span></strong>
+								<p>Write the interval notation and explain the endpoint types.</p>
+							</div>
+							<div class="board-card">
+								<span class="round-label">Challenge C</span>
+								<strong><span class="mathjax" data-tex="x &gt; 0"></span></strong>
+								<p>Write interval notation, then give three values that work.</p>
+							</div>
+							<div class="board-card">
+								<span class="round-label">Challenge D</span>
+								<strong><span class="mathjax" data-tex="(-\infty,3]"></span></strong>
+								<p>Write the inequality and describe the shaded direction.</p>
+							</div>
+						</div>
+						<div class="teacher-cue large-cue">Teacher check: Students must mention both the endpoint symbol and whether the endpoint is included.</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Exit Ticket">
+						<div class="slide-label"><span>Slide 10</span><strong>Exit Ticket</strong></div>
+						<p class="mini-kicker">3-minute individual check</p>
+						<h2>Can you read the interval correctly?</h2>
+						<div class="exit-grid">
+							<div class="exit-card"><strong>1</strong><p>Write the inequality for <span class="mathjax" data-tex="(1,6]"></span>.</p></div>
+							<div class="exit-card"><strong>2</strong><p>Draw a number line for <span class="mathjax" data-tex="x ≤ -2"></span>.</p></div>
+							<div class="exit-card"><strong>3</strong><p>List the integer solutions for <span class="mathjax" data-tex="[-3,2)"></span>.</p></div>
+						</div>
+						<div class="answer-card">
+							<span class="round-label">Teacher quick answer</span>
+							<p>1) <span class="mathjax" data-tex="1 &lt; x ≤ 6"></span> · 2) closed circle at −2, shade left · 3) −3, −2, −1, 0, 1.</p>
+						</div>
+					</article>
+				</section>
+			</div>
+
+			<footer class="lesson-controls" aria-label="Lesson controls">
+				<button type="button" class="nav-control" data-prev-slide>Back</button>
+				<button type="button" class="teacher-notes-toggle" data-notes-toggle>Teacher Notes</button>
+				<button type="button" class="nav-control" data-reset-slide>Reset Slide</button>
+				<button type="button" class="next-control" data-next-slide>Next</button>
+			</footer>
+
+			<aside class="teacher-notes" data-teacher-notes aria-hidden="true">
+				<div>
+					<button type="button" class="notes-close" data-notes-close>×</button>
+					<h2 data-notes-title>Teacher Notes</h2>
+					<p data-notes-body>Use this slide to ask students to explain the endpoint first before writing the notation.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+
+	<style is:global>
+		.topic2-lesson5 {
+			--navy: #202f50;
+			--navy-2: #2d3d63;
+			--orange: #f2761e;
+			--blue: #3eb6ea;
+			--sky: #eaf7fc;
+			--cream: #fffaf2;
+			--paper: #f7f5f0;
+			--line: #d9e2ea;
+			--soft: #f3f7fa;
+			--green: #2fa36c;
+			--red: #df5a5a;
+			color: var(--navy);
+			font-family: 'Nunito', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		}
+
+		.topic2-lesson5 * { box-sizing: border-box; }
+		.topic2-lesson5 button,
+		.topic2-lesson5 select,
+		.topic2-lesson5 input { font: inherit; }
+		.topic2-lesson5 button { cursor: pointer; }
+		.topic2-lesson5 button:focus-visible,
+		.topic2-lesson5 select:focus-visible,
+		.topic2-lesson5 input:focus-visible { outline: 3px solid rgba(62, 182, 234, .8); outline-offset: 3px; }
+
+		.topic2-lesson5 .lesson-shell {
+			min-height: 100vh;
+			padding: 12px;
+			background: radial-gradient(circle at 12% 0%, rgba(62, 182, 234, .18), transparent 26rem), linear-gradient(135deg, #f8fafc 0%, #fff8ef 48%, #eef8fb 100%);
+		}
+
+		.topic2-lesson5 .lesson-topbar,
+		.topic2-lesson5 .lesson-controls,
+		.topic2-lesson5 .slide-nav,
+		.topic2-lesson5 .slide-stage { border: 1px solid var(--line); box-shadow: 0 12px 28px rgba(32, 47, 80, .08); }
+
+		.topic2-lesson5 .lesson-topbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 18px;
+			min-height: 96px;
+			padding: 14px 20px;
+			border-radius: 26px;
+			background: rgba(255,255,255,.92);
+		}
+		.topic2-lesson5 .back-link { color: #1c5c80; text-decoration: none; font-weight: 900; }
+		.topic2-lesson5 .eyebrow,
+		.topic2-lesson5 .mini-kicker { margin: 6px 0 0; color: var(--orange); font-size: 12px; font-weight: 1000; text-transform: uppercase; letter-spacing: .18em; }
+		.topic2-lesson5 .lesson-title-block h1 { margin: 3px 0 0; color: var(--navy); font-size: clamp(23px, 2.2vw, 34px); line-height: .96; letter-spacing: -.04em; font-weight: 1000; }
+		.topic2-lesson5 .topbar-actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+		.topic2-lesson5 .objective-pill,
+		.topic2-lesson5 .score-pill,
+		.topic2-lesson5 .fullscreen-toggle { border: 0; border-radius: 999px; padding: 12px 18px; font-weight: 1000; white-space: nowrap; }
+		.topic2-lesson5 .objective-pill { background: var(--sky); color: var(--navy); }
+		.topic2-lesson5 .score-pill { background: #fff2e9; color: #c64d07; }
+		.topic2-lesson5 .fullscreen-toggle { background: var(--orange); color: white; box-shadow: 0 6px 0 #bd550e; }
+
+		.topic2-lesson5 .deck-layout { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 12px; margin-top: 12px; }
+		.topic2-lesson5 .slide-nav { display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 24px; background: rgba(255,255,255,.92); }
+		.topic2-lesson5 .slide-dot { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 45px; border: 0; border-radius: 18px; padding: 8px 10px; background: white; color: #4e5e77; font-size: 13px; font-weight: 1000; text-align: left; box-shadow: 0 5px 14px rgba(32,47,80,.05); }
+		.topic2-lesson5 .slide-dot span { display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: 50%; background: #edf4f8; color: var(--navy); flex: 0 0 auto; }
+		.topic2-lesson5 .slide-dot.is-active { background: var(--navy); color: white; }
+		.topic2-lesson5 .slide-dot.is-active span { background: white; color: var(--navy); }
+
+		.topic2-lesson5 .slide-stage { position: relative; min-height: 650px; border-radius: 28px; background: rgba(255,255,255,.94); overflow: hidden; }
+		.topic2-lesson5 .lesson-slide { display: none; min-height: 650px; padding: 34px 32px; }
+		.topic2-lesson5 .lesson-slide.is-active { display: block; }
+		.topic2-lesson5 .slide-label { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; color: #526178; font-weight: 1000; }
+		.topic2-lesson5 .slide-label span { display: inline-flex; align-items: center; justify-content: center; min-height: 32px; padding: 5px 14px; border-radius: 999px; background: #fff3e9; color: var(--orange); border: 1px solid #ffd3b8; }
+		.topic2-lesson5 h2 { margin: 8px 0 14px; max-width: 1050px; color: var(--navy); font-size: clamp(38px, 4.4vw, 62px); line-height: .94; letter-spacing: -.06em; font-weight: 1000; }
+		.topic2-lesson5 h3 { margin: 0; color: var(--navy); }
+		.topic2-lesson5 p { line-height: 1.35; }
+		.topic2-lesson5 .slide-lede { max-width: 760px; color: #56657e; font-size: 21px; font-weight: 750; }
+
+		.topic2-lesson5 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr); gap: 22px; align-items: stretch; }
+		.topic2-lesson5 .success-box,
+		.topic2-lesson5 .badge-card,
+		.topic2-lesson5 .theory-card,
+		.topic2-lesson5 .symbol-board,
+		.topic2-lesson5 .concept-row > div,
+		.topic2-lesson5 .interval-lab,
+		.topic2-lesson5 .builder-lab,
+		.topic2-lesson5 .choice-game,
+		.topic2-lesson5 .dot-game,
+		.topic2-lesson5 .sort-game,
+		.topic2-lesson5 .integer-game,
+		.topic2-lesson5 .board-card,
+		.topic2-lesson5 .exit-card,
+		.topic2-lesson5 .answer-card { border: 1px solid var(--line); border-radius: 22px; background: var(--cream); box-shadow: 0 10px 24px rgba(32,47,80,.07); }
+		.topic2-lesson5 .success-box { margin-top: 24px; padding: 24px; background: linear-gradient(135deg, #fffaf2, #eef9fd); }
+		.topic2-lesson5 .success-box h3 { font-size: 22px; }
+		.topic2-lesson5 .success-box li { margin: 9px 0; color: #40506a; font-weight: 800; }
+		.topic2-lesson5 .badge-card { display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 28px; background: var(--navy); color: white; }
+		.topic2-lesson5 .badge-card span { color: var(--blue); font-size: 48px; font-weight: 1000; line-height: .9; }
+		.topic2-lesson5 .badge-card strong { font-size: 26px; line-height: 1; }
+		.topic2-lesson5 .badge-card p { color: rgba(255,255,255,.88); font-weight: 800; }
+
+		.topic2-lesson5 .theory-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr); gap: 16px; }
+		.topic2-lesson5 .main-theory { padding: 24px; }
+		.topic2-lesson5 .card-tag,
+		.topic2-lesson5 .round-label { display: inline-block; color: var(--orange); font-size: 12px; font-weight: 1000; text-transform: uppercase; letter-spacing: .13em; }
+		.topic2-lesson5 .main-theory h3 { margin-top: 10px; font-size: 28px; }
+		.topic2-lesson5 .main-theory p { color: #526178; font-size: 18px; font-weight: 800; }
+		.topic2-lesson5 .math-strip { display: flex; align-items: center; justify-content: center; min-height: 80px; margin: 18px 0; padding: 16px; border-radius: 18px; background: white; color: var(--navy); font-size: 32px; font-weight: 1000; }
+		.topic2-lesson5 .teacher-cue { border-radius: 16px; padding: 12px 14px; background: #eef8fc; color: #2c6881; font-weight: 900; }
+		.topic2-lesson5 .large-cue { margin-top: 18px; font-size: 18px; }
+		.topic2-lesson5 .symbol-board { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 16px; background: #f4f9fc; }
+		.topic2-lesson5 .symbol-board div { min-height: 102px; padding: 16px; border-radius: 18px; background: white; }
+		.topic2-lesson5 .symbol-board strong { display: block; color: var(--blue); font-size: 40px; line-height: .9; }
+		.topic2-lesson5 .symbol-board span { display: block; margin-top: 8px; color: var(--navy); font-weight: 1000; }
+		.topic2-lesson5 .symbol-board small { color: #687990; font-weight: 800; }
+		.topic2-lesson5 .concept-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+		.topic2-lesson5 .concept-row > div { padding: 18px; background: white; }
+		.topic2-lesson5 .concept-row strong { display: block; font-size: 26px; }
+		.topic2-lesson5 .concept-row p { margin-bottom: 0; color: #526178; font-weight: 800; }
+
+		.topic2-lesson5 .primary-button,
+		.topic2-lesson5 .secondary-button,
+		.topic2-lesson5 .nav-control,
+		.topic2-lesson5 .next-control,
+		.topic2-lesson5 .teacher-notes-toggle { border: 0; border-radius: 16px; min-height: 46px; padding: 11px 18px; font-weight: 1000; }
+		.topic2-lesson5 .primary-button { background: var(--orange); color: white; box-shadow: 0 6px 0 #bd550e; }
+		.topic2-lesson5 .secondary-button,
+		.topic2-lesson5 .nav-control,
+		.topic2-lesson5 .teacher-notes-toggle { background: #eef5f9; color: var(--navy); border: 1px solid #d8e5ed; }
+		.topic2-lesson5 .next-control { margin-left: auto; background: var(--orange); color: white; box-shadow: 0 6px 0 #bd550e; }
+		.topic2-lesson5 .primary-button:active,
+		.topic2-lesson5 .next-control:active { transform: translateY(4px); box-shadow: 0 2px 0 #bd550e; }
+
+		.topic2-lesson5 .interval-lab { padding: 16px; background: #f8fbfd; }
+		.topic2-lesson5 .interval-top-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, .72fr); gap: 12px; }
+		.topic2-lesson5 .interval-select-card,
+		.topic2-lesson5 .interval-meaning-card,
+		.topic2-lesson5 .interval-numberline-card { border: 1px solid var(--line); border-radius: 18px; background: white; }
+		.topic2-lesson5 .interval-select-card,
+		.topic2-lesson5 .interval-meaning-card { padding: 16px; }
+		.topic2-lesson5 .compact-lab-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+		.topic2-lesson5 .compact-lab-top strong { display: block; margin-top: 5px; font-size: 31px; line-height: 1; }
+		.topic2-lesson5 .interval-help { margin: 8px 0 10px; color: #53637b; font-weight: 800; }
+		.topic2-lesson5 .interval-choice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+		.topic2-lesson5 .interval-choice { min-height: 68px; padding: 10px 12px; border: 1px solid #dce6ef; border-radius: 14px; background: #f7fbfd; color: var(--navy); text-align: left; font-weight: 1000; }
+		.topic2-lesson5 .interval-choice small { display: block; margin-top: 5px; color: #65758b; font-size: 12px; }
+		.topic2-lesson5 .interval-choice.is-selected { border-color: var(--blue); background: #eef9fd; box-shadow: inset 0 0 0 2px var(--blue); }
+		.topic2-lesson5 .interval-meaning-card h3 { margin-top: 8px; font-size: 25px; line-height: 1.05; }
+		.topic2-lesson5 .interval-meaning-card p { margin: 8px 0 10px; color: #526178; font-size: 16px; font-weight: 850; }
+		.topic2-lesson5 .endpoint-key { display: grid; gap: 8px; color: var(--navy); font-weight: 950; }
+		.topic2-lesson5 .open-dot,
+		.topic2-lesson5 .closed-dot { display: inline-block; width: 18px; height: 18px; margin-right: 8px; border-radius: 50%; vertical-align: -3px; }
+		.topic2-lesson5 .open-dot { border: 4px solid var(--orange); background: white; }
+		.topic2-lesson5 .closed-dot { background: var(--orange); border: 4px solid var(--orange); }
+		.topic2-lesson5 .big-dot { width: 34px; height: 34px; margin: 0; }
+
+		.topic2-lesson5 .interval-numberline-card { margin-top: 12px; padding: 14px 16px 12px; }
+		.topic2-lesson5 .interval-numberline,
+		.topic2-lesson5 .mini-numberline { position: relative; height: 172px; border-radius: 18px; background: linear-gradient(180deg, white, #fbfdff); overflow: hidden; }
+		.topic2-lesson5 .mini-numberline { height: 150px; margin-top: 12px; border: 1px solid var(--line); }
+		.topic2-lesson5 .line-axis { position: absolute; left: 5%; right: 5%; top: 86px; height: 5px; border-radius: 999px; background: #dbe7ef; }
+		.topic2-lesson5 .line-fill { position: absolute; top: 86px; height: 5px; border-radius: 999px; background: var(--orange); transition: left .42s ease, width .42s ease; }
+		.topic2-lesson5 .left-arrow,
+		.topic2-lesson5 .right-arrow { position: absolute; top: 74px; color: var(--orange); font-size: 34px; font-weight: 1000; transition: left .42s ease, opacity .25s ease; }
+		.topic2-lesson5 .left-endpoint,
+		.topic2-lesson5 .right-endpoint { position: absolute; top: 68px; width: 40px; height: 40px; border: 7px solid var(--orange); border-radius: 50%; background: white; transform: translateX(-50%); z-index: 3; transition: left .42s ease, background .25s ease, box-shadow .25s ease; }
+		.topic2-lesson5 .left-endpoint.closed,
+		.topic2-lesson5 .right-endpoint.closed { background: var(--orange); }
+		.topic2-lesson5 .left-endpoint.pulse,
+		.topic2-lesson5 .right-endpoint.pulse { box-shadow: 0 0 0 13px rgba(242,118,30,.16); }
+		.topic2-lesson5 .test-line { position: absolute; top: 38px; height: 54px; width: 3px; background: var(--blue); transition: left .15s linear; z-index: 4; }
+		.topic2-lesson5 .test-dot { position: absolute; top: 29px; width: 19px; height: 19px; border: 4px solid white; border-radius: 50%; background: var(--green); transform: translateX(-50%); box-shadow: 0 2px 0 rgba(32,47,80,.25); transition: left .15s linear; z-index: 4; }
+		.topic2-lesson5 .test-label { position: absolute; top: 1px; transform: translateX(-50%); padding: 5px 10px; border-radius: 999px; background: var(--navy); color: white; font-size: 13px; font-weight: 1000; white-space: nowrap; transition: left .15s linear; z-index: 5; }
+		.topic2-lesson5 .interval-ticks .tick { position: absolute; top: 77px; width: 3px; height: 25px; border-radius: 999px; background: #8ea2b4; transform: translateX(-50%); }
+		.topic2-lesson5 .interval-ticks .tick-label { position: absolute; top: 118px; transform: translateX(-50%); min-width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: #edf4f8; color: var(--navy); font-weight: 1000; }
+		.topic2-lesson5 .interval-ticks button.tick-label { border: 0; }
+		.topic2-lesson5 .interval-ticks .tick-label.is-selected { background: var(--navy); color: white; }
+		.topic2-lesson5 .compact-probe-controls { display: grid; grid-template-columns: 150px minmax(280px, 1fr) 150px; align-items: center; gap: 12px; margin-top: 10px; }
+		.topic2-lesson5 .probe-controls label { display: grid; gap: 4px; color: #526178; font-size: 13px; font-weight: 1000; }
+		.topic2-lesson5 input[type="range"] { width: 100%; accent-color: var(--blue); }
+		.topic2-lesson5 .interval-feedback { margin-top: 10px; border: 1px solid #bfe6d0; border-radius: 14px; padding: 10px 14px; background: #effaf3; color: var(--navy); font-weight: 1000; }
+		.topic2-lesson5 .interval-feedback.is-bad { border-color: #ffc6c6; background: #fff1f1; }
+
+		.topic2-lesson5 .builder-lab { padding: 18px; background: #f8fbfd; }
+		.topic2-lesson5 .builder-controls { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+		.topic2-lesson5 .builder-controls label { display: grid; gap: 7px; color: #526178; font-weight: 1000; }
+		.topic2-lesson5 select { min-height: 48px; border: 1px solid #d9e5ed; border-radius: 14px; padding: 10px 12px; background: white; color: var(--navy); font-weight: 950; }
+		.topic2-lesson5 .builder-output-grid { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 12px; margin-top: 12px; }
+		.topic2-lesson5 .builder-output-card { border: 1px solid var(--line); border-radius: 18px; padding: 16px; background: white; }
+		.topic2-lesson5 .builder-output-card strong { display: block; margin-top: 8px; font-size: 32px; }
+		.topic2-lesson5 .explanation-card p { margin-bottom: 0; color: #526178; font-weight: 900; }
+
+		.topic2-lesson5 .choice-game,
+		.topic2-lesson5 .dot-game,
+		.topic2-lesson5 .sort-game,
+		.topic2-lesson5 .integer-game { padding: 22px; background: linear-gradient(135deg, #fffaf2, #f3fbff); }
+		.topic2-lesson5 .game-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+		.topic2-lesson5 .game-header h3 { margin-top: 6px; font-size: 24px; }
+		.topic2-lesson5 .local-score { min-width: 120px; border-radius: 18px; padding: 14px; background: var(--navy); color: white; text-align: center; }
+		.topic2-lesson5 .local-score span { display: block; color: #bcdceb; font-size: 12px; font-weight: 1000; text-transform: uppercase; letter-spacing: .14em; }
+		.topic2-lesson5 .local-score strong { font-size: 30px; }
+		.topic2-lesson5 .big-expression { display: flex; align-items: center; justify-content: center; min-height: 100px; margin: 16px 0; border-radius: 20px; background: white; border: 1px solid var(--line); color: var(--navy); font-size: 42px; font-weight: 1000; }
+		.topic2-lesson5 .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+		.topic2-lesson5 .option-button,
+		.topic2-lesson5 .dot-choice,
+		.topic2-lesson5 .sort-button { min-height: 66px; border: 1px solid #dbe7ef; border-radius: 18px; background: white; color: var(--navy); font-weight: 1000; }
+		.topic2-lesson5 .option-button { display: flex; align-items: center; gap: 14px; padding: 10px 16px; text-align: left; font-size: 25px; }
+		.topic2-lesson5 .option-button .letter { display: inline-flex; width: 42px; height: 42px; align-items: center; justify-content: center; border-radius: 14px; background: var(--navy); color: white; flex: 0 0 auto; font-size: 18px; }
+		.topic2-lesson5 .option-button.is-correct,
+		.topic2-lesson5 .dot-choice.is-correct,
+		.topic2-lesson5 .sort-button.is-correct { border-color: #9edcb8; background: #effaf3; box-shadow: inset 0 0 0 2px var(--green); }
+		.topic2-lesson5 .option-button.is-wrong,
+		.topic2-lesson5 .dot-choice.is-wrong,
+		.topic2-lesson5 .sort-button.is-wrong { border-color: #ffc3c3; background: #fff0f0; box-shadow: inset 0 0 0 2px var(--red); }
+		.topic2-lesson5 .feedback-line { min-height: 48px; margin: 14px 0 0; border-radius: 16px; padding: 13px 16px; background: white; border: 1px solid var(--line); color: #526178; font-weight: 1000; }
+		.topic2-lesson5 .button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+		.topic2-lesson5 .dot-question-card,
+		.topic2-lesson5 .sort-card-display,
+		.topic2-lesson5 .integer-prompt-card { text-align: center; border: 1px solid var(--line); border-radius: 20px; padding: 18px; background: white; }
+		.topic2-lesson5 .dot-question-card strong,
+		.topic2-lesson5 .sort-card-display strong,
+		.topic2-lesson5 .integer-prompt-card strong { display: block; margin-top: 10px; font-size: 46px; }
+		.topic2-lesson5 .dot-question-card p,
+		.topic2-lesson5 .sort-card-display p,
+		.topic2-lesson5 .integer-prompt-card p { margin-bottom: 0; color: #526178; font-weight: 850; }
+		.topic2-lesson5 .dot-choice-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 14px; }
+		.topic2-lesson5 .dot-choice { display: grid; place-items: center; gap: 8px; padding: 20px; }
+		.topic2-lesson5 .dot-choice span { color: #526178; font-size: 14px; }
+		.topic2-lesson5 .sort-buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
+		.topic2-lesson5 .sort-button { padding: 12px; font-size: 17px; }
+		.topic2-lesson5 .integer-buttons { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); gap: 8px; margin: 16px 0; }
+		.topic2-lesson5 .integer-button { min-height: 48px; border: 1px solid #dbe7ef; border-radius: 16px; background: white; color: var(--navy); font-weight: 1000; }
+		.topic2-lesson5 .integer-button.is-selected { background: var(--navy); color: white; }
+		.topic2-lesson5 .integer-button.is-correct { background: #effaf3; color: var(--navy); border-color: #9edcb8; box-shadow: inset 0 0 0 2px var(--green); }
+		.topic2-lesson5 .integer-button.is-missed { background: #fff7e9; color: var(--navy); border-color: #ffd08f; box-shadow: inset 0 0 0 2px var(--orange); }
+		.topic2-lesson5 .integer-button.is-wrong { background: #fff0f0; color: var(--navy); border-color: #ffc3c3; box-shadow: inset 0 0 0 2px var(--red); }
+		.topic2-lesson5 .board-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+		.topic2-lesson5 .board-card { min-height: 150px; padding: 20px; background: white; }
+		.topic2-lesson5 .board-card strong { display: block; margin-top: 8px; font-size: 34px; }
+		.topic2-lesson5 .board-card p { color: #526178; font-size: 17px; font-weight: 850; }
+		.topic2-lesson5 .exit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+		.topic2-lesson5 .exit-card { padding: 22px; min-height: 190px; background: white; }
+		.topic2-lesson5 .exit-card strong { display: inline-flex; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 16px; background: var(--navy); color: white; font-size: 22px; }
+		.topic2-lesson5 .exit-card p { color: #526178; font-size: 20px; font-weight: 900; }
+		.topic2-lesson5 .answer-card { margin-top: 16px; padding: 18px; background: #eef9fd; }
+		.topic2-lesson5 .answer-card p { margin: 8px 0 0; color: var(--navy); font-size: 18px; font-weight: 900; }
+
+		.topic2-lesson5 .lesson-controls { display: flex; align-items: center; gap: 12px; margin-top: 10px; padding: 12px 14px; border-radius: 24px; background: rgba(255,255,255,.95); }
+		.topic2-lesson5 .teacher-notes-toggle { margin-inline: auto; background: var(--navy); color: white; }
+		.topic2-lesson5 .teacher-notes { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(32,47,80,.42); }
+		.topic2-lesson5 .teacher-notes.is-open { display: flex; }
+		.topic2-lesson5 .teacher-notes > div { position: relative; width: min(620px, 92vw); border-radius: 24px; padding: 26px; background: white; box-shadow: 0 20px 50px rgba(0,0,0,.24); }
+		.topic2-lesson5 .teacher-notes h2 { margin: 0 0 8px; font-size: 32px; }
+		.topic2-lesson5 .teacher-notes p { color: #526178; font-size: 18px; font-weight: 850; }
+		.topic2-lesson5 .notes-close { position: absolute; top: 12px; right: 12px; width: 42px; height: 42px; border: 0; border-radius: 50%; background: #eef5f9; color: var(--navy); font-size: 24px; font-weight: 1000; }
+
+		@media (max-width: 1100px) {
+			.topic2-lesson5 .deck-layout { grid-template-columns: 1fr; }
+			.topic2-lesson5 .slide-nav { flex-direction: row; overflow-x: auto; }
+			.topic2-lesson5 .slide-dot { min-width: 110px; }
+			.topic2-lesson5 .hero-grid,
+			.topic2-lesson5 .theory-grid,
+			.topic2-lesson5 .interval-top-grid,
+			.topic2-lesson5 .builder-output-grid { grid-template-columns: 1fr; }
+			.topic2-lesson5 .builder-controls { grid-template-columns: repeat(2, 1fr); }
+			.topic2-lesson5 .concept-row,
+			.topic2-lesson5 .exit-grid { grid-template-columns: 1fr; }
+		}
+		@media (max-width: 760px) {
+			.topic2-lesson5 .lesson-topbar { align-items: flex-start; flex-direction: column; }
+			.topic2-lesson5 .topbar-actions { justify-content: flex-start; }
+			.topic2-lesson5 .lesson-slide { padding: 24px 16px; }
+			.topic2-lesson5 h2 { font-size: 37px; }
+			.topic2-lesson5 .interval-choice-grid,
+			.topic2-lesson5 .option-grid,
+			.topic2-lesson5 .dot-choice-row,
+			.topic2-lesson5 .sort-buttons,
+			.topic2-lesson5 .board-grid { grid-template-columns: 1fr; }
+			.topic2-lesson5 .compact-probe-controls { grid-template-columns: 1fr; }
+			.topic2-lesson5 .integer-buttons { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+		}
+	</style>
+
+	<script is:inline type="text/javascript">
+		// @ts-nocheck
+		(function () {
+			const root = document.querySelector('[data-lesson-root]');
+			if (!root || root.dataset.ready === 'true') return;
+			root.dataset.ready = 'true';
+
+			const slides = Array.from(root.querySelectorAll('[data-slide]'));
+			const navButtons = Array.from(root.querySelectorAll('[data-go-slide]'));
+			const totalScore = root.querySelector('[data-total-score]');
+			let currentSlide = 0;
+			let score = 0;
+
+			const notes = [
+				'Use Slide 1 to connect this lesson to inequalities from Lesson 4. Students should already know open and closed circles.',
+				'Emphasise that interval notation is another way to represent a solution set, not a new calculation rule.',
+				'Ask students to predict the endpoint first, then reveal the selected interval on the number line.',
+				'Let students build a few examples. Ask them to read the interval aloud before writing the inequality.',
+				'Common mistake: students use square brackets for every endpoint. Keep linking bracket shape to included/not included.',
+				'This slide is quick. Keep pace high and ask students to justify the endpoint using the inequality symbol.',
+				'Sorting helps students distinguish half-open intervals such as [a,b) and (a,b].',
+				'Students often forget that endpoints may or may not be integer solutions. Make them test endpoints carefully.',
+				'Use mini whiteboards. Award points only if the drawing, notation, and explanation agree.',
+				'Collect answers quickly. These three questions check notation, number-line representation, and integer solutions.'
+			];
+
+			function formatNum(value) {
+				return Number(value) < 0 ? '−' + Math.abs(Number(value)) : String(Number(value));
+			}
+
+			function normalizeMinus(text) {
+				return String(text).replaceAll('-', '−');
+			}
+
+			function setMath(node, tex) {
+				if (!node) return;
+				node.dataset.tex = tex;
+				node.textContent = '\\(' + tex + '\\)';
+			}
+
+			function prepareMath(scope) {
+				(scope || document).querySelectorAll('.mathjax[data-tex]').forEach((node) => {
+					const tex = node.dataset.tex || '';
+					if (!node.textContent.trim() || !node.textContent.includes('\\(')) {
+						node.textContent = '\\(' + tex + '\\)';
+					}
+				});
+			}
+
+			function renderMath(scope) {
+				prepareMath(scope || root);
+				if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+					window.MathJax.typesetPromise(scope ? [scope] : undefined).catch(() => {});
+				}
+			}
+
+			function updateScore(points) {
+				score += points;
+				if (score < 0) score = 0;
+				if (totalScore) totalScore.textContent = String(score);
+			}
+
+			function showSlide(index) {
+				currentSlide = Math.max(0, Math.min(slides.length - 1, index));
+				slides.forEach((slide, i) => slide.classList.toggle('is-active', i === currentSlide));
+				navButtons.forEach((button, i) => button.classList.toggle('is-active', i === currentSlide));
+				const title = root.querySelector('[data-notes-title]');
+				const body = root.querySelector('[data-notes-body]');
+				if (title) title.textContent = 'Teacher Notes — Slide ' + (currentSlide + 1);
+				if (body) body.textContent = notes[currentSlide] || 'Ask students to explain their reasoning.';
+				renderMath(slides[currentSlide]);
+			}
+
+			navButtons.forEach((button, index) => button.addEventListener('click', () => showSlide(index)));
+			root.querySelector('[data-next-slide]')?.addEventListener('click', () => showSlide(currentSlide + 1));
+			root.querySelector('[data-prev-slide]')?.addEventListener('click', () => showSlide(currentSlide - 1));
+			root.querySelector('[data-reset-slide]')?.addEventListener('click', () => {
+				if (currentSlide === 2) intervalLab.render('midOC');
+				if (currentSlide === 3) builderLab.render();
+				if (currentSlide === 4) convertGame.reset();
+				if (currentSlide === 5) dotGame.reset();
+				if (currentSlide === 6) sortGame.reset();
+				if (currentSlide === 7) integerGame.reset();
+				renderMath(slides[currentSlide]);
+			});
+
+			const notesPanel = root.querySelector('[data-teacher-notes]');
+			root.querySelector('[data-notes-toggle]')?.addEventListener('click', () => {
+				notesPanel?.classList.add('is-open');
+				notesPanel?.setAttribute('aria-hidden', 'false');
+			});
+			root.querySelector('[data-notes-close]')?.addEventListener('click', () => {
+				notesPanel?.classList.remove('is-open');
+				notesPanel?.setAttribute('aria-hidden', 'true');
+			});
+			root.querySelector('[data-fullscreen-toggle]')?.addEventListener('click', () => {
+				if (document.fullscreenElement) document.exitFullscreen?.();
+				else root.requestFullscreen?.();
+			});
+
+			function positionFor(value) {
+				const min = -6;
+				const max = 6;
+				const pct = 5 + ((Number(value) - min) / (max - min)) * 90;
+				return Math.max(5, Math.min(95, pct));
+			}
+
+			function notationText(item) {
+				if (item.type === 'right') return (item.leftClosed ? '[' : '(') + formatNum(item.left) + ',∞)';
+				if (item.type === 'left') return '(-∞,' + formatNum(item.right) + (item.rightClosed ? ']' : ')');
+				return (item.leftClosed ? '[' : '(') + formatNum(item.left) + ',' + formatNum(item.right) + (item.rightClosed ? ']' : ')');
+			}
+
+			function inequalityText(item) {
+				if (item.type === 'right') return 'x ' + (item.leftClosed ? '≥' : '>') + ' ' + formatNum(item.left);
+				if (item.type === 'left') return 'x ' + (item.rightClosed ? '≤' : '<') + ' ' + formatNum(item.right);
+				return formatNum(item.left) + ' ' + (item.leftClosed ? '≤' : '<') + ' x ' + (item.rightClosed ? '≤' : '<') + ' ' + formatNum(item.right);
+			}
+
+			function containsValue(item, value) {
+				value = Number(value);
+				if (item.type === 'right') return item.leftClosed ? value >= item.left : value > item.left;
+				if (item.type === 'left') return item.rightClosed ? value <= item.right : value < item.right;
+				const leftOk = item.leftClosed ? value >= item.left : value > item.left;
+				const rightOk = item.rightClosed ? value <= item.right : value < item.right;
+				return leftOk && rightOk;
+			}
+
+			function meaningTitle(item) {
+				if (item.type === 'right') return 'x is ' + (item.leftClosed ? 'at least ' : 'greater than ') + formatNum(item.left) + '.';
+				if (item.type === 'left') return 'x is ' + (item.rightClosed ? 'at most ' : 'less than ') + formatNum(item.right) + '.';
+				return 'x is between ' + formatNum(item.left) + ' and ' + formatNum(item.right) + '.';
+			}
+
+			function meaningText(item) {
+				if (item.type === 'right') return formatNum(item.left) + (item.leftClosed ? ' is included. ' : ' is not included. ') + 'The shading goes to the right.';
+				if (item.type === 'left') return formatNum(item.right) + (item.rightClosed ? ' is included. ' : ' is not included. ') + 'The shading goes to the left.';
+				return formatNum(item.left) + (item.leftClosed ? ' is included' : ' is not included') + ', and ' + formatNum(item.right) + (item.rightClosed ? ' is included.' : ' is not included.');
+			}
+
+			function drawTicks(container, asButtons, onClick) {
+				if (!container) return;
+				container.replaceChildren();
+				for (let n = -6; n <= 6; n += 1) {
+					const pct = positionFor(n);
+					const tick = document.createElement('span');
+					tick.className = 'tick';
+					tick.style.left = pct + '%';
+					container.appendChild(tick);
+					const label = document.createElement(asButtons ? 'button' : 'span');
+					label.className = 'tick-label';
+					label.style.left = pct + '%';
+					label.textContent = formatNum(n);
+					if (asButtons) {
+						label.type = 'button';
+						label.dataset.tick = String(n);
+						label.addEventListener('click', () => onClick?.(n));
+					}
+					container.appendChild(label);
+				}
+			}
+
+			function renderLine(targets, item, testValue) {
+				const fill = targets.fill;
+				const leftPoint = targets.leftPoint;
+				const rightPoint = targets.rightPoint;
+				const leftArrow = targets.leftArrow;
+				const rightArrow = targets.rightArrow;
+				const testLine = targets.testLine;
+				const testDot = targets.testDot;
+				const testLabel = targets.testLabel;
+				const minPct = 5;
+				const maxPct = 95;
+				const leftPct = item.type === 'left' ? minPct : positionFor(item.left);
+				const rightPct = item.type === 'right' ? maxPct : positionFor(item.right);
+				if (fill) {
+					fill.style.left = leftPct + '%';
+					fill.style.width = Math.max(0, rightPct - leftPct) + '%';
+				}
+				if (leftPoint) {
+					leftPoint.style.left = leftPct + '%';
+					leftPoint.style.display = item.type === 'left' ? 'none' : 'block';
+					leftPoint.classList.toggle('closed', !!item.leftClosed);
+					leftPoint.classList.remove('pulse');
+					void leftPoint.offsetWidth;
+					leftPoint.classList.add('pulse');
+				}
+				if (rightPoint) {
+					rightPoint.style.left = rightPct + '%';
+					rightPoint.style.display = item.type === 'right' ? 'none' : 'block';
+					rightPoint.classList.toggle('closed', !!item.rightClosed);
+					rightPoint.classList.remove('pulse');
+					void rightPoint.offsetWidth;
+					rightPoint.classList.add('pulse');
+				}
+				if (leftArrow) {
+					leftArrow.style.left = '3.4%';
+					leftArrow.style.opacity = item.type === 'left' ? '1' : '0';
+				}
+				if (rightArrow) {
+					rightArrow.style.left = '94%';
+					rightArrow.style.opacity = item.type === 'right' ? '1' : '0';
+				}
+				if (testLine && testDot && testLabel) {
+					const testPct = positionFor(testValue);
+					testLine.style.left = testPct + '%';
+					testDot.style.left = testPct + '%';
+					testLabel.style.left = testPct + '%';
+					testLabel.textContent = 'x = ' + formatNum(testValue);
+				}
+			}
+
+			const intervalData = [
+				{ key: 'rightOpen', type: 'right', left: 2, leftClosed: false, label: 'greater than', value: 3 },
+				{ key: 'rightClosed', type: 'right', left: -1, leftClosed: true, label: 'at least', value: -1 },
+				{ key: 'leftOpen', type: 'left', right: 4, rightClosed: false, label: 'less than', value: 3 },
+				{ key: 'leftClosed', type: 'left', right: 1, rightClosed: true, label: 'at most', value: 1 },
+				{ key: 'midOO', type: 'middle', left: -3, right: 3, leftClosed: false, rightClosed: false, label: 'between, open ends', value: 0 },
+				{ key: 'midOC', type: 'middle', left: -2, right: 4, leftClosed: false, rightClosed: true, label: 'open then closed', value: 0 },
+				{ key: 'midCO', type: 'middle', left: -4, right: 2, leftClosed: true, rightClosed: false, label: 'closed then open', value: -2 },
+				{ key: 'midCC', type: 'middle', left: 0, right: 5, leftClosed: true, rightClosed: true, label: 'closed ends', value: 5 }
+			];
+
+			const intervalLab = (function setupIntervalLab() {
+				const lab = root.querySelector('[data-interval-lab]');
+				if (!lab) return { render: function () {} };
+				const title = lab.querySelector('[data-interval-title]');
+				const choices = lab.querySelector('[data-interval-choices]');
+				const meaningTitleNode = lab.querySelector('[data-interval-meaning-title]');
+				const meaningTextNode = lab.querySelector('[data-interval-meaning-text]');
+				const slider = lab.querySelector('[data-test-slider]');
+				const feedback = lab.querySelector('[data-interval-feedback]');
+				const tickBox = lab.querySelector('[data-interval-ticks]');
+				const targets = {
+					fill: lab.querySelector('[data-line-fill]'),
+					leftPoint: lab.querySelector('[data-left-endpoint]'),
+					rightPoint: lab.querySelector('[data-right-endpoint]'),
+					leftArrow: lab.querySelector('[data-left-arrow]'),
+					rightArrow: lab.querySelector('[data-right-arrow]'),
+					testLine: lab.querySelector('[data-test-line]'),
+					testDot: lab.querySelector('[data-test-dot]'),
+					testLabel: lab.querySelector('[data-test-label]')
+				};
+				let activeKey = 'midOC';
+
+				function findItem(key) {
+					return intervalData.find((item) => item.key === key) || intervalData[0];
+				}
+
+				function updateProbe() {
+					const item = findItem(activeKey);
+					const value = Number(slider?.value || 0);
+					renderLine(targets, item, value);
+					const valid = containsValue(item, value);
+					if (feedback) {
+						feedback.textContent = formatNum(value) + (valid ? ' is inside the interval.' : ' is outside the interval.') + ' Check the shaded orange part and the endpoint rule.';
+						feedback.classList.toggle('is-bad', !valid);
+					}
+					tickBox?.querySelectorAll('.tick-label').forEach((label) => label.classList.toggle('is-selected', Number(label.dataset.tick) === value));
+				}
+
+				function render(key) {
+					activeKey = key;
+					const item = findItem(key);
+					if (title) setMath(title, notationText(item));
+					if (meaningTitleNode) meaningTitleNode.textContent = meaningTitle(item);
+					if (meaningTextNode) meaningTextNode.textContent = meaningText(item);
+					if (slider) slider.value = String(item.value ?? 0);
+					choices?.querySelectorAll('.interval-choice').forEach((button) => button.classList.toggle('is-selected', button.dataset.key === key));
+					updateProbe();
+					renderMath(lab);
+				}
+
+				intervalData.slice(0, 6).forEach((item) => {
+					const button = document.createElement('button');
+					button.type = 'button';
+					button.className = 'interval-choice';
+					button.dataset.key = item.key;
+					const math = document.createElement('span');
+					math.className = 'mathjax';
+					setMath(math, notationText(item));
+					const small = document.createElement('small');
+					small.textContent = item.label;
+					button.append(math, small);
+					button.addEventListener('click', () => render(item.key));
+					choices?.appendChild(button);
+				});
+				drawTicks(tickBox, true, (n) => {
+					if (slider) slider.value = String(n);
+					updateProbe();
+				});
+				slider?.addEventListener('input', updateProbe);
+				lab.querySelector('[data-test-left]')?.addEventListener('click', () => {
+					if (!slider) return;
+					slider.value = String(Math.max(-6, Number(slider.value) - 1));
+					updateProbe();
+				});
+				lab.querySelector('[data-test-right]')?.addEventListener('click', () => {
+					if (!slider) return;
+					slider.value = String(Math.min(6, Number(slider.value) + 1));
+					updateProbe();
+				});
+				lab.querySelector('[data-interval-random]')?.addEventListener('click', () => {
+					let next = activeKey;
+					while (next === activeKey) next = intervalData[Math.floor(Math.random() * intervalData.length)].key;
+					render(next);
+				});
+				render(activeKey);
+				return { render };
+			})();
+
+			const builderLab = (function setupBuilderLab() {
+				const lab = root.querySelector('[data-builder-lab]');
+				if (!lab) return { render: function () {} };
+				const leftSelect = lab.querySelector('[data-builder-left]');
+				const rightSelect = lab.querySelector('[data-builder-right]');
+				const leftClosedSelect = lab.querySelector('[data-builder-left-closed]');
+				const rightClosedSelect = lab.querySelector('[data-builder-right-closed]');
+				const intervalNode = lab.querySelector('[data-builder-interval]');
+				const inequalityNode = lab.querySelector('[data-builder-inequality]');
+				const message = lab.querySelector('[data-builder-message]');
+				const ticks = lab.querySelector('[data-builder-ticks]');
+				const targets = {
+					fill: lab.querySelector('[data-builder-fill]'),
+					leftPoint: lab.querySelector('[data-builder-left-point]'),
+					rightPoint: lab.querySelector('[data-builder-right-point]')
+				};
+				drawTicks(ticks, false);
+				function render() {
+					let left = Number(leftSelect?.value || -2);
+					let right = Number(rightSelect?.value || 4);
+					if (left >= right) {
+						right = left + 1;
+						if (rightSelect) rightSelect.value = String(Math.min(6, right));
+						if (right > 6 && leftSelect) {
+							left = 5;
+							leftSelect.value = '5';
+							right = 6;
+							rightSelect.value = '6';
+						}
+					}
+					const item = { type: 'middle', left, right, leftClosed: leftClosedSelect?.value === 'closed', rightClosed: rightClosedSelect?.value === 'closed' };
+					setMath(intervalNode, notationText(item));
+					setMath(inequalityNode, inequalityText(item));
+					if (message) message.textContent = formatNum(left) + (item.leftClosed ? ' is closed, so it is included. ' : ' is open, so it is not included. ') + formatNum(right) + (item.rightClosed ? ' is closed, so it is included.' : ' is open, so it is not included.');
+					renderLine(targets, item, 0);
+					renderMath(lab);
+				}
+				[leftSelect, rightSelect, leftClosedSelect, rightClosedSelect].forEach((select) => select?.addEventListener('change', render));
+				render();
+				return { render };
+			})();
+
+			function setupMcqGame(config) {
+				let round = 0;
+				let localScore = 0;
+				let answered = false;
+				function currentItem() { return config.items[round % config.items.length]; }
+				function render() {
+					answered = false;
+					const item = currentItem();
+					if (config.roundNode) config.roundNode.textContent = 'Round ' + (round + 1) + ' / ' + config.items.length;
+					if (config.scoreNode) config.scoreNode.textContent = String(localScore);
+					setMath(config.promptNode, item.prompt);
+					config.optionBox.replaceChildren();
+					item.options.forEach((option, index) => {
+						const button = document.createElement('button');
+						button.type = 'button';
+						button.className = 'option-button';
+						button.dataset.option = option;
+						const letter = document.createElement('span');
+						letter.className = 'letter';
+						letter.textContent = String.fromCharCode(65 + index);
+						const label = document.createElement('span');
+						label.className = 'mathjax';
+						setMath(label, option);
+						button.append(letter, label);
+						button.addEventListener('click', () => {
+							if (answered) return;
+							answered = true;
+							const correct = option === item.answer;
+							button.classList.add(correct ? 'is-correct' : 'is-wrong');
+							if (correct) {
+								localScore += 1;
+								updateScore(1);
+							} else {
+								Array.from(config.optionBox.children).forEach((child) => {
+									if (child.dataset.option === item.answer) child.classList.add('is-correct');
+								});
+							}
+							if (config.scoreNode) config.scoreNode.textContent = String(localScore);
+							if (config.feedbackNode) config.feedbackNode.textContent = correct ? 'Correct. Endpoint type and direction are both right.' : 'Not yet. Check whether the boundary is included and which way the interval goes.';
+						});
+						config.optionBox.appendChild(button);
+					});
+					if (config.feedbackNode) config.feedbackNode.textContent = 'Look at whether the endpoint is included.';
+					renderMath(config.scope);
+				}
+				function next() { round = (round + 1) % config.items.length; render(); }
+				function reset() { round = 0; localScore = 0; render(); }
+				config.nextButton?.addEventListener('click', next);
+				config.resetButton?.addEventListener('click', reset);
+				render();
+				return { reset, next };
+			}
+
+			const convertGame = setupMcqGame({
+				scope: root.querySelector('[data-convert-game]'),
+				items: [
+					{ prompt: 'x ≥ -3', answer: '[-3,\\infty)', options: ['(-3,\\infty)', '[-3,\\infty)', '(-\\infty,-3]', '[-3,3]'] },
+					{ prompt: 'x < 4', answer: '(-\\infty,4)', options: ['(-\\infty,4)', '(-\\infty,4]', '(4,\\infty)', '[4,\\infty)'] },
+					{ prompt: '-2 < x ≤ 5', answer: '(-2,5]', options: ['[-2,5]', '(-2,5)', '(-2,5]', '[-2,5)'] },
+					{ prompt: '0 ≤ x < 6', answer: '[0,6)', options: ['(0,6)', '[0,6)', '(0,6]', '[0,6]'] },
+					{ prompt: 'x ≤ 1', answer: '(-\\infty,1]', options: ['(-\\infty,1)', '(-\\infty,1]', '(1,\\infty)', '[1,\\infty)'] }
+				],
+				roundNode: root.querySelector('[data-convert-round]'),
+				scoreNode: root.querySelector('[data-convert-score]'),
+				promptNode: root.querySelector('[data-convert-prompt]'),
+				optionBox: root.querySelector('[data-convert-options]'),
+				feedbackNode: root.querySelector('[data-convert-feedback]'),
+				nextButton: root.querySelector('[data-convert-next]'),
+				resetButton: root.querySelector('[data-convert-reset]')
+			});
+
+			const dotGame = (function setupDotGame() {
+				const game = root.querySelector('[data-dot-game]');
+				const prompts = [
+					{ tex: 'x < 5', answer: 'open' },
+					{ tex: 'x ≤ -2', answer: 'closed' },
+					{ tex: 'x > 0', answer: 'open' },
+					{ tex: 'x ≥ 3', answer: 'closed' },
+					{ tex: '-1 < x < 4', answer: 'open' },
+					{ tex: '-3 ≤ x ≤ 2', answer: 'closed' }
+				];
+				let round = 0;
+				let answered = false;
+				function render() {
+					answered = false;
+					const item = prompts[round % prompts.length];
+					game?.querySelectorAll('.dot-choice').forEach((button) => button.classList.remove('is-correct', 'is-wrong'));
+					const roundNode = game?.querySelector('[data-dot-round]');
+					if (roundNode) roundNode.textContent = 'Round ' + (round + 1) + ' / ' + prompts.length;
+					setMath(game?.querySelector('[data-dot-prompt]'), item.tex);
+					const feedback = game?.querySelector('[data-dot-feedback]');
+					if (feedback) feedback.textContent = 'Read the symbol carefully.';
+					renderMath(game);
+				}
+				game?.querySelectorAll('[data-dot-answer]').forEach((button) => {
+					button.addEventListener('click', () => {
+						if (answered) return;
+						answered = true;
+						const item = prompts[round % prompts.length];
+						const correct = button.dataset.dotAnswer === item.answer;
+						button.classList.add(correct ? 'is-correct' : 'is-wrong');
+						if (!correct) game?.querySelector('[data-dot-answer="' + item.answer + '"]')?.classList.add('is-correct');
+						else updateScore(1);
+						const feedback = game?.querySelector('[data-dot-feedback]');
+						if (feedback) feedback.textContent = correct ? 'Correct. This endpoint rule matches the symbol.' : 'Check again: < and > are open; ≤ and ≥ are closed.';
+					});
+				});
+				function next() { round = (round + 1) % prompts.length; render(); }
+				function reset() { round = 0; render(); }
+				game?.querySelector('[data-dot-next]')?.addEventListener('click', next);
+				game?.querySelector('[data-dot-reset]')?.addEventListener('click', reset);
+				render();
+				return { reset };
+			})();
+
+			const sortGame = (function setupSortGame() {
+				const game = root.querySelector('[data-sort-game]');
+				const cards = [
+					{ tex: '(-2,5)', answer: 'open-open' },
+					{ tex: '[-1,3]', answer: 'closed-closed' },
+					{ tex: '(-4,2]', answer: 'open-closed' },
+					{ tex: '[0,6)', answer: 'closed-open' },
+					{ tex: '(1,7]', answer: 'open-closed' },
+					{ tex: '[-5,-2)', answer: 'closed-open' }
+				];
+				let round = 0;
+				let answered = false;
+				function render() {
+					answered = false;
+					const item = cards[round % cards.length];
+					game?.querySelectorAll('.sort-button').forEach((button) => button.classList.remove('is-correct', 'is-wrong'));
+					const roundNode = game?.querySelector('[data-sort-round]');
+					if (roundNode) roundNode.textContent = 'Card ' + (round + 1) + ' / ' + cards.length;
+					setMath(game?.querySelector('[data-sort-card]'), item.tex);
+					const feedback = game?.querySelector('[data-sort-feedback]');
+					if (feedback) feedback.textContent = 'Parentheses are open; square brackets are closed.';
+					renderMath(game);
+				}
+				game?.querySelectorAll('[data-sort-answer]').forEach((button) => {
+					button.addEventListener('click', () => {
+						if (answered) return;
+						answered = true;
+						const item = cards[round % cards.length];
+						const correct = button.dataset.sortAnswer === item.answer;
+						button.classList.add(correct ? 'is-correct' : 'is-wrong');
+						if (!correct) game?.querySelector('[data-sort-answer="' + item.answer + '"]')?.classList.add('is-correct');
+						else updateScore(1);
+						const feedback = game?.querySelector('[data-sort-feedback]');
+						if (feedback) feedback.textContent = correct ? 'Correct category.' : 'Look at the left symbol and the right symbol separately.';
+					});
+				});
+				function next() { round = (round + 1) % cards.length; render(); }
+				function reset() { round = 0; render(); }
+				game?.querySelector('[data-sort-next]')?.addEventListener('click', next);
+				game?.querySelector('[data-sort-reset]')?.addEventListener('click', reset);
+				render();
+				return { reset };
+			})();
+
+			const integerGame = (function setupIntegerGame() {
+				const game = root.querySelector('[data-integer-game]');
+				const intervals = [
+					{ type: 'middle', left: -3, right: 2, leftClosed: false, rightClosed: true, help: 'Choose all integers greater than −3 and up to 2.' },
+					{ type: 'middle', left: -4, right: 1, leftClosed: true, rightClosed: false, help: 'Choose all integers from −4 up to, but not including, 1.' },
+					{ type: 'middle', left: 0, right: 5, leftClosed: false, rightClosed: false, help: 'Choose all integers strictly between 0 and 5.' },
+					{ type: 'middle', left: -2, right: 4, leftClosed: true, rightClosed: true, help: 'Choose all integers from −2 to 4 inclusive.' }
+				];
+				let activeIndex = 0;
+				function activeItem() { return intervals[activeIndex % intervals.length]; }
+				function renderButtons() {
+					const box = game?.querySelector('[data-integer-buttons]');
+					if (!box) return;
+					box.replaceChildren();
+					for (let n = -6; n <= 6; n += 1) {
+						const button = document.createElement('button');
+						button.type = 'button';
+						button.className = 'integer-button';
+						button.dataset.value = String(n);
+						button.textContent = formatNum(n);
+						button.addEventListener('click', () => button.classList.toggle('is-selected'));
+						box.appendChild(button);
+					}
+				}
+				function render() {
+					const item = activeItem();
+					setMath(game?.querySelector('[data-integer-prompt]'), notationText(item));
+					const help = game?.querySelector('[data-integer-help]');
+					if (help) help.textContent = item.help;
+					renderButtons();
+					const feedback = game?.querySelector('[data-integer-feedback]');
+					if (feedback) feedback.textContent = 'Tap the integers that are included in the interval.';
+					renderMath(game);
+				}
+				function check() {
+					const item = activeItem();
+					let correctCount = 0;
+					let totalCorrect = 0;
+					let wrongCount = 0;
+					game?.querySelectorAll('.integer-button').forEach((button) => {
+						button.classList.remove('is-correct', 'is-wrong', 'is-missed');
+						const value = Number(button.dataset.value);
+						const should = containsValue(item, value);
+						const selected = button.classList.contains('is-selected');
+						if (should) totalCorrect += 1;
+						if (should && selected) { button.classList.add('is-correct'); correctCount += 1; }
+						else if (should && !selected) button.classList.add('is-missed');
+						else if (!should && selected) { button.classList.add('is-wrong'); wrongCount += 1; }
+					});
+					const feedback = game?.querySelector('[data-integer-feedback]');
+					const allCorrect = correctCount === totalCorrect && wrongCount === 0;
+					if (feedback) feedback.textContent = allCorrect ? 'Correct. You selected exactly the integers inside the interval.' : 'Review the highlighted buttons: green = correct, orange = missed, red = not in the interval.';
+					if (allCorrect) updateScore(1);
+				}
+				function reset() {
+					game?.querySelectorAll('.integer-button').forEach((button) => button.classList.remove('is-selected', 'is-correct', 'is-wrong', 'is-missed'));
+					const feedback = game?.querySelector('[data-integer-feedback]');
+					if (feedback) feedback.textContent = 'Tap the integers that are included in the interval.';
+				}
+				function next() { activeIndex = (activeIndex + 1) % intervals.length; render(); }
+				game?.querySelector('[data-integer-check]')?.addEventListener('click', check);
+				game?.querySelector('[data-integer-reset]')?.addEventListener('click', reset);
+				game?.querySelector('[data-integer-new]')?.addEventListener('click', next);
+				render();
+				return { reset };
+			})();
+
+			prepareMath(root);
+			renderMath(root);
+			showSlide(0);
+		})();
+	</script>
+</Layout>

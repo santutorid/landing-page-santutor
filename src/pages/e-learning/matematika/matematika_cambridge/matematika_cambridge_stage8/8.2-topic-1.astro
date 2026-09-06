@@ -1,0 +1,586 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+
+const pageTitle = '8.2 Topic 1: Manipulating Algebra, Expressions and Formulae — SAN TUTOR';
+const pageDescription = 'Lesson list for Cambridge Lower Secondary Stage 8 Mathematics Unit 8.2 Topic 1: Manipulating algebra, expressions and formulae.';
+const pageTitleEn = '8.2 Topic 1: Manipulating Algebra, Expressions and Formulae — SAN TUTOR';
+const pageDescriptionEn = 'Lesson list for Cambridge Lower Secondary Stage 8 Mathematics Unit 8.2 Topic 1: Manipulating algebra, expressions and formulae.';
+
+const lessons = [
+	{
+		lessonNo: 'Lesson 1',
+		titleId: 'Letters in Algebra',
+		titleEn: 'Letters in Algebra',
+		duration: '50 min',
+		focusId: 'Membedakan huruf sebagai unknown, variable, constant, coefficient, term, expression, formula, dan equation.',
+		focusEn: 'Distinguish letters as unknowns, variables, constants, coefficients, terms, expressions, formulae, and equations.',
+		objective: '8Ae.01',
+		objectives: ['8Ae.01'],
+		flowId: ['Hook: bahasa aljabar sehari-hari', 'Concept: meaning of letters', 'Sort: expression, formula, equation', 'Exit ticket'],
+		flowEn: ['Hook: everyday algebra language', 'Concept: meaning of letters', 'Sort: expression, formula, equation', 'Exit ticket'],
+		accent: '#F2761E',
+		href: '/e-learning/matematika/matematika_cambridge/matematika_cambridge_stage8/8.2-topic-1/8.2-topic1-lesson1',
+	},
+	{
+		lessonNo: 'Lesson 2',
+		titleId: 'Algebraic Conventions & Order of Operations',
+		titleEn: 'Algebraic Conventions & Order of Operations',
+		duration: '50 min',
+		focusId: 'Menulis bentuk aljabar dengan benar, melakukan substitusi, dan menerapkan urutan operasi pada terms dan expressions.',
+		focusEn: 'Write algebra correctly, substitute values, and apply order of operations to terms and expressions.',
+		objective: '8Ae.02',
+		objectives: ['8Ae.02'],
+		flowId: ['Starter: simplify notation', 'Concept: order of operations', 'Guided substitution', 'Mini quiz'],
+		flowEn: ['Starter: simplify notation', 'Concept: order of operations', 'Guided substitution', 'Mini quiz'],
+		accent: '#3EB6EA',
+		href: '/e-learning/matematika/matematika_cambridge/matematika_cambridge_stage8/8.2-topic-1/8.2-topic1-lesson2',
+	},
+	{
+		lessonNo: 'Lesson 3',
+		titleId: 'Simplifying Expressions with the Distributive Law',
+		titleEn: 'Simplifying Expressions with the Distributive Law',
+		duration: '50 min',
+		focusId: 'Menggabungkan like terms dan menggunakan distributive law dengan single term, termasuk squares dan cubes.',
+		focusEn: 'Collect like terms and use the distributive law with a single term, including squares and cubes.',
+		objective: '8Ae.03',
+		objectives: ['8Ae.03'],
+		flowId: ['Warm-up: like terms', 'Expand single brackets', 'Simplify expressions', 'Independent practice'],
+		flowEn: ['Warm-up: like terms', 'Expand single brackets', 'Simplify expressions', 'Independent practice'],
+		accent: '#6E9B7D',
+		href: '/e-learning/matematika/matematika_cambridge/matematika_cambridge_stage8/8.2-topic-1/8.2-topic1-lesson3',
+	},
+	{
+		lessonNo: 'Lesson 4',
+		titleId: 'Factorising with the Highest Common Factor',
+		titleEn: 'Factorising with the Highest Common Factor',
+		duration: '50 min',
+		focusId: 'Menentukan highest common factor dari terms, memfaktorkan ke single brackets, dan mengecek jawaban dengan expansion.',
+		focusEn: 'Identify the highest common factor of terms, factorise into single brackets, and check by expanding.',
+		objective: '8Ae.03',
+		objectives: ['8Ae.03'],
+		flowId: ['Starter: HCF of numbers and terms', 'Factorise expressions', 'Check by expanding', 'Error analysis'],
+		flowEn: ['Starter: HCF of numbers and terms', 'Factorise expressions', 'Check by expanding', 'Error analysis'],
+		accent: '#F2761E',
+		href: '/e-learning/matematika/matematika_cambridge/matematika_cambridge_stage8/8.2-topic-1/8.2-topic1-lesson4',
+	},
+	{
+		lessonNo: 'Lesson 5',
+		titleId: 'Words, Expressions and Formulae',
+		titleEn: 'Words, Expressions and Formulae',
+		duration: '50 min',
+		focusId: 'Mengubah situasi ke expression atau formula, lalu menggunakan inverse operations untuk change the subject of a formula.',
+		focusEn: 'Translate situations into expressions or formulae, then use inverse operations to change the subject of a formula.',
+		objective: '8Ae.04–8Ae.05',
+		objectives: ['8Ae.04', '8Ae.05'],
+		flowId: ['Context: words to algebra', 'Build expressions', 'Build formulae', 'Change the subject'],
+		flowEn: ['Context: words to algebra', 'Build expressions', 'Build formulae', 'Change the subject'],
+		accent: '#3EB6EA',
+		href: '/e-learning/matematika/matematika_cambridge/matematika_cambridge_stage8/8.2-topic-1/8.2-topic1-lesson5',
+	},
+];
+
+const objectives = [
+	{
+		code: '8Ae.01',
+		textId: 'Understand that letters have different meanings in expressions, formulae and equations.',
+		textEn: 'Understand that letters have different meanings in expressions, formulae and equations.',
+	},
+	{
+		code: '8Ae.02',
+		textId: 'Understand that the laws of arithmetic and order of operations apply to algebraic terms and expressions.',
+		textEn: 'Understand that the laws of arithmetic and order of operations apply to algebraic terms and expressions.',
+	},
+	{
+		code: '8Ae.03',
+		textId: 'Manipulate algebraic expressions by applying the distributive law with a single term and identifying the highest common factor to factorise.',
+		textEn: 'Manipulate algebraic expressions by applying the distributive law with a single term and identifying the highest common factor to factorise.',
+	},
+	{
+		code: '8Ae.04',
+		textId: 'Move between words and algebraic expressions in linear situations with integer or fractional coefficients.',
+		textEn: 'Move between words and algebraic expressions in linear situations with integer or fractional coefficients.',
+	},
+	{
+		code: '8Ae.05',
+		textId: 'Represent situations in words or as a formula and change the subject of a formula using inverse operations.',
+		textEn: 'Represent situations in words or as a formula and change the subject of a formula using inverse operations.',
+	},
+];
+---
+
+<Layout
+	title={pageTitle}
+	description={pageDescription}
+	titleEn={pageTitleEn}
+	descriptionEn={pageDescriptionEn}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogTitleEn={pageTitleEn}
+	ogDescriptionEn={pageDescriptionEn}
+	currentPage="math"
+>
+	<main id="top">
+		<section class="topic-hero">
+			<div class="section-decor" aria-hidden="true">
+				<span class="dot-grid dot-grid-hero"></span>
+				<span class="blob blob-blue" style="top:-120px; left:-140px; width:340px; height:340px;"></span>
+				<span class="blob blob-orange" style="bottom:-120px; right:14%; width:260px; height:260px;"></span>
+			</div>
+
+			<div class="wrap topic-hero-inner">
+				<div class="topic-hero-copy reveal">
+					<a class="back-link" href="/e-learning/matematika/matematika_cambridge/matematika_cambridge_stage8" data-i18n-id="← Kembali ke Stage 8" data-i18n-en="← Back to Stage 8">← Kembali ke Stage 8</a>
+					<p class="eyebrow">Cambridge Stage 8 · Unit 8.2 · Topic 1</p>
+					<h1 data-i18n-id="Manipulating Algebra, Expressions and Formulae" data-i18n-en="Manipulating Algebra, Expressions and Formulae">Manipulating Algebra, Expressions and Formulae</h1>
+					<p class="hero-lede" data-i18n-id="Halaman ini adalah lesson library untuk Topic 1. Setiap lesson dirancang 50 menit supaya cocok dipakai sebagai slide interaktif saat mengajar di kelas." data-i18n-en="This page is the lesson library for Topic 1. Each lesson is designed for 50 minutes, so it can be used as an interactive slide deck in class.">Halaman ini adalah lesson library untuk Topic 1. Setiap lesson dirancang 50 menit supaya cocok dipakai sebagai slide interaktif saat mengajar di kelas.</p>
+
+					<div class="topic-meta-grid" aria-label="Topic overview">
+						<div>
+							<strong>{lessons.length}</strong>
+							<span data-i18n-id="Lesson" data-i18n-en="Lessons">Lesson</span>
+						</div>
+						<div>
+							<strong>50</strong>
+							<span data-i18n-id="Menit / lesson" data-i18n-en="Minutes / lesson">Menit / lesson</span>
+						</div>
+						<div>
+							<strong>8Ae.01–05</strong>
+							<span data-i18n-id="Learning objectives" data-i18n-en="Learning objectives">Learning objectives</span>
+						</div>
+					</div>
+				</div>
+
+				<aside class="topic-focus-card reveal" aria-label="Topic focus">
+					<span class="focus-badge" data-i18n-id="Fokus Topic" data-i18n-en="Topic Focus">Fokus Topic</span>
+					<h2 data-i18n-id="Dari bahasa aljabar ke manipulasi formula" data-i18n-en="From algebra language to formula manipulation">Dari bahasa aljabar ke manipulasi formula</h2>
+					<p data-i18n-id="Urutan lesson dimulai dari makna huruf, lanjut ke order of operations, simplifying, factorising, lalu words-to-algebra dan change the subject." data-i18n-en="The lesson sequence starts with the meaning of letters, then order of operations, simplifying, factorising, and finally words-to-algebra and changing the subject.">Urutan lesson dimulai dari makna huruf, lanjut ke order of operations, simplifying, factorising, lalu words-to-algebra dan change the subject.</p>
+					<div class="focus-tags">
+						<span>letters</span>
+						<span>expressions</span>
+						<span>formulae</span>
+						<span>order of operations</span>
+						<span>factorising</span>
+					</div>
+				</aside>
+			</div>
+		</section>
+
+		<section class="lesson-list-section" id="lessons">
+			<div class="wrap">
+				<div class="section-head reveal">
+					<p class="eyebrow" data-i18n-id="Lesson Sequence" data-i18n-en="Lesson Sequence">Lesson Sequence</p>
+					<h2 data-i18n-id="5 Lesson untuk 8.2 Topic 1" data-i18n-en="5 Lessons for 8.2 Topic 1">5 Lesson untuk 8.2 Topic 1</h2>
+					<p class="section-lede" data-i18n-id="Setiap lesson dibuat sebagai pintu masuk ke slide deck. Untuk sekarang tombol lesson diarahkan ke halaman coming soon sampai slide interaktifnya dibuat satu per satu." data-i18n-en="Each lesson is prepared as an entry point to a slide deck. For now, lesson buttons point to the coming soon page until each interactive slide deck is built.">Setiap lesson dibuat sebagai pintu masuk ke slide deck. Untuk sekarang tombol lesson diarahkan ke halaman coming soon sampai slide interaktifnya dibuat satu per satu.</p>
+				</div>
+
+				<div class="lesson-grid">
+					{lessons.map((lesson) => (
+						<article class="lesson-card reveal" style={`--accent:${lesson.accent};`}>
+							<div class="lesson-card-top">
+								<span class="lesson-number">{lesson.lessonNo}</span>
+								<span class="lesson-duration">{lesson.duration}</span>
+							</div>
+
+							<h3 data-i18n-id={lesson.titleId} data-i18n-en={lesson.titleEn}>{lesson.titleId}</h3>
+							<p data-i18n-id={lesson.focusId} data-i18n-en={lesson.focusEn}>{lesson.focusId}</p>
+
+							<div class="objective-row" aria-label="Learning objectives">
+								{lesson.objectives.map((objective) => <span>{objective}</span>)}
+							</div>
+
+							<div class="lesson-flow">
+								<span class="flow-title" data-i18n-id="Alur 50 menit" data-i18n-en="50-minute flow">Alur 50 menit</span>
+								<ol>
+									{lesson.flowId.map((step, index) => (
+										<li data-i18n-id={step} data-i18n-en={lesson.flowEn[index]}>{step}</li>
+									))}
+								</ol>
+							</div>
+
+							<a class="lesson-button" href={lesson.href} data-i18n-id="Siapkan slide lesson" data-i18n-en="Prepare lesson slides">Siapkan slide lesson</a>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="objective-section" id="objectives">
+			<div class="section-decor" aria-hidden="true">
+				<span class="blob blob-sage" style="top:-90px; right:-100px; width:300px; height:300px;"></span>
+			</div>
+			<div class="wrap objective-inner">
+				<div class="objective-copy reveal">
+					<p class="eyebrow" data-i18n-id="Coverage" data-i18n-en="Coverage">Coverage</p>
+					<h2 data-i18n-id="Learning objectives yang dicakup" data-i18n-en="Learning objectives covered">Learning objectives yang dicakup</h2>
+					<p class="section-lede" data-i18n-id="Topic 1 difokuskan untuk membangun bahasa dan manipulasi aljabar sebelum masuk ke Topic 2: equations and inequalities." data-i18n-en="Topic 1 focuses on algebraic language and manipulation before moving into Topic 2: equations and inequalities.">Topic 1 difokuskan untuk membangun bahasa dan manipulasi aljabar sebelum masuk ke Topic 2: equations and inequalities.</p>
+				</div>
+
+				<div class="objective-list reveal">
+					{objectives.map((objective) => (
+						<div class="objective-item">
+							<span>{objective.code}</span>
+							<p data-i18n-id={objective.textId} data-i18n-en={objective.textEn}>{objective.textId}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<style>
+		.topic-hero {
+			padding: 64px 0 84px;
+			position: relative;
+			overflow: hidden;
+			background: var(--white);
+		}
+
+		.topic-hero-inner {
+			display: grid;
+			grid-template-columns: 1.05fr 0.95fr;
+			gap: 48px;
+			align-items: center;
+		}
+
+		.back-link {
+			display: inline-flex;
+			align-items: center;
+			font-weight: 800;
+			font-size: 0.9rem;
+			color: var(--orange);
+			margin-bottom: 20px;
+		}
+
+		.back-link:hover { color: var(--navy); }
+
+		.topic-hero-copy h1 {
+			font-size: clamp(2.05rem, 4vw, 3.2rem);
+			line-height: 1.12;
+			letter-spacing: -0.01em;
+			margin-bottom: 18px;
+		}
+
+		.hero-lede {
+			font-size: 1.08rem;
+			max-width: 58ch;
+			margin-bottom: 30px;
+		}
+
+		.topic-meta-grid {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 14px;
+			max-width: 620px;
+		}
+
+		.topic-meta-grid div {
+			background: var(--cream);
+			border: 1px solid var(--border);
+			border-radius: 18px;
+			padding: 16px 18px;
+		}
+
+		.topic-meta-grid strong {
+			display: block;
+			font-family: var(--font-display);
+			font-size: 1.38rem;
+			line-height: 1.1;
+			color: var(--navy);
+		}
+
+		.topic-meta-grid span {
+			display: block;
+			font-weight: 800;
+			font-size: 0.76rem;
+			color: var(--ink-soft);
+			margin-top: 5px;
+		}
+
+		.topic-focus-card {
+			background: var(--navy);
+			color: var(--white);
+			border-radius: var(--radius-lg);
+			padding: 34px;
+			box-shadow: 0 24px 48px -30px rgba(29, 43, 69, 0.65);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.topic-focus-card::after {
+			content: "";
+			position: absolute;
+			right: -70px;
+			bottom: -80px;
+			width: 220px;
+			height: 220px;
+			border-radius: 50%;
+			background: rgba(62, 182, 234, 0.18);
+		}
+
+		.focus-badge {
+			display: inline-flex;
+			align-items: center;
+			border-radius: 999px;
+			padding: 6px 12px;
+			background: rgba(255,255,255,0.12);
+			color: var(--blue-light);
+			font-weight: 900;
+			font-size: 0.76rem;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			margin-bottom: 18px;
+		}
+
+		.topic-focus-card h2 {
+			color: var(--white);
+			font-size: clamp(1.45rem, 2.6vw, 2rem);
+			margin-bottom: 14px;
+		}
+
+		.topic-focus-card p {
+			color: rgba(255,255,255,0.72);
+			position: relative;
+			z-index: 1;
+		}
+
+		.focus-tags {
+			display: flex;
+			gap: 8px;
+			flex-wrap: wrap;
+			margin-top: 24px;
+			position: relative;
+			z-index: 1;
+		}
+
+		.focus-tags span {
+			display: inline-flex;
+			padding: 7px 10px;
+			border-radius: 999px;
+			background: rgba(255,255,255,0.1);
+			border: 1px solid rgba(255,255,255,0.14);
+			color: rgba(255,255,255,0.78);
+			font-weight: 800;
+			font-size: 0.76rem;
+		}
+
+		.lesson-list-section {
+			padding: 90px 0;
+			background: var(--cream);
+		}
+
+		.lesson-grid {
+			display: grid;
+			grid-template-columns: repeat(5, minmax(0, 1fr));
+			gap: 18px;
+		}
+
+		.lesson-card {
+			background: var(--white);
+			border: 1px solid var(--border);
+			border-top: 5px solid var(--accent);
+			border-radius: var(--radius-md);
+			padding: 24px 20px;
+			display: flex;
+			flex-direction: column;
+			min-height: 100%;
+			box-shadow: 0 18px 36px -28px rgba(29, 43, 69, 0.32);
+			transition: transform 0.22s ease, box-shadow 0.22s ease;
+		}
+
+		.lesson-card:hover {
+			transform: translateY(-5px);
+			box-shadow: var(--shadow-soft);
+		}
+
+		.lesson-card-top {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 14px;
+		}
+
+		.lesson-number,
+		.lesson-duration {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 999px;
+			font-weight: 900;
+			font-size: 0.74rem;
+			line-height: 1;
+		}
+
+		.lesson-number {
+			background: color-mix(in srgb, var(--accent) 12%, white);
+			color: var(--accent);
+			padding: 7px 10px;
+		}
+
+		.lesson-duration {
+			background: var(--cream);
+			color: var(--ink-soft);
+			padding: 7px 9px;
+		}
+
+		.lesson-card h3 {
+			font-size: 1.08rem;
+			line-height: 1.25;
+			margin-bottom: 10px;
+		}
+
+		.lesson-card p {
+			font-size: 0.88rem;
+			line-height: 1.58;
+			margin-bottom: 16px;
+		}
+
+		.objective-row {
+			display: flex;
+			gap: 7px;
+			flex-wrap: wrap;
+			margin-bottom: 18px;
+		}
+
+		.objective-row span {
+			font-family: var(--font-label);
+			font-weight: 900;
+			font-size: 0.72rem;
+			color: var(--blue);
+			background: var(--blue-light);
+			border-radius: 999px;
+			padding: 5px 9px;
+		}
+
+		.lesson-flow {
+			border-top: 1px solid var(--border);
+			padding-top: 15px;
+			margin-top: auto;
+		}
+
+		.flow-title {
+			display: block;
+			font-weight: 900;
+			font-size: 0.78rem;
+			color: var(--navy);
+			margin-bottom: 8px;
+		}
+
+		.lesson-flow ol {
+			list-style: decimal;
+			padding-left: 18px;
+			margin: 0 0 18px;
+			color: var(--ink-soft);
+		}
+
+		.lesson-flow li {
+			font-size: 0.8rem;
+			line-height: 1.5;
+			padding-left: 2px;
+			margin-bottom: 4px;
+		}
+
+		.lesson-button {
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			border-radius: 999px;
+			padding: 11px 16px;
+			background: var(--navy);
+			color: var(--white);
+			font-weight: 900;
+			font-size: 0.86rem;
+			transition: transform 0.18s ease, background 0.18s ease;
+		}
+
+		.lesson-button:hover {
+			background: var(--accent);
+			transform: translateY(-2px);
+		}
+
+		.objective-section {
+			padding: 90px 0 100px;
+			background: var(--white);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.objective-inner {
+			display: grid;
+			grid-template-columns: 0.85fr 1.15fr;
+			gap: 48px;
+			align-items: start;
+		}
+
+		.objective-copy h2 {
+			font-size: clamp(1.7rem, 3vw, 2.35rem);
+			margin-bottom: 14px;
+		}
+
+		.objective-list {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+
+		.objective-item {
+			display: grid;
+			grid-template-columns: auto 1fr;
+			gap: 14px;
+			align-items: start;
+			background: var(--cream);
+			border: 1px solid var(--border);
+			border-radius: 18px;
+			padding: 16px 18px;
+		}
+
+		.objective-item span {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 70px;
+			border-radius: 999px;
+			background: var(--orange-light);
+			color: var(--orange);
+			font-family: var(--font-label);
+			font-weight: 900;
+			font-size: 0.8rem;
+			padding: 7px 10px;
+		}
+
+		.objective-item p {
+			font-size: 0.92rem;
+			color: var(--navy);
+			line-height: 1.55;
+		}
+
+		@media (max-width: 1180px) {
+			.lesson-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+		}
+
+		@media (max-width: 900px) {
+			.topic-hero-inner,
+			.objective-inner {
+				grid-template-columns: 1fr;
+			}
+
+			.topic-meta-grid {
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+			}
+
+			.lesson-grid {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+		}
+
+		@media (max-width: 560px) {
+			.topic-hero { padding-top: 42px; }
+			.topic-meta-grid { grid-template-columns: 1fr; }
+			.topic-focus-card { padding: 28px 22px; }
+			.lesson-grid { grid-template-columns: 1fr; }
+			.objective-item { grid-template-columns: 1fr; }
+			.objective-item span { width: fit-content; }
+		}
+	</style>
+</Layout>

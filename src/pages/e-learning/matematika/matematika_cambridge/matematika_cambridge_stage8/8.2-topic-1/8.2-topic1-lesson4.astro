@@ -1,0 +1,2684 @@
+---
+import Layout from '../../../../../../layouts/Layout.astro';
+
+const pageTitle = 'Lesson 4: Factorising with HCF — Cambridge Stage 8 Mathematics';
+const pageDescription = 'Interactive IFP lesson for factorising algebraic expressions using the highest common factor.';
+---
+
+<Layout
+	title={pageTitle}
+	description={pageDescription}
+	titleEn={pageTitle}
+	descriptionEn={pageDescription}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogTitleEn={pageTitle}
+	ogDescriptionEn={pageDescription}
+	currentPage="math"
+>
+	<main class="factor-page" id="top">
+		<section class="deck-shell" data-lesson-root tabindex="-1">
+			<header class="deck-topbar">
+				<div class="title-block">
+					<a class="back-link" href="/e-learning/matematika/matematika_cambridge/matematika_cambridge_stage8/8.2-topic-1">← Back to Topic 1</a>
+					<p class="eyebrow">Cambridge Stage 8 · Unit 8.2 Topic 1</p>
+					<h1>Lesson 4: Factorising with HCF</h1>
+				</div>
+				<div class="top-actions">
+					<span class="objective-pill">8Ae.04</span>
+					<button class="score-pill" type="button" data-total-score>Score 0</button>
+					<button class="fullscreen-toggle" type="button" data-fullscreen-toggle aria-pressed="false">⛶ Present Full Screen</button>
+				</div>
+			</header>
+
+			<div class="progress-area" aria-label="Lesson progress">
+				<div class="progress-track"><span data-progress-bar></span></div>
+				<span class="progress-label" data-progress-label>Slide 1 of 9</span>
+			</div>
+
+			<div class="deck-layout">
+				<nav class="slide-map" aria-label="Lesson sections">
+					<button type="button" class="slide-dot is-active" data-go-slide="0"><span>1</span>Goal</button>
+					<button type="button" class="slide-dot" data-go-slide="1"><span>2</span>Warm-up</button>
+					<button type="button" class="slide-dot" data-go-slide="2"><span>3</span>Groups</button>
+					<button type="button" class="slide-dot" data-go-slide="3"><span>4</span>HCF</button>
+					<button type="button" class="slide-dot" data-go-slide="4"><span>5</span>Steps</button>
+					<button type="button" class="slide-dot" data-go-slide="5"><span>6</span>Factory</button>
+					<button type="button" class="slide-dot" data-go-slide="6"><span>7</span>Detective</button>
+					<button type="button" class="slide-dot" data-go-slide="7"><span>8</span>Race</button>
+					<button type="button" class="slide-dot" data-go-slide="8"><span>9</span>Exit</button>
+				</nav>
+
+				<section class="slide-stage" aria-live="polite">
+					<article class="lesson-slide is-active" data-slide data-slide-title="Learning Goal">
+						<div class="slide-label"><span>Slide 1</span><strong>Learning Goal</strong></div>
+						<div class="hero-grid">
+							<div>
+								<p class="mini-kicker">Today’s target</p>
+								<h2>Factorising means rewriting an expression using a common factor.</h2>
+								<p class="slide-lede">We start with equal groups so students can see why the number outside the bracket is allowed to come out.</p>
+								<div class="success-box">
+									<h3>By the end, students can:</h3>
+									<ul>
+										<li>find the highest common factor of two terms</li>
+										<li>factorise expressions such as <span class="mathjax" data-tex="6x + 9 = 3(2x + 3)"></span></li>
+										<li>check by expanding back to the original expression</li>
+									</ul>
+								</div>
+							</div>
+							<div class="badge-card">
+								<span>50</span>
+								<strong>minutes</strong>
+								<p>IFP full-screen lesson with tap games and reveal steps.</p>
+							</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Shepherd Warm-up">
+						<div class="slide-label"><span>Slide 2</span><strong>Warm-up Puzzle</strong></div>
+						<p class="mini-kicker">Story before algebra</p>
+						<h2>The shepherd has <strong>3 empty pens</strong>.</h2>
+						<p class="slide-lede tight-lede">He has 6 chickens and 9 ducks. Can he make the pens exactly the same?</p>
+
+						<div class="shepherd-puzzle" data-shepherd-game>
+							<div class="story-card">
+								<div>
+									<span class="story-label">Puzzle question</span>
+									<h3>Share the animals fairly.</h3>
+									<p>Tap an animal. It will jump into the next pen that still needs it. Each pen should end with <strong>2 chickens</strong> and <strong>3 ducks</strong>.</p>
+								</div>
+								<div class="story-equation">
+									<span class="mathjax" data-tex="6 \div 3 = 2"></span>
+									<span class="mathjax" data-tex="9 \div 3 = 3"></span>
+								</div>
+							</div>
+
+							<div class="animal-yard" data-animal-yard aria-label="Animal yard">
+								<button type="button" class="animal-tile chicken" data-animal-kind="chicken" data-animal-id="wc1" aria-label="chicken">🐔</button>
+								<button type="button" class="animal-tile chicken" data-animal-kind="chicken" data-animal-id="wc2" aria-label="chicken">🐔</button>
+								<button type="button" class="animal-tile chicken" data-animal-kind="chicken" data-animal-id="wc3" aria-label="chicken">🐔</button>
+								<button type="button" class="animal-tile chicken" data-animal-kind="chicken" data-animal-id="wc4" aria-label="chicken">🐔</button>
+								<button type="button" class="animal-tile chicken" data-animal-kind="chicken" data-animal-id="wc5" aria-label="chicken">🐔</button>
+								<button type="button" class="animal-tile chicken" data-animal-kind="chicken" data-animal-id="wc6" aria-label="chicken">🐔</button>
+								<button type="button" class="animal-tile duck" data-animal-kind="duck" data-animal-id="wd1" aria-label="duck">🦆</button>
+								<button type="button" class="animal-tile duck" data-animal-kind="duck" data-animal-id="wd2" aria-label="duck">🦆</button>
+								<button type="button" class="animal-tile duck" data-animal-kind="duck" data-animal-id="wd3" aria-label="duck">🦆</button>
+								<button type="button" class="animal-tile duck" data-animal-kind="duck" data-animal-id="wd4" aria-label="duck">🦆</button>
+								<button type="button" class="animal-tile duck" data-animal-kind="duck" data-animal-id="wd5" aria-label="duck">🦆</button>
+								<button type="button" class="animal-tile duck" data-animal-kind="duck" data-animal-id="wd6" aria-label="duck">🦆</button>
+								<button type="button" class="animal-tile duck" data-animal-kind="duck" data-animal-id="wd7" aria-label="duck">🦆</button>
+								<button type="button" class="animal-tile duck" data-animal-kind="duck" data-animal-id="wd8" aria-label="duck">🦆</button>
+								<button type="button" class="animal-tile duck" data-animal-kind="duck" data-animal-id="wd9" aria-label="duck">🦆</button>
+							</div>
+
+							<div class="animal-pens">
+								<div class="animal-pen" data-animal-pen="1">
+									<div class="pen-title"><strong>Pen 1</strong><small data-animal-count>0🐔 + 0🦆</small></div>
+									<div class="animal-area"></div>
+								</div>
+								<div class="animal-pen" data-animal-pen="2">
+									<div class="pen-title"><strong>Pen 2</strong><small data-animal-count>0🐔 + 0🦆</small></div>
+									<div class="animal-area"></div>
+								</div>
+								<div class="animal-pen" data-animal-pen="3">
+									<div class="pen-title"><strong>Pen 3</strong><small data-animal-count>0🐔 + 0🦆</small></div>
+									<div class="animal-area"></div>
+								</div>
+							</div>
+
+							<div class="warmup-bottom">
+								<div class="warmup-status" data-shepherd-status>Tap an animal to start. The aim is 3 identical pens.</div>
+								<div class="button-row compact-actions">
+									<button type="button" class="primary-button" data-shepherd-auto>Animate demo</button>
+									<button type="button" class="secondary-button" data-shepherd-reset>Reset</button>
+								</div>
+							</div>
+
+							<div class="warmup-link" data-shepherd-result>
+								<strong>Story result:</strong> 3 equal pens. Each pen has 2 chickens and 3 ducks. Next, we use the same idea for <span class="mathjax" data-tex="6x + 9"></span>.
+							</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Equal Groups Hook">
+						<div class="slide-label"><span>Slide 3</span><strong>Concept Game</strong></div>
+						<p class="mini-kicker">Build equal groups first</p>
+						<h2>Build the factorised form of <span class="mathjax" data-tex="6x + 9"></span>.</h2>
+						<p class="slide-lede tight-lede">Click the tiles. Each tile will jump into the next group that still needs it. The goal is to make three identical boxes.</p>
+
+						<div class="equal-group-builder" data-grouping-game>
+							<div class="egb-top-row">
+								<div class="source-panel">
+									<div class="panel-heading">
+										<span>Tile Bank</span>
+										<strong><span class="mathjax" data-tex="6x + 9"></span></strong>
+									</div>
+									<p class="bank-note">There are <strong>6 x-tiles</strong> and <strong>9 unit tiles</strong>.</p>
+									<div class="tile-bank" data-tile-bank aria-label="Tile bank">
+										<button type="button" class="tile tile-x" data-kind="x" data-tile-id="x1">x</button>
+										<button type="button" class="tile tile-x" data-kind="x" data-tile-id="x2">x</button>
+										<button type="button" class="tile tile-x" data-kind="x" data-tile-id="x3">x</button>
+										<button type="button" class="tile tile-x" data-kind="x" data-tile-id="x4">x</button>
+										<button type="button" class="tile tile-x" data-kind="x" data-tile-id="x5">x</button>
+										<button type="button" class="tile tile-x" data-kind="x" data-tile-id="x6">x</button>
+										<button type="button" class="tile tile-one" data-kind="one" data-tile-id="u1">1</button>
+										<button type="button" class="tile tile-one" data-kind="one" data-tile-id="u2">1</button>
+										<button type="button" class="tile tile-one" data-kind="one" data-tile-id="u3">1</button>
+										<button type="button" class="tile tile-one" data-kind="one" data-tile-id="u4">1</button>
+										<button type="button" class="tile tile-one" data-kind="one" data-tile-id="u5">1</button>
+										<button type="button" class="tile tile-one" data-kind="one" data-tile-id="u6">1</button>
+										<button type="button" class="tile tile-one" data-kind="one" data-tile-id="u7">1</button>
+										<button type="button" class="tile tile-one" data-kind="one" data-tile-id="u8">1</button>
+										<button type="button" class="tile tile-one" data-kind="one" data-tile-id="u9">1</button>
+									</div>
+								</div>
+
+								<div class="why-panel">
+									<span class="why-tag">Why does 3 go outside?</span>
+									<p>Both terms can be shared into <strong>3 equal groups</strong>.</p>
+									<div class="mini-equations">
+										<span class="mathjax" data-tex="6x \div 3 = 2x"></span>
+										<span class="mathjax" data-tex="9 \div 3 = 3"></span>
+									</div>
+									<p><strong>Outside</strong> = number of equal groups. <strong>Inside</strong> = one group.</p>
+									<div class="factor-result" data-group-answer aria-live="polite">
+										<span>Result area</span>
+										<p class="result-placeholder" data-result-placeholder>Complete the three groups first. The final form will appear here.</p>
+										<div class="result-content" data-result-content>
+											<strong><span class="mathjax" data-tex="6x + 9 = 3(2x + 3)"></span></strong>
+											<p><strong>3</strong> goes outside because there are <strong>3 identical groups</strong>. <span class="mathjax" data-tex="2x + 3"></span> goes inside because it is the content of <strong>one group</strong>.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="group-zones" aria-label="Equal group boxes">
+								<div class="group-zone" data-group-drop="1">
+									<div class="group-title"><strong>Group 1</strong><small data-count>0x + 0</small></div>
+									<div class="tile-area" aria-label="Group 1 tile area"></div>
+								</div>
+								<div class="group-zone" data-group-drop="2">
+									<div class="group-title"><strong>Group 2</strong><small data-count>0x + 0</small></div>
+									<div class="tile-area" aria-label="Group 2 tile area"></div>
+								</div>
+								<div class="group-zone" data-group-drop="3">
+									<div class="group-title"><strong>Group 3</strong><small data-count>0x + 0</small></div>
+									<div class="tile-area" aria-label="Group 3 tile area"></div>
+								</div>
+							</div>
+
+							<div class="egb-bottom-row">
+								<div class="status-card" data-group-status>Click an x-tile or a unit tile to start filling the equal groups.</div>
+								<div class="button-row compact-actions">
+									<button type="button" class="primary-button" data-auto-groups>Auto demo</button>
+									<button type="button" class="secondary-button" data-check-groups>Check</button>
+									<button type="button" class="secondary-button" data-reset-groups>Reset</button>
+								</div>
+							</div>
+
+						</div>
+					</article>
+
+
+					<article class="lesson-slide" data-slide data-slide-title="HCF Hunter">
+						<div class="slide-label"><span>Slide 4</span><strong>Game 1</strong></div>
+						<p class="mini-kicker">Find the outside factor</p>
+						<h2>HCF Hunter</h2>
+						<div class="choice-game" data-choice-game="hcf">
+							<div class="game-header"><div><span class="round-label" data-round>Round 1 / 5</span><h3>Which factor should go outside the bracket?</h3></div><div class="local-score"><span>Score</span><strong data-score>0</strong></div></div>
+							<div class="big-expression"><span class="mathjax" data-prompt data-tex="8x + 12"></span></div>
+							<div class="option-grid" data-options></div>
+							<p class="feedback-line" data-feedback>Choose the greatest factor shared by both terms.</p>
+							<div class="button-row"><button type="button" class="secondary-button" data-next-round>Next round</button><button type="button" class="secondary-button" data-reset-game>Reset game</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Factorising Steps">
+						<div class="slide-label"><span>Slide 5</span><strong>Method</strong></div>
+						<p class="mini-kicker">Reveal one step at a time</p>
+						<h2>Factorise <span class="mathjax" data-tex="12x + 18"></span>.</h2>
+						<div class="step-reveal" data-step-reveal>
+							<div class="step-card is-visible" data-step="0"><strong>Step 1</strong><p>Find the HCF of <span class="mathjax" data-tex="12"></span> and <span class="mathjax" data-tex="18"></span>.</p></div>
+							<div class="step-card" data-step="1"><strong>Step 2</strong><p>The HCF is <span class="mathjax" data-tex="6"></span>. This goes outside the bracket.</p></div>
+							<div class="step-card" data-step="2"><strong>Step 3</strong><p>Divide each term: <span class="mathjax" data-tex="12x \div 6 = 2x"></span> and <span class="mathjax" data-tex="18 \div 6 = 3"></span>.</p></div>
+							<div class="step-card" data-step="3"><strong>Step 4</strong><p>Write the factorised form: <span class="mathjax" data-tex="12x + 18 = 6(2x + 3)"></span>.</p></div>
+							<div class="step-card" data-step="4"><strong>Check</strong><p>Expand it back: <span class="mathjax" data-tex="6(2x + 3) = 12x + 18"></span>.</p></div>
+							<div class="button-row"><button type="button" class="primary-button" data-next-step>Next step</button><button type="button" class="secondary-button" data-reset-steps>Reset steps</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Factor Factory">
+						<div class="slide-label"><span>Slide 6</span><strong>Game 2</strong></div>
+						<p class="mini-kicker">Choose the finished product</p>
+						<h2>Factor Factory</h2>
+						<div class="choice-game" data-choice-game="factory">
+							<div class="game-header"><div><span class="round-label" data-round>Job 1 / 5</span><h3>Choose the fully factorised form.</h3></div><div class="local-score"><span>Score</span><strong data-score>0</strong></div></div>
+							<div class="factory-row"><div class="conveyor"><span class="mathjax" data-prompt data-tex="10x + 15"></span></div><div class="machine">FACTOR<br />FACTORY</div></div>
+							<div class="option-grid" data-options></div>
+							<p class="feedback-line" data-feedback>Use the HCF, then divide every term.</p>
+							<div class="button-row"><button type="button" class="secondary-button" data-next-round>Next job</button><button type="button" class="secondary-button" data-reset-game>Reset factory</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Error Detective">
+						<div class="slide-label"><span>Slide 7</span><strong>Game 3</strong></div>
+						<p class="mini-kicker">Misconception check</p>
+						<h2>Error Detective</h2>
+						<div class="choice-game" data-choice-game="detective">
+							<div class="game-header"><div><span class="round-label" data-round>Mistake 1 / 3</span><h3>What went wrong?</h3></div><div class="local-score"><span>Score</span><strong data-score>0</strong></div></div>
+							<div class="student-work"><span>Student work</span><p><span class="mathjax" data-prompt data-tex="8x + 12 = 2(4x + 10)"></span></p></div>
+							<div class="option-grid text-options" data-options></div>
+							<p class="feedback-line" data-feedback>Choose the best explanation.</p>
+							<div class="button-row"><button type="button" class="secondary-button" data-next-round>Next mistake</button><button type="button" class="secondary-button" data-reset-game>Reset detective</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Board Race">
+						<div class="slide-label"><span>Slide 8</span><strong>Board Race</strong></div>
+						<p class="mini-kicker">Classroom competition</p>
+						<h2>Team factorising race</h2>
+						<div class="race-game" data-race-game>
+							<div class="race-toolbar">
+								<div class="race-meta-card">
+									<span>Round</span>
+									<strong><span data-race-round>1</span>/10</strong>
+								</div>
+								<div class="race-meta-card timer-mini">
+									<span>Timer</span>
+									<strong><span data-race-time>60</span>s</strong>
+								</div>
+								<div class="race-actions">
+									<button type="button" class="primary-button" data-race-start>Start timer</button>
+									<button type="button" class="secondary-button" data-race-next>Next round</button>
+									<button type="button" class="secondary-button" data-race-reset>Reset game</button>
+								</div>
+							</div>
+
+							<div class="race-team-grid" aria-label="Team questions and scores">
+								<div class="race-team-card" data-team-card="A"><div class="team-head"><strong>Team A</strong><span>Score <b data-team-score>0</b></span></div><div class="team-expression"><span class="mathjax" data-race-expression data-tex=""></span></div><p class="team-answer" data-race-answer hidden></p><div class="team-actions"><button type="button" data-reveal-answer>Reveal</button><button type="button" data-add-score>+ Score</button></div></div>
+								<div class="race-team-card" data-team-card="B"><div class="team-head"><strong>Team B</strong><span>Score <b data-team-score>0</b></span></div><div class="team-expression"><span class="mathjax" data-race-expression data-tex=""></span></div><p class="team-answer" data-race-answer hidden></p><div class="team-actions"><button type="button" data-reveal-answer>Reveal</button><button type="button" data-add-score>+ Score</button></div></div>
+								<div class="race-team-card" data-team-card="C"><div class="team-head"><strong>Team C</strong><span>Score <b data-team-score>0</b></span></div><div class="team-expression"><span class="mathjax" data-race-expression data-tex=""></span></div><p class="team-answer" data-race-answer hidden></p><div class="team-actions"><button type="button" data-reveal-answer>Reveal</button><button type="button" data-add-score>+ Score</button></div></div>
+								<div class="race-team-card" data-team-card="D"><div class="team-head"><strong>Team D</strong><span>Score <b data-team-score>0</b></span></div><div class="team-expression"><span class="mathjax" data-race-expression data-tex=""></span></div><p class="team-answer" data-race-answer hidden></p><div class="team-actions"><button type="button" data-reveal-answer>Reveal</button><button type="button" data-add-score>+ Score</button></div></div>
+								<div class="race-team-card" data-team-card="E"><div class="team-head"><strong>Team E</strong><span>Score <b data-team-score>0</b></span></div><div class="team-expression"><span class="mathjax" data-race-expression data-tex=""></span></div><p class="team-answer" data-race-answer hidden></p><div class="team-actions"><button type="button" data-reveal-answer>Reveal</button><button type="button" data-add-score>+ Score</button></div></div>
+								<div class="race-team-card" data-team-card="F"><div class="team-head"><strong>Team F</strong><span>Score <b data-team-score>0</b></span></div><div class="team-expression"><span class="mathjax" data-race-expression data-tex=""></span></div><p class="team-answer" data-race-answer hidden></p><div class="team-actions"><button type="button" data-reveal-answer>Reveal</button><button type="button" data-add-score>+ Score</button></div></div>
+							</div>
+
+							<div class="race-status" data-race-status>Press Start timer. Teams factorise their own expression. Teacher checks and taps + Score for correct answers.</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Exit Ticket">
+						<div class="slide-label"><span>Slide 9</span><strong>Exit Ticket</strong></div>
+						<p class="mini-kicker">Final check</p>
+						<h2>Exit ticket</h2>
+						<div class="exit-grid">
+							<div><strong>1</strong><p>Factorise <span class="mathjax" data-tex="8x + 20"></span>.</p></div>
+							<div><strong>2</strong><p>What is the HCF of <span class="mathjax" data-tex="12a"></span> and <span class="mathjax" data-tex="18"></span>?</p></div>
+							<div><strong>3</strong><p>How can you check if your factorised answer is correct?</p></div>
+						</div>
+						<button type="button" class="primary-button" data-toggle-target="exit-answers">Show sample answers</button>
+						<div id="exit-answers" class="sample-answer hidden-answer">
+							<p><strong>1.</strong> <span class="mathjax" data-tex="8x + 20 = 4(2x + 5)"></span></p>
+							<p><strong>2.</strong> The HCF is <span class="mathjax" data-tex="6"></span>.</p>
+							<p><strong>3.</strong> Expand the bracket and check that it returns the original expression.</p>
+						</div>
+					</article>
+				</section>
+			</div>
+
+			<footer class="deck-controls">
+				<button type="button" class="secondary-button" data-prev-slide>Back</button>
+				<button type="button" class="teacher-button" data-teacher-notes-toggle>Teacher Notes</button>
+				<button type="button" class="secondary-button" data-reset-slide>Reset Slide</button>
+				<button type="button" class="primary-button" data-next-slide>Next</button>
+			</footer>
+
+			<aside class="teacher-notes" data-teacher-notes hidden>
+				<div class="teacher-notes-card">
+					<div class="teacher-notes-head"><strong>Teacher Notes</strong><button type="button" data-teacher-notes-close aria-label="Close teacher notes">×</button></div>
+					<p data-teacher-notes-text>Use this slide to set the goal clearly.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	:global(body:has(.factor-page)) { overflow: hidden !important; }
+	:global(body:has(.factor-page) .site-header),
+	:global(body:has(.factor-page) .site-footer),
+	:global(body:has(.factor-page) .floating-whatsapp),
+	:global(body:has(.factor-page) .whatsapp-float) { display: none !important; }
+
+	.factor-page {
+		position: fixed;
+		inset: 0;
+		z-index: 10000;
+		width: 100vw;
+		height: 100vh;
+		height: 100dvh;
+		overflow: hidden;
+		background: radial-gradient(circle at 10% 10%, rgba(62, 182, 234, 0.22), transparent 28rem), radial-gradient(circle at 90% 88%, rgba(242, 118, 30, 0.16), transparent 28rem), #fffaf4;
+		color: #23304d;
+	}
+
+	.deck-shell {
+		width: 100%;
+		height: 100%;
+		padding: 12px;
+		box-sizing: border-box;
+		display: grid;
+		grid-template-rows: 76px 14px minmax(0, 1fr) 68px;
+		gap: 10px;
+	}
+
+	.deck-topbar,
+	.deck-controls,
+	.slide-map,
+	.lesson-slide {
+		background: rgba(255, 255, 255, 0.95);
+		border: 1px solid rgba(35, 48, 77, 0.12);
+		box-shadow: 0 18px 50px rgba(30, 41, 59, 0.08);
+	}
+
+	.deck-topbar {
+		border-radius: 20px;
+		padding: 10px 16px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 18px;
+		min-width: 0;
+	}
+
+	.title-block { min-width: 0; }
+	.back-link { display: inline-flex; margin-bottom: 3px; color: #2b5b76; text-decoration: none; font-weight: 900; font-size: 0.85rem; line-height: 1; }
+	.eyebrow,
+	.mini-kicker { margin: 0 0 6px; color: #f2761e; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 950; }
+	.deck-topbar h1 { margin: 0; font-size: clamp(1.45rem, 2.25vw, 2.5rem); line-height: 0.98; color: #23304d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+	.top-actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+
+	.objective-pill,
+	.score-pill,
+	.fullscreen-toggle,
+	.primary-button,
+	.secondary-button,
+	.teacher-button {
+		min-height: 48px;
+		border: 0;
+		border-radius: 999px;
+		padding: 10px 18px;
+		font: inherit;
+		font-weight: 950;
+		cursor: pointer;
+	}
+	.objective-pill { display: inline-flex; align-items: center; background: #23304d; color: #fff; }
+	.score-pill { background: #fff3e9; color: #b94e09; }
+	.fullscreen-toggle,
+	.teacher-button { background: #23304d; color: #fff; }
+	.fullscreen-toggle.is-active { background: #2b7fa8; }
+	.primary-button { background: #f2761e; color: #fff; }
+	.secondary-button { background: #eef4f8; color: #23304d; }
+	button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+	.progress-area { position: relative; display: flex; align-items: center; gap: 12px; }
+	.progress-track { flex: 1; height: 12px; border-radius: 999px; background: rgba(35, 48, 77, 0.12); overflow: hidden; }
+	.progress-track span { display: block; width: 11.11%; height: 100%; background: linear-gradient(90deg, #f2761e, #3eb6ea); border-radius: inherit; transition: width 0.25s ease; }
+	.progress-label { flex: 0 0 auto; font-size: 0.82rem; font-weight: 900; color: #46536b; }
+
+	.deck-layout { min-height: 0; height: 100%; display: grid; grid-template-columns: minmax(112px, 9.5vw) minmax(0, 1fr); gap: 10px; }
+	.slide-map { border-radius: 18px; padding: 8px; display: grid; align-content: start; gap: 6px; overflow: hidden; }
+	.slide-dot { display: flex; align-items: center; gap: 7px; min-height: 42px; padding: 5px 7px; border: 1px solid transparent; border-radius: 12px; background: transparent; color: #46536b; font: inherit; font-size: clamp(0.64rem, 0.8vw, 0.82rem); font-weight: 900; cursor: pointer; text-align: left; }
+	.slide-dot span { display: inline-grid; place-items: center; width: 24px; height: 24px; flex: 0 0 auto; border-radius: 999px; background: rgba(35,48,77,0.1); color: #23304d; font-size: 0.74rem; }
+	.slide-dot.is-active { background: #23304d; color: #fff; border-color: #23304d; }
+	.slide-dot.is-active span { background: #fff; color: #23304d; }
+
+	.slide-stage { min-width: 0; min-height: 0; height: 100%; }
+	.lesson-slide { display: none; height: 100%; min-height: 0; overflow: hidden; border-radius: 24px; padding: clamp(18px, 2.2vw, 34px); box-sizing: border-box; }
+	.lesson-slide.is-active { display: flex; flex-direction: column; }
+	.slide-label { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; margin-bottom: clamp(8px, 1.1vh, 14px); font-weight: 950; color: #526077; }
+	.slide-label span { padding: 6px 10px; border-radius: 999px; background: #fff3e9; color: #d55d0f; }
+	.lesson-slide h2 { margin: 0 0 clamp(8px, 1.2vh, 14px); font-size: clamp(1.8rem, 3.8vw, 4.2rem); line-height: 0.97; color: #23304d; letter-spacing: -0.04em; }
+	.lesson-slide h3 { margin: 0 0 8px; color: #23304d; }
+	.slide-lede { margin: 0 0 12px; max-width: 850px; font-size: clamp(1rem, 1.45vw, 1.25rem); line-height: 1.35; color: #4b5870; }
+
+	.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(200px, 20vw); gap: 18px; min-height: 0; height: 100%; }
+	.success-box,
+	.badge-card,
+	.group-instructions,
+	.tile-bank-card,
+	.group-zones,
+	.answer-strip,
+	.warning-box,
+	.choice-game,
+	.concept-card,
+	.step-card,
+	.timer-card,
+	.race-questions > div,
+	.exit-grid > div,
+	.sample-answer,
+	.student-work {
+		border-radius: 20px;
+		border: 1px solid rgba(35, 48, 77, 0.12);
+		background: #fff;
+	}
+	.success-box { margin-top: 12px; padding: 16px; background: #f3fbff; }
+	.success-box ul { margin: 8px 0 0; padding-left: 22px; line-height: 1.4; color: #334155; font-size: clamp(0.92rem, 1.05vw, 1.05rem); }
+	.badge-card { display: grid; place-items: center; align-content: center; text-align: center; padding: 20px; background: linear-gradient(145deg, #23304d, #35507d); color: #fff; }
+	.badge-card span { color: #fff; font-size: clamp(4rem, 8vw, 7rem); line-height: 0.9; font-weight: 950; }
+	.badge-card strong,
+	.badge-card p { color: #fff; }
+	.badge-card p { margin: 10px 0 0; line-height: 1.4; }
+
+	.grouping-game { display: grid; grid-template-columns: minmax(250px, 0.78fr) minmax(0, 1.65fr); gap: 12px; min-height: 0; height: 100%; }
+	.group-instructions { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+	.group-instructions p { margin: 0; color: #40506a; line-height: 1.34; font-size: clamp(0.9rem, 1.02vw, 1.02rem); }
+	.status-card,
+	.feedback-line { margin: 0; padding: 11px 13px; border-radius: 15px; background: #f7f8fb; color: #40506a; font-weight: 850; line-height: 1.32; }
+	.button-row { display: flex; gap: 9px; flex-wrap: wrap; margin-top: auto; }
+	.group-workspace { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 8px; min-height: 0; }
+	.tile-bank-card { padding: 10px; }
+	.tile-bank-card h3 { margin: 0 0 6px; }
+	.tile-bank { display: grid; grid-template-columns: repeat(5, minmax(34px, 1fr)); gap: 6px; }
+	.tile { display: inline-grid; place-items: center; height: 34px; min-width: 34px; padding: 0 8px; border: 0; border-radius: 11px; color: #fff; font-weight: 950; font-size: 0.95rem; cursor: pointer; transition: transform 0.15s ease, outline-color 0.15s ease; }
+	.tile.is-selected { outline: 4px solid rgba(242,118,30,0.38); transform: translateY(-2px); }
+	.tile-x { background: linear-gradient(145deg,#3eb6ea,#177ea8); }
+	.tile-one { background: linear-gradient(145deg,#f2761e,#c24f0c); }
+	.group-zones { padding: 9px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; min-height: 0; }
+	.group-zone { min-width: 0; min-height: 0; padding: 9px; border-radius: 16px; background: #fbfdff; border: 2px dashed rgba(35,48,77,0.22); display: grid; grid-template-rows: auto 1fr auto; gap: 6px; text-align: left; color: #23304d; cursor: pointer; }
+	.group-zone strong { font-size: 0.95rem; color: #23304d; }
+	.group-zone small { color: #40506a; font-weight: 900; }
+	.group-zone.is-ready { border-color: #40a76f; background: #ecfdf3; }
+	.group-zone.is-target { border-color: #f2761e; box-shadow: inset 0 0 0 2px rgba(242,118,30,0.12); }
+	.tile-area { display: grid; grid-template-columns: repeat(3, minmax(28px, 1fr)); align-content: start; gap: 5px; min-height: 90px; overflow: hidden; }
+	.answer-strip { padding: 9px 12px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; color: #23304d; }
+
+	.concept-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 12px; align-items: stretch; margin-top: 20px; }
+	.concept-card { padding: 16px; display: grid; gap: 8px; align-content: start; }
+	.concept-card > span { color: #f2761e; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 950; font-size: 0.76rem; }
+	.concept-card strong { color: #23304d; font-size: clamp(1.2rem, 1.8vw, 1.65rem); }
+	.concept-card p { margin: 0; color: #40506a; line-height: 1.35; }
+	.flow-arrow { display: grid; place-items: center; color: #f2761e; font-size: 2.2rem; font-weight: 950; }
+	.warning-box { margin-top: 14px; padding: 14px 16px; background: #fff8ee; color: #5f3b19; line-height: 1.4; }
+
+	.compact-title {
+		font-size: clamp(1.75rem, 3.1vw, 3.5rem) !important;
+		line-height: 1.02 !important;
+	}
+
+	.hcf-concept-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+		gap: 14px;
+		min-height: 0;
+		height: 100%;
+	}
+
+	.hcf-main-panel,
+	.hcf-side-panel {
+		min-height: 0;
+		display: grid;
+		gap: 10px;
+	}
+
+	.hcf-main-panel {
+		grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+	}
+
+	.hcf-side-panel {
+		grid-template-rows: auto auto minmax(0, 1fr);
+	}
+
+	.factor-line-card,
+	.rule-card,
+	.division-check-card,
+	.teacher-cue-card {
+		border-radius: 20px;
+		border: 1px solid rgba(35, 48, 77, 0.12);
+		background: #ffffff;
+		padding: clamp(12px, 1.4vw, 18px);
+		box-shadow: 0 12px 30px rgba(30, 41, 59, 0.055);
+		color: #23304d;
+	}
+
+	.factor-line-card {
+		display: grid;
+		align-content: center;
+		gap: 7px;
+	}
+
+	.factor-line-card > span,
+	.rule-card > span,
+	.division-check-card > span {
+		color: #f2761e;
+		font-size: 0.72rem;
+		font-weight: 950;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.factor-line-card strong {
+		display: block;
+		font-size: clamp(1.28rem, 2vw, 2rem);
+		line-height: 1.1;
+		color: #23304d;
+	}
+
+	.factor-line-card p,
+	.rule-card p,
+	.division-check-card p,
+	.teacher-cue-card p {
+		margin: 0;
+		font-size: clamp(0.9rem, 1.05vw, 1.05rem);
+		line-height: 1.34;
+		color: #40506a;
+	}
+
+	.start-card { background: #fff8ee; }
+	.group-card { background: #f3fbff; }
+	.result-card { background: #ecfdf3; }
+
+	.factor-line-arrow {
+		display: grid;
+		place-items: center;
+		min-height: 20px;
+		color: #f2761e;
+		font-size: clamp(1.3rem, 2vw, 2rem);
+		font-weight: 950;
+	}
+
+	.rule-card {
+		display: grid;
+		gap: 8px;
+		background: #fff8ee;
+	}
+
+	.division-check-card {
+		display: grid;
+		gap: 8px;
+	}
+
+	.division-row {
+		display: grid;
+		place-items: center;
+		min-height: 46px;
+		border-radius: 15px;
+		background: #f3fbff;
+		border: 1px solid rgba(62, 182, 234, 0.22);
+		font-size: clamp(1rem, 1.35vw, 1.35rem);
+		font-weight: 950;
+		color: #23304d;
+	}
+
+	.teacher-cue-card {
+		display: grid;
+		align-content: center;
+		gap: 7px;
+		background: #23304d;
+	}
+
+	.teacher-cue-card strong,
+	.teacher-cue-card p {
+		color: #ffffff;
+	}
+
+	.choice-game { padding: 16px; display: flex; flex-direction: column; gap: 11px; min-height: 0; }
+	.game-header { display: flex; align-items: start; justify-content: space-between; gap: 18px; }
+	.round-label { display: inline-flex; margin-bottom: 5px; color: #f2761e; font-weight: 950; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.78rem; }
+	.local-score { display: grid; place-items: center; min-width: 86px; padding: 10px; border-radius: 18px; background: #f3fbff; color: #23304d; }
+	.local-score span { color: #40506a; font-weight: 850; font-size: 0.78rem; }
+	.local-score strong { font-size: 1.75rem; color: #23304d; }
+	.big-expression { display: grid; place-items: center; min-height: 96px; border-radius: 20px; background: linear-gradient(145deg, #fff3e9, #eef9ff); font-size: clamp(2.2rem, 5vw, 4.8rem); font-weight: 950; color: #23304d; }
+	.option-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 8px; }
+	.option-card {
+		position: relative;
+		min-height: 92px;
+		padding: 0;
+		border: 2px solid rgba(35,48,77,0.12);
+		background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+		color: #23304d;
+		border-radius: 22px;
+		overflow: hidden;
+		font: inherit;
+		cursor: pointer;
+		text-align: left;
+		display: grid;
+		grid-template-columns: 72px minmax(0, 1fr);
+		box-shadow: 0 8px 20px rgba(35, 48, 77, 0.06);
+		transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+	}
+	.option-card:hover,
+	.option-card:focus-visible {
+		transform: translateY(-2px);
+		border-color: #39afe3;
+		box-shadow: 0 12px 24px rgba(62, 182, 234, 0.18);
+		outline: none;
+	}
+	.option-card:disabled { cursor: default; }
+	.option-card::after {
+		content: '';
+		position: absolute;
+		inset: auto 0 0 0;
+		height: 4px;
+		background: linear-gradient(90deg, #f27c22, #39afe3);
+		opacity: 0;
+		transition: opacity 0.16s ease;
+	}
+	.option-card:hover::after,
+	.option-card:focus-visible::after,
+	.option-card.is-correct::after,
+	.option-card.is-wrong::after { opacity: 1; }
+	.option-letter {
+		display: grid;
+		place-items: center;
+		padding: 12px;
+		background: linear-gradient(180deg, #eef5fb 0%, #e7f0f7 100%);
+		color: #23304d;
+		font-weight: 950;
+		font-size: 1.24rem;
+	}
+	.option-letter::before {
+		content: '';
+		width: 38px;
+		height: 38px;
+		border-radius: 999px;
+		background: #ffffff;
+		box-shadow: inset 0 0 0 2px rgba(35,48,77,0.08);
+		position: absolute;
+		left: 17px;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 0;
+	}
+	.option-letter { position: relative; z-index: 1; }
+	.option-content {
+		display: grid;
+		align-content: center;
+		justify-items: center;
+		padding: 16px 18px;
+		min-width: 0;
+		font-size: clamp(1rem, 1.25vw, 1.24rem);
+		font-weight: 950;
+		line-height: 1.2;
+		text-align: center;
+	}
+	.option-card.math-option .option-content { font-size: clamp(1.22rem, 2vw, 1.9rem); }
+	.option-card.math-option .option-content .mathjax { display: inline-flex; justify-content: center; width: 100%; }
+	.option-card.is-correct { border-color: #2f9f65; background: #ecfdf3; }
+	.option-card.is-correct .option-letter { color: #ffffff; background: linear-gradient(180deg, #2f9f65 0%, #278654 100%); }
+	.option-card.is-correct .option-letter::before { background: rgba(255,255,255,0.18); box-shadow: inset 0 0 0 2px rgba(255,255,255,0.18); }
+	.option-card.is-wrong { border-color: #d75b5b; background: #fff1f1; }
+	.option-card.is-wrong .option-letter { color: #ffffff; background: linear-gradient(180deg, #d75b5b 0%, #c74848 100%); }
+	.option-card.is-wrong .option-letter::before { background: rgba(255,255,255,0.16); box-shadow: inset 0 0 0 2px rgba(255,255,255,0.16); }
+	.text-options .option-card { min-height: 82px; }
+	.text-options .option-content { justify-items: start; text-align: left; font-size: clamp(0.88rem, 1vw, 1rem); line-height: 1.32; font-weight: 850; }
+	.lesson-slide[data-slide-title="HCF Hunter"] .option-grid,
+	.lesson-slide[data-slide-title="Factor Factory"] .option-grid { gap: 16px; }
+
+	.step-reveal { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; margin-top: 14px; }
+	.step-card { display: none; padding: 15px; min-height: 110px; }
+	.step-card.is-visible { display: block; }
+	.step-card strong { display: inline-grid; place-items: center; width: 76px; min-height: 32px; border-radius: 999px; background: #23304d; color: #fff; }
+	.step-card p { margin: 10px 0 0; color: #40506a; font-weight: 850; line-height: 1.38; }
+	.step-reveal .button-row { grid-column: 1 / -1; margin-top: 0; }
+
+	.factory-row { display: grid; grid-template-columns: minmax(0, 1fr) 180px; gap: 12px; align-items: center; }
+	.conveyor { min-height: 92px; display: grid; place-items: center; border-radius: 20px; background: #fff8ee; font-size: clamp(2rem, 4.5vw, 4.3rem); font-weight: 950; }
+	.machine { min-height: 92px; display: grid; place-items: center; border-radius: 20px; background: #23304d; color: #fff; text-align: center; font-weight: 950; letter-spacing: 0.08em; line-height: 1.22; }
+
+	.student-work { padding: 14px 16px; background: #fff8ee; }
+	.student-work > span { color: #b94e09; font-weight: 950; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.76rem; }
+	.student-work p { margin: 6px 0 0; font-size: clamp(1.8rem, 3.5vw, 3.5rem); color: #23304d; font-weight: 950; }
+
+	.race-layout { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 14px; min-height: 0; height: 100%; }
+	.timer-card { padding: 18px; display: grid; place-items: center; align-content: center; gap: 10px; background: #23304d; color: #fff; }
+	.timer-card span,
+	.timer-card strong,
+	.timer-card small { color: #fff; }
+	.timer-card strong { font-size: clamp(3rem, 7vw, 6rem); line-height: 0.9; }
+	.timer-card .secondary-button { background: rgba(255,255,255,0.16); color: #fff; }
+	.race-questions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+	.race-questions > div { padding: 16px; display: grid; gap: 11px; align-content: start; }
+	.race-questions > div > span { font-size: clamp(1.5rem, 2.8vw, 2.5rem); font-weight: 950; }
+	.race-questions button { border: 0; border-radius: 999px; min-height: 46px; background: #f2761e; color: #fff; font: inherit; font-weight: 950; cursor: pointer; }
+	.hidden-answer { display: none; }
+	.hidden-answer.is-visible { display: block; }
+
+
+	/* Slide 8: interactive 6-team board race */
+	.race-game {
+		display: grid;
+		grid-template-rows: auto minmax(0, 1fr) auto;
+		gap: 10px;
+		height: 100%;
+		min-height: 0;
+		overflow: hidden;
+	}
+
+	.race-toolbar {
+		display: grid;
+		grid-template-columns: 112px 112px minmax(0, 1fr);
+		gap: 10px;
+		align-items: stretch;
+	}
+
+	.race-meta-card {
+		display: grid;
+		place-items: center;
+		align-content: center;
+		gap: 2px;
+		min-height: 58px;
+		padding: 8px;
+		border-radius: 17px;
+		background: #f3fbff;
+		border: 1px solid rgba(35, 48, 77, 0.1);
+		color: #23304d;
+		font-weight: 900;
+	}
+
+	.race-meta-card span { color: #40506a; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 950; }
+	.race-meta-card strong { color: #23304d; font-size: 1.15rem; line-height: 1; }
+	.timer-mini { background: #fff8ee; }
+
+	.race-actions {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: 8px;
+		min-width: 0;
+	}
+
+	.race-actions .primary-button,
+	.race-actions .secondary-button {
+		min-height: 46px;
+		padding: 9px 14px;
+		border-radius: 15px;
+		white-space: nowrap;
+	}
+
+	.race-team-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-rows: repeat(2, minmax(0, 1fr));
+		gap: 10px;
+		min-height: 0;
+	}
+
+	.race-team-card {
+		min-width: 0;
+		min-height: 0;
+		padding: 10px;
+		border-radius: 18px;
+		border: 1px solid rgba(35, 48, 77, 0.12);
+		background: linear-gradient(180deg, #ffffff, #f8fbff);
+		display: grid;
+		grid-template-rows: auto minmax(54px, 1fr) auto auto;
+		gap: 7px;
+		overflow: hidden;
+	}
+
+	.team-head {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 8px;
+		color: #23304d;
+	}
+
+	.team-head strong { font-size: clamp(0.88rem, 1.05vw, 1.05rem); color: #23304d; }
+	.team-head span { display: inline-flex; align-items: center; gap: 5px; padding: 5px 8px; border-radius: 999px; background: #fff3e9; color: #b94e09; font-size: 0.72rem; font-weight: 950; white-space: nowrap; }
+	.team-head b { font-size: 0.9rem; color: #23304d; }
+
+	.team-expression {
+		display: grid;
+		place-items: center;
+		min-height: 54px;
+		padding: 5px;
+		border-radius: 15px;
+		background: linear-gradient(145deg, #fff8ee, #eef9ff);
+		border: 1px solid rgba(62, 182, 234, 0.16);
+		color: #23304d;
+		font-size: clamp(1.35rem, 2.35vw, 2.35rem);
+		font-weight: 950;
+		text-align: center;
+		min-width: 0;
+	}
+
+	.team-answer {
+		margin: 0;
+		min-height: 30px;
+		padding: 6px 8px;
+		border-radius: 12px;
+		background: #ecfdf3;
+		color: #1f6b45;
+		font-weight: 900;
+		font-size: clamp(0.76rem, 0.92vw, 0.95rem);
+		line-height: 1.2;
+		text-align: center;
+	}
+
+	.team-answer[hidden] { display: none; }
+
+	.team-actions {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 7px;
+	}
+
+	.team-actions button {
+		border: 0;
+		min-height: 38px;
+		border-radius: 13px;
+		font: inherit;
+		font-weight: 950;
+		cursor: pointer;
+	}
+
+	.team-actions button[data-reveal-answer] { background: #eef4f8; color: #23304d; }
+	.team-actions button[data-add-score] { background: #f2761e; color: #ffffff; }
+
+	.race-status {
+		min-height: 38px;
+		display: flex;
+		align-items: center;
+		padding: 8px 12px;
+		border-radius: 14px;
+		background: #f7f8fb;
+		color: #23304d;
+		font-weight: 850;
+		font-size: clamp(0.78rem, 0.92vw, 0.95rem);
+		line-height: 1.18;
+	}
+
+	.lesson-slide[data-slide-title="Board Race"] h2 {
+		font-size: clamp(2rem, 3.9vw, 4.2rem);
+		margin-bottom: 6px;
+	}
+
+	.lesson-slide[data-slide-title="Board Race"] .mini-kicker {
+		margin-bottom: 3px;
+	}
+
+	@media (max-height: 760px) {
+		.lesson-slide[data-slide-title="Board Race"] h2 { font-size: clamp(1.8rem, 3.25vw, 3.45rem); }
+		.race-toolbar { grid-template-columns: 96px 96px minmax(0, 1fr); gap: 8px; }
+		.race-meta-card { min-height: 50px; padding: 6px; }
+		.race-actions .primary-button,
+		.race-actions .secondary-button { min-height: 40px; padding: 7px 11px; font-size: 0.84rem; }
+		.race-team-grid { gap: 8px; }
+		.race-team-card { padding: 8px; gap: 5px; border-radius: 16px; }
+		.team-expression { min-height: 46px; font-size: clamp(1.2rem, 2vw, 2rem); }
+		.team-actions button { min-height: 34px; font-size: 0.82rem; }
+		.team-answer { min-height: 26px; padding: 5px 6px; }
+		.race-status { min-height: 34px; padding: 7px 10px; }
+	}
+
+	.exit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }
+	.exit-grid > div { padding: 16px; }
+	.exit-grid strong { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 999px; background: #23304d; color: #fff; }
+	.exit-grid p { margin: 10px 0 0; color: #40506a; line-height: 1.4; font-weight: 850; }
+	.sample-answer { padding: 15px; margin-top: 12px; background: #f3fbff; }
+	.sample-answer p { margin: 0 0 8px; color: #334155; line-height: 1.4; }
+
+	.deck-controls { border-radius: 18px; padding: 8px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+	.teacher-notes { position: fixed; right: 18px; bottom: 84px; z-index: 10020; width: min(480px, calc(100vw - 36px)); }
+	.teacher-notes-card { border-radius: 22px; background: #23304d; color: #fff; padding: 20px; box-shadow: 0 24px 80px rgba(30,41,59,0.24); }
+	.teacher-notes-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+	.teacher-notes-head strong,
+	.teacher-notes p { color: #fff; }
+	.teacher-notes-head button { width: 38px; height: 38px; border-radius: 999px; border: 0; background: rgba(255,255,255,0.18); color: #fff; font-size: 1.45rem; cursor: pointer; }
+	.teacher-notes p { margin: 0; line-height: 1.55; }
+
+	mjx-container { font-size: inherit !important; max-width: 100%; }
+	.mathjax { display: inline-block; max-width: 100%; }
+
+	@media (max-width: 980px) {
+		.deck-shell { padding: 8px; grid-template-rows: 74px 10px minmax(0, 1fr) 64px; gap: 8px; }
+		.deck-layout { grid-template-columns: 1fr; }
+		.slide-map { display: none; }
+		.hero-grid,
+		.grouping-game,
+		.hcf-concept-layout,
+		.concept-flow,
+		.race-layout,
+		.race-questions,
+		.exit-grid { grid-template-columns: 1fr; }
+		.flow-arrow,
+		.badge-card { display: none; }
+		.group-zones,
+		.option-grid,
+		.step-reveal { grid-template-columns: 1fr; }
+	}
+
+	@media (max-width: 720px) {
+		.objective-pill,
+		.score-pill { display: none; }
+		.deck-topbar h1 { font-size: 1.15rem; }
+		.fullscreen-toggle,
+		.primary-button,
+		.secondary-button,
+		.teacher-button { padding: 8px 10px; min-height: 46px; font-size: 0.82rem; }
+	}
+
+	/* Section 2 rebuilt: equal-group builder for factorising */
+	.tight-lede {
+		max-width: 980px;
+		margin-bottom: 10px;
+		font-size: clamp(0.92rem, 1.14vw, 1.12rem);
+		line-height: 1.32;
+	}
+
+	.equal-group-builder {
+		display: grid;
+		grid-template-rows: auto minmax(260px, 1fr) auto;
+		gap: 10px;
+		height: 100%;
+		min-height: 0;
+		overflow: hidden;
+	}
+
+	.egb-top-row {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.9fr);
+		gap: 10px;
+		min-height: 0;
+	}
+
+	.source-panel,
+	.why-panel,
+	.factor-result {
+		border: 1px solid rgba(35,48,77,0.12);
+		border-radius: 20px;
+		background: #ffffff;
+		box-shadow: 0 12px 30px rgba(30, 41, 59, 0.06);
+	}
+
+	.source-panel {
+		padding: 12px;
+		display: grid;
+		gap: 8px;
+		min-height: 162px;
+		overflow: hidden;
+	}
+
+	.panel-heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		color: #23304d;
+	}
+
+	.panel-heading > span,
+	.why-tag,
+	.factor-result span:first-child {
+		font-size: 0.72rem;
+		font-weight: 950;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #f2761e;
+	}
+
+	.panel-heading strong {
+		font-size: clamp(1.1rem, 1.5vw, 1.45rem);
+		color: #23304d;
+	}
+
+	.bank-note {
+		margin: 0;
+		color: #40506a;
+		font-size: clamp(0.82rem, 0.94vw, 0.96rem);
+		line-height: 1.25;
+	}
+
+	.equal-group-builder .tile-bank {
+		display: grid;
+		grid-template-columns: repeat(8, minmax(34px, 1fr));
+		gap: 6px;
+		align-content: start;
+		min-height: 0;
+	}
+
+	.equal-group-builder .tile {
+		display: inline-grid;
+		place-items: center;
+		height: clamp(36px, 4.5vh, 48px);
+		min-width: 36px;
+		padding: 0 8px;
+		border: 0;
+		border-radius: 13px;
+		color: #fff;
+		font-weight: 950;
+		font-size: clamp(1rem, 1.28vw, 1.22rem);
+		cursor: pointer;
+		transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
+	}
+
+	.equal-group-builder .tile:hover,
+	.equal-group-builder .tile:focus-visible {
+		transform: translateY(-2px) scale(1.03);
+		box-shadow: 0 10px 22px rgba(30, 41, 59, 0.18);
+	}
+
+	.equal-group-builder .tile.just-moved {
+		animation: tile-pop 0.26s ease;
+	}
+
+	@keyframes tile-pop {
+		0% { transform: scale(0.82); opacity: 0.5; }
+		100% { transform: scale(1); opacity: 1; }
+	}
+
+	.why-panel {
+		padding: 12px 14px;
+		display: grid;
+		grid-template-rows: auto auto auto auto minmax(84px, auto);
+		align-content: start;
+		gap: 7px;
+		min-height: 162px;
+		overflow: hidden;
+		color: #23304d;
+	}
+
+	.why-panel p {
+		margin: 0;
+		font-size: clamp(0.86rem, 1vw, 1rem);
+		line-height: 1.34;
+		color: #40506a;
+	}
+
+	.mini-equations {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 8px;
+	}
+
+	.mini-equations > span {
+		display: grid;
+		place-items: center;
+		min-height: 44px;
+		border-radius: 14px;
+		background: #f3fbff;
+		border: 1px solid rgba(62,182,234,0.2);
+		color: #23304d;
+		font-weight: 900;
+	}
+
+	.equal-group-builder .group-zones {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 10px;
+		padding: 0;
+		min-height: 0;
+	}
+
+	.equal-group-builder .group-zone {
+		min-width: 0;
+		min-height: 0;
+		padding: 12px;
+		border-radius: 22px;
+		background: #fbfdff;
+		border: 3px dashed rgba(35,48,77,0.20);
+		display: grid;
+		grid-template-rows: auto minmax(0, 1fr);
+		gap: 8px;
+		text-align: left;
+		color: #23304d;
+		cursor: default;
+	}
+
+	.equal-group-builder .group-zone.needs-x,
+	.equal-group-builder .group-zone.needs-one {
+		background: linear-gradient(180deg, #ffffff, #f7fbff);
+	}
+
+	.equal-group-builder .group-zone.is-ready {
+		border-style: solid;
+		border-color: #2f9f65;
+		background: #ecfdf3;
+	}
+
+	.group-title {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
+	}
+
+	.group-title strong {
+		font-size: clamp(0.9rem, 1.05vw, 1.05rem);
+		color: #23304d;
+	}
+
+	.group-title small {
+		display: inline-grid;
+		place-items: center;
+		min-width: 72px;
+		padding: 5px 8px;
+		border-radius: 999px;
+		background: rgba(35,48,77,0.08);
+		color: #23304d;
+		font-weight: 950;
+	}
+
+	.equal-group-builder .tile-area {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(30px, 1fr));
+		grid-auto-rows: minmax(42px, auto);
+		align-content: start;
+		gap: 7px;
+		min-height: 0;
+		overflow: hidden;
+	}
+
+	.egb-bottom-row {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 10px;
+		align-items: center;
+	}
+
+	.equal-group-builder .status-card {
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+		padding: 10px 13px;
+		border-radius: 16px;
+		background: #f7f8fb;
+		color: #23304d;
+		font-weight: 850;
+		line-height: 1.25;
+	}
+
+	.compact-actions {
+		margin-top: 0;
+		justify-content: flex-end;
+		white-space: nowrap;
+	}
+
+	.factor-result {
+		margin-top: 0;
+		display: grid;
+		gap: 5px;
+		min-height: 86px;
+		padding: 9px 11px;
+		border-radius: 15px;
+		background: #fff8ee;
+		border: 1px solid rgba(242,118,30,0.18);
+		overflow: hidden;
+	}
+
+	.equal-group-builder.is-complete .why-panel {
+		border-color: rgba(47,159,101,0.36);
+		background: linear-gradient(180deg, #ffffff, #f6fff9);
+	}
+
+	.result-placeholder {
+		display: block;
+	}
+
+	.result-content {
+		display: none;
+	}
+
+	.factor-result.is-visible .result-placeholder {
+		display: none;
+	}
+
+	.factor-result.is-visible .result-content {
+		display: grid;
+		gap: 4px;
+	}
+
+	.factor-result strong {
+		display: block;
+		margin-top: 0;
+		font-size: clamp(0.92rem, 1.08vw, 1.08rem);
+		line-height: 1.12;
+		color: #23304d;
+	}
+
+	.factor-result p {
+		margin: 0;
+		color: #5f3b19;
+		font-size: clamp(0.72rem, 0.82vw, 0.84rem);
+		line-height: 1.22;
+	}
+
+	@media (max-width: 980px) {
+		.egb-top-row,
+		.egb-bottom-row,
+		.factor-result {
+			grid-template-columns: 1fr;
+		}
+
+		.equal-group-builder .tile-bank {
+			grid-template-columns: repeat(5, minmax(34px, 1fr));
+		}
+
+		.equal-group-builder .group-zones {
+			grid-template-columns: 1fr;
+		}
+	}
+
+
+	.shepherd-puzzle {
+		flex: 1 1 auto;
+		display: grid;
+		grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+		gap: 9px;
+		min-height: 0;
+		overflow: hidden;
+	}
+
+	.story-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(220px, 0.45fr);
+		gap: 12px;
+		align-items: stretch;
+		padding: 14px 16px;
+		border-radius: 20px;
+		background: #fff8ee;
+		border: 1px solid rgba(242,118,30,0.18);
+		color: #23304d;
+	}
+
+	.story-label {
+		display: block;
+		margin-bottom: 6px;
+		font-size: 0.68rem;
+		font-weight: 950;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #f2761e;
+	}
+
+	.story-card h3 {
+		margin: 0 0 6px;
+		font-size: clamp(1.05rem, 1.45vw, 1.45rem);
+		color: #23304d;
+	}
+
+	.story-card p {
+		margin: 0;
+		font-size: clamp(0.8rem, 0.95vw, 0.98rem);
+		line-height: 1.28;
+		color: #40506a;
+	}
+
+	.story-equation {
+		display: grid;
+		gap: 7px;
+		align-content: center;
+	}
+
+	.story-equation > span {
+		display: grid;
+		place-items: center;
+		min-height: 38px;
+		border-radius: 14px;
+		background: #f3fbff;
+		border: 1px solid rgba(62,182,234,0.22);
+		color: #23304d;
+		font-weight: 900;
+	}
+
+	.animal-yard {
+		display: grid;
+		grid-template-columns: repeat(15, minmax(36px, 1fr));
+		gap: 6px;
+		padding: 10px;
+		border-radius: 18px;
+		background: #ffffff;
+		border: 1px solid rgba(35,48,77,0.1);
+		min-height: 58px;
+	}
+
+	.animal-tile {
+		display: inline-grid;
+		place-items: center;
+		height: clamp(34px, 4vh, 44px);
+		min-width: 34px;
+		border: 0;
+		border-radius: 13px;
+		font-size: clamp(1.1rem, 1.45vw, 1.45rem);
+		cursor: pointer;
+		transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
+	}
+
+	.animal-tile.chicken {
+		background: linear-gradient(135deg, #dff5ff, #bce9ff);
+	}
+
+	.animal-tile.duck {
+		background: linear-gradient(135deg, #fff1c7, #ffd46e);
+	}
+
+	.animal-tile:hover,
+	.animal-tile:focus-visible {
+		transform: translateY(-2px) scale(1.04);
+		box-shadow: 0 10px 20px rgba(30,41,59,0.14);
+	}
+
+	.animal-tile.is-hopping {
+		animation: animal-hop 0.28s ease;
+	}
+
+	@keyframes animal-hop {
+		0% { transform: translateY(-18px) scale(0.82); opacity: 0.4; }
+		100% { transform: translateY(0) scale(1); opacity: 1; }
+	}
+
+	.animal-pens {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 10px;
+		min-height: 0;
+	}
+
+	.animal-pen {
+		padding: 10px;
+		border-radius: 20px;
+		border: 2px dashed rgba(35,48,77,0.20);
+		background: #fbfdff;
+		display: grid;
+		grid-template-rows: auto minmax(0, 1fr);
+		gap: 8px;
+		min-height: 0;
+	}
+
+	.animal-pen.is-ready {
+		border-style: solid;
+		border-color: #2f9f65;
+		background: #ecfdf3;
+	}
+
+	.pen-title {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
+		color: #23304d;
+	}
+
+	.pen-title strong {
+		font-size: clamp(0.85rem, 1.05vw, 1.05rem);
+	}
+
+	.pen-title small {
+		display: inline-grid;
+		place-items: center;
+		min-width: 82px;
+		padding: 5px 8px;
+		border-radius: 999px;
+		background: rgba(35,48,77,0.08);
+		color: #23304d;
+		font-weight: 950;
+	}
+
+	.animal-area {
+		display: grid;
+		grid-template-columns: repeat(5, minmax(30px, 1fr));
+		grid-auto-rows: minmax(34px, 42px);
+		align-content: start;
+		gap: 6px;
+		min-height: 0;
+		overflow: hidden;
+	}
+
+	.warmup-bottom {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 10px;
+		align-items: center;
+	}
+
+	.warmup-status {
+		min-height: 40px;
+		display: flex;
+		align-items: center;
+		padding: 9px 13px;
+		border-radius: 14px;
+		background: #f7f8fb;
+		color: #23304d;
+		font-weight: 850;
+		line-height: 1.2;
+	}
+
+	.warmup-link {
+		display: none;
+		padding: 10px 13px;
+		border-radius: 16px;
+		background: #f3fbff;
+		border: 1px solid rgba(62,182,234,0.22);
+		color: #23304d;
+		font-size: clamp(0.8rem, 0.95vw, 0.98rem);
+		line-height: 1.25;
+	}
+
+	.warmup-link.is-visible {
+		display: block;
+	}
+
+	.lesson-slide[data-slide-title="Shepherd Warm-up"] h2 {
+		font-size: clamp(2.15rem, 3.7vw, 4.7rem);
+		line-height: 0.96;
+		margin-bottom: 6px;
+	}
+
+	.lesson-slide[data-slide-title="Shepherd Warm-up"] .slide-label,
+	.lesson-slide[data-slide-title="Shepherd Warm-up"] .mini-kicker,
+	.lesson-slide[data-slide-title="Shepherd Warm-up"] h2,
+	.lesson-slide[data-slide-title="Shepherd Warm-up"] .tight-lede {
+		flex: 0 0 auto;
+	}
+
+	.lesson-slide[data-slide-title="Shepherd Warm-up"] .tight-lede {
+		margin: 0 0 8px;
+		font-size: clamp(0.88rem, 1vw, 1.08rem);
+		line-height: 1.22;
+	}
+
+	@media (max-height: 760px) {
+		.lesson-slide[data-slide-title="Shepherd Warm-up"] h2 {
+			font-size: clamp(1.8rem, 3.1vw, 3.7rem);
+		}
+		.animal-yard {
+			grid-template-columns: repeat(15, minmax(28px, 1fr));
+			gap: 4px;
+			padding: 7px;
+		}
+		.animal-tile {
+			height: 30px;
+			font-size: 1.05rem;
+			border-radius: 9px;
+		}
+		.animal-area {
+			grid-auto-rows: minmax(28px, 32px);
+			gap: 4px;
+		}
+		.story-card {
+			padding: 9px 11px;
+		}
+	}
+
+
+	/* Slide 2 fit patch: keep the grouping activity inside one IFP screen */
+	.lesson-slide[data-slide-title="Equal Groups Hook"] {
+		min-height: 0;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .slide-label,
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .mini-kicker,
+	.lesson-slide[data-slide-title="Equal Groups Hook"] h2,
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .tight-lede {
+		flex: 0 0 auto;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] h2 {
+		font-size: clamp(2.15rem, 3.55vw, 4.35rem);
+		line-height: 0.96;
+		margin-bottom: 6px;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .mini-kicker {
+		margin-bottom: 4px;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .tight-lede {
+		margin: 0 0 8px;
+		font-size: clamp(0.82rem, 0.98vw, 1rem);
+		line-height: 1.22;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .equal-group-builder {
+		flex: 1 1 auto;
+		height: auto;
+		min-height: 0;
+		display: grid;
+		grid-template-rows: auto minmax(0, 1fr) auto;
+		gap: 7px;
+		overflow: hidden;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .egb-top-row {
+		grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.9fr);
+		gap: 8px;
+		align-items: stretch;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .source-panel,
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .why-panel {
+		min-height: 0;
+		padding: 9px 10px;
+		border-radius: 16px;
+		gap: 5px;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .panel-heading > span,
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .why-tag,
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .factor-result span:first-child {
+		font-size: 0.62rem;
+		letter-spacing: 0.07em;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .bank-note,
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .why-panel p,
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .factor-result p {
+		font-size: clamp(0.68rem, 0.78vw, 0.82rem);
+		line-height: 1.16;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .tile-bank {
+		grid-template-columns: repeat(10, minmax(24px, 1fr));
+		gap: 4px;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .tile {
+		height: clamp(26px, 3.4vh, 34px);
+		min-width: 28px;
+		padding: 0 6px;
+		border-radius: 9px;
+		font-size: clamp(0.82rem, 0.95vw, 1rem);
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .mini-equations {
+		gap: 6px;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .mini-equations > span {
+		min-height: 34px;
+		border-radius: 11px;
+		font-size: clamp(0.76rem, 0.9vw, 0.96rem);
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .factor-result {
+		min-height: 0;
+		padding: 7px 8px;
+		border-radius: 12px;
+		gap: 3px;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .factor-result strong {
+		font-size: clamp(0.74rem, 0.86vw, 0.92rem);
+		line-height: 1.05;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .group-zones {
+		min-height: 0;
+		height: 100%;
+		gap: 8px;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .group-zone {
+		min-height: 0;
+		padding: 8px;
+		border-radius: 17px;
+		border-width: 2px;
+		gap: 5px;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .group-title strong {
+		font-size: clamp(0.72rem, 0.88vw, 0.92rem);
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .group-title small {
+		min-width: 58px;
+		padding: 4px 6px;
+		font-size: clamp(0.68rem, 0.8vw, 0.82rem);
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .tile-area {
+		grid-template-columns: repeat(3, minmax(26px, 1fr));
+		grid-auto-rows: minmax(28px, 34px);
+		gap: 5px;
+		align-content: start;
+		overflow: hidden;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .egb-bottom-row {
+		gap: 7px;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .status-card {
+		min-height: 38px;
+		padding: 8px 11px;
+		border-radius: 13px;
+		font-size: clamp(0.75rem, 0.86vw, 0.92rem);
+		line-height: 1.12;
+	}
+
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .compact-actions .primary-button,
+	.lesson-slide[data-slide-title="Equal Groups Hook"] .compact-actions .secondary-button {
+		min-height: 40px;
+		padding: 7px 14px;
+		border-radius: 14px;
+		font-size: clamp(0.76rem, 0.9vw, 0.95rem);
+	}
+
+	@media (max-height: 760px) {
+		.lesson-slide[data-slide-title="Equal Groups Hook"] h2 {
+			font-size: clamp(1.9rem, 3.2vw, 3.7rem);
+		}
+
+		.lesson-slide[data-slide-title="Equal Groups Hook"] .slide-label {
+			margin-bottom: 6px;
+		}
+
+		.lesson-slide[data-slide-title="Equal Groups Hook"] .source-panel,
+		.lesson-slide[data-slide-title="Equal Groups Hook"] .why-panel {
+			padding: 7px 9px;
+		}
+
+		.lesson-slide[data-slide-title="Equal Groups Hook"] .tile {
+			height: 27px;
+			border-radius: 8px;
+		}
+
+		.lesson-slide[data-slide-title="Equal Groups Hook"] .tile-area {
+			grid-auto-rows: minmax(26px, 30px);
+			gap: 4px;
+		}
+	}
+
+
+	/* IMPORTANT: option cards are created by JavaScript, so they do not receive Astro's scoped CSS attribute.
+	   These global selectors make the A/B/C/D quiz options render as proper cards instead of default browser buttons. */
+	.option-grid :global(.option-card) {
+		position: relative;
+		min-height: 96px;
+		padding: 0;
+		border: 2px solid rgba(35,48,77,0.13);
+		background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+		color: #23304d;
+		border-radius: 24px;
+		overflow: hidden;
+		font: inherit;
+		cursor: pointer;
+		text-align: left;
+		display: grid;
+		grid-template-columns: 76px minmax(0, 1fr);
+		box-shadow: 0 10px 22px rgba(35, 48, 77, 0.07);
+		transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+		-webkit-appearance: none;
+		appearance: none;
+	}
+
+	.option-grid :global(.option-card:hover),
+	.option-grid :global(.option-card:focus-visible) {
+		transform: translateY(-2px);
+		border-color: #3eb6ea;
+		box-shadow: 0 14px 28px rgba(62, 182, 234, 0.2);
+		outline: none;
+	}
+
+	.option-grid :global(.option-card:disabled) {
+		cursor: default;
+	}
+
+	.option-grid :global(.option-card::after) {
+		content: '';
+		position: absolute;
+		inset: auto 0 0 0;
+		height: 5px;
+		background: linear-gradient(90deg, #f2761e, #3eb6ea);
+		opacity: 0;
+		transition: opacity 0.16s ease;
+	}
+
+	.option-grid :global(.option-card:hover::after),
+	.option-grid :global(.option-card:focus-visible::after),
+	.option-grid :global(.option-card.is-correct::after),
+	.option-grid :global(.option-card.is-wrong::after) {
+		opacity: 1;
+	}
+
+	.option-grid :global(.option-letter) {
+		display: grid;
+		place-items: center;
+		background: linear-gradient(180deg, #23304d 0%, #31456d 100%);
+		color: #ffffff;
+		font-weight: 950;
+		font-size: 1.28rem;
+		letter-spacing: 0.02em;
+	}
+
+	.option-grid :global(.option-letter::before) {
+		content: none;
+	}
+
+	.option-grid :global(.option-content) {
+		display: grid;
+		align-content: center;
+		justify-items: center;
+		min-width: 0;
+		padding: 16px 22px;
+		font-size: clamp(1.1rem, 1.35vw, 1.32rem);
+		font-weight: 950;
+		line-height: 1.16;
+		text-align: center;
+	}
+
+	.option-grid :global(.option-card.math-option .option-content) {
+		font-size: clamp(1.5rem, 2.25vw, 2.15rem);
+	}
+
+	.option-grid :global(.option-card.math-option .option-content .mathjax) {
+		display: inline-flex;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.option-grid :global(.option-card.is-correct) {
+		border-color: #2f9f65;
+		background: #ecfdf3;
+		box-shadow: 0 14px 28px rgba(47,159,101,0.18);
+	}
+
+	.option-grid :global(.option-card.is-correct .option-letter) {
+		background: linear-gradient(180deg, #2f9f65 0%, #278654 100%);
+		color: #ffffff;
+	}
+
+	.option-grid :global(.option-card.is-wrong) {
+		border-color: #d75b5b;
+		background: #fff1f1;
+		box-shadow: 0 14px 28px rgba(215,91,91,0.15);
+	}
+
+	.option-grid :global(.option-card.is-wrong .option-letter) {
+		background: linear-gradient(180deg, #d75b5b 0%, #c74848 100%);
+		color: #ffffff;
+	}
+
+	.text-options :global(.option-card) {
+		min-height: 84px;
+	}
+
+	.text-options :global(.option-content) {
+		justify-items: start;
+		text-align: left;
+		font-size: clamp(0.9rem, 1.02vw, 1.04rem);
+		font-weight: 850;
+		line-height: 1.32;
+	}
+
+	.lesson-slide[data-slide-title="HCF Hunter"] .option-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 16px;
+	}
+
+
+
+	/* FINAL PATCH — compact A/B/C/D option cards without reverting previous sections */
+	.lesson-4-page :global(.option-card) {
+		min-height: 58px !important;
+		grid-template-columns: 48px minmax(0, 1fr) !important;
+		border-radius: 16px !important;
+		box-shadow: 0 5px 14px rgba(35, 48, 77, 0.06) !important;
+	}
+
+	.lesson-4-page :global(.option-letter) {
+		font-size: 1rem !important;
+		padding: 8px !important;
+	}
+
+	.lesson-4-page :global(.option-letter::before) {
+		width: 30px !important;
+		height: 30px !important;
+		left: 9px !important;
+	}
+
+	.lesson-4-page :global(.option-content) {
+		padding: 8px 12px !important;
+		font-size: clamp(0.95rem, 1.12vw, 1.18rem) !important;
+		line-height: 1.12 !important;
+	}
+
+	.lesson-4-page :global(.option-card.math-option .option-content) {
+		font-size: clamp(1.05rem, 1.45vw, 1.5rem) !important;
+	}
+
+	.lesson-slide[data-slide-title="HCF Hunter"] .option-grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+		gap: 10px !important;
+		margin-top: 8px !important;
+	}
+
+	.lesson-slide[data-slide-title="HCF Hunter"] :global(.option-card) {
+		min-height: 60px !important;
+	}
+
+	.lesson-slide[data-slide-title="HCF Hunter"] .choice-game {
+		gap: 8px !important;
+	}
+
+	.lesson-slide[data-slide-title="HCF Hunter"] .big-expression {
+		min-height: 84px !important;
+		font-size: clamp(2rem, 4.1vw, 4rem) !important;
+	}
+
+	.lesson-slide[data-slide-title="HCF Hunter"] .feedback-line {
+		margin-top: 8px !important;
+		padding: 10px 13px !important;
+	}
+
+	.lesson-slide[data-slide-title="HCF Hunter"] .button-row {
+		margin-top: 8px !important;
+	}
+
+	.lesson-slide[data-slide-title="HCF Hunter"] .button-row .secondary-button {
+		min-height: 42px !important;
+		padding: 8px 15px !important;
+		border-radius: 14px !important;
+	}
+
+
+	/* Section 6 / Factor Factory compact fit patch */
+	.lesson-slide[data-slide-title="Factor Factory"] h2 {
+		font-size: clamp(2rem, 3.4vw, 3.8rem) !important;
+		margin-bottom: 6px !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] .choice-game {
+		padding: 12px !important;
+		gap: 7px !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] .game-header {
+		align-items: center !important;
+		gap: 12px !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] .game-header h3 {
+		font-size: clamp(1rem, 1.25vw, 1.2rem) !important;
+		margin: 0 !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] .local-score {
+		min-width: 72px !important;
+		padding: 8px !important;
+		border-radius: 15px !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] .local-score strong {
+		font-size: 1.45rem !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] .factory-row {
+		grid-template-columns: minmax(0, 1fr) 128px !important;
+		gap: 9px !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] .conveyor,
+	.lesson-slide[data-slide-title="Factor Factory"] .machine {
+		min-height: 70px !important;
+		border-radius: 17px !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] .conveyor {
+		font-size: clamp(1.7rem, 3.2vw, 3.35rem) !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] .machine {
+		font-size: clamp(0.72rem, 0.95vw, 0.92rem) !important;
+		letter-spacing: 0.07em !important;
+		line-height: 1.12 !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] .option-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+		gap: 9px !important;
+		margin-top: 5px !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] :global(.option-card) {
+		min-height: 58px !important;
+		grid-template-columns: 48px minmax(0, 1fr) !important;
+		border-radius: 16px !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] :global(.option-letter) {
+		font-size: 1rem !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] :global(.option-content) {
+		padding: 7px 10px !important;
+		font-size: clamp(0.9rem, 1.05vw, 1.1rem) !important;
+		line-height: 1.08 !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] :global(.option-card.math-option .option-content) {
+		font-size: clamp(1rem, 1.32vw, 1.38rem) !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] .feedback-line {
+		margin-top: 4px !important;
+		padding: 8px 12px !important;
+		font-size: clamp(0.82rem, 0.95vw, 0.98rem) !important;
+		line-height: 1.1 !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] .button-row {
+		margin-top: 5px !important;
+	}
+
+	.lesson-slide[data-slide-title="Factor Factory"] .button-row .secondary-button {
+		min-height: 38px !important;
+		padding: 7px 13px !important;
+		border-radius: 13px !important;
+		font-size: clamp(0.8rem, 0.92vw, 0.95rem) !important;
+	}
+
+	@media (max-width: 980px) {
+		.lesson-slide[data-slide-title="HCF Hunter"] .option-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+		}
+	}
+</style>
+
+<script is:inline type="text/javascript">
+// @ts-nocheck
+	window.MathJax = window.MathJax || {
+		startup: { typeset: false },
+		chtml: { scale: 1 }
+	};
+</script>
+<script is:inline src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<script is:inline type="text/javascript">
+// @ts-nocheck
+	(() => {
+		const root = document.querySelector('[data-lesson-root]');
+		if (!root) return;
+
+		const BS = String.fromCharCode(92);
+		const setMathText = (scope = root) => {
+			scope.querySelectorAll('[data-tex]').forEach((node) => {
+				const tex = node.getAttribute('data-tex') || '';
+				node.textContent = BS + '(' + tex + BS + ')';
+			});
+		};
+		const renderMath = (scope = root) => {
+			setMathText(scope);
+			if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+				window.MathJax.typesetClear?.([scope]);
+				window.MathJax.typesetPromise([scope]).catch(() => {});
+			}
+		};
+		setMathText(root);
+		let mathTries = 0;
+		const waitForMath = () => {
+			mathTries += 1;
+			if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') renderMath(root);
+			else if (mathTries < 30) window.setTimeout(waitForMath, 180);
+		};
+		waitForMath();
+
+		const slides = Array.from(root.querySelectorAll('[data-slide]'));
+		const dots = Array.from(root.querySelectorAll('[data-go-slide]'));
+		const progressLabel = root.querySelector('[data-progress-label]');
+		const progressBar = root.querySelector('[data-progress-bar]');
+		const nextButton = root.querySelector('[data-next-slide]');
+		const prevButton = root.querySelector('[data-prev-slide]');
+		const resetSlideButton = root.querySelector('[data-reset-slide]');
+		const totalScoreButton = root.querySelector('[data-total-score]');
+		const fullscreenButton = root.querySelector('[data-fullscreen-toggle]');
+		const teacherNotes = root.querySelector('[data-teacher-notes]');
+		const teacherNotesText = root.querySelector('[data-teacher-notes-text]');
+		const teacherNotesToggle = root.querySelector('[data-teacher-notes-toggle]');
+		const teacherNotesClose = root.querySelector('[data-teacher-notes-close]');
+
+		let currentSlide = 0;
+		let totalScore = 0;
+		let raceTimer = null;
+		const notes = [
+			'Set the purpose: factorising reverses expanding brackets.',
+			'Use the shepherd story as a warm-up only. The goal is for students to feel the idea of equal groups before seeing x-tiles.',
+			'Use this as the algebra visual. Students should connect 6 chickens + 9 ducks to 6x + 9, then discover three groups of 2x + 3.',
+			'Emphasise highest common factor, not just any common factor.',
+			'Reveal one step at a time. Ask students to predict before each reveal.',
+			'Ask students to justify the option by multiplying the bracket back out.',
+			'Use this to target common errors: not dividing every term, using a common factor that is not highest, and sign mistakes.',
+			'Use as a short energiser. Teams solve first, then reveal answers.',
+			'Exit ticket should be done individually in notebooks.'
+		];
+
+		const updateTotalScore = (points) => {
+			totalScore += points;
+			if (totalScoreButton) totalScoreButton.textContent = 'Score ' + totalScore;
+		};
+
+		const updateSlide = (index) => {
+			currentSlide = Math.max(0, Math.min(index, slides.length - 1));
+			slides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === currentSlide));
+			dots.forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === currentSlide));
+			if (progressLabel) progressLabel.textContent = 'Slide ' + (currentSlide + 1) + ' of ' + slides.length;
+			if (progressBar) progressBar.style.width = (((currentSlide + 1) / slides.length) * 100) + '%';
+			if (prevButton) prevButton.disabled = currentSlide === 0;
+			if (nextButton) nextButton.textContent = currentSlide === slides.length - 1 ? 'Finish' : 'Next';
+			if (teacherNotesText) teacherNotesText.textContent = notes[currentSlide] || '';
+			renderMath(slides[currentSlide]);
+		};
+
+		dots.forEach((dot) => dot.addEventListener('click', () => updateSlide(Number(dot.dataset.goSlide || 0))));
+		nextButton?.addEventListener('click', () => updateSlide(currentSlide + 1));
+		prevButton?.addEventListener('click', () => updateSlide(currentSlide - 1));
+
+		const getFullscreenElement = () => document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+		const updateFullscreenButton = () => {
+			if (!fullscreenButton) return;
+			const isFullscreen = Boolean(getFullscreenElement());
+			fullscreenButton.classList.toggle('is-active', isFullscreen);
+			fullscreenButton.setAttribute('aria-pressed', String(isFullscreen));
+			fullscreenButton.textContent = isFullscreen ? 'Exit Full Screen' : '⛶ Present Full Screen';
+		};
+		fullscreenButton?.addEventListener('click', async () => {
+			try {
+				if (getFullscreenElement()) {
+					if (document.exitFullscreen) await document.exitFullscreen();
+					else if (document.webkitExitFullscreen) await document.webkitExitFullscreen();
+					else if (document.msExitFullscreen) await document.msExitFullscreen();
+				} else {
+					const target = document.querySelector('.factor-page') || root;
+					if (target.requestFullscreen) await target.requestFullscreen();
+					else if (target.webkitRequestFullscreen) await target.webkitRequestFullscreen();
+					else if (target.msRequestFullscreen) await target.msRequestFullscreen();
+				}
+				updateFullscreenButton();
+			} catch (error) {
+				fullscreenButton.textContent = 'Fullscreen unavailable';
+				fullscreenButton.disabled = true;
+			}
+		});
+		document.addEventListener('fullscreenchange', updateFullscreenButton);
+		document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+		document.addEventListener('MSFullscreenChange', updateFullscreenButton);
+
+		teacherNotesToggle?.addEventListener('click', () => { if (teacherNotes) teacherNotes.hidden = !teacherNotes.hidden; });
+		teacherNotesClose?.addEventListener('click', () => { if (teacherNotes) teacherNotes.hidden = true; });
+
+		root.querySelectorAll('[data-toggle-target]').forEach((button) => {
+			button.addEventListener('click', () => {
+				const id = button.getAttribute('data-toggle-target') || '';
+				const target = root.querySelector('#' + CSS.escape(id));
+				if (target) {
+					target.classList.toggle('is-visible');
+					renderMath(target);
+				}
+			});
+		});
+
+
+		const setupShepherdGame = () => {
+			const game = root.querySelector('[data-shepherd-game]');
+			if (!game) return;
+
+			const yard = game.querySelector('[data-animal-yard]');
+			const animals = Array.from(game.querySelectorAll('[data-animal-id]'));
+			const pens = Array.from(game.querySelectorAll('[data-animal-pen]'));
+			const status = game.querySelector('[data-shepherd-status]');
+			const result = game.querySelector('[data-shepherd-result]');
+			const autoButton = game.querySelector('[data-shepherd-auto]');
+			const resetButton = game.querySelector('[data-shepherd-reset]');
+			let autoTimer = null;
+
+			const target = { chicken: 2, duck: 3 };
+			const label = { chicken: 'chicken', duck: 'duck' };
+			const countText = (counts) => counts.chicken + '🐔 + ' + counts.duck + '🦆';
+
+			const setStatus = (message) => {
+				if (status) status.textContent = message;
+			};
+
+			const getCounts = (pen) => {
+				const inPen = Array.from(pen.querySelectorAll('[data-animal-kind]'));
+				return {
+					chicken: inPen.filter((item) => item.getAttribute('data-animal-kind') === 'chicken').length,
+					duck: inPen.filter((item) => item.getAttribute('data-animal-kind') === 'duck').length
+				};
+			};
+
+			const updateCounts = () => {
+				pens.forEach((pen) => {
+					const counts = getCounts(pen);
+					const counter = pen.querySelector('[data-animal-count]');
+					if (counter) counter.textContent = countText(counts);
+					pen.classList.toggle('is-ready', counts.chicken === target.chicken && counts.duck === target.duck);
+				});
+			};
+
+			const isComplete = () => pens.every((pen) => {
+				const counts = getCounts(pen);
+				return counts.chicken === target.chicken && counts.duck === target.duck;
+			});
+
+			const findPen = (kind) => {
+				return pens.find((pen) => getCounts(pen)[kind] < target[kind]) || null;
+			};
+
+			const showComplete = () => {
+				if (!isComplete()) return;
+				if (result) result.classList.add('is-visible');
+				setStatus('Solved: 6 chickens and 9 ducks make 3 equal pens. One pen has 2 chickens and 3 ducks.');
+				renderMath(game);
+			};
+
+			const moveAnimal = (animal) => {
+				const kind = animal.getAttribute('data-animal-kind');
+				if (!kind) return;
+				const destination = findPen(kind);
+				if (!destination) {
+					setStatus('Every pen already has enough ' + label[kind] + 's. Try the other animal or reset.');
+					return;
+				}
+				const area = destination.querySelector('.animal-area');
+				if (!area) return;
+				area.appendChild(animal);
+				animal.classList.add('is-hopping');
+				window.setTimeout(() => animal.classList.remove('is-hopping'), 280);
+				updateCounts();
+				const penNumber = destination.getAttribute('data-animal-pen') || '';
+				setStatus('A ' + label[kind] + ' jumped into Pen ' + penNumber + '. Keep the pens identical.');
+				showComplete();
+			};
+
+			const reset = () => {
+				if (autoTimer) window.clearInterval(autoTimer);
+				autoTimer = null;
+				if (autoButton) autoButton.disabled = false;
+				if (!yard) return;
+				animals.forEach((animal) => {
+					animal.classList.remove('is-hopping');
+					yard.appendChild(animal);
+				});
+				if (result) result.classList.remove('is-visible');
+				updateCounts();
+				setStatus('Tap an animal to start. The aim is 3 identical pens.');
+			};
+
+			animals.forEach((animal) => {
+				animal.addEventListener('click', () => {
+					if (animal.closest('[data-animal-yard]')) moveAnimal(animal);
+					else if (yard) {
+						yard.appendChild(animal);
+						if (result) result.classList.remove('is-visible');
+						updateCounts();
+						setStatus('Animal returned to the yard. Try making the pens identical again.');
+					}
+				});
+			});
+
+			autoButton?.addEventListener('click', () => {
+				reset();
+				if (autoButton) autoButton.disabled = true;
+				const sequence = [
+					...animals.filter((animal) => animal.getAttribute('data-animal-kind') === 'chicken'),
+					...animals.filter((animal) => animal.getAttribute('data-animal-kind') === 'duck')
+				];
+				let index = 0;
+				autoTimer = window.setInterval(() => {
+					if (index >= sequence.length) {
+						if (autoTimer) window.clearInterval(autoTimer);
+						autoTimer = null;
+						if (autoButton) autoButton.disabled = false;
+						showComplete();
+						return;
+					}
+					moveAnimal(sequence[index]);
+					index += 1;
+				}, 140);
+			});
+
+			resetButton?.addEventListener('click', reset);
+			updateCounts();
+		};
+
+		const setupGroupingGame = () => {
+			const game = root.querySelector('[data-grouping-game]');
+			if (!game) return;
+
+			const bank = game.querySelector('[data-tile-bank]');
+			const tiles = Array.from(game.querySelectorAll('[data-tile-id]'));
+			const drops = Array.from(game.querySelectorAll('[data-group-drop]'));
+			const status = game.querySelector('[data-group-status]');
+			const answer = game.querySelector('[data-group-answer]');
+			let scored = false;
+
+			const target = { x: 2, one: 3 };
+			const kindLabel = { x: 'x-tile', one: 'unit tile' };
+
+			const setStatus = (message) => {
+				if (status) status.textContent = message;
+			};
+
+			const getCounts = (drop) => {
+				const groupTiles = Array.from(drop.querySelectorAll('[data-kind]'));
+				return {
+					x: groupTiles.filter((tile) => tile.getAttribute('data-kind') === 'x').length,
+					one: groupTiles.filter((tile) => tile.getAttribute('data-kind') === 'one').length
+				};
+			};
+
+			const updateCounts = () => {
+				drops.forEach((drop) => {
+					const counts = getCounts(drop);
+					const label = drop.querySelector('[data-count]');
+					if (label) label.textContent = counts.x + 'x + ' + counts.one;
+					const ready = counts.x === target.x && counts.one === target.one;
+					drop.classList.toggle('is-ready', ready);
+					drop.classList.toggle('needs-x', counts.x < target.x);
+					drop.classList.toggle('needs-one', counts.one < target.one);
+				});
+			};
+
+			const isComplete = () => drops.every((drop) => {
+				const counts = getCounts(drop);
+				return counts.x === target.x && counts.one === target.one;
+			});
+
+			const placedCount = (kind) => drops.reduce((total, drop) => {
+				return total + getCounts(drop)[kind];
+			}, 0);
+
+			const findBestDrop = (kind) => {
+				const openDrops = drops.filter((drop) => getCounts(drop)[kind] < target[kind]);
+				if (openDrops.length === 0) return null;
+				return openDrops.sort((a, b) => {
+					const aCounts = getCounts(a);
+					const bCounts = getCounts(b);
+					if (aCounts[kind] !== bCounts[kind]) return aCounts[kind] - bCounts[kind];
+					return Number(a.getAttribute('data-group-drop')) - Number(b.getAttribute('data-group-drop'));
+				})[0];
+			};
+
+			const showResultIfComplete = () => {
+				if (!isComplete()) return;
+				if (answer) answer.classList.add('is-visible');
+				game.classList.add('is-complete');
+				setStatus('Complete: each group shows 2x + 3. The explanation is on the right, so the grouped tiles stay visible.');
+				if (!scored) {
+					updateTotalScore(6);
+					scored = true;
+				}
+				renderMath(game);
+			};
+
+			const moveToGroup = (tile) => {
+				const kind = tile.getAttribute('data-kind');
+				if (!kind || !target[kind]) return;
+				const destination = findBestDrop(kind);
+				if (!destination) {
+					setStatus('All groups already have enough ' + kindLabel[kind] + 's. Click Reset to try again.');
+					return;
+				}
+				const area = destination.querySelector('.tile-area');
+				if (!area) return;
+				tile.classList.remove('is-selected');
+				tile.classList.add('just-moved');
+				area.appendChild(tile);
+				window.setTimeout(() => tile.classList.remove('just-moved'), 260);
+				updateCounts();
+
+				const groupNumber = destination.getAttribute('data-group-drop') || '';
+				const counts = getCounts(destination);
+				setStatus('Placed one ' + kindLabel[kind] + ' into Group ' + groupNumber + '. That group now has ' + counts.x + 'x + ' + counts.one + '.');
+				showResultIfComplete();
+			};
+
+			const returnToBank = (tile) => {
+				if (!bank) return;
+				tile.classList.remove('is-selected');
+				bank.appendChild(tile);
+				if (answer) answer.classList.remove('is-visible');
+				game.classList.remove('is-complete');
+				updateCounts();
+				setStatus('Tile returned to the bank. Keep the three groups equal: each should be 2x + 3.');
+			};
+
+			tiles.forEach((tile) => {
+				tile.addEventListener('click', () => {
+					if (tile.closest('[data-tile-bank]')) {
+						moveToGroup(tile);
+					} else {
+						returnToBank(tile);
+					}
+				});
+			});
+
+			game.querySelector('[data-check-groups]')?.addEventListener('click', () => {
+				const allPlaced = tiles.every((tile) => Boolean(tile.closest('[data-group-drop]')));
+				if (allPlaced && isComplete()) {
+					showResultIfComplete();
+				} else if (!allPlaced) {
+					setStatus('Some tiles are still in the bank. Keep clicking until all 6 x-tiles and 9 unit tiles are grouped.');
+				} else {
+					setStatus('Not equal yet. Each group must contain exactly 2x + 3. Click a placed tile to send it back to the bank.');
+				}
+			});
+
+			game.querySelector('[data-auto-groups]')?.addEventListener('click', () => {
+				if (!bank) return;
+				if (answer) answer.classList.remove('is-visible');
+				tiles.forEach((tile) => bank.appendChild(tile));
+				updateCounts();
+				const xTiles = tiles.filter((tile) => tile.getAttribute('data-kind') === 'x');
+				const oneTiles = tiles.filter((tile) => tile.getAttribute('data-kind') === 'one');
+				drops.forEach((drop, index) => {
+					const area = drop.querySelector('.tile-area');
+					if (!area) return;
+					xTiles.slice(index * 2, index * 2 + 2).forEach((tile) => area.appendChild(tile));
+					oneTiles.slice(index * 3, index * 3 + 3).forEach((tile) => area.appendChild(tile));
+				});
+				updateCounts();
+				game.classList.add('is-complete');
+				if (answer) answer.classList.add('is-visible');
+				setStatus('Auto demo: 6x and 9 can both be divided into 3 equal groups. One group is 2x + 3.');
+				renderMath(game);
+			});
+
+			game.querySelector('[data-reset-groups]')?.addEventListener('click', () => {
+				if (!bank) return;
+				tiles.forEach((tile) => {
+					tile.classList.remove('is-selected', 'just-moved');
+					bank.appendChild(tile);
+				});
+				if (answer) answer.classList.remove('is-visible');
+				scored = false;
+				updateCounts();
+				setStatus('Click an x-tile or a unit tile to start filling the equal groups.');
+			});
+
+			updateCounts();
+		};
+
+		const makeOption = (option, optionIndex, onSelect) => {
+			const button = document.createElement('button');
+			button.type = 'button';
+			button.className = 'option-card';
+			if (option.tex) button.classList.add('math-option');
+			button.setAttribute('aria-label', 'Option ' + String.fromCharCode(65 + optionIndex) + ': ' + option.label);
+			const letter = document.createElement('span');
+			letter.className = 'option-letter';
+			letter.textContent = String.fromCharCode(65 + optionIndex);
+			const content = document.createElement('span');
+			content.className = 'option-content';
+			if (option.tex) {
+				const math = document.createElement('span');
+				math.className = 'mathjax';
+				math.setAttribute('data-tex', option.label);
+				content.appendChild(math);
+			} else {
+				content.textContent = option.label;
+			}
+			button.append(letter, content);
+			button.addEventListener('click', () => onSelect(button, option));
+			return button;
+		};
+
+		const setupChoiceGame = (key, items, settings) => {
+			const area = root.querySelector('[data-choice-game="' + key + '"]');
+			if (!area) return;
+			const prompt = area.querySelector('[data-prompt]');
+			const optionsBox = area.querySelector('[data-options]');
+			const feedback = area.querySelector('[data-feedback]');
+			const round = area.querySelector('[data-round]');
+			const scoreEl = area.querySelector('[data-score]');
+			const next = area.querySelector('[data-next-round]');
+			const reset = area.querySelector('[data-reset-game]');
+			let index = 0;
+			let score = 0;
+			let answered = false;
+			const render = () => {
+				const item = items[index];
+				answered = false;
+				if (round) round.textContent = settings.roundPrefix + ' ' + (index + 1) + ' / ' + items.length;
+				if (scoreEl) scoreEl.textContent = String(score);
+				if (feedback) feedback.textContent = settings.defaultFeedback;
+				if (prompt) prompt.setAttribute('data-tex', item.prompt);
+				if (next) next.textContent = index === items.length - 1 ? 'Finish game' : settings.nextLabel;
+				if (optionsBox) {
+					optionsBox.innerHTML = '';
+					item.options.forEach((option, optionIndex) => {
+						optionsBox.appendChild(makeOption(option, optionIndex, (button, selected) => {
+							if (answered) return;
+							answered = true;
+							const correct = selected.label === item.answer;
+							button.classList.add(correct ? 'is-correct' : 'is-wrong');
+							Array.from(optionsBox.querySelectorAll('.option-card')).forEach((card) => { card.disabled = true; });
+							if (feedback) feedback.textContent = correct ? item.correctFeedback : item.wrongFeedback;
+							if (correct) {
+								score += settings.points;
+								if (scoreEl) scoreEl.textContent = String(score);
+								updateTotalScore(settings.points);
+							}
+						}));
+					});
+				}
+				renderMath(area);
+			};
+			next?.addEventListener('click', () => {
+				if (index >= items.length - 1) {
+					if (feedback) feedback.textContent = 'Game complete. Reset to play again.';
+					return;
+				}
+				index += 1;
+				render();
+			});
+			reset?.addEventListener('click', () => {
+				index = 0;
+				score = 0;
+				render();
+			});
+			render();
+		};
+
+		const setupSteps = () => {
+			const area = root.querySelector('[data-step-reveal]');
+			if (!area) return;
+			const steps = Array.from(area.querySelectorAll('[data-step]'));
+			const next = area.querySelector('[data-next-step]');
+			const reset = area.querySelector('[data-reset-steps]');
+			let visible = 0;
+			const render = () => {
+				steps.forEach((step, stepIndex) => step.classList.toggle('is-visible', stepIndex <= visible));
+				if (next) next.disabled = visible >= steps.length - 1;
+				renderMath(area);
+			};
+			next?.addEventListener('click', () => { visible = Math.min(visible + 1, steps.length - 1); render(); });
+			reset?.addEventListener('click', () => { visible = 0; render(); });
+			render();
+		};
+
+		const setupRace = () => {
+			const area = root.querySelector('[data-race-game]');
+			if (!area) return;
+
+			const time = area.querySelector('[data-race-time]');
+			const roundEl = area.querySelector('[data-race-round]');
+			const status = area.querySelector('[data-race-status]');
+			const start = area.querySelector('[data-race-start]');
+			const next = area.querySelector('[data-race-next]');
+			const reset = area.querySelector('[data-race-reset]');
+			const teamCards = Array.from(area.querySelectorAll('[data-team-card]'));
+
+			let remaining = 60;
+			let round = 1;
+			const maxRounds = 10;
+			const teamScores = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
+
+			const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+			const randomOutsideFactor = () => {
+				const factors = [-9, -8, -7, -6, -5, -4, -3, -2, 2, 3, 4, 5, 6, 7, 8, 9];
+				return factors[randInt(0, factors.length - 1)];
+			};
+			const randomInsideNumber = () => {
+				const values = [-6, -5, -4, -3, -2, 2, 3, 4, 5, 6];
+				return values[randInt(0, values.length - 1)];
+			};
+			const latexTerm = (coefficient, variable = 'x') => {
+				if (coefficient === 1) return variable;
+				if (coefficient === -1) return '-' + variable;
+				return String(coefficient) + variable;
+			};
+			const latexExpression = (xCoefficient, constant) => {
+				const first = latexTerm(xCoefficient);
+				const second = constant >= 0 ? ' + ' + constant : ' - ' + Math.abs(constant);
+				return first + second;
+			};
+			const makeQuestion = () => {
+				const outside = randomOutsideFactor();
+				const insideX = randomInsideNumber();
+				const insideConstant = randomInsideNumber();
+				const expression = latexExpression(outside * insideX, outside * insideConstant);
+				const inside = latexExpression(insideX, insideConstant);
+				const outsideText = outside < 0 ? String(outside) : String(outside);
+				const answer = outsideText + '(' + inside + ')';
+				return { expression, answer, outside };
+			};
+
+			const setStatus = (message) => {
+				if (status) status.textContent = message;
+			};
+
+			const renderTimer = () => {
+				if (time) time.textContent = String(remaining);
+				if (roundEl) roundEl.textContent = String(round);
+			};
+
+			const stopTimer = () => {
+				if (raceTimer) window.clearInterval(raceTimer);
+				raceTimer = null;
+			};
+
+			const updateTeamScores = () => {
+				teamCards.forEach((card) => {
+					const team = card.getAttribute('data-team-card') || '';
+					const score = card.querySelector('[data-team-score]');
+					if (score) score.textContent = String(teamScores[team] || 0);
+				});
+			};
+
+			const generateRound = () => {
+				teamCards.forEach((card) => {
+					const question = makeQuestion();
+					const expression = card.querySelector('[data-race-expression]');
+					const answer = card.querySelector('[data-race-answer]');
+					if (expression) expression.setAttribute('data-tex', question.expression);
+					if (answer) {
+						answer.innerHTML = 'Answer: <span class="mathjax" data-tex="' + question.answer.replaceAll('"', '&quot;') + '"></span>';
+						answer.hidden = true;
+					}
+				});
+				setStatus('Round ' + round + ': factorise the expression for your team. Outside factor is randomly chosen from -9 to 9, excluding -1, 0, and 1.');
+				renderMath(area);
+			};
+
+			start?.addEventListener('click', () => {
+				if (raceTimer) return;
+				if (remaining <= 0) remaining = 60;
+				renderTimer();
+				setStatus('Timer started. Teams solve their expressions. When time is up, reveal answers and add scores manually.');
+				raceTimer = window.setInterval(() => {
+					remaining = Math.max(0, remaining - 1);
+					renderTimer();
+					if (remaining === 0) {
+						stopTimer();
+						setStatus('Time is up. Teacher checks answers, reveals if needed, and taps + Score for correct teams.');
+					}
+				}, 1000);
+			});
+
+			next?.addEventListener('click', () => {
+				stopTimer();
+				if (round >= maxRounds) {
+					setStatus('Game finished after 10 rounds. Check the team scores to choose the winner.');
+					return;
+				}
+				round += 1;
+				remaining = 60;
+				renderTimer();
+				generateRound();
+			});
+
+			reset?.addEventListener('click', () => {
+				stopTimer();
+				remaining = 60;
+				round = 1;
+				Object.keys(teamScores).forEach((team) => { teamScores[team] = 0; });
+				updateTeamScores();
+				renderTimer();
+				generateRound();
+			});
+
+			teamCards.forEach((card) => {
+				const team = card.getAttribute('data-team-card') || '';
+				const reveal = card.querySelector('[data-reveal-answer]');
+				const add = card.querySelector('[data-add-score]');
+				const answer = card.querySelector('[data-race-answer]');
+				reveal?.addEventListener('click', () => {
+					if (!answer) return;
+					answer.hidden = !answer.hidden;
+					renderMath(card);
+				});
+				add?.addEventListener('click', () => {
+					teamScores[team] = (teamScores[team] || 0) + 1;
+					updateTeamScores();
+					updateTotalScore(1);
+					setStatus('Added 1 point to Team ' + team + '. Use Next round for a new random set.');
+				});
+			});
+
+			renderTimer();
+			updateTeamScores();
+			generateRound();
+		};
+
+		setupShepherdGame();
+		setupGroupingGame();
+		setupSteps();
+		setupRace();
+
+		setupChoiceGame('hcf', [
+			{ prompt: '8x + 12', answer: '4', options: [{ label: '2', tex: true }, { label: '4', tex: true }, { label: '8', tex: true }, { label: '12', tex: true }], correctFeedback: 'Yes. 4 is the highest common factor of 8 and 12.', wrongFeedback: 'Choose the greatest number that divides both coefficients.' },
+			{ prompt: '10a + 15', answer: '5', options: [{ label: '2', tex: true }, { label: '3', tex: true }, { label: '5', tex: true }, { label: '10', tex: true }], correctFeedback: 'Yes. The HCF of 10 and 15 is 5.', wrongFeedback: 'Find the greatest factor shared by 10 and 15.' },
+			{ prompt: '6m - 9', answer: '3', options: [{ label: '2', tex: true }, { label: '3', tex: true }, { label: '6', tex: true }, { label: '9', tex: true }], correctFeedback: 'Yes. 3 divides both 6 and 9.', wrongFeedback: 'The outside factor must divide both terms.' },
+			{ prompt: '4x^2 + 8x', answer: '4x', options: [{ label: '4', tex: true }, { label: 'x', tex: true }, { label: '4x', tex: true }, { label: '8x', tex: true }], correctFeedback: 'Yes. Both terms share 4 and x.', wrongFeedback: 'Look for the numerical factor and the letter factor.' },
+			{ prompt: '15p + 25', answer: '5', options: [{ label: '3', tex: true }, { label: '5', tex: true }, { label: '10', tex: true }, { label: '15', tex: true }], correctFeedback: 'Yes. 5 divides both 15 and 25.', wrongFeedback: 'Choose a factor that divides both coefficients.' }
+		], { roundPrefix: 'Round', nextLabel: 'Next round', defaultFeedback: 'Choose the greatest factor shared by both terms.', points: 2 });
+
+		setupChoiceGame('factory', [
+			{ prompt: '10x + 15', answer: '5(2x + 3)', options: [{ label: '5(2x + 3)', tex: true }, { label: '10(x + 5)', tex: true }, { label: '2(5x + 15)', tex: true }, { label: '5(2x + 15)', tex: true }], correctFeedback: 'Good. 10x ÷ 5 = 2x and 15 ÷ 5 = 3.', wrongFeedback: 'Divide every term by the HCF and check by expanding.' },
+			{ prompt: '12a + 16', answer: '4(3a + 4)', options: [{ label: '2(6a + 8)', tex: true }, { label: '4(3a + 4)', tex: true }, { label: '4(12a + 16)', tex: true }, { label: '8(a + 2)', tex: true }], correctFeedback: 'Good. 4 is the HCF.', wrongFeedback: 'The factor outside should be the HCF.' },
+			{ prompt: '9m - 6', answer: '3(3m - 2)', options: [{ label: '3(3m - 2)', tex: true }, { label: '3(3m + 2)', tex: true }, { label: '6(3m - 1)', tex: true }, { label: '9(m - 6)', tex: true }], correctFeedback: 'Good. 9m ÷ 3 = 3m and -6 ÷ 3 = -2.', wrongFeedback: 'Watch the minus sign and divide both terms.' },
+			{ prompt: '14x + 21', answer: '7(2x + 3)', options: [{ label: '2(7x + 21)', tex: true }, { label: '7(2x + 3)', tex: true }, { label: '7(14x + 3)', tex: true }, { label: '3(2x + 7)', tex: true }], correctFeedback: 'Good. The HCF is 7.', wrongFeedback: 'Expand the option to check it returns the original expression.' },
+			{ prompt: '6y + 18', answer: '6(y + 3)', options: [{ label: '6(y + 3)', tex: true }, { label: '3(2y + 18)', tex: true }, { label: '6(y + 18)', tex: true }, { label: '2(3y + 6)', tex: true }], correctFeedback: 'Good. 6 is the HCF.', wrongFeedback: 'The bracket must contain each term divided by the HCF.' }
+		], { roundPrefix: 'Job', nextLabel: 'Next job', defaultFeedback: 'Use the HCF, then divide every term.', points: 3 });
+
+		setupChoiceGame('detective', [
+			{ prompt: '8x + 12 = 2(4x + 10)', answer: 'The 12 was not divided by 2 correctly.', options: [{ label: 'The 12 was not divided by 2 correctly.' }, { label: 'The coefficient of x disappeared.' }, { label: 'The expression should not have brackets.' }, { label: 'The sign should change to minus.' }], correctFeedback: 'Yes. If 2 is outside, 12 ÷ 2 should be 6, not 10.', wrongFeedback: 'Check each term by dividing it by the outside factor.' },
+			{ prompt: '12a + 18 = 3(4a + 6)', answer: 'It is correct but not fully factorised.', options: [{ label: 'It is correct but not fully factorised.' }, { label: 'The expression was expanded instead.' }, { label: 'The bracket should contain 12a.' }, { label: 'The outside factor must be 18.' }], correctFeedback: 'Yes. It expands correctly, but the HCF is 6.', wrongFeedback: 'Expand first, then check if the outside factor is the HCF.' },
+			{ prompt: '6x - 9 = 3(2x + 3)', answer: 'The sign inside the bracket is wrong.', options: [{ label: 'The sign inside the bracket is wrong.' }, { label: 'The HCF should be 9.' }, { label: 'The variable x should be outside.' }, { label: 'The 6 was divided incorrectly.' }], correctFeedback: 'Yes. -9 ÷ 3 = -3, so it should be 3(2x - 3).', wrongFeedback: 'Look closely at the sign of the second term.' }
+		], { roundPrefix: 'Mistake', nextLabel: 'Next mistake', defaultFeedback: 'Choose the best explanation.', points: 3 });
+
+		const resetCurrentSlide = () => {
+			const slide = slides[currentSlide];
+			if (!slide) return;
+			slide.querySelectorAll('.hidden-answer.is-visible').forEach((item) => item.classList.remove('is-visible'));
+			slide.querySelectorAll('.option-card').forEach((button) => {
+				button.classList.remove('is-correct', 'is-wrong');
+			});
+		};
+		resetSlideButton?.addEventListener('click', resetCurrentSlide);
+
+		root.addEventListener('keydown', (event) => {
+			const target = event.target;
+			if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) return;
+			if (event.key === 'ArrowRight') updateSlide(currentSlide + 1);
+			if (event.key === 'ArrowLeft') updateSlide(currentSlide - 1);
+		});
+
+		updateSlide(0);
+		updateFullscreenButton();
+	})();
+</script>

@@ -1,0 +1,191 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const curriculum = {
+	"title": "Matematika Kurikulum Nasional",
+	"titleEn": "National Curriculum Mathematics",
+	"label": "Nasional",
+	"labelEn": "National",
+	"badge": "Kurikulum Nasional",
+	"badgeEn": "National Curriculum",
+	"accentClass": "",
+	"description": "Jalur ini dirancang untuk siswa yang mengikuti Kurikulum Nasional atau Kurikulum Merdeka, dengan fokus pada konsep inti, latihan bertahap, dan persiapan ulangan sekolah.",
+	"descriptionEn": "This path is designed for students following Indonesia’s National Curriculum or Kurikulum Merdeka, focusing on core concepts, step-by-step practice, and school test preparation.",
+	"primaryCta": "Lihat Struktur Nasional",
+	"primaryCtaEn": "View National Structure",
+	"focus": [
+		{
+			"num": "01",
+			"title": "Konsep Dasar Kuat",
+			"titleEn": "Strong Core Concepts",
+			"text": "Anak memahami alasan di balik rumus, bukan hanya menghafal langkah pengerjaan.",
+			"textEn": "Students understand the reasoning behind formulas, not just memorise steps."
+		},
+		{
+			"num": "02",
+			"title": "Latihan Sekolah",
+			"titleEn": "School Practice",
+			"text": "Soal disusun mengikuti kebutuhan latihan harian, PR, ulangan, dan remedial.",
+			"textEn": "Practice is structured around daily classwork, homework, tests, and remediation."
+		},
+		{
+			"num": "03",
+			"title": "Naik Level Bertahap",
+			"titleEn": "Gradual Level-Up",
+			"text": "Materi bergerak dari mudah, sedang, hingga soal aplikasi dan tantangan.",
+			"textEn": "Lessons move from easy, medium, to application and challenge questions."
+		}
+	],
+	"paths": [
+		{
+			"code": "SD",
+			"title": "Matematika SD",
+			"titleEn": "Primary Mathematics",
+			"text": "Bilangan, operasi hitung, pecahan, pengukuran, dan bangun datar.",
+			"textEn": "Numbers, operations, fractions, measurement, and geometry."
+		},
+		{
+			"code": "SMP",
+			"title": "Matematika SMP",
+			"titleEn": "Lower Secondary Mathematics",
+			"text": "Aljabar, rasio, geometri, statistika, dan pemecahan masalah.",
+			"textEn": "Algebra, ratio, geometry, statistics, and problem solving."
+		},
+		{
+			"code": "SMA",
+			"title": "Matematika SMA",
+			"titleEn": "High School Mathematics",
+			"text": "Fungsi, trigonometri, peluang, limit dasar, dan persiapan ujian.",
+			"textEn": "Functions, trigonometry, probability, basic limits, and exam preparation."
+		}
+	]
+};
+---
+
+<Layout
+	title={curriculum.title}
+	titleEn={curriculum.titleEn}
+	description={curriculum.description}
+	descriptionEn={curriculum.descriptionEn}
+	currentPage="math"
+>
+	<main id="top">
+		<section class="curriculum-hero">
+			<div class="section-decor" aria-hidden="true">
+				<span class="dot-grid dot-grid-hero"></span>
+				<span class="blob blob-blue" style="top:-120px; left:-120px; width:330px; height:330px;"></span>
+				<span class="blob blob-orange" style="bottom:-130px; right:18%; width:270px; height:270px;"></span>
+			</div>
+			<div class="wrap curriculum-hero-inner">
+				<div class="curriculum-copy reveal">
+					<p class="eyebrow" data-i18n-id="Matematika E-Learning" data-i18n-en="Mathematics E-Learning">Matematika E-Learning</p>
+					<h1 data-i18n-id={curriculum.title} data-i18n-en={curriculum.titleEn}>{curriculum.title}</h1>
+					<p class="hero-lede" data-i18n-id={curriculum.description} data-i18n-en={curriculum.descriptionEn}>{curriculum.description}</p>
+					<div class="hero-cta">
+						<a href="#learning-path" class="btn btn-primary btn-lg" data-i18n-id={curriculum.primaryCta} data-i18n-en={curriculum.primaryCtaEn}>{curriculum.primaryCta}</a>
+						<a href="/e-learning/matematika" class="btn btn-ghost btn-lg" data-i18n-id="Kembali ke Matematika" data-i18n-en="Back to Mathematics">Kembali ke Matematika</a>
+					</div>
+				</div>
+				<div class={`curriculum-panel reveal ${curriculum.accentClass}`}>
+					<span data-i18n-id={curriculum.badge} data-i18n-en={curriculum.badgeEn}>{curriculum.badge}</span>
+					<strong data-i18n-id={curriculum.label} data-i18n-en={curriculum.labelEn}>{curriculum.label}</strong>
+					<div class="panel-equation">a² + b² = c²</div>
+					<p data-i18n-id="Lesson slide, worksheet, dan quiz dibuat mengikuti gaya belajar kurikulum ini." data-i18n-en="Lesson slides, worksheets, and quizzes are designed to match this curriculum’s learning style.">Lesson slide, worksheet, dan quiz dibuat mengikuti gaya belajar kurikulum ini.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="focus-section">
+			<div class="wrap">
+				<div class="section-head reveal">
+					<p class="eyebrow" data-i18n-id="Fokus Belajar" data-i18n-en="Learning Focus">Fokus Belajar</p>
+					<h2 data-i18n-id="Apa yang Anak Latih di Jalur Ini?" data-i18n-en="What Will Students Practise in This Path?">Apa yang Anak Latih di Jalur Ini?</h2>
+				</div>
+				<div class="focus-grid">
+					{curriculum.focus.map((item) => (
+						<article class="focus-card reveal">
+							<span>{item.num}</span>
+							<h3 data-i18n-id={item.title} data-i18n-en={item.titleEn}>{item.title}</h3>
+							<p data-i18n-id={item.text} data-i18n-en={item.textEn}>{item.text}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="path-section" id="learning-path">
+			<div class="section-decor" aria-hidden="true">
+				<span class="dot-grid dot-grid-light"></span>
+			</div>
+			<div class="wrap path-inner">
+				<div class="reveal">
+					<p class="eyebrow eyebrow-light" data-i18n-id="Learning Path" data-i18n-en="Learning Path">Learning Path</p>
+					<h2 class="light-title" data-i18n-id="Struktur Materi yang Akan Dibuka" data-i18n-en="Content Structure to Be Opened">Struktur Materi yang Akan Dibuka</h2>
+					<p class="program-lede" data-i18n-id="Halaman ini disiapkan sebagai landing page kurikulum. Nanti setiap kartu bisa diarahkan ke slide lesson interaktif per topik." data-i18n-en="This page is prepared as the curriculum landing page. Later, each card can link to interactive lesson slides by topic.">Halaman ini disiapkan sebagai landing page kurikulum. Nanti setiap kartu bisa diarahkan ke slide lesson interaktif per topik.</p>
+				</div>
+				<div class="path-list reveal">
+					{curriculum.paths.map((item) => (
+						<div class="path-item">
+							<span>{item.code}</span>
+							<div>
+								<strong data-i18n-id={item.title} data-i18n-en={item.titleEn}>{item.title}</strong>
+								<small data-i18n-id={item.text} data-i18n-en={item.textEn}>{item.text}</small>
+							</div>
+							<em data-i18n-id="soon" data-i18n-en="soon">soon</em>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="cta-section">
+			<div class="wrap curriculum-cta reveal">
+				<p class="eyebrow" data-i18n-id="Butuh Arahan?" data-i18n-en="Need Guidance?">Butuh Arahan?</p>
+				<h2 data-i18n-id="Kami Bisa Bantu Pilihkan Jalur yang Paling Sesuai" data-i18n-en="We Can Help Choose the Most Suitable Path">Kami Bisa Bantu Pilihkan Jalur yang Paling Sesuai</h2>
+				<p data-i18n-id="Kirimkan jenjang anak, kurikulum sekolah, dan topik yang sedang sulit. Tim SAN TUTOR akan bantu rekomendasikan lesson yang paling tepat." data-i18n-en="Send your child’s level, school curriculum, and the topic they find difficult. The SAN TUTOR team will help recommend the most suitable lesson.">Kirimkan jenjang anak, kurikulum sekolah, dan topik yang sedang sulit. Tim SAN TUTOR akan bantu rekomendasikan lesson yang paling tepat.</p>
+				<div class="cta-actions">
+					<a class="btn btn-primary btn-lg" href={`https://wa.me/6285872000689?text=${encodeURIComponent(`Halo SAN TUTOR, saya ingin bertanya tentang Matematika ${curriculum.label}.`)}`} target="_blank" rel="noopener" data-i18n-id="Konsultasi via WhatsApp" data-i18n-en="Consult via WhatsApp">Konsultasi via WhatsApp</a>
+					<a class="btn btn-ghost btn-lg" href="/e-learning/matematika" data-i18n-id="Lihat Kurikulum Lain" data-i18n-en="See Other Curricula">Lihat Kurikulum Lain</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.curriculum-hero { padding: 64px 0 96px; overflow: hidden; position: relative; }
+	.curriculum-hero-inner { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+	.curriculum-copy h1 { font-size: clamp(2.1rem, 4vw, 3.15rem); line-height: 1.14; margin-bottom: 20px; }
+	.curriculum-panel { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 34px; box-shadow: var(--shadow-soft); position: relative; overflow: hidden; }
+	.curriculum-panel::before { content:""; position:absolute; inset:auto -80px -100px auto; width:220px; height:220px; border-radius:50%; background: var(--orange-light); }
+	.curriculum-panel.blue::before { background: var(--blue-light); }
+	.curriculum-panel.sage::before { background: var(--sage-light); }
+	.curriculum-panel span { display: inline-flex; background: var(--orange-light); color: var(--orange); border-radius:999px; padding:7px 13px; font-weight:900; font-size:.8rem; margin-bottom:18px; position:relative; z-index:1; }
+	.curriculum-panel.blue span { background: var(--blue-light); color: var(--blue); }
+	.curriculum-panel.sage span { background: var(--sage-light); color: var(--sage); }
+	.curriculum-panel strong { display:block; font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); color: var(--navy); margin-bottom:18px; position:relative; z-index:1; }
+	.panel-equation { background: var(--cream); border: 1px solid var(--border); border-radius: 22px; padding: 26px; text-align:center; font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.6rem); color: var(--navy); margin-bottom:18px; position:relative; z-index:1; }
+	.curriculum-panel p { position:relative; z-index:1; }
+	.focus-section { padding: 90px 0; background: var(--cream); }
+	.focus-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:20px; }
+	.focus-card { background: var(--white); border:1px solid var(--border); border-radius: var(--radius-md); padding:26px 22px; transition: transform .2s ease, box-shadow .2s ease; }
+	.focus-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); }
+	.focus-card span { display:inline-flex; width:42px; height:42px; align-items:center; justify-content:center; border-radius:14px; background:var(--blue-light); color:var(--blue); font-weight:900; margin-bottom:16px; }
+	.focus-card h3 { font-size:1.08rem; margin-bottom:8px; }
+	.focus-card p { font-size:.9rem; }
+	.path-section { background: var(--navy); padding:84px 0; position: relative; overflow:hidden; }
+	.path-inner { display:grid; grid-template-columns: .9fr 1.1fr; gap:50px; align-items:center; }
+	.path-list { display:flex; flex-direction:column; gap:12px; }
+	.path-item { display:grid; grid-template-columns:auto 1fr auto; gap:14px; align-items:center; padding:16px 0; border-bottom:1px solid rgba(255,255,255,.14); }
+	.path-item span { width:42px; height:42px; border-radius:14px; background:rgba(62,182,234,.14); color:var(--blue); display:flex; align-items:center; justify-content:center; font-weight:900; }
+	.path-item strong { display:block; color:var(--white); font-weight:900; margin-bottom:4px; }
+	.path-item small { color:rgba(255,255,255,.64); }
+	.path-item em { font-style:normal; color:rgba(255,255,255,.66); background:rgba(255,255,255,.1); border-radius:999px; padding:4px 10px; font-size:.75rem; font-weight:900; }
+	.cta-section { padding:90px 0 100px; background: var(--cream); }
+	.curriculum-cta { background: var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); padding:46px; text-align:center; max-width:900px; }
+	.curriculum-cta h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); margin-bottom:14px; }
+	.curriculum-cta p { max-width:62ch; margin:0 auto; }
+	.cta-actions { margin-top:30px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+	@media (max-width: 980px) { .curriculum-hero-inner, .path-inner { grid-template-columns:1fr; } .curriculum-panel { order:-1; } .curriculum-copy { text-align:center; } .curriculum-copy .hero-lede { margin-inline:auto; } .curriculum-copy .hero-cta { justify-content:center; } .focus-grid { grid-template-columns:1fr; } }
+	@media (max-width: 560px) { .curriculum-hero { padding-top:42px; } .path-item { grid-template-columns:auto 1fr; } .path-item em { grid-column: 2; width: fit-content; } .cta-actions { flex-direction:column; } .cta-actions .btn { width:100%; } .curriculum-cta { padding:34px 24px; } }
+</style>

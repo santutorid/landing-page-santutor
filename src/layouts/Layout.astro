@@ -1,23 +1,1359 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+---
+import logoSrc from '../assets/logo.svg';
+
+type CurrentPage =
+	| 'home'
+	| 'e-learning'
+	| 'math'
+	| 'english'
+	| 'science'
+	| 'bahasa-indonesia'
+	| 'stem'
+	| 'coding'
+	| 'robotic'
+	| 'coming-soon';
+
+interface Props {
+	title?: string;
+	description?: string;
+	currentPage?: CurrentPage;
+	ogTitle?: string;
+	ogDescription?: string;
+	titleEn?: string;
+	descriptionEn?: string;
+	ogTitleEn?: string;
+	ogDescriptionEn?: string;
+}
+
+const {
+	title = 'SAN TUTOR Learning Studio — Mitra Belajar Seumur Hidup Anak Anda',
+	description = 'SAN TUTOR menemani anak Anda dari TK hingga SMA dengan tutor tetap, kurikulum berjenjang, dan kelas kecil yang interaktif.',
+	currentPage = 'home',
+	ogTitle = title,
+	ogDescription = description,
+	titleEn = title,
+	descriptionEn = description,
+	ogTitleEn = titleEn,
+	ogDescriptionEn = descriptionEn,
+} = Astro.props;
+
+const subjectItems = [
+	{ key: 'math', labelId: 'Matematika', labelEn: 'Mathematics', href: '/e-learning/matematika', ready: true },
+	{ key: 'english', labelId: 'English', labelEn: 'English', href: '/e-learning/coming-soon?subject=english', ready: false },
+	{ key: 'science', labelId: 'Science', labelEn: 'Science', href: '/e-learning/coming-soon?subject=science', ready: false },
+	{ key: 'bahasa-indonesia', labelId: 'Bahasa Indonesia', labelEn: 'Indonesian Language', href: '/e-learning/coming-soon?subject=bahasa-indonesia', ready: false },
+	{ key: 'stem', labelId: 'STEM', labelEn: 'STEM', href: '/e-learning/coming-soon?subject=stem', ready: false },
+	{ key: 'coding', labelId: 'Coding', labelEn: 'Coding', href: '/e-learning/coming-soon?subject=coding', ready: false },
+	{ key: 'robotic', labelId: 'Robotic', labelEn: 'Robotics', href: '/e-learning/coming-soon?subject=robotic', ready: false },
+] as const;
+
+const isSubjectPage = subjectItems.some((item) => item.key === currentPage);
+const currentSubject = subjectItems.find((item) => item.key === currentPage);
+const isELearning = currentPage === 'e-learning' || currentPage === 'coming-soon' || isSubjectPage;
+const ctaHref = isELearning ? '/#pendaftaran' : '#pendaftaran';
+const logoHref = isELearning ? '/' : '#top';
+const faqHref = isELearning ? '/e-learning#faq-elearning' : '#faq';
+const backTopHref = '#top';
+const waText = currentSubject
+	? `Halo SAN TUTOR, saya ingin bertanya tentang materi ${currentSubject.labelId} E-Learning.`
+	: isELearning
+		? 'Halo SAN TUTOR, saya ingin bertanya tentang E-Learning.'
+		: 'Halo SAN TUTOR, saya ingin bertanya tentang program belajar.';
+const waHref = `https://wa.me/6285872000689?text=${encodeURIComponent(waText)}`;
+---
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{title}</title>
+	<meta name="description" content={description} data-page-description />
+	<link rel="icon" href={logoSrc.src} type="image/svg+xml" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={ogTitle} data-og-title />
+	<meta property="og:description" content={ogDescription} data-og-description />
+	<meta property="og:image" content={logoSrc.src} />
+	<meta name="twitter:card" content="summary" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link rel="preconnect" href="https://images.pexels.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+	<slot name="head" />
+</head>
+<body data-page-title-id={title} data-page-title-en={titleEn} data-page-description-id={description} data-page-description-en={descriptionEn} data-og-title-id={ogTitle} data-og-title-en={ogTitleEn} data-og-description-id={ogDescription} data-og-description-en={ogDescriptionEn}>
+	<header class="site-header" id="siteHeader">
+		<div class="wrap nav-inner">
+			<a href={logoHref} class="logo" aria-label="SAN TUTOR Learning Studio — Beranda" data-i18n-aria-label-id="SAN TUTOR Learning Studio — Beranda" data-i18n-aria-label-en="SAN TUTOR Learning Studio — Home">
+				<img
+					src={logoSrc.src}
+					style="height: 90px; width: auto;"
+					alt="Logo Santutor Learning Studio"
+					class="logo-img"
+				/>
+			</a>
+
+			<nav class="main-nav" id="mainNav" aria-label="Navigasi utama" data-i18n-aria-label-id="Navigasi utama" data-i18n-aria-label-en="Main navigation">
+				<a href="/#tentang" data-i18n-id="Tentang" data-i18n-en="About">Tentang</a>
+				<a href="/#program" data-i18n-id="Program" data-i18n-en="Programs">Program</a>
+				<div class={isELearning ? 'nav-dropdown is-active' : 'nav-dropdown'}>
+					<a href="/e-learning" class="nav-dropdown-trigger" aria-current={isELearning ? 'page' : undefined}>
+						<span data-i18n-id="E-Learning" data-i18n-en="E-Learning">E-Learning</span>
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+					</a>
+					<div class="nav-dropdown-menu" aria-label="Menu E-Learning" data-i18n-aria-label-id="Menu E-Learning" data-i18n-aria-label-en="E-Learning menu">
+						{subjectItems.map((item) => (
+							<a href={item.href} aria-current={currentPage === item.key ? 'page' : undefined}>
+								<span data-i18n-id={item.labelId} data-i18n-en={item.labelEn}>{item.labelId}</span>
+								{!item.ready && <small data-i18n-id="soon" data-i18n-en="soon">soon</small>}
+							</a>
+						))}
+					</div>
+				</div>
+
+			</nav>
+
+			<div class="nav-actions">
+				<button
+					type="button"
+					class="language-toggle"
+					data-language-toggle
+					aria-label="Switch language to English"
+					aria-pressed="false"
+				>
+					<span class="language-code language-code-id">ID</span>
+					<span class="language-knob" aria-hidden="true"></span>
+					<span class="language-code language-code-en">EN</span>
+				</button>
+				<a href="https://wa.me/6285872000689" class="nav-phone" target="_blank" rel="noopener">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+					<span>+62 858-7200-0689</span>
+				</a>
+				<a href={ctaHref} class="btn btn-primary btn-sm" data-i18n-id="Daftar Sekarang" data-i18n-en="Register Now">Daftar Sekarang</a>
+				<button class="nav-toggle" id="navToggle" aria-label="Buka menu" data-i18n-aria-label-id="Buka menu" data-i18n-aria-label-en="Open menu" aria-expanded="false" aria-controls="mobileNav">
+					<span></span><span></span><span></span>
+				</button>
+			</div>
+		</div>
+
+		<div class="mobile-nav" id="mobileNav">
+			<div class="mobile-language-row">
+				<span data-i18n-id="Bahasa" data-i18n-en="Language">Bahasa</span>
+				<button
+					type="button"
+					class="language-toggle"
+					data-language-toggle
+					aria-label="Switch language to English"
+					aria-pressed="false"
+				>
+					<span class="language-code language-code-id">ID</span>
+					<span class="language-knob" aria-hidden="true"></span>
+					<span class="language-code language-code-en">EN</span>
+				</button>
+			</div>
+			<a href="/#tentang" data-i18n-id="Tentang" data-i18n-en="About">Tentang</a>
+			<a href="/#program" data-i18n-id="Program" data-i18n-en="Programs">Program</a>
+			<details class="mobile-nav-group" open={isELearning}>
+				<summary data-i18n-id="E-Learning" data-i18n-en="E-Learning">E-Learning</summary>
+				<div class="mobile-subnav">
+					<a href="/e-learning" aria-current={currentPage === 'e-learning' ? 'page' : undefined} data-i18n-id="Overview E-Learning" data-i18n-en="E-Learning Overview">Overview E-Learning</a>
+					{subjectItems.map((item) => (
+						<a href={item.href} aria-current={currentPage === item.key ? 'page' : undefined}>
+							<span data-i18n-id={item.labelId} data-i18n-en={item.labelEn}>{item.labelId}</span>
+							{!item.ready && <small data-i18n-id="soon" data-i18n-en="soon">soon</small>}
+						</a>
+					))}
+				</div>
+			</details>
+
+			<a href={ctaHref} class="btn btn-primary" data-i18n-id="Daftar Sekarang" data-i18n-en="Register Now">Daftar Sekarang</a>
+		</div>
+	</header>
+
+	<slot />
+
+	<a href={waHref} class="wa-float" target="_blank" rel="noopener" aria-label="Chat dengan SAN TUTOR via WhatsApp" data-i18n-aria-label-id="Chat dengan SAN TUTOR via WhatsApp" data-i18n-aria-label-en="Chat with SAN TUTOR via WhatsApp">
+		<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2.003c-5.53 0-10.02 4.49-10.02 10.02 0 1.77.46 3.44 1.27 4.9L2 22l5.2-1.27a9.96 9.96 0 0 0 4.84 1.24h.01c5.53 0 10.02-4.49 10.02-10.02 0-2.67-1.04-5.19-2.93-7.08a9.96 9.96 0 0 0-7.1-2.85Z" opacity=".18"/><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/></svg>
+	</a>
+
+	<footer class="site-footer">
+		<div class="wrap footer-grid">
+			<div class="footer-brand">
+				<a href="/" aria-label="Santutor Learning Studio">
+					<img
+						src={logoSrc.src}
+						alt="Logo Santutor Learning Studio"
+						class="logo-img"
+						style="filter: invert(1) brightness(100); mix-blend-mode: color-dodge; height: 90px; width: auto;"
+					/>
+				</a>
+				<p data-i18n-id="Mitra belajar anak Anda, dari TK hingga SMA." data-i18n-en="Your child’s learning partner, from kindergarten to senior high school.">Mitra belajar anak Anda, dari TK hingga SMA.</p>
+			</div>
+
+			<div class="footer-col">
+				<h4 data-i18n-id="Lokasi" data-i18n-en="Location">Lokasi</h4>
+				<p>Janur Kuning Residence<br />Jl. Kelapa puan raya Blok WS-1 No. 7<br />Kelapa Gading, Jakarta Utara<br />DKI Jakarta, 14240</p>
+				<a class="footer-map-link" href="https://maps.app.goo.gl/NGiAVGoFEdXkbChr5" target="_blank" rel="noopener" data-i18n-id="Buka di Google Maps →" data-i18n-en="Open in Google Maps →">Buka di Google Maps →</a>
+			</div>
+
+			<div class="footer-col">
+				<h4 data-i18n-id="Kontak" data-i18n-en="Contact">Kontak</h4>
+				<p><a href="mailto:halo@santutor.id">halo@santutor.id</a></p>
+				<p><a href="tel:+6285872000689">+62 858-7200-0689</a></p>
+			</div>
+
+			<div class="footer-col">
+				<h4 data-i18n-id="E-Learning" data-i18n-en="E-Learning">E-Learning</h4>
+				<p><a href="/e-learning" data-i18n-id="Overview" data-i18n-en="Overview">Overview</a></p>
+				{subjectItems.map((item) => (
+					<p><a href={item.href}><span data-i18n-id={item.labelId} data-i18n-en={item.labelEn}>{item.labelId}</span>{!item.ready && <span data-i18n-id=" — segera hadir" data-i18n-en=" — coming soon"> — segera hadir</span>}</a></p>
+				))}
+			</div>
+		</div>
+		<div class="wrap footer-bottom">
+			<p data-i18n-id="© 2026 SAN TUTOR Learning Studio. Seluruh hak cipta dilindungi." data-i18n-en="© 2026 SAN TUTOR Learning Studio. All rights reserved.">© 2026 SAN TUTOR Learning Studio. Seluruh hak cipta dilindungi.</p>
+			<a href={backTopHref} data-i18n-id="Kembali ke atas ↑" data-i18n-en="Back to top ↑">Kembali ke atas ↑</a>
+		</div>
+	</footer>
+
+	<script>
+		const languageStorageKey = 'santutor-language';
+		const languageToggles = document.querySelectorAll('[data-language-toggle]');
+		const pageTranslations = {
+			"Sejak TK hingga SMA, satu atap yang sama": "From kindergarten to senior high school, all in one place",
+			"Satu Mitra Belajar, untuk Setiap Babak Tumbuh Kembang Anak Anda": "One Learning Partner for Every Stage of Your Child’s Growth",
+			"SAN TUTOR mendampingi anak Anda sejak langkah pertama di TK hingga garis akhir SMA — dengan tutor yang mengenal mereka luar-dalam, kurikulum yang ikut berkembang, dan kelas kecil yang membuat setiap anak benar-benar didengar.": "SAN TUTOR supports your child from their first steps in kindergarten through senior high school — with tutors who understand them deeply, a curriculum that grows with them, and small classes where every child is truly heard.",
+			"Daftar Kelas Percobaan Gratis": "Book a Free Trial Class",
+			"Lihat Jenjang Belajar": "View Learning Levels",
+			"Siswa terbimbing": "Students supported",
+			"4 Jenjang": "4 Levels",
+			"TK · SD · SMP · SMA": "KG · Primary · Lower Secondary · High School",
+			"Maks. 5": "Max. 5",
+			"Anak per kelas": "Children per class",
+			"Kelas kecil, maksimal 5 anak": "Small classes, maximum 5 children",
+			"Kenapa Orang Tua Memilih Kami": "Why Parents Choose Us",
+			"Belajar yang Ikut Tumbuh Bersama Anak Anda": "Learning That Grows with Your Child",
+			"Bukan sekadar bimbingan belajar musiman. SAN TUTOR dibangun agar satu tutor bisa benar-benar mengenal anak Anda, dari kebiasaan belajarnya sampai apa yang membuatnya semangat.": "More than seasonal tutoring. SAN TUTOR is built so tutors can truly understand your child — from their learning habits to what motivates them.",
+			"Tutor untuk Semua Jenjang": "Tutors Across All Levels",
+			"Satu tutor dapat mendampingi anak Anda dari TK hingga SMA — kepercayaan dan pemahaman karakter anak terus terjaga, tidak mulai dari nol tiap tahun.": "A tutor can support your child from kindergarten through senior high school, so trust and understanding are built over time rather than starting over every year.",
+			"Kurikulum Berjenjang & Personal": "Structured and Personalised Curriculum",
+			"Materi disusun berbasis proyek dan disesuaikan gaya belajar tiap anak — bukan modul seragam untuk semua orang.": "Materials are designed around projects and each child’s learning style — not a one-size-fits-all module.",
+			"Kelas Kecil & Interaktif": "Small and Interactive Classes",
+			"Maksimal 5 anak per kelas, agar setiap pertanyaan terjawab dan setiap anak punya ruang untuk aktif.": "A maximum of 5 children per class, so questions are answered and every child has space to participate.",
+			"Lingkungan Aman & Menyenangkan": "Safe and Enjoyable Environment",
+			"Ruang belajar yang nyaman dan pengajar terlatih membuat anak betah — dan orang tua tenang.": "A comfortable learning space and trained tutors help children feel at ease — and give parents peace of mind.",
+			"Kenali Tim Pengajar": "Meet the Teaching Team",
+			"Tutor yang Akan Mendampingi Anak Anda": "Tutors Who Will Support Your Child",
+			"Bukan wajah asing yang berganti tiap semester. Ini tutor tetap kami — dipilih lewat seleksi ketat dan dilatih memahami cara belajar tiap anak.": "Not unfamiliar faces that change every semester. These are our regular tutors — carefully selected and trained to understand how each child learns.",
+			"Tutor TK SD &SMP": "KG, Primary & Lower Secondary Tutor",
+			"Guru Sekolah Internasional Berpengalaman lebih dari 5 tahun Mengajar": "International school teacher with over 5 years of teaching experience",
+			"Semua anak pasti bisa!": "Every child can learn!",
+			"Spesialis STEM": "STEM Specialist",
+			"Master pendidikan dan Pendidik Tersertifikasi, Pengalaman lebih dari 15 tahun mengajar": "Master’s in Education and certified educator with over 15 years of teaching experience",
+			"Kalau konsep dasarnya kuat, soal sesulit apa pun jadi terasa masuk akal.": "When the core concept is strong, even difficult questions start to make sense.",
+			"Spesialis Bahasa & Persiapan Ujian SMA": "Language & Senior High Exam Preparation Specialist",
+			"S.Pd Pendidikan Bahasa Inggris, Universitas Padjadjaran": "B.Ed. in English Education, Universitas Padjadjaran",
+			"Persiapan ujian paling efektif kalau anak juga percaya diri, bukan cuma hafal rumus.": "Exam preparation works best when children are confident, not just memorising formulas.",
+			"Spesialis Sains SMP & SMA": "Lower Secondary & High School Science Specialist",
+			"S.Pd Pendidikan Fisika, Universitas Gadjah Mada": "B.Ed. in Physics Education, Universitas Gadjah Mada",
+			"Sains itu paling seru kalau dikaitkan ke hal-hal yang anak lihat sehari-hari.": "Science becomes more engaging when it connects to things children see every day.",
+			"Perjalanan Belajar Bersama Kami": "The Learning Journey with Us",
+			"Satu Jalur, Empat Babak Pertumbuhan": "One Path, Four Stages of Growth",
+			"Di mana pun posisi belajar anak Anda saat ini, SAN TUTOR siap menjadi mitra terbaiknya. Kami menyediakan program belajar adaptif untuk semua jenjang—mulai dari pondasi dasar di TK/SD, persiapan kelulusan SMP, hingga strategi sukses ujian di SMA.": "Wherever your child is in their learning journey, SAN TUTOR is ready to support them. We provide adaptive programmes for every level — from foundational learning in KG/Primary, to lower secondary preparation, to senior high exam strategies.",
+			"4–6 tahun": "Ages 4–6",
+			"7–12 tahun": "Ages 7–12",
+			"13–15 tahun": "Ages 13–15",
+			"16–18 tahun": "Ages 16–18",
+			"Mengenal huruf, angka, dan kebiasaan belajar lewat permainan dan cerita.": "Introducing letters, numbers, and learning habits through play and stories.",
+			"Menguatkan dasar Matematika, Bahasa, dan Sains sambil menumbuhkan rasa percaya diri.": "Strengthening foundations in Math, Language, and Science while building confidence.",
+			"Memperdalam pemahaman konsep dan melatih kebiasaan belajar yang lebih mandiri.": "Deepening conceptual understanding and building more independent study habits.",
+			"Fokus pada pendalaman materi, strategi ujian, dan persiapan menuju jenjang berikutnya.": "Focused on deeper understanding, exam strategies, and preparation for the next stage.",
+			"Program Kami": "Our Programmes",
+			"Dirancang Sesuai Kebutuhan, Bukan Sekadar Jadwal": "Designed Around Needs, Not Just Schedules",
+			"Dari pendampingan reguler mingguan hingga kelas intensif menjelang ujian, setiap program disusun bersama orang tua agar benar-benar menjawab kebutuhan anak. Biaya bervariasi tergantung jenjang dan frekuensi — tim kami akan bantu hitungkan paket yang paling pas saat konsultasi.": "From regular weekly support to intensive exam preparation, every programme is planned with parents so it addresses the child’s real needs. Fees vary by level and frequency — our team will help recommend the most suitable package during consultation.",
+			"Bimbingan Reguler Mingguan": "Regular Weekly Tutoring",
+			"• 1× seminggu (60 menit/sesi) • 2× seminggu (60 menit/sesi) • 3× seminggu (60 menit/sesi)": "• 1× per week (60 minutes/session) • 2× per week (60 minutes/session) • 3× per week (60 minutes/session)",
+			"Kelas Intensif Persiapan Ujian": "Intensive Exam Preparation",
+			"Jadwal padat menjelang UTS/UAS/ujian masuk": "Focused sessions before midterms, finals, or entrance exams",
+			"Pendampingan Tugas & PR": "Homework & Assignment Support",
+			"Fleksibel, disesuaikan jadwal sekolah anak": "Flexible and adjusted to the child’s school schedule",
+			"Konsultasi Perkembangan Bulanan": "Monthly Progress Consultation",
+			"Laporan progres langsung ke orang tua": "Progress updates shared directly with parents",
+			"Pertanyaan yang Sering Ditanyakan": "Frequently Asked Questions",
+			"Sebelum Anda Mendaftar": "Before You Register",
+			"Apakah ada kelas percobaan sebelum mendaftar?": "Is there a trial class before registration?",
+			"Ada. Kami menyediakan satu sesi kelas percobaan gratis agar Anda dan anak bisa merasakan langsung cara mengajar tutor kami sebelum memutuskan.": "Yes. We provide one free trial class so you and your child can experience how our tutors teach before deciding.",
+			"Bagaimana proses seleksi tutor di SAN TUTOR?": "How does SAN TUTOR select its tutors?",
+			"Setiap tutor melalui seleksi kompetensi akademik, wawancara, dan pelatihan cara mengajar anak sebelum diizinkan memegang kelas — bukan sekadar menguasai materi pelajaran.": "Every tutor goes through academic screening, interviews, and training in how to teach children before taking classes — not just subject mastery.",
+			"Apakah jadwal bisa disesuaikan dengan kegiatan sekolah anak?": "Can the schedule be adjusted to my child’s school activities?",
+			"Bisa. Jadwal kelas reguler kami atur bersama orang tua di awal, dan bisa disesuaikan lagi jika ada perubahan kegiatan sekolah atau ekstrakurikuler anak.": "Yes. Regular class schedules are arranged with parents at the start and can be adjusted if school or extracurricular activities change.",
+			"Bagaimana sistem pembayarannya?": "How does payment work?",
+			"Pembayaran dilakukan per paket bulanan. Rincian biaya akan kami sampaikan setelah mengetahui jenjang dan program yang dipilih saat konsultasi.": "Payment is made through monthly packages. We will share the fee details after confirming the level and programme during consultation.",
+			"Apa yang terjadi kalau anak naik jenjang, misalnya dari SD ke SMP?": "What happens when my child moves up a level, such as from Primary to Lower Secondary?",
+			"Karena tutor kami mendampingi lintas jenjang, sebisa mungkin kami pertahankan tutor yang sama agar anak tidak perlu beradaptasi dari awal lagi.": "Because our tutors support students across levels, we try to keep the same tutor where possible so your child does not need to adjust from the beginning again.",
+			"Kata Orang Tua": "What Parents Say",
+			"Dipercaya oleh Keluarga di Sekitar Anda": "Trusted by Families Around You",
+			"Anak saya yang tadinya malu-malu sekarang senang cerita apa yang dipelajarinya hari itu. Tutornya sabar sekali.": "My child used to be very shy, but now enjoys talking about what they learned that day. The tutor is very patient.",
+			"Ibu Sari": "Mrs Sari",
+			"Putra, kelas 2 TK": "Son, KG 2",
+			"Lebih percaya diri & aktif": "More confident & active",
+			"Karena tutornya sama sejak SD, dia sudah paham betul cara belajar anak saya. Persiapan SMA-nya jadi tenang, dan sekarang dia diterima di jurusan impiannya.": "Because the tutor has been the same since Primary, they really understand how my child learns. Senior high preparation became much calmer, and now she has entered her dream major.",
+			"Bapak Andi": "Mr Andi",
+			"Putri, kini mahasiswa": "Daughter, now a university student",
+			"Lolos UI 2025": "Accepted to UI 2025",
+			"Kelasnya kecil jadi anak saya benar-benar diperhatikan, bukan cuma ikut rombongan. Nilainya membaik dalam dua bulan.": "The class is small, so my child is truly noticed, not just part of a crowd. His grades improved within two months.",
+			"Ibu Ratna": "Mrs Ratna",
+			"Putra, kelas 8 SMP": "Son, Grade 8",
+			"Juara 1 Olimpiade Matematika Kota": "1st Place, City Math Olympiad",
+			"Mulai Sekarang": "Start Now",
+			"Daftarkan Kelas Percobaan Gratis Anak Anda": "Register Your Child for a Free Trial Class",
+			"Isi formulir singkat ini, dan kami akan bantu carikan jenjang serta program yang paling pas untuk anak Anda.": "Fill in this short form, and we will help recommend the most suitable level and programme for your child.",
+			"Isi data singkat di formulir": "Fill in the short form",
+			"Tim kami hubungi Anda dalam 1×24 jam": "Our team will contact you within 1×24 hours",
+			"Jadwalkan kelas percobaan gratis": "Schedule the free trial class",
+			"Nama Orang Tua": "Parent’s Name",
+			"Nama Anak": "Child’s Name",
+			"Jenjang": "Level",
+			"Program Diminati": "Programme of Interest",
+			"Nomor WhatsApp": "WhatsApp Number",
+			"Catatan (opsional)": "Notes (optional)",
+			"Pilih jenjang": "Choose level",
+			"Pilih program (opsional)": "Choose programme (optional)",
+			"Kirim ke WhatsApp": "Send via WhatsApp",
+			"Tombol di atas membuka WhatsApp dengan data Anda terisi otomatis — tinggal periksa dan kirim.": "The button above opens WhatsApp with your details filled in automatically — just review and send.",
+			"Belajar Mandiri, tapi Tetap Ada Arah yang Jelas": "Independent Learning with Clear Direction",
+			"E-Learning SAN TUTOR dirancang untuk anak yang butuh latihan tambahan di luar jadwal les. Anak belajar melalui video singkat, worksheet, quiz, dan rangkuman progres yang membantu orang tua melihat perkembangan belajarnya.": "SAN TUTOR E-Learning is designed for children who need extra practice outside tutoring sessions. Children learn through short videos, worksheets, quizzes, and progress summaries that help parents see their learning development.",
+			"Lihat Alur Belajar": "View Learning Flow",
+			"Tanya Program E-Learning": "Ask About E-Learning",
+			"Materi pendek & fokus": "Short and focused lessons",
+			"Cek pemahaman anak": "Check understanding",
+			"Belajar lebih terarah": "More directed learning",
+			"Progress Minggu Ini": "This Week’s Progress",
+			"Video konsep 8–12 menit": "8–12 minute concept video",
+			"Worksheet bertahap": "Step-by-step worksheets",
+			"Selesai": "Completed",
+			"Mulai": "Start",
+			"Kenapa Perlu E-Learning?": "Why E-Learning?",
+			"Latihan Tambahan Tanpa Harus Menambah Jadwal Les": "Extra Practice Without Adding More Tutoring Hours",
+			"Masalah umum anak bukan selalu “tidak bisa”, tetapi kurang latihan yang rapi, konsisten, dan sesuai level. E-Learning membantu anak mengulang konsep kapan saja, lalu latihan dengan urutan yang lebih terstruktur.": "The common issue is not always that a child “cannot do it”, but that they need structured, consistent, level-appropriate practice. E-Learning helps children review concepts anytime and practise in a clearer sequence.",
+			"Video Materi Singkat": "Short Lesson Videos",
+			"Materi dibuat pendek dan fokus agar anak tidak cepat bosan. Cocok untuk mengulang konsep sebelum mengerjakan latihan.": "Lessons are short and focused so children do not get bored easily. They are useful for reviewing concepts before practice.",
+			"Worksheet Bertahap": "Step-by-Step Worksheets",
+			"Latihan dimulai dari soal dasar, naik ke soal aplikasi, lalu soal tantangan agar kemampuan anak berkembang perlahan.": "Practice starts from basic questions, moves to application questions, and then challenge questions so skills grow gradually.",
+			"Quiz Pemahaman": "Understanding Quizzes",
+			"Quiz membantu anak mengecek bagian mana yang sudah kuat dan bagian mana yang perlu diulang kembali.": "Quizzes help children identify which parts are strong and which parts need review.",
+			"Progress Lebih Terlihat": "Clearer Progress",
+			"Orang tua bisa melihat arah belajar anak dengan lebih jelas, bukan hanya menunggu nilai ulangan keluar.": "Parents can see the direction of their child’s learning more clearly, instead of only waiting for test scores.",
+			"Alur Belajar": "Learning Flow",
+			"Belajar Asinkronus yang Tetap Terstruktur": "Structured Asynchronous Learning",
+			"Anak tidak hanya diberi kumpulan video. Setiap topik disusun menjadi learning path supaya anak tahu harus mulai dari mana, latihan apa yang perlu dikerjakan, dan kapan harus mengulang.": "Children are not just given a pile of videos. Each topic is arranged into a learning path so they know where to start, what practice to complete, and when to review.",
+			"Anak menonton video konsep singkat dengan contoh soal yang mudah diikuti.": "Children watch short concept videos with examples that are easy to follow.",
+			"Anak mengerjakan worksheet dari level mudah hingga menantang.": "Children complete worksheets from easy to challenging levels.",
+			"Anak menguji pemahaman dan melihat topik mana yang perlu diperbaiki.": "Children test their understanding and see which topics need improvement.",
+			"Anak mengulang bagian lemah dan bisa membawa pertanyaan ke sesi tutor.": "Children review weaker areas and can bring questions to tutoring sessions.",
+			"Pilihan Learning Path": "Learning Path Options",
+			"Materi Bisa Disesuaikan dengan Jenjang dan Kebutuhan Anak": "Materials Can Be Adjusted to Each Child’s Level and Needs",
+			"E-Learning ini paling efektif jika dipakai sebagai pendamping kelas reguler. Anak mendapat materi untuk belajar mandiri, sedangkan tutor tetap bisa membantu mengarahkan ketika ada topik yang belum kuat.": "This E-Learning programme is most effective as a companion to regular classes. Children get materials for independent study, while tutors can still guide them when certain topics are not yet strong.",
+			"Foundation TK & SD Kecil": "KG & Early Primary Foundation",
+			"Literasi, numerasi dasar, kebiasaan belajar, dan aktivitas sederhana.": "Literacy, basic numeracy, study habits, and simple activities.",
+			"Math & Science Booster": "Math & Science Booster",
+			"Konsep inti, latihan bertahap, dan review topik sekolah.": "Core concepts, step-by-step practice, and school topic review.",
+			"English Practice Path": "English Practice Path",
+			"Vocabulary, grammar, reading practice, dan writing prompt.": "Vocabulary, grammar, reading practice, and writing prompts.",
+			"Exam Preparation": "Exam Preparation",
+			"Rangkuman konsep, drill soal, pembahasan, dan strategi menjawab.": "Concept summaries, question drills, explanations, and answering strategies.",
+			"Untuk Orang Tua": "For Parents",
+			"Bukan Sekadar “Belajar Online”": "More Than Just “Online Learning”",
+			"Tujuan E-Learning bukan menggantikan tutor, tetapi membuat latihan anak lebih konsisten. Anak bisa belajar ulang di rumah, lalu sesi tatap muka dapat dipakai untuk membahas bagian yang benar-benar sulit.": "The goal of E-Learning is not to replace tutors, but to make practice more consistent. Children can review at home, then use face-to-face sessions to discuss the parts that are truly difficult.",
+			"Cocok untuk anak yang butuh pengulangan materi.": "Suitable for children who need repeated review.",
+			"Membantu orang tua melihat topik yang sudah dan belum dikuasai.": "Helps parents see which topics have and have not been mastered.",
+			"Membuat sesi les lebih efektif karena anak datang dengan bekal latihan.": "Makes tutoring sessions more effective because children come with prior practice.",
+			"Pertanyaan E-Learning": "E-Learning Questions",
+			"Sebelum Mulai Belajar Online": "Before Starting Online Learning",
+			"Apakah E-Learning ini menggantikan kelas tatap muka?": "Does E-Learning replace face-to-face classes?",
+			"Tidak. E-Learning lebih tepat dipakai sebagai pendamping belajar. Anak bisa mengulang materi dan latihan sendiri, lalu membawa pertanyaan ke tutor ketika ada bagian yang sulit.": "No. E-Learning works best as a learning companion. Children can review and practise independently, then bring questions to the tutor when something is difficult.",
+			"Apakah anak bisa belajar kapan saja?": "Can children learn anytime?",
+			"Bisa. Materi asinkronus dapat dipelajari sesuai waktu anak. Namun, kami tetap menyarankan jadwal belajar rutin agar progresnya konsisten.": "Yes. Asynchronous materials can be studied according to the child’s schedule. However, we still recommend a routine study schedule for consistent progress.",
+			"Untuk jenjang apa saja?": "Which levels is it for?",
+			"Materi dapat disiapkan untuk TK, SD, SMP, dan SMA. Learning path akan disesuaikan dengan kebutuhan belajar dan kurikulum anak.": "Materials can be prepared for KG, Primary, Lower Secondary, and High School. The learning path will be adjusted to the child’s needs and school curriculum.",
+			"Bagaimana cara mendapatkan akses?": "How can we get access?",
+			"Silakan hubungi tim SAN TUTOR melalui WhatsApp. Kami akan bantu cek jenjang anak, kebutuhan belajarnya, lalu rekomendasikan learning path yang sesuai.": "Please contact the SAN TUTOR team via WhatsApp. We will help check the child’s level and learning needs, then recommend a suitable learning path.",
+			"Mulai E-Learning": "Start E-Learning",
+			"Coba Buat Anak Belajar Lebih Konsisten di Rumah": "Help Your Child Learn More Consistently at Home",
+			"Hubungi tim kami untuk memilih learning path yang sesuai dengan jenjang, kurikulum sekolah, dan target belajar anak.": "Contact our team to choose a learning path that suits your child’s level, school curriculum, and learning goals.",
+			"Konsultasi via WhatsApp": "Consult via WhatsApp",
+			"Kembali ke Beranda": "Back to Homepage",
+			"Materi ini sedang kami siapkan.": "This subject is being prepared.",
+			"Kami sedang menyusun lesson library yang rapi, interaktif, dan siap dipakai di kelas maupun belajar mandiri di rumah. Untuk sementara, kamu bisa membuka halaman Matematika atau request materi melalui WhatsApp.": "We are preparing a neat, interactive lesson library that can be used in class or for independent learning at home. For now, you can open the Mathematics page or request materials via WhatsApp.",
+			"Buka Matematika": "Open Mathematics",
+			"Kembali ke E-Learning": "Back to E-Learning",
+			"Status materi E-Learning": "E-Learning material status",
+			"Lesson sedang dibuat": "Lessons are being prepared",
+			"Format yang disiapkan: slide interaktif, contoh soal, guided practice, independent practice, dan exit ticket.": "Prepared format: interactive slides, worked examples, guided practice, independent practice, and exit ticket.",
+			"Lesson structure": "Lesson structure",
+			"Ready": "Ready",
+			"Interactive slides": "Interactive slides",
+			"In progress": "In progress",
+			"Worksheets & quiz": "Worksheets & quiz",
+			"Next": "Next",
+			"Learning Library": "Learning Library",
+			"Mapel yang Akan Masuk ke E-Learning": "Subjects That Will Be Added to E-Learning",
+			"Arah terbaiknya: semua mapel masuk dalam satu library, tetapi setiap mapel punya halaman khusus agar materi tidak bercampur.": "The best direction: all subjects are part of one library, but each subject has its own page so materials do not get mixed.",
+			"Lesson interaktif, latihan bertahap, dan soal konsep.": "Interactive lessons, step-by-step practice, and concept questions.",
+			"Sudah bisa dibuka →": "Available now →",
+			"Grammar, vocabulary, reading, writing, dan speaking prompts.": "Grammar, vocabulary, reading, writing, and speaking prompts.",
+			"Segera hadir": "Coming soon",
+			"Concept slides, experiment ideas, diagram, dan quiz.": "Concept slides, experiment ideas, diagrams, and quizzes.",
+			"Teks, kaidah kebahasaan, pemahaman bacaan, dan menulis.": "Texts, language features, reading comprehension, and writing.",
+			"Project-based learning, problem solving, dan design challenge.": "Project-based learning, problem solving, and design challenges.",
+			"Scratch, block coding, logic, sequence, loop, dan condition.": "Scratch, block coding, logic, sequences, loops, and conditions.",
+			"Sensor, motor, algorithm, challenge, dan project reflection.": "Sensors, motors, algorithms, challenges, and project reflection.",
+			"Nama lengkap Anda": "Your full name",
+			"Nama lengkap anak": "Child’s full name",
+			"08xx-xxxx-xxxx": "08xx-xxxx-xxxx",
+			"Ceritakan kebutuhan belajar anak Anda": "Tell us about your child’s learning needs"
+};
+		const reversePageTranslations = Object.fromEntries(
+			Object.entries(pageTranslations).map(([id, en]) => [en, id])
+		);
+
+		const readSavedLanguage = () => {
+			try {
+				const saved = window.localStorage?.getItem(languageStorageKey);
+				return saved === 'en' ? 'en' : 'id';
+			} catch {
+				return 'id';
+			}
+		};
+
+		const saveLanguage = (lang) => {
+			try {
+				window.localStorage?.setItem(languageStorageKey, lang);
+			} catch {
+				// Ignore storage errors; the toggle still works for the current page.
+			}
+		};
+
+		const normalizeText = (value) => String(value || '').replace(/\s+/g, ' ').trim();
+		const preserveOuterWhitespace = (original, replacement) => {
+			const prefix = String(original || '').match(/^\s*/)?.[0] || '';
+			const suffix = String(original || '').match(/\s*$/)?.[0] || '';
+			return `${prefix}${replacement}${suffix}`;
+		};
+		const translateValue = (value, activeLang) => {
+			const normalized = normalizeText(value);
+			if (!normalized) return value;
+			const translated = activeLang === 'en' ? pageTranslations[normalized] : reversePageTranslations[normalized];
+			return translated ? preserveOuterWhitespace(value, translated) : value;
+		};
+		const updateMetaContent = (selector, content) => {
+			const target = document.querySelector(selector);
+			if (target && content) target.setAttribute('content', content);
+		};
+		const translateTextNodes = (activeLang) => {
+			const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+				acceptNode(node) {
+					const parent = node.parentElement;
+					if (!parent) return NodeFilter.FILTER_REJECT;
+					if (parent.closest('script, style, svg')) return NodeFilter.FILTER_REJECT;
+					if (!normalizeText(node.nodeValue)) return NodeFilter.FILTER_REJECT;
+					return NodeFilter.FILTER_ACCEPT;
+				},
+			});
+			const nodes = [];
+			while (walker.nextNode()) nodes.push(walker.currentNode);
+			nodes.forEach((node) => {
+				node.nodeValue = translateValue(node.nodeValue, activeLang);
+			});
+		};
+
+		const setLanguage = (lang) => {
+			const activeLang = lang === 'en' ? 'en' : 'id';
+			document.documentElement.lang = activeLang;
+			document.body.dataset.lang = activeLang;
+
+			const pageTitle = activeLang === 'en' ? document.body.dataset.pageTitleEn : document.body.dataset.pageTitleId;
+			const pageDescription = activeLang === 'en' ? document.body.dataset.pageDescriptionEn : document.body.dataset.pageDescriptionId;
+			const ogTitle = activeLang === 'en' ? document.body.dataset.ogTitleEn : document.body.dataset.ogTitleId;
+			const ogDescription = activeLang === 'en' ? document.body.dataset.ogDescriptionEn : document.body.dataset.ogDescriptionId;
+			if (pageTitle) document.title = pageTitle;
+			updateMetaContent('meta[name="description"]', pageDescription);
+			updateMetaContent('meta[property="og:title"]', ogTitle);
+			updateMetaContent('meta[property="og:description"]', ogDescription);
+
+			document.querySelectorAll('[data-i18n-id][data-i18n-en]').forEach((element) => {
+				const translated = activeLang === 'en' ? element.dataset.i18nEn : element.dataset.i18nId;
+				if (typeof translated === 'string') element.textContent = translated;
+			});
+
+			document.querySelectorAll('[data-i18n-html-id][data-i18n-html-en]').forEach((element) => {
+				const translated = activeLang === 'en' ? element.dataset.i18nHtmlEn : element.dataset.i18nHtmlId;
+				if (typeof translated === 'string') element.innerHTML = translated;
+			});
+
+			['placeholder', 'aria-label', 'title', 'alt', 'value'].forEach((attribute) => {
+				const idKey = `i18n${attribute.replace(/(^|-)([a-z])/g, (_, _sep, char) => char.toUpperCase())}Id`;
+				const enKey = `i18n${attribute.replace(/(^|-)([a-z])/g, (_, _sep, char) => char.toUpperCase())}En`;
+				document.querySelectorAll(`[data-${idKey.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)}][data-${enKey.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)}]`).forEach((element) => {
+					const translated = activeLang === 'en' ? element.dataset[enKey] : element.dataset[idKey];
+					if (typeof translated === 'string') element.setAttribute(attribute, translated);
+				});
+			});
+
+			document.querySelectorAll('input[placeholder], textarea[placeholder], img[alt], [aria-label], [title]').forEach((element) => {
+				['placeholder', 'alt', 'aria-label', 'title'].forEach((attribute) => {
+					if (!element.hasAttribute(attribute)) return;
+					element.setAttribute(attribute, translateValue(element.getAttribute(attribute), activeLang));
+				});
+			});
+
+			translateTextNodes(activeLang);
+
+			languageToggles.forEach((button) => {
+				button.setAttribute('aria-pressed', String(activeLang === 'en'));
+				button.setAttribute(
+					'aria-label',
+					activeLang === 'en' ? 'Ganti bahasa ke Bahasa Indonesia' : 'Switch language to English'
+				);
+			});
+
+			window.dispatchEvent(new CustomEvent('santutor:language-change', { detail: { language: activeLang } }));
+		};
+
+		let currentLanguage = readSavedLanguage();
+		setLanguage(currentLanguage);
+		languageToggles.forEach((button) => {
+			button.addEventListener('click', () => {
+				currentLanguage = currentLanguage === 'en' ? 'id' : 'en';
+				setLanguage(currentLanguage);
+				saveLanguage(currentLanguage);
+			});
+		});
+
+		const header = document.getElementById('siteHeader');
+		const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 8);
+		onScroll();
+		window.addEventListener('scroll', onScroll, { passive: true });
+
+		const toggle = document.getElementById('navToggle');
+		const mobileNav = document.getElementById('mobileNav');
+		toggle?.addEventListener('click', () => {
+			const open = mobileNav?.classList.toggle('open');
+			toggle.setAttribute('aria-expanded', String(!!open));
+		});
+		mobileNav?.querySelectorAll('a').forEach((a) =>
+			a.addEventListener('click', () => {
+				mobileNav.classList.remove('open');
+				toggle?.setAttribute('aria-expanded', 'false');
+			})
+		);
+
+		const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (!prefersReduced && 'IntersectionObserver' in window) {
+			const io = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('in-view');
+							io.unobserve(entry.target);
+						}
+					});
+				},
+				{ threshold: 0.15 }
+			);
+			document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+		} else {
+			document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in-view'));
+		}
+	</script>
+</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+:root {
+			--cream: #FCF8F1;
+			--white: #FFFFFF;
+			--orange: #F2761E;
+			--orange-light: #FDEDE0;
+			--blue: #3EB6EA;
+			--blue-light: #E7F7FD;
+			--sage: #6E9B7D;
+			--sage-light: #F1EEE0;
+			--navy: #1D2B45;
+			--ink-soft: #57607A;
+			--border: #EDE4D3;
+			--whatsapp: #25D366;
+			--radius-lg: 28px;
+			--radius-md: 20px;
+			--shadow-soft: 0 18px 40px -22px rgba(29, 43, 69, 0.28);
+			--font-display: "Fredoka", sans-serif;
+			--font-body: "Nunito", sans-serif;
+			--font-label: "Quicksand", sans-serif;
+		}
+
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		body {
+			margin: 0;
+			font-family: var(--font-body);
+			color: var(--navy);
+			background: var(--white);
+			-webkit-font-smoothing: antialiased;
+			overflow-x: hidden;
+		}
+		img, svg { max-width: 100%; display: block; }
+		a { color: inherit; text-decoration: none; }
+		ul, ol { list-style: none; margin: 0; padding: 0; }
+		h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; color: var(--navy); }
+		p { margin: 0; line-height: 1.65; color: var(--ink-soft); }
+		:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+
+		.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+		/* ---------- Decorative background system ---------- */
+		.section-decor { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+		.blob { position: absolute; border-radius: 50%; filter: blur(46px); opacity: 0.55; }
+		.blob-orange { background: var(--orange-light); }
+		.blob-blue { background: var(--blue-light); }
+		.blob-sage { background: var(--sage-light); }
+		.dot-grid {
+			position: absolute; inset: 0;
+			background-image: radial-gradient(circle, var(--border) 1.6px, transparent 1.6px);
+			background-size: 26px 26px;
+			-webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 90%);
+			mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 90%);
+			opacity: 0.7;
+		}
+		.dot-grid-hero { -webkit-mask-image: radial-gradient(ellipse 60% 80% at 20% 30%, #000 30%, transparent 80%); mask-image: radial-gradient(ellipse 60% 80% at 20% 30%, #000 30%, transparent 80%); }
+		.doodle { position: absolute; opacity: 0.55; }
+		@media (prefers-reduced-motion: no-preference) {
+			.doodle-star { animation: doodle-float 5s ease-in-out infinite; }
+			.doodle-plus { animation: doodle-float 6.5s ease-in-out infinite 0.5s; }
+		}
+		@keyframes doodle-float {
+			0%, 100% { transform: translateY(0) rotate(0deg); }
+			50% { transform: translateY(-10px) rotate(12deg); }
+		}
+		@media (max-width: 680px) {
+			.section-decor .blob { transform: scale(0.7); }
+		}
+
+		.eyebrow {
+			font-family: var(--font-label);
+			font-weight: 700;
+			font-size: 0.82rem;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: var(--orange);
+			margin: 0 0 10px;
+		}
+		.eyebrow-light { color: var(--blue-light); }
+
+		/* ---------- Buttons ---------- */
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			font-family: var(--font-body);
+			font-weight: 800;
+			font-size: 0.95rem;
+			padding: 13px 26px;
+			border: none;
+			border-radius: 100px;
+			cursor: pointer;
+			transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+			white-space: nowrap;
+		}
+		.btn-sm { padding: 9px 20px; font-size: 0.88rem; }
+		.btn-lg { padding: 15px 30px; font-size: 1rem; }
+		.btn-block { width: 100%; }
+		.btn-primary { background: var(--orange); color: var(--white); box-shadow: 0 12px 24px -12px rgba(242, 118, 30, 0.6); }
+		.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 28px -12px rgba(242, 118, 30, 0.7); }
+		.btn-ghost { color: var(--navy); border: 2px solid var(--border); background: transparent; }
+		.btn-ghost:hover { border-color: var(--navy); transform: translateY(-2px); }
+
+		/* ---------- Language toggle ---------- */
+		.language-toggle {
+			display: inline-flex;
+			align-items: center;
+			justify-content: space-between;
+			position: relative;
+			width: 74px;
+			height: 36px;
+			padding: 4px 9px;
+			border: 1.5px solid var(--border);
+			border-radius: 999px;
+			background: var(--white);
+			color: var(--ink-soft);
+			font-family: var(--font-label);
+			font-size: 0.72rem;
+			font-weight: 800;
+			cursor: pointer;
+			box-shadow: 0 10px 22px -18px rgba(29,43,69,0.45);
+			transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+		}
+		.language-toggle:hover { border-color: var(--orange); box-shadow: 0 14px 26px -18px rgba(242,118,30,0.55); }
+		.language-code { position: relative; z-index: 2; line-height: 1; transition: color 0.2s ease; }
+		body[data-lang="id"] .language-code-id,
+		body[data-lang="en"] .language-code-en { color: var(--white); }
+		body[data-lang="id"] .language-code-en,
+		body[data-lang="en"] .language-code-id { color: var(--ink-soft); }
+		.language-knob {
+			position: absolute;
+			top: 4px;
+			left: 4px;
+			width: 33px;
+			height: 26px;
+			border-radius: 999px;
+			background: var(--orange);
+			box-shadow: 0 8px 16px -10px rgba(242,118,30,0.8);
+			transition: transform 0.22s ease;
+		}
+		body[data-lang="en"] .language-knob { transform: translateX(31px); }
+		.mobile-language-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+			padding: 10px 4px 14px;
+			border-bottom: 1px solid var(--border);
+			font-weight: 800;
+			color: var(--navy);
+		}
+
+		/* ---------- Header ---------- */
+		.site-header {
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			background: rgba(255, 255, 255, 0.85);
+			backdrop-filter: blur(10px);
+			border-bottom: 1px solid var(--border);
+			transition: border-color 0.25s ease, box-shadow 0.25s ease;
+		}
+		.site-header.scrolled { border-bottom-color: var(--border); box-shadow: 0 8px 24px -20px rgba(29,43,69,0.4); }
+		.nav-inner { display: flex; align-items: center; justify-content: space-between; padding-block: 8px; gap: 20px; }
+
+		.logo { display: flex; align-items: center; }
+		.logo-img { height: 64px; width: auto; }
+
+		.main-nav { display: flex; gap: 30px; align-items: center; }
+		.main-nav a { font-weight: 700; font-size: 0.92rem; color: var(--navy); position: relative; padding: 4px 0; }
+		.main-nav a::after {
+			content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px;
+			background: var(--orange); transition: width 0.2s ease;
+		}
+		.main-nav a:hover::after { width: 100%; }
+
+		.nav-actions { display: flex; align-items: center; gap: 16px; }
+		.nav-phone { display: none; align-items: center; gap: 6px; font-weight: 700; font-size: 0.86rem; color: var(--ink-soft); }
+		.nav-phone:hover { color: var(--orange); }
+		.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 6px; cursor: pointer; }
+		.nav-toggle span { width: 22px; height: 2.5px; background: var(--navy); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+		.mobile-nav {
+			display: none; flex-direction: column; gap: 4px; padding: 8px 24px 20px;
+			background: var(--cream); border-bottom: 1px solid var(--border);
+		}
+		.mobile-nav a { padding: 12px 4px; font-weight: 700; border-bottom: 1px solid var(--border); }
+		.mobile-nav .btn { margin-top: 12px; width: 100%; }
+		.mobile-nav.open { display: flex; }
+
+		@media (min-width: 1140px) {
+			.nav-phone { display: flex; }
+		}
+
+		/* ---------- Hero ---------- */
+		.hero { padding: 64px 0 96px; overflow: hidden; position: relative; }
+		.hero-inner { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+		.hero-content h1 { font-size: clamp(2.1rem, 4vw, 3.15rem); line-height: 1.14; letter-spacing: -0.005em; margin-bottom: 20px; }
+		.hero-lede { font-size: 1.08rem; max-width: 52ch; margin-bottom: 32px; }
+		.hero-cta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 44px; }
+		.hero-stats { display: flex; gap: 34px; margin: 0; }
+		.hero-stats dt { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--navy); }
+		.hero-stats dd { margin: 2px 0 0; font-size: 0.82rem; color: var(--ink-soft); }
+
+		.hero-visual { position: relative; }
+		.hero-blob {
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						width: 120%; 
+						aspect-ratio: 1 / 1; 
+						background: linear-gradient(135deg, var(--blue-light), var(--orange-light));
+						border-radius: 62% 38% 55% 45% / 45% 55% 45% 55%;
+						z-index: 0;
+					}
+		.hero-illustration {
+						width: 100%;
+						height: 100%;
+						
+						/* INI KUNCINYA: Memaksa gambar memenuhi area tanpa gepeng */
+						object-fit: cover; 
+						
+						/* Mengembalikan sudut melengkung seperti desain awal */
+						border-radius: 28px; 
+						
+						/* Memastikan gambar berada di depan blob latar belakang */
+						position: relative;
+						z-index: 1; 
+					}
+		.hero-badge {
+			position: absolute; z-index: 2; bottom: -18px; left: 24px;
+			background: var(--white); border-radius: 100px; padding: 10px 18px;
+			display: flex; align-items: center; gap: 9px;
+			font-weight: 700; font-size: 0.84rem; box-shadow: var(--shadow-soft);
+		}
+		.hero-badge-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--sage); flex-shrink: 0; }
+		.hero-photo-chip {
+			position: absolute; z-index: 2; top: -22px; right: -18px;
+			width: 92px; height: 92px; border-radius: 22px; overflow: hidden;
+			border: 5px solid var(--white); box-shadow: var(--shadow-soft);
+			transform: rotate(6deg); margin: 0;
+		}
+		.hero-photo-chip img { width: 100%; height: 100%; object-fit: cover; }
+		@media (max-width: 860px) {
+			.hero-photo-chip { width: 76px; height: 76px; top: -14px; right: 6px; }
+		}
+
+		/* ---------- Section head ---------- */
+		.section-head { max-width: 640px; margin: 0 auto 52px; text-align: center; }
+		.section-head h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); margin-bottom: 14px; }
+		.section-lede { font-size: 1.02rem; }
+
+		/* ---------- Why: list + collage ---------- */
+		.why-section { padding: 90px 0; background: var(--cream); position: relative; overflow: hidden; }
+		.why-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+		.why-list { display: flex; flex-direction: column; }
+		.why-list-item { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+		.why-list-item:first-child { padding-top: 0; }
+		.why-list-item:last-child { border-bottom: none; padding-bottom: 0; }
+		.why-list-icon {
+			display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+			width: 44px; height: 44px; border-radius: 13px;
+			background: var(--icon-bg); color: var(--icon-fg);
+		}
+		.why-list-item h3 { font-size: 1.02rem; margin-bottom: 4px; }
+		.why-list-item p { font-size: 0.88rem; }
+
+		.why-collage { display: grid; grid-template-columns: 1.2fr 1fr; grid-template-rows: repeat(2, 1fr); gap: 14px; height: 420px; }
+		.collage-item { margin: 0; }
+		.collage-item img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md); box-shadow: var(--shadow-soft); }
+		.collage-lg { grid-row: 1 / 3; }
+
+		/* ---------- Tutor carousel ---------- */
+		.tutor-section { padding: 90px 0; background: var(--white); position: relative; }
+		.tutor-carousel { position: relative; }
+		.tutor-track {
+			display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+			padding: 6px 6px 10px; margin: 0 -6px;
+			-ms-overflow-style: none; scrollbar-width: none;
+		}
+		.tutor-track::-webkit-scrollbar { display: none; }
+		.tutor-card {
+			flex: 0 0 250px; scroll-snap-align: start;
+			background: var(--white); border: 1px solid var(--border); border-top: 4px solid var(--accent);
+			border-radius: var(--radius-md); padding: 28px 22px; text-align: center;
+			transition: transform 0.22s ease, box-shadow 0.22s ease;
+		}
+		.tutor-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); }
+		.tutor-avatar {
+			display: flex; align-items: center; justify-content: center;
+			width: 84px; height: 84px; border-radius: 50%; background: var(--avatar-bg);
+			margin: 0 auto 16px;
+		}
+		.tutor-card h3 { font-size: 1.02rem; margin-bottom: 4px; }
+		.tutor-role { font-weight: 700; color: var(--accent); font-size: 0.82rem; margin-bottom: 6px; }
+		.tutor-edu { font-size: 0.78rem; margin-bottom: 12px; }
+		.tutor-quote { font-size: 0.84rem; font-style: italic; color: var(--navy); line-height: 1.55; }
+		.tutor-nav { display: flex; justify-content: center; gap: 12px; margin-top: 18px; }
+		.tutor-nav button {
+			width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--white);
+			display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--navy);
+			transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+		}
+		.tutor-nav button:hover { background: var(--orange-light); border-color: var(--orange); color: var(--orange); }
+		.tutor-note { text-align: center; font-size: 0.78rem; color: var(--ink-soft); margin-top: 24px; opacity: 0.8; }
+
+		/* ---------- Journey ---------- */
+		.journey-section { padding: 90px 0 110px; background: var(--white); position: relative; }
+		.journey-track {
+			display: flex; justify-content: space-between; gap: 20px;
+			position: relative; padding-top: 28px;
+		}
+		.journey-track::before {
+			content: ""; position: absolute; top: 32px; left: 4%; right: 4%; height: 0;
+			border-top: 2.5px dashed var(--border); z-index: 0;
+		}
+		.journey-stop { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; transform: translateY(var(--offset)); }
+		.journey-dot {
+			width: 16px; height: 16px; border-radius: 50%; background: var(--blue);
+			border: 4px solid var(--white); box-shadow: 0 0 0 3px var(--blue-light);
+			position: relative; z-index: 1; margin-bottom: 22px;
+		}
+		.journey-dot-end { background: var(--orange); box-shadow: 0 0 0 3px var(--orange-light); }
+		.journey-card {
+			background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-md);
+			width: 100%; overflow: hidden;
+		}
+		.journey-photo { width: 100%; height: 118px; object-fit: cover; display: block; }
+		.journey-card-body { padding: 18px 18px 22px; }
+		.journey-age { font-family: var(--font-label); font-size: 0.78rem; font-weight: 700; color: var(--blue); letter-spacing: 0.04em; }
+		.journey-card h3 { font-size: 1.3rem; margin: 4px 0 8px; }
+		.journey-card p { font-size: 0.86rem; }
+
+		/* ---------- Program ---------- */
+		.program-section { background: var(--navy); padding: 84px 0; position: relative; overflow: hidden; }
+		.dot-grid-light {
+			background-image: radial-gradient(circle, rgba(255,255,255,0.14) 1.6px, transparent 1.6px);
+			background-size: 26px 26px;
+			-webkit-mask-image: radial-gradient(ellipse 60% 70% at 85% 20%, #000 30%, transparent 80%);
+			mask-image: radial-gradient(ellipse 60% 70% at 85% 20%, #000 30%, transparent 80%);
+		}
+		.program-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+		.light-title { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 10px 0 16px; }
+		.program-lede { color: rgba(255,255,255,0.72); max-width: 48ch; }
+		.program-list { display: flex; flex-direction: column; gap: 0; }
+		.program-list li {
+			display: flex; align-items: flex-start; gap: 18px;
+			padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.14);
+		}
+		.program-list li:last-child { border-bottom: none; }
+		.program-num {
+			font-family: var(--font-display); font-weight: 600; color: var(--blue); font-size: 0.9rem; padding-top: 2px;
+		}
+		.program-text { display: flex; flex-direction: column; gap: 4px; }
+		.program-text strong { color: var(--white); font-size: 1.02rem; font-weight: 700; }
+		.program-text small { color: rgba(255,255,255,0.6); font-size: 0.82rem; }
+
+		/* ---------- FAQ ---------- */
+		.faq-section { padding: 90px 0; background: var(--cream); position: relative; overflow: hidden; }
+		.faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+		.faq-item {
+			background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md);
+			padding: 6px 24px;
+		}
+		.faq-item summary {
+			cursor: pointer; list-style: none; padding: 18px 0;
+			font-weight: 700; font-size: 1rem; color: var(--navy);
+			display: flex; justify-content: space-between; align-items: center; gap: 16px;
+		}
+		.faq-item summary::-webkit-details-marker { display: none; }
+		.faq-item summary::after {
+			content: "+"; font-family: var(--font-display); font-size: 1.4rem; color: var(--orange);
+			flex-shrink: 0; transition: transform 0.2s ease;
+		}
+		.faq-item[open] summary::after { transform: rotate(45deg); }
+		.faq-item p { padding-bottom: 20px; font-size: 0.94rem; }
+
+		/* ---------- Testimonials ---------- */
+		.testimonials-section { padding: 90px 0; background: var(--white); position: relative; overflow: hidden; }
+		.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+		.testi-card {
+			background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-md);
+			padding: 30px 26px; margin: 0; display: flex; flex-direction: column; gap: 16px;
+		}
+		.testi-stars { color: var(--orange); letter-spacing: 2px; font-size: 0.95rem; }
+		.testi-card blockquote { margin: 0; font-size: 0.98rem; color: var(--navy); line-height: 1.6; }
+		.testi-card figcaption { display: flex; align-items: center; gap: 12px; font-size: 0.86rem; color: var(--ink-soft); }
+		.testi-avatar {
+			width: 38px; height: 38px; border-radius: 50%; background: var(--blue-light); color: var(--blue);
+			display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0;
+			font-family: var(--font-display);
+		}
+		.testi-badge {
+			display: inline-flex; align-items: center; gap: 4px; margin-top: 7px;
+			padding: 3px 10px; border-radius: 100px; background: var(--badge-bg); color: var(--badge-fg);
+			font-size: 0.72rem; font-weight: 700; white-space: nowrap;
+		}
+		.testi-note { text-align: center; font-size: 0.78rem; color: var(--ink-soft); margin-top: 28px; opacity: 0.8; }
+
+		/* ---------- Pendaftaran ---------- */
+		.daftar-section { padding: 90px 0 100px; background: var(--cream); position: relative; overflow: hidden; }
+		.daftar-inner { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
+		.daftar-lede { margin: 4px 0 28px; max-width: 44ch; }
+		.daftar-steps { display: flex; flex-direction: column; gap: 16px; }
+		.daftar-steps li { display: flex; align-items: center; gap: 14px; font-weight: 700; color: var(--navy); font-size: 0.98rem; }
+		.daftar-steps span {
+			width: 30px; height: 30px; border-radius: 50%; background: var(--orange-light); color: var(--orange);
+			display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 600;
+			flex-shrink: 0; font-size: 0.92rem;
+		}
+
+		.daftar-form {
+			background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+			padding: 34px; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 18px;
+		}
+		.form-row { display: flex; flex-direction: column; gap: 7px; }
+		.form-row-split { flex-direction: row; gap: 16px; }
+		.form-row-split > div { flex: 1; display: flex; flex-direction: column; gap: 7px; }
+		label { font-weight: 700; font-size: 0.86rem; color: var(--navy); }
+		input, select, textarea {
+			font-family: var(--font-body); font-size: 0.96rem; color: var(--navy);
+			border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px;
+			background: var(--cream); transition: border-color 0.18s ease;
+		}
+		input:focus, select:focus, textarea:focus { border-color: var(--blue); outline: none; }
+		textarea { resize: vertical; font-family: var(--font-body); }
+		.form-hint { font-size: 0.8rem; text-align: center; color: var(--ink-soft); }
+
+		/* ---------- Floating WhatsApp ---------- */
+		.wa-float {
+			position: fixed; bottom: 24px; right: 24px; z-index: 200;
+			width: 58px; height: 58px; border-radius: 50%; background: var(--whatsapp); color: var(--white);
+			display: flex; align-items: center; justify-content: center;
+			box-shadow: 0 14px 28px -10px rgba(37, 211, 102, 0.6);
+			transition: transform 0.2s ease;
+		}
+		.wa-float:hover { transform: scale(1.08); }
+		.wa-float::before {
+			content: ""; position: absolute; inset: 0; border-radius: 50%;
+			border: 2px solid var(--whatsapp); animation: wa-pulse 2.2s ease-out infinite;
+		}
+		@keyframes wa-pulse {
+			0% { transform: scale(1); opacity: 0.7; }
+			100% { transform: scale(1.6); opacity: 0; }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			.wa-float::before { animation: none; display: none; }
+		}
+
+		/* ---------- Footer ---------- */
+		.site-footer { background: var(--navy); padding: 70px 0 0; }
+		.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+		.logo-chip {
+			display: inline-flex; background: var(--white); border-radius: 14px; padding: 8px 14px; margin-bottom: 4px;
+		}
+		.footer-brand .logo-img { height: 52px; }
+		.footer-brand p { color: rgba(255,255,255,0.65); margin-top: 14px; font-size: 0.92rem; max-width: 30ch; }
+		.footer-col h4 { color: var(--white); font-family: var(--font-label); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 16px; }
+		.footer-col p { color: rgba(255,255,255,0.68); font-size: 0.92rem; margin-bottom: 8px; }
+		.footer-col a:hover { color: var(--blue); }
+		.footer-map-link { color: var(--blue); font-weight: 700; font-size: 0.86rem; display: inline-block; margin-top: 6px; }
+		.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding: 22px 24px; }
+		.footer-bottom p, .footer-bottom a { color: rgba(255,255,255,0.55); font-size: 0.82rem; }
+		.footer-bottom a:hover { color: var(--white); }
+
+		/* ---------- Reveal on scroll ---------- */
+		.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+		.reveal.in-view { opacity: 1; transform: translateY(0); }
+		@media (prefers-reduced-motion: reduce) {
+			.reveal { opacity: 1; transform: none; transition: none; }
+			html { scroll-behavior: auto; }
+		}
+
+		/* ---------- Responsive ---------- */
+		@media (max-width: 980px) {
+			.why-columns { grid-template-columns: 1fr; gap: 32px; }
+			.why-collage { height: 320px; }
+			.testi-grid { grid-template-columns: 1fr; }
+			.program-inner { grid-template-columns: 1fr; }
+			.daftar-inner { grid-template-columns: 1fr; }
+		}
+		@media (max-width: 860px) {
+			.main-nav { display: none; }
+			.nav-toggle { display: flex; }
+			.hero-inner { grid-template-columns: 1fr; }
+			.hero-visual { order: -1; max-width: 420px; margin: 0 auto; }
+			.hero-cta { justify-content: center; }
+			.hero-content { text-align: center; }
+			.hero-stats { justify-content: center; }
+			.hero-lede { margin-inline: auto; }
+			.journey-track { flex-direction: column; gap: 34px; }
+			.journey-track::before { top: 4%; bottom: 4%; left: 24px; right: auto; width: 0; border-top: none; border-left: 2.5px dashed var(--border); height: auto; }
+			.journey-stop { flex-direction: row; text-align: left; transform: none !important; align-items: flex-start; }
+			.journey-dot { margin: 4px 20px 0 8px; flex-shrink: 0; }
+			.footer-grid { grid-template-columns: 1fr 1fr; }
+			.form-row-split { flex-direction: column; }
+			.tutor-card { flex-basis: 220px; }
+		}
+		@media (max-width: 560px) {
+			.why-collage { grid-template-columns: 1fr; grid-template-rows: repeat(3, 130px); height: auto; }
+			.collage-lg { grid-row: auto; }
+			.hero-stats { flex-direction: column; gap: 14px; }
+			.hero-cta { flex-direction: column; }
+			.hero-cta .btn { width: 100%; }
+			.footer-grid { grid-template-columns: 1fr; }
+			.footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+			.daftar-form { padding: 24px; }
+			.wa-float { bottom: 16px; right: 16px; width: 52px; height: 52px; }
+			.tutor-card { flex-basis: 82vw; }
+		}
+
+
+/* ---------- Shared navigation refinements ---------- */
+.main-nav { gap: 30px; align-items: center; }
+.main-nav a:hover::after,
+.main-nav a[aria-current="page"]::after { width: 100%; }
+.main-nav a[aria-current="page"],
+.mobile-nav a[aria-current="page"] { color: var(--orange); }
+
+
+/* ---------- E-Learning dropdown ---------- */
+.nav-dropdown {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+}
+.nav-dropdown-trigger {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+.nav-dropdown-trigger svg { transition: transform 0.18s ease; }
+.nav-dropdown:hover .nav-dropdown-trigger svg,
+.nav-dropdown:focus-within .nav-dropdown-trigger svg { transform: rotate(180deg); }
+.nav-dropdown.is-active > .nav-dropdown-trigger { color: var(--orange); }
+.nav-dropdown.is-active > .nav-dropdown-trigger::after,
+.nav-dropdown:hover > .nav-dropdown-trigger::after,
+.nav-dropdown:focus-within > .nav-dropdown-trigger::after { width: 100%; }
+.nav-dropdown-menu {
+	position: absolute;
+	top: calc(100% + 14px);
+	left: 50%;
+	transform: translateX(-50%) translateY(6px);
+	min-width: 250px;
+	padding: 10px;
+	background: var(--white);
+	border: 1px solid var(--border);
+	border-radius: 18px;
+	box-shadow: 0 24px 40px -24px rgba(29, 43, 69, 0.45);
+	display: grid;
+	gap: 4px;
+	z-index: 120;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+	transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown-menu::before {
+	content: "";
+	position: absolute;
+	top: -16px;
+	left: 0;
+	right: 0;
+	height: 16px;
+}
+.nav-dropdown-menu a {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 11px 12px;
+	border-radius: 12px;
+	font-size: 0.88rem;
+	font-weight: 800;
+}
+.nav-dropdown-menu small,
+.mobile-subnav small {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2px 8px;
+	border-radius: 100px;
+	background: var(--blue-light);
+	color: var(--blue);
+	font-size: 0.68rem;
+	font-weight: 900;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+.nav-dropdown-menu a:hover,
+.nav-dropdown-menu a[aria-current="page"] {
+	background: var(--orange-light);
+	color: var(--orange);
+}
+.nav-dropdown-menu a::after { display: none; }
+.mobile-nav-group {
+	border-bottom: 1px solid var(--border);
+}
+.mobile-nav-group summary {
+	list-style: none;
+	padding: 12px 4px;
+	font-weight: 800;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.mobile-nav-group summary::-webkit-details-marker { display: none; }
+.mobile-nav-group summary::after {
+	content: "⌄";
+	font-size: 1.1rem;
+	color: var(--orange);
+	transition: transform 0.18s ease;
+}
+.mobile-nav-group[open] summary::after { transform: rotate(180deg); }
+.mobile-subnav {
+	display: grid;
+	gap: 4px;
+	padding: 0 0 10px 14px;
+}
+.mobile-subnav a {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 10px 12px;
+	border-radius: 12px;
+	font-size: 0.92rem;
+	font-weight: 800;
+	border-bottom: none;
+}
+.mobile-subnav a[aria-current="page"] {
+	background: var(--orange-light);
+	color: var(--orange);
+}
+
+/* ---------- E-learning page additions ---------- */
+/* ---------- Hero ---------- */
+		.elearn-hero { padding: 64px 0 96px; overflow: hidden; position: relative; }
+		.elearn-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+		.elearn-hero-copy h1 { font-size: clamp(2.1rem, 4vw, 3.15rem); line-height: 1.14; letter-spacing: -0.005em; margin-bottom: 20px; }
+		.hero-lede { font-size: 1.08rem; max-width: 52ch; margin-bottom: 32px; }
+		.hero-cta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 44px; }
+		.hero-stats { display: flex; gap: 34px; margin: 0; }
+		.hero-stats dt { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--navy); }
+		.hero-stats dd { margin: 2px 0 0; font-size: 0.82rem; color: var(--ink-soft); }
+
+		.elearn-dashboard { position: relative; min-height: 510px; display: flex; align-items: center; justify-content: center; }
+		.dashboard-card {
+			background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+			box-shadow: var(--shadow-soft); position: relative; z-index: 1;
+		}
+		.dashboard-main { width: min(100%, 470px); padding: 18px; }
+		.dashboard-top { display: flex; gap: 7px; margin-bottom: 14px; }
+		.dashboard-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+		.video-card { border-radius: 22px; overflow: hidden; position: relative; height: 250px; margin-bottom: 18px; }
+		.video-card img { width: 100%; height: 100%; object-fit: cover; }
+		.play-button {
+			position: absolute; inset: 0; margin: auto; width: 62px; height: 62px; border-radius: 50%;
+			background: var(--orange); color: var(--white); display: flex; align-items: center; justify-content: center;
+			box-shadow: 0 18px 35px -14px rgba(242, 118, 30, 0.8);
+		}
+		.lesson-row { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 14px 4px; border-top: 1px solid var(--border); }
+		.lesson-icon {
+			width: 38px; height: 38px; border-radius: 12px; background: var(--blue-light); color: var(--blue);
+			display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 0.85rem;
+		}
+		.lesson-row strong { display: block; color: var(--navy); }
+		.lesson-row small { color: var(--ink-soft); }
+		.lesson-status { font-weight: 800; font-size: 0.78rem; color: var(--orange); background: var(--orange-light); border-radius: 100px; padding: 5px 10px; }
+		.lesson-status.done { color: var(--sage); background: var(--sage-light); }
+		.floating-score-card {
+			position: absolute; right: -8px; bottom: 48px; z-index: 2;
+			background: var(--navy); color: var(--white); border-radius: 22px; padding: 18px; width: 190px;
+			box-shadow: 0 24px 40px -22px rgba(29, 43, 69, 0.55);
+		}
+		.score-label { display: block; color: rgba(255,255,255,0.68); font-weight: 700; font-size: 0.76rem; margin-bottom: 5px; }
+		.floating-score-card strong { display: block; font-family: var(--font-display); font-size: 2rem; margin-bottom: 10px; }
+		.progress-bar { width: 100%; height: 8px; border-radius: 100px; background: rgba(255,255,255,0.18); overflow: hidden; }
+		.progress-bar span { display: block; height: 100%; border-radius: inherit; background: var(--blue); }
+
+/* ---------- Feature section ---------- */
+		.why-section { padding: 90px 0; background: var(--cream); position: relative; overflow: hidden; }
+		.feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+		.feature-card {
+			background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md);
+			padding: 28px 22px; transition: transform 0.22s ease, box-shadow 0.22s ease;
+		}
+		.feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); }
+		.feature-icon {
+			display: inline-flex; align-items: center; justify-content: center;
+			width: 50px; height: 50px; border-radius: 16px; background: var(--icon-bg); color: var(--icon-fg);
+			font-family: var(--font-display); font-weight: 700; margin-bottom: 18px;
+		}
+		.feature-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+		.feature-card p { font-size: 0.9rem; }
+
+/* ---------- Learning track ---------- */
+		.journey-section { padding: 90px 0 110px; background: var(--white); position: relative; }
+		.learning-track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; padding-top: 28px; }
+		.learning-track::before {
+			content: ""; position: absolute; top: 36px; left: 8%; right: 8%; height: 0;
+			border-top: 2.5px dashed var(--border); z-index: 0;
+		}
+		.learning-step { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
+		.learning-dot {
+			width: 16px; height: 16px; border-radius: 50%; background: var(--blue);
+			border: 4px solid var(--white); box-shadow: 0 0 0 3px var(--blue-light); margin-bottom: 22px;
+		}
+		.learning-dot-end { background: var(--orange); box-shadow: 0 0 0 3px var(--orange-light); }
+		.learning-card {
+			background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-md);
+			padding: 24px 18px; width: 100%;
+		}
+		.learning-card span { font-family: var(--font-label); font-size: 0.78rem; font-weight: 700; color: var(--blue); letter-spacing: 0.04em; }
+		.learning-card h3 { font-size: 1.3rem; margin: 5px 0 8px; }
+		.learning-card p { font-size: 0.86rem; }
+
+/* ---------- Parent section ---------- */
+		.parent-section { padding: 90px 0; background: var(--white); position: relative; overflow: hidden; }
+		.parent-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+		.parent-photo { margin: 0; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-soft); border: 1px solid var(--border); }
+		.parent-photo img { width: 100%; height: 470px; object-fit: cover; }
+		.parent-copy h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); margin-bottom: 14px; }
+		.check-list { display: flex; flex-direction: column; gap: 14px; margin-top: 26px; }
+		.check-list li { display: flex; gap: 12px; align-items: flex-start; color: var(--navy); font-weight: 700; }
+		.check-list span {
+			width: 26px; height: 26px; flex-shrink: 0; border-radius: 50%;
+			background: var(--sage-light); color: var(--sage); display: flex; align-items: center; justify-content: center;
+			font-weight: 900;
+		}
+
+/* ---------- CTA ---------- */
+		.daftar-section { padding: 90px 0 100px; background: var(--cream); position: relative; overflow: hidden; }
+		.cta-card {
+			background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+			padding: 46px; box-shadow: var(--shadow-soft); text-align: center; max-width: 900px;
+		}
+		.cta-card h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); margin-bottom: 14px; }
+		.cta-card p { max-width: 62ch; margin: 0 auto; }
+		.cta-actions { margin-top: 30px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ---------- Responsive ---------- */
+		@media (max-width: 1100px) {
+			.main-nav { display: none; }
+			.nav-toggle { display: flex; }
+		}
+		@media (max-width: 980px) {
+			.elearn-hero-inner, .program-inner, .parent-inner { grid-template-columns: 1fr; }
+			.elearn-dashboard { order: -1; max-width: 520px; min-height: 480px; margin: 0 auto; }
+			.elearn-hero-copy { text-align: center; }
+			.hero-lede { margin-inline: auto; }
+			.hero-cta, .hero-stats { justify-content: center; }
+			.feature-grid { grid-template-columns: repeat(2, 1fr); }
+			.learning-track { grid-template-columns: 1fr; gap: 34px; }
+			.learning-track::before { top: 4%; bottom: 4%; left: 24px; right: auto; width: 0; border-top: none; border-left: 2.5px dashed var(--border); height: auto; }
+			.learning-step { flex-direction: row; text-align: left; align-items: flex-start; }
+			.learning-dot { margin: 4px 20px 0 8px; flex-shrink: 0; }
+			.footer-grid { grid-template-columns: 1fr 1fr; }
+		}
+		@media (max-width: 560px) {
+			.elearn-hero { padding-top: 42px; }
+			.hero-stats { flex-direction: column; gap: 14px; }
+			.hero-cta, .cta-actions { flex-direction: column; }
+			.hero-cta .btn, .cta-actions .btn { width: 100%; }
+			.feature-grid { grid-template-columns: 1fr; }
+			.parent-photo img { height: 330px; }
+			.floating-score-card { position: static; width: 100%; margin-top: 16px; }
+			.elearn-dashboard { min-height: auto; display: block; }
+			.dashboard-main { width: 100%; }
+			.video-card { height: 210px; }
+			.footer-grid { grid-template-columns: 1fr; }
+			.footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+			.cta-card { padding: 34px 24px; }
+			.wa-float { bottom: 16px; right: 16px; width: 52px; height: 52px; }
+		}
 </style>

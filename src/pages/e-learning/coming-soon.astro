@@ -1,0 +1,299 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+	title="Coming Soon — SAN TUTOR E-Learning"
+	titleEn="Coming Soon — SAN TUTOR E-Learning"
+	description="Halaman materi E-Learning SAN TUTOR sedang disiapkan. Pilih Matematika yang sudah tersedia atau hubungi tim kami untuk request materi."
+	descriptionEn="This SAN TUTOR E-Learning subject page is being prepared. Open the available Mathematics page or contact our team to request materials."
+	currentPage="coming-soon"
+>
+	<main id="top">
+		<section class="coming-hero">
+			<div class="section-decor" aria-hidden="true">
+				<span class="dot-grid dot-grid-hero"></span>
+				<span class="blob blob-blue" style="top:-120px; left:-140px; width:340px; height:340px;"></span>
+				<span class="blob blob-orange" style="bottom:-140px; right:-100px; width:280px; height:280px;"></span>
+				<span class="blob blob-sage" style="top:38%; left:44%; width:240px; height:240px;"></span>
+			</div>
+
+			<div class="wrap coming-inner">
+				<div class="coming-copy reveal">
+					<p class="eyebrow">SAN TUTOR E-Learning</p>
+					<h1><span data-subject-title>Materi ini</span> sedang kami siapkan.</h1>
+					<p class="hero-lede">
+						Kami sedang menyusun lesson library yang rapi, interaktif, dan siap dipakai di kelas maupun belajar mandiri di rumah. Untuk sementara, kamu bisa membuka halaman Matematika atau request materi melalui WhatsApp.
+					</p>
+					<div class="hero-cta coming-actions">
+						<a href="/e-learning/matematika" class="btn btn-primary btn-lg">Buka Matematika</a>
+						<a href="/e-learning" class="btn btn-ghost btn-lg">Kembali ke E-Learning</a>
+					</div>
+				</div>
+
+				<div class="coming-panel reveal" aria-label="Status materi E-Learning">
+					<div class="panel-top">
+						<span></span><span></span><span></span>
+					</div>
+					<div class="soon-badge">Coming Soon</div>
+					<h2>Lesson sedang dibuat</h2>
+					<p>Format yang disiapkan: slide interaktif, contoh soal, guided practice, independent practice, dan exit ticket.</p>
+					<div class="progress-stack" aria-label="Progress persiapan materi">
+						<div>
+							<span>Lesson structure</span>
+							<strong>Ready</strong>
+						</div>
+						<div>
+							<span>Interactive slides</span>
+							<strong>In progress</strong>
+						</div>
+						<div>
+							<span>Worksheets & quiz</span>
+							<strong>Next</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="coming-map">
+			<div class="wrap">
+				<div class="section-head reveal">
+					<p class="eyebrow">Learning Library</p>
+					<h2>Mapel yang Akan Masuk ke E-Learning</h2>
+					<p class="section-lede">Arah terbaiknya: semua mapel masuk dalam satu library, tetapi setiap mapel punya halaman khusus agar materi tidak bercampur.</p>
+				</div>
+
+				<div class="subject-grid reveal">
+					<a href="/e-learning/matematika" class="subject-card is-ready">
+						<span>01</span>
+						<h3>Matematika</h3>
+						<p>Lesson interaktif, latihan bertahap, dan soal konsep.</p>
+						<strong>Sudah bisa dibuka →</strong>
+					</a>
+					<div class="subject-card">
+						<span>02</span>
+						<h3>English</h3>
+						<p>Grammar, vocabulary, reading, writing, dan speaking prompts.</p>
+						<strong>Segera hadir</strong>
+					</div>
+					<div class="subject-card">
+						<span>03</span>
+						<h3>Science</h3>
+						<p>Concept slides, experiment ideas, diagram, dan quiz.</p>
+						<strong>Segera hadir</strong>
+					</div>
+					<div class="subject-card">
+						<span>04</span>
+						<h3>Bahasa Indonesia</h3>
+						<p>Teks, kaidah kebahasaan, pemahaman bacaan, dan menulis.</p>
+						<strong>Segera hadir</strong>
+					</div>
+					<div class="subject-card">
+						<span>05</span>
+						<h3>STEM</h3>
+						<p>Project-based learning, problem solving, dan design challenge.</p>
+						<strong>Segera hadir</strong>
+					</div>
+					<div class="subject-card">
+						<span>06</span>
+						<h3>Coding</h3>
+						<p>Scratch, block coding, logic, sequence, loop, dan condition.</p>
+						<strong>Segera hadir</strong>
+					</div>
+					<div class="subject-card">
+						<span>07</span>
+						<h3>Robotic</h3>
+						<p>Sensor, motor, algorithm, challenge, dan project reflection.</p>
+						<strong>Segera hadir</strong>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<script>
+		const subjectNames = {
+			'english': { id: 'English', en: 'English' },
+			'science': { id: 'Science', en: 'Science' },
+			'bahasa-indonesia': { id: 'Bahasa Indonesia', en: 'Indonesian Language' },
+			'stem': { id: 'STEM', en: 'STEM' },
+			'coding': { id: 'Coding', en: 'Coding' },
+			'robotic': { id: 'Robotic', en: 'Robotics' },
+		};
+		const subject = new URLSearchParams(window.location.search).get('subject');
+		const titleTarget = document.querySelector('[data-subject-title]');
+		const updateSubjectTitle = (language = document.body.dataset.lang || 'id') => {
+			if (titleTarget && subject && subjectNames[subject]) {
+				titleTarget.textContent = language === 'en' ? subjectNames[subject].en : subjectNames[subject].id;
+			}
+		};
+		updateSubjectTitle();
+		window.addEventListener('santutor:language-change', (event) => updateSubjectTitle(event.detail?.language));
+	</script>
+</Layout>
+
+<style>
+	.coming-hero {
+		position: relative;
+		overflow: hidden;
+		padding: 76px 0 96px;
+		background: var(--white);
+	}
+	.coming-inner {
+		display: grid;
+		grid-template-columns: 1fr 0.9fr;
+		gap: 56px;
+		align-items: center;
+	}
+	.coming-copy h1 {
+		font-size: clamp(2.1rem, 4vw, 3.15rem);
+		line-height: 1.14;
+		letter-spacing: -0.005em;
+		margin-bottom: 20px;
+	}
+	.coming-actions {
+		margin-bottom: 0;
+	}
+	.coming-panel {
+		position: relative;
+		background: var(--white);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-soft);
+		padding: 26px;
+	}
+	.panel-top {
+		display: flex;
+		gap: 7px;
+		margin-bottom: 24px;
+	}
+	.panel-top span {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: var(--border);
+	}
+	.soon-badge {
+		display: inline-flex;
+		align-items: center;
+		padding: 7px 13px;
+		border-radius: 100px;
+		background: var(--orange-light);
+		color: var(--orange);
+		font-size: 0.78rem;
+		font-weight: 900;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		margin-bottom: 16px;
+	}
+	.coming-panel h2 {
+		font-size: clamp(1.5rem, 2.5vw, 2rem);
+		margin-bottom: 10px;
+	}
+	.progress-stack {
+		display: grid;
+		gap: 12px;
+		margin-top: 24px;
+	}
+	.progress-stack div {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding: 14px 16px;
+		border-radius: 16px;
+		background: var(--cream);
+		border: 1px solid var(--border);
+	}
+	.progress-stack span {
+		color: var(--ink-soft);
+		font-weight: 800;
+		font-size: 0.9rem;
+	}
+	.progress-stack strong {
+		color: var(--navy);
+		font-size: 0.86rem;
+	}
+	.coming-map {
+		position: relative;
+		padding: 90px 0 100px;
+		background: var(--cream);
+		overflow: hidden;
+	}
+	.subject-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+	}
+	.subject-card {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		background: var(--white);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-md);
+		padding: 24px;
+		min-height: 220px;
+		transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+	}
+	.subject-card:hover {
+		transform: translateY(-5px);
+		box-shadow: var(--shadow-soft);
+	}
+	.subject-card span {
+		font-family: var(--font-display);
+		font-weight: 700;
+		color: var(--blue);
+		font-size: 0.88rem;
+	}
+	.subject-card h3 {
+		font-size: 1.25rem;
+	}
+	.subject-card p {
+		font-size: 0.92rem;
+		flex: 1;
+	}
+	.subject-card strong {
+		color: var(--orange);
+		font-size: 0.9rem;
+	}
+	.subject-card.is-ready {
+		border-color: rgba(242, 118, 30, 0.28);
+		background: linear-gradient(180deg, var(--white), var(--orange-light));
+	}
+	@media (max-width: 980px) {
+		.coming-inner,
+		.subject-grid {
+			grid-template-columns: 1fr;
+		}
+		.coming-copy {
+			text-align: center;
+		}
+		.coming-copy .hero-lede {
+			margin-inline: auto;
+		}
+		.coming-actions {
+			justify-content: center;
+		}
+	}
+	@media (max-width: 560px) {
+		.coming-hero {
+			padding-top: 48px;
+		}
+		.coming-actions {
+			flex-direction: column;
+		}
+		.coming-actions .btn {
+			width: 100%;
+		}
+		.coming-panel {
+			padding: 22px;
+		}
+		.progress-stack div {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 4px;
+		}
+	}
+</style>

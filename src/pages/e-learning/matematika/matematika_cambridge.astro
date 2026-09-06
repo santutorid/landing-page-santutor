@@ -1,0 +1,438 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const page = {
+	title: 'Matematika Cambridge — SAN TUTOR E-Learning',
+	titleEn: 'Cambridge Mathematics — SAN TUTOR E-Learning',
+	description:
+		'Landing page Matematika Cambridge SAN TUTOR: Early Years, Cambridge Primary Stage 1–6, Lower Secondary Stage 7–9, IGCSE, International AS & A Level, dan Further Mathematics.',
+	descriptionEn:
+		'SAN TUTOR Cambridge Mathematics landing page: Early Years, Cambridge Primary Stages 1–6, Lower Secondary Stages 7–9, IGCSE, International AS & A Level, and Further Mathematics.',
+};
+
+const stages = [
+	{
+		group: 'Early Years',
+		groupEn: 'Early Years',
+		intro: 'Fondasi matematika melalui permainan, bahasa matematika sederhana, pola, bentuk, angka, dan aktivitas sehari-hari.',
+		introEn: 'Mathematics foundations through play, simple mathematical language, patterns, shapes, numbers, and everyday activities.',
+		items: [
+			{
+				label: 'Early Years',
+				labelEn: 'Early Years',
+				meta: 'Usia 3+ / persiapan menuju Primary',
+				metaEn: 'Age 3+ / preparation for Primary',
+				focus: 'Number sense, shapes, patterns, comparing, sorting, and mathematical talk.',
+				focusEn: 'Number sense, shapes, patterns, comparing, sorting, and mathematical talk.',
+				href: '/e-learning/coming-soon?subject=cambridge-early-years-mathematics',
+			},
+		],
+	},
+	{
+		group: 'Cambridge Primary',
+		groupEn: 'Cambridge Primary',
+		intro: 'Stage 1–6 membangun fluency, reasoning, problem solving, dan koneksi antarkonsep melalui Number, Geometry and Measure, serta Statistics and Probability.',
+		introEn: 'Stages 1–6 build fluency, reasoning, problem solving, and connections through Number, Geometry and Measure, and Statistics and Probability.',
+		items: Array.from({ length: 6 }, (_, index) => {
+			const stage = index + 1;
+			return {
+				label: `Primary ${stage}`,
+				labelEn: `Primary ${stage}`,
+				meta: `Cambridge Primary Stage ${stage}`,
+				metaEn: `Cambridge Primary Stage ${stage}`,
+				focus:
+					stage <= 2
+						? 'Build basic number sense, visual models, simple measurement, shapes, and early data handling.'
+						: stage <= 4
+							? 'Strengthen calculations, fractions, patterns, geometry, measure, and structured problem solving.'
+							: 'Prepare for upper primary mastery: ratio-style thinking, probability, statistics, multi-step problems, and checkpoint readiness.',
+				focusEn:
+					stage <= 2
+						? 'Build basic number sense, visual models, simple measurement, shapes, and early data handling.'
+						: stage <= 4
+							? 'Strengthen calculations, fractions, patterns, geometry, measure, and structured problem solving.'
+							: 'Prepare for upper primary mastery: ratio-style thinking, probability, statistics, multi-step problems, and checkpoint readiness.',
+				href: `/e-learning/coming-soon?subject=cambridge-primary-${stage}-mathematics`,
+			};
+		}),
+	},
+	{
+		group: 'Cambridge Lower Secondary',
+		groupEn: 'Cambridge Lower Secondary',
+		intro: 'Stage 7–9 memperdalam Number, Algebra, Geometry and Measure, Statistics and Probability, sambil melatih Thinking and Working Mathematically.',
+		introEn: 'Stages 7–9 deepen Number, Algebra, Geometry and Measure, Statistics and Probability while developing Thinking and Working Mathematically.',
+		items: [7, 8, 9].map((stage) => ({
+			label: `Stage ${stage}`,
+			labelEn: `Stage ${stage}`,
+			meta: `Lower Secondary Stage ${stage}`,
+			metaEn: `Lower Secondary Stage ${stage}`,
+			focus:
+				stage === 7
+					? 'Bridge from Primary into algebraic thinking, proportional reasoning, geometry, and data interpretation.'
+					: stage === 8
+						? 'Develop stronger algebra manipulation, ratio, geometry reasoning, graphs, statistics, and probability.'
+						: 'Consolidate Stage 7–9 concepts and prepare for Checkpoint-style and IGCSE foundation work.',
+			focusEn:
+				stage === 7
+					? 'Bridge from Primary into algebraic thinking, proportional reasoning, geometry, and data interpretation.'
+					: stage === 8
+						? 'Develop stronger algebra manipulation, ratio, geometry reasoning, graphs, statistics, and probability.'
+						: 'Consolidate Stage 7–9 concepts and prepare for Checkpoint-style and IGCSE foundation work.',
+			href: stage === 8 ? '/e-learning/matematika/matematika_cambridge/matematika_cambridge_stage8' : `/e-learning/coming-soon?subject=cambridge-lower-secondary-stage-${stage}-mathematics`,
+		})),
+	},
+];
+
+const upperSecondary = [
+	{
+		label: 'IGCSE Mathematics',
+		labelEn: 'IGCSE Mathematics',
+		code: '0580',
+		meta: 'Untuk semua siswa / fondasi matematika secondary',
+		metaEn: 'For all learners / secondary mathematics foundation',
+		focus: 'Number, algebra, geometry, measures, statistics, probability, problem solving, and exam-style practice.',
+		focusEn: 'Number, algebra, geometry, measures, statistics, probability, problem solving, and exam-style practice.',
+		href: '/e-learning/coming-soon?subject=cambridge-igcse-mathematics-0580',
+	},
+	{
+		label: 'IGCSE International Mathematics',
+		labelEn: 'IGCSE International Mathematics',
+		code: '0607',
+		meta: 'Untuk siswa yang butuh conceptual understanding dan jalur internasional lanjutan',
+		metaEn: 'For learners needing conceptual understanding and preparation for advanced international routes',
+		focus: 'Conceptual understanding, investigations, modelling, calculator skills, and extended problem solving.',
+		focusEn: 'Conceptual understanding, investigations, modelling, calculator skills, and extended problem solving.',
+		href: '/e-learning/coming-soon?subject=cambridge-igcse-international-mathematics-0607',
+	},
+	{
+		label: 'IGCSE Additional Mathematics',
+		labelEn: 'IGCSE Additional Mathematics',
+		code: '0606',
+		meta: 'Untuk siswa kuat yang ingin transisi lebih mulus ke AS/A Level Mathematics',
+		metaEn: 'For strong learners who want a smoother transition to AS/A Level Mathematics',
+		focus: 'Advanced algebra, functions, calculus foundation, trigonometry, series, vectors, and abstract problem solving.',
+		focusEn: 'Advanced algebra, functions, calculus foundation, trigonometry, series, vectors, and abstract problem solving.',
+		href: '/e-learning/coming-soon?subject=cambridge-igcse-additional-mathematics-0606',
+	},
+];
+
+const advanced = [
+	{
+		label: 'AS Level Mathematics',
+		labelEn: 'AS Level Mathematics',
+		code: '9709',
+		meta: 'Pilihan route: Pure only, Pure + Mechanics, atau Pure + Probability & Statistics',
+		metaEn: 'Route options: Pure only, Pure + Mechanics, or Pure + Probability & Statistics',
+		focus: 'Pure Mathematics 1 with selected applied component depending on school route.',
+		focusEn: 'Pure Mathematics 1 with a selected applied component depending on the school route.',
+		href: '/e-learning/coming-soon?subject=cambridge-as-level-mathematics-9709',
+	},
+	{
+		label: 'A Level Mathematics',
+		labelEn: 'A Level Mathematics',
+		code: '9709',
+		meta: 'Pure Mathematics with Probability & Statistics and/or Mechanics',
+		metaEn: 'Pure Mathematics with Probability & Statistics and/or Mechanics',
+		focus: 'Pure Mathematics 1–3, plus Mechanics and/or Probability & Statistics depending on route.',
+		focusEn: 'Pure Mathematics 1–3, plus Mechanics and/or Probability & Statistics depending on route.',
+		href: '/e-learning/coming-soon?subject=cambridge-a-level-mathematics-9709',
+	},
+	{
+		label: 'AS & A Level Further Mathematics',
+		labelEn: 'AS & A Level Further Mathematics',
+		code: '9231',
+		meta: 'Untuk high ability learners; perlu dasar Mathematics 9709 yang kuat',
+		metaEn: 'For high ability learners; strong Mathematics 9709 knowledge is needed',
+		focus: 'Further Pure Mathematics with Further Mechanics and/or Further Probability & Statistics.',
+		focusEn: 'Further Pure Mathematics with Further Mechanics and/or Further Probability & Statistics.',
+		href: '/e-learning/coming-soon?subject=cambridge-further-mathematics-9231',
+	},
+];
+
+const notes = [
+	{
+		label: '“Pure Math” bukan nama mapel utama',
+		labelEn: '“Pure Math” is not the main subject name',
+		text: 'Dalam Cambridge 9709, Pure Mathematics adalah komponen/route di AS & A Level Mathematics, bukan halaman mapel terpisah untuk semua siswa.',
+		textEn: 'In Cambridge 9709, Pure Mathematics is a component/route within AS & A Level Mathematics, not a separate main subject page for every learner.',
+	},
+	{
+		label: 'Additional Mathematics ada di IGCSE',
+		labelEn: 'Additional Mathematics belongs at IGCSE',
+		text: 'Cambridge IGCSE Additional Mathematics 0606 cocok untuk siswa kuat sebelum masuk AS & A Level Mathematics.',
+		textEn: 'Cambridge IGCSE Additional Mathematics 0606 suits strong learners before moving into AS & A Level Mathematics.',
+	},
+	{
+		label: 'Further Mathematics adalah jalur advanced',
+		labelEn: 'Further Mathematics is an advanced route',
+		text: 'Further Mathematics 9231 cocok untuk siswa yang ingin memperdalam matematika, sains, fisika, engineering, atau jurusan highly quantitative.',
+		textEn: 'Further Mathematics 9231 suits learners extending into mathematics, science, physics, engineering, or highly quantitative university paths.',
+	},
+];
+---
+
+<Layout
+	title={page.title}
+	titleEn={page.titleEn}
+	description={page.description}
+	descriptionEn={page.descriptionEn}
+	currentPage="math"
+>
+	<main id="top">
+		<section class="cambridge-hero">
+			<div class="section-decor" aria-hidden="true">
+				<span class="dot-grid dot-grid-hero"></span>
+				<span class="blob blob-blue" style="top:-120px; left:-120px; width:330px; height:330px;"></span>
+				<span class="blob blob-orange" style="bottom:-130px; right:18%; width:270px; height:270px;"></span>
+				<span class="blob blob-sage" style="top:35%; right:-130px; width:260px; height:260px;"></span>
+			</div>
+
+			<div class="wrap cambridge-hero-inner">
+				<div class="cambridge-hero-copy reveal">
+					<p class="eyebrow" data-i18n-id="Matematika Cambridge" data-i18n-en="Cambridge Mathematics">Matematika Cambridge</p>
+					<h1 data-i18n-id="Pilih Jalur Matematika Cambridge Sesuai Tahap Belajar Anak" data-i18n-en="Choose the Cambridge Mathematics Path That Matches Your Child’s Stage">Pilih Jalur Matematika Cambridge Sesuai Tahap Belajar Anak</h1>
+					<p class="hero-lede" data-i18n-id="Halaman ini menjadi pintu masuk untuk lesson slide Matematika Cambridge: mulai dari Early Years, Primary Stage 1–6, Lower Secondary Stage 7–9, IGCSE, sampai AS & A Level." data-i18n-en="This page is the entry point for Cambridge Mathematics lesson slides: from Early Years, Primary Stages 1–6, Lower Secondary Stages 7–9, IGCSE, through to AS & A Level.">Halaman ini menjadi pintu masuk untuk lesson slide Matematika Cambridge: mulai dari Early Years, Primary Stage 1–6, Lower Secondary Stage 7–9, IGCSE, sampai AS & A Level.</p>
+					<div class="hero-cta">
+						<a href="#levels" class="btn btn-primary btn-lg" data-i18n-id="Lihat Pilihan Tingkat" data-i18n-en="View Level Options">Lihat Pilihan Tingkat</a>
+						<a href="/e-learning/matematika" class="btn btn-ghost btn-lg" data-i18n-id="Kembali ke Matematika" data-i18n-en="Back to Mathematics">Kembali ke Matematika</a>
+					</div>
+				</div>
+
+				<aside class="cambridge-summary reveal" aria-label="Cambridge mathematics pathway summary" data-i18n-aria-label-id="Ringkasan jalur Matematika Cambridge" data-i18n-aria-label-en="Cambridge mathematics pathway summary">
+					<span class="summary-chip" data-i18n-id="Cambridge Pathway" data-i18n-en="Cambridge Pathway">Cambridge Pathway</span>
+					<div class="summary-big">3–19</div>
+					<p data-i18n-id="Cambridge Pathway berjalan dari Early Years, Primary, Lower Secondary, Upper Secondary, sampai Advanced. SAN TUTOR memecahnya menjadi kartu level agar teacher dan siswa mudah membuka lesson yang tepat." data-i18n-en="The Cambridge Pathway runs from Early Years, Primary, Lower Secondary, Upper Secondary, through to Advanced. SAN TUTOR breaks it into level cards so teachers and students can open the right lesson easily.">Cambridge Pathway berjalan dari Early Years, Primary, Lower Secondary, Upper Secondary, sampai Advanced. SAN TUTOR memecahnya menjadi kartu level agar teacher dan siswa mudah membuka lesson yang tepat.</p>
+					<div class="summary-pills">
+						<span>Early Years</span>
+						<span>Primary 1–6</span>
+						<span>Stage 7–9</span>
+						<span>IGCSE</span>
+						<span>AS/A Level</span>
+					</div>
+				</aside>
+			</div>
+		</section>
+
+		<section class="intro-section">
+			<div class="wrap intro-grid">
+				<div class="section-head left reveal">
+					<p class="eyebrow" data-i18n-id="Perkenalan Kurikulum" data-i18n-en="Curriculum Introduction">Perkenalan Kurikulum</p>
+					<h2 data-i18n-id="Matematika Cambridge Menekankan Reasoning, Fluency, dan Problem Solving" data-i18n-en="Cambridge Mathematics Emphasises Reasoning, Fluency, and Problem Solving">Matematika Cambridge Menekankan Reasoning, Fluency, dan Problem Solving</h2>
+					<p class="section-lede" data-i18n-id="Cambridge Mathematics tidak hanya mengejar jawaban akhir. Siswa dilatih memahami pola, menjelaskan alasan, memilih strategi, menggunakan representasi, dan menghubungkan konsep dari level awal hingga advanced." data-i18n-en="Cambridge Mathematics is not only about getting the final answer. Students are trained to understand patterns, explain reasoning, choose strategies, use representations, and connect concepts from early levels to advanced study.">Cambridge Mathematics tidak hanya mengejar jawaban akhir. Siswa dilatih memahami pola, menjelaskan alasan, memilih strategi, menggunakan representasi, dan menghubungkan konsep dari level awal hingga advanced.</p>
+				</div>
+				<div class="intro-card reveal">
+					<h3 data-i18n-id="Cara SAN TUTOR Menyusun Lesson" data-i18n-en="How SAN TUTOR Structures Lessons">Cara SAN TUTOR Menyusun Lesson</h3>
+					<ul>
+						<li data-i18n-id="Slide konsep singkat untuk teacher-led explanation." data-i18n-en="Short concept slides for teacher-led explanation.">Slide konsep singkat untuk teacher-led explanation.</li>
+						<li data-i18n-id="Guided practice dengan gaya pertanyaan Cambridge." data-i18n-en="Guided practice with Cambridge-style questions.">Guided practice dengan gaya pertanyaan Cambridge.</li>
+						<li data-i18n-id="Latihan mandiri bertahap dari easy ke challenge." data-i18n-en="Independent practice progressing from easy to challenge.">Latihan mandiri bertahap dari easy ke challenge.</li>
+						<li data-i18n-id="Exit ticket untuk cek pemahaman sebelum lanjut topik." data-i18n-en="Exit ticket to check understanding before moving on.">Exit ticket untuk cek pemahaman sebelum lanjut topik.</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="levels-section" id="levels">
+			<div class="wrap">
+				<div class="section-head reveal">
+					<p class="eyebrow" data-i18n-id="Pilih Tingkat" data-i18n-en="Choose a Level">Pilih Tingkat</p>
+					<h2 data-i18n-id="Dari Early Years sampai Lower Secondary" data-i18n-en="From Early Years to Lower Secondary">Dari Early Years sampai Lower Secondary</h2>
+					<p class="section-lede" data-i18n-id="Klik kartu level untuk masuk ke landing page lesson masing-masing. Untuk sementara, halaman level akan diarahkan ke coming soon sampai lesson deck-nya selesai dibuat." data-i18n-en="Click a level card to enter its lesson landing page. For now, level pages point to coming soon until the lesson decks are ready.">Klik kartu level untuk masuk ke landing page lesson masing-masing. Untuk sementara, halaman level akan diarahkan ke coming soon sampai lesson deck-nya selesai dibuat.</p>
+				</div>
+
+				{stages.map((stage) => (
+					<div class="stage-block reveal">
+						<div class="stage-head">
+							<div>
+								<h3 data-i18n-id={stage.group} data-i18n-en={stage.groupEn}>{stage.group}</h3>
+								<p data-i18n-id={stage.intro} data-i18n-en={stage.introEn}>{stage.intro}</p>
+							</div>
+						</div>
+						<div class="level-grid">
+							{stage.items.map((item) => (
+								<a class="level-card" href={item.href}>
+									<span class="level-meta" data-i18n-id={item.meta} data-i18n-en={item.metaEn}>{item.meta}</span>
+									<strong data-i18n-id={item.label} data-i18n-en={item.labelEn}>{item.label}</strong>
+									<p data-i18n-id={item.focus} data-i18n-en={item.focusEn}>{item.focus}</p>
+									<em data-i18n-id="Buka level →" data-i18n-en="Open level →">Buka level →</em>
+								</a>
+							))}
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<section class="advanced-section">
+			<div class="section-decor" aria-hidden="true">
+				<span class="dot-grid dot-grid-light"></span>
+			</div>
+			<div class="wrap advanced-inner">
+				<div class="reveal">
+					<p class="eyebrow eyebrow-light" data-i18n-id="Upper Secondary" data-i18n-en="Upper Secondary">Upper Secondary</p>
+					<h2 class="light-title" data-i18n-id="IGCSE Mathematics Options" data-i18n-en="IGCSE Mathematics Options">IGCSE Mathematics Options</h2>
+					<p class="program-lede" data-i18n-id="Untuk level 14+, Cambridge memiliki beberapa jalur matematika. SAN TUTOR memisahkannya supaya siswa tidak salah memilih antara Mathematics, International Mathematics, dan Additional Mathematics." data-i18n-en="For ages 14+, Cambridge offers several mathematics routes. SAN TUTOR separates them so students do not confuse Mathematics, International Mathematics, and Additional Mathematics.">Untuk level 14+, Cambridge memiliki beberapa jalur matematika. SAN TUTOR memisahkannya supaya siswa tidak salah memilih antara Mathematics, International Mathematics, dan Additional Mathematics.</p>
+				</div>
+				<div class="advanced-list reveal">
+					{upperSecondary.map((item) => (
+						<a class="advanced-item" href={item.href}>
+							<span>{item.code}</span>
+							<div>
+								<strong data-i18n-id={item.label} data-i18n-en={item.labelEn}>{item.label}</strong>
+								<small data-i18n-id={item.meta} data-i18n-en={item.metaEn}>{item.meta}</small>
+								<p data-i18n-id={item.focus} data-i18n-en={item.focusEn}>{item.focus}</p>
+							</div>
+							<em data-i18n-id="Buka →" data-i18n-en="Open →">Buka →</em>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="as-section">
+			<div class="wrap">
+				<div class="section-head reveal">
+					<p class="eyebrow" data-i18n-id="Cambridge Advanced" data-i18n-en="Cambridge Advanced">Cambridge Advanced</p>
+					<h2 data-i18n-id="AS Level, A Level, dan Further Mathematics" data-i18n-en="AS Level, A Level, and Further Mathematics">AS Level, A Level, dan Further Mathematics</h2>
+					<p class="section-lede" data-i18n-id="Untuk level Advanced, istilah yang lebih tepat adalah Mathematics 9709 dan Further Mathematics 9231. Pure Mathematics adalah komponen di dalam route, bukan satu-satunya nama mapel." data-i18n-en="At Advanced level, the more precise subject names are Mathematics 9709 and Further Mathematics 9231. Pure Mathematics is a component inside the route, not the only subject name.">Untuk level Advanced, istilah yang lebih tepat adalah Mathematics 9709 dan Further Mathematics 9231. Pure Mathematics adalah komponen di dalam route, bukan satu-satunya nama mapel.</p>
+				</div>
+
+				<div class="advanced-card-grid reveal">
+					{advanced.map((item) => (
+						<a class="as-card" href={item.href}>
+							<span>{item.code}</span>
+							<h3 data-i18n-id={item.label} data-i18n-en={item.labelEn}>{item.label}</h3>
+							<strong data-i18n-id={item.meta} data-i18n-en={item.metaEn}>{item.meta}</strong>
+							<p data-i18n-id={item.focus} data-i18n-en={item.focusEn}>{item.focus}</p>
+							<em data-i18n-id="Buka jalur →" data-i18n-en="Open path →">Buka jalur →</em>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="note-section">
+			<div class="wrap note-inner reveal">
+				<div>
+					<p class="eyebrow" data-i18n-id="Catatan Struktur" data-i18n-en="Structure Notes">Catatan Struktur</p>
+					<h2 data-i18n-id="Agar Tidak Salah Menamai Level Cambridge" data-i18n-en="Avoid Misnaming Cambridge Levels">Agar Tidak Salah Menamai Level Cambridge</h2>
+				</div>
+				<div class="note-list">
+					{notes.map((note) => (
+						<article>
+							<h3 data-i18n-id={note.label} data-i18n-en={note.labelEn}>{note.label}</h3>
+							<p data-i18n-id={note.text} data-i18n-en={note.textEn}>{note.text}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="cta-section">
+			<div class="wrap cambridge-cta reveal">
+				<p class="eyebrow" data-i18n-id="Mulai dari Level yang Tepat" data-i18n-en="Start from the Right Level">Mulai dari Level yang Tepat</p>
+				<h2 data-i18n-id="Pilih Level Anak, Lalu Buka Lesson Slide yang Sesuai" data-i18n-en="Choose Your Child’s Level, Then Open the Right Lesson Slides">Pilih Level Anak, Lalu Buka Lesson Slide yang Sesuai</h2>
+				<p data-i18n-id="Jika belum yakin anak harus mulai dari level mana, hubungi SAN TUTOR dan kirimkan kelas, kurikulum sekolah, serta topik yang sedang sulit." data-i18n-en="If you are not sure which level your child should start from, contact SAN TUTOR and send their grade, school curriculum, and current difficult topic.">Jika belum yakin anak harus mulai dari level mana, hubungi SAN TUTOR dan kirimkan kelas, kurikulum sekolah, serta topik yang sedang sulit.</p>
+				<div class="cta-actions">
+					<a class="btn btn-primary btn-lg" href="https://wa.me/6285872000689?text=Halo%20SAN%20TUTOR%2C%20saya%20ingin%20bertanya%20tentang%20Matematika%20Cambridge." target="_blank" rel="noopener" data-i18n-id="Konsultasi via WhatsApp" data-i18n-en="Consult via WhatsApp">Konsultasi via WhatsApp</a>
+					<a class="btn btn-ghost btn-lg" href="/e-learning/matematika" data-i18n-id="Lihat Kurikulum Lain" data-i18n-en="See Other Curricula">Lihat Kurikulum Lain</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.cambridge-hero { padding: 64px 0 96px; overflow: hidden; position: relative; }
+	.cambridge-hero-inner { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+	.cambridge-hero-copy h1 { font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.14; margin-bottom: 20px; }
+	.cambridge-summary { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 34px; box-shadow: var(--shadow-soft); position: relative; overflow: hidden; }
+	.cambridge-summary::before { content: ''; position: absolute; width: 260px; height: 260px; border-radius: 50%; right: -110px; bottom: -120px; background: linear-gradient(135deg, var(--blue-light), var(--orange-light)); }
+	.summary-chip { display: inline-flex; background: var(--blue-light); color: var(--blue); border-radius: 999px; padding: 7px 13px; font-weight: 900; font-size: .8rem; margin-bottom: 14px; position: relative; z-index: 1; }
+	.summary-big { font-family: var(--font-display); font-size: clamp(4rem, 12vw, 7.5rem); line-height: .9; color: var(--navy); margin-bottom: 18px; position: relative; z-index: 1; }
+	.summary-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; position: relative; z-index: 1; }
+	.summary-pills span { display: inline-flex; background: var(--cream); border: 1px solid var(--border); border-radius: 999px; padding: 7px 12px; color: var(--navy); font-size: .8rem; font-weight: 900; }
+
+	.intro-section { padding: 90px 0; background: var(--cream); }
+	.intro-grid { display: grid; grid-template-columns: 1fr .85fr; gap: 48px; align-items: center; }
+	.section-head.left { text-align: left; margin: 0; }
+	.intro-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-soft); }
+	.intro-card h3 { font-size: 1.25rem; margin-bottom: 18px; }
+	.intro-card ul { display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; list-style: none; }
+	.intro-card li { position: relative; padding-left: 30px; color: var(--navy); font-weight: 800; line-height: 1.5; }
+	.intro-card li::before { content: '✓'; position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--sage-light); color: var(--sage); display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: .78rem; }
+
+	.levels-section { padding: 90px 0; background: var(--white); }
+	.stage-block { margin-top: 38px; }
+	.stage-block:first-of-type { margin-top: 0; }
+	.stage-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--border); margin-bottom: 18px; }
+	.stage-head h3 { font-size: clamp(1.35rem, 2.6vw, 2rem); margin-bottom: 7px; }
+	.stage-head p { max-width: 76ch; font-size: .95rem; }
+	.level-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+	.level-card { background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 22px; min-height: 210px; display: flex; flex-direction: column; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+	.level-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); border-color: rgba(62, 182, 234, .5); }
+	.level-meta { display: inline-flex; width: fit-content; background: var(--blue-light); color: var(--blue); border-radius: 999px; padding: 5px 10px; font-weight: 900; font-size: .75rem; margin-bottom: 14px; }
+	.level-card strong { display: block; font-family: var(--font-display); color: var(--navy); font-size: 1.35rem; margin-bottom: 8px; }
+	.level-card p { font-size: .9rem; margin-bottom: 18px; }
+	.level-card em { margin-top: auto; font-style: normal; color: var(--orange); font-weight: 900; font-size: .9rem; }
+
+	.advanced-section { background: var(--navy); padding: 84px 0; position: relative; overflow: hidden; }
+	.advanced-inner { display: grid; grid-template-columns: .88fr 1.12fr; gap: 50px; align-items: center; }
+	.advanced-list { display: flex; flex-direction: column; gap: 12px; }
+	.advanced-item { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+	.advanced-item span { width: 56px; height: 46px; border-radius: 14px; background: rgba(62,182,234,.14); color: var(--blue); display: flex; align-items: center; justify-content: center; font-weight: 900; }
+	.advanced-item strong { display: block; color: var(--white); font-weight: 900; margin-bottom: 4px; }
+	.advanced-item small { display: block; color: rgba(255,255,255,.66); font-size: .82rem; margin-bottom: 5px; }
+	.advanced-item p { color: rgba(255,255,255,.58); font-size: .86rem; }
+	.advanced-item em { font-style: normal; color: var(--blue); font-weight: 900; white-space: nowrap; }
+
+	.as-section { padding: 90px 0; background: var(--white); }
+	.advanced-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+	.as-card { background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 26px 22px; display: flex; flex-direction: column; transition: transform .2s ease, box-shadow .2s ease; }
+	.as-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); }
+	.as-card span { display: inline-flex; width: fit-content; border-radius: 14px; background: var(--orange-light); color: var(--orange); padding: 8px 12px; font-weight: 900; font-size: .8rem; margin-bottom: 16px; }
+	.as-card h3 { font-size: 1.18rem; margin-bottom: 8px; }
+	.as-card strong { color: var(--navy); font-size: .88rem; line-height: 1.45; margin-bottom: 10px; }
+	.as-card p { font-size: .9rem; margin-bottom: 18px; }
+	.as-card em { margin-top: auto; font-style: normal; color: var(--orange); font-weight: 900; }
+
+	.note-section { padding: 90px 0; background: var(--cream); }
+	.note-inner { display: grid; grid-template-columns: .8fr 1.2fr; gap: 42px; align-items: start; }
+	.note-inner h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); }
+	.note-list { display: grid; grid-template-columns: 1fr; gap: 14px; }
+	.note-list article { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 22px; }
+	.note-list h3 { font-size: 1.05rem; margin-bottom: 7px; }
+	.note-list p { font-size: .92rem; }
+
+	.cta-section { padding: 90px 0 100px; background: var(--white); }
+	.cambridge-cta { background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); padding: 46px; text-align: center; max-width: 900px; }
+	.cambridge-cta h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); margin-bottom: 14px; }
+	.cambridge-cta p { max-width: 62ch; margin: 0 auto; }
+	.cta-actions { margin-top: 30px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+	@media (max-width: 980px) {
+		.cambridge-hero-inner,
+		.intro-grid,
+		.advanced-inner,
+		.note-inner { grid-template-columns: 1fr; }
+		.cambridge-summary { order: -1; }
+		.cambridge-hero-copy { text-align: center; }
+		.cambridge-hero-copy .hero-lede { margin-inline: auto; }
+		.cambridge-hero-copy .hero-cta { justify-content: center; }
+		.level-grid,
+		.advanced-card-grid { grid-template-columns: repeat(2, 1fr); }
+		.section-head.left { text-align: center; margin: 0 auto; }
+	}
+
+	@media (max-width: 640px) {
+		.cambridge-hero { padding-top: 42px; }
+		.level-grid,
+		.advanced-card-grid { grid-template-columns: 1fr; }
+		.stage-head { align-items: flex-start; }
+		.advanced-item { grid-template-columns: auto 1fr; align-items: flex-start; }
+		.advanced-item em { grid-column: 2; }
+		.cta-actions { flex-direction: column; }
+		.cta-actions .btn { width: 100%; }
+		.cambridge-cta { padding: 34px 24px; }
+	}
+</style>

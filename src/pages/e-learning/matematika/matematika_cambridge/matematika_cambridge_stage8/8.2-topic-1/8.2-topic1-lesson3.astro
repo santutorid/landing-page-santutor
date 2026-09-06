@@ -1,0 +1,838 @@
+---
+import Layout from '../../../../../../layouts/Layout.astro';
+
+const pageTitle = 'Lesson 3: Simplifying Expressions with the Distributive Law — Cambridge Stage 8 Mathematics';
+const pageDescription = 'Interactive full-screen IFP teaching deck for Cambridge Lower Secondary Stage 8 Mathematics 8Ae.03: collecting like terms, expanding single brackets, and simplifying expressions using the distributive law.';
+const pageTitleEn = pageTitle;
+const pageDescriptionEn = pageDescription;
+---
+
+<Layout
+	title={pageTitle}
+	description={pageDescription}
+	titleEn={pageTitleEn}
+	descriptionEn={pageDescriptionEn}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogTitleEn={pageTitleEn}
+	ogDescriptionEn={pageDescriptionEn}
+	currentPage="math"
+>
+	<main id="top" class="lesson-page ifp-fullscreen lesson-3-page">
+		<section class="lesson-shell" data-lesson-root tabindex="-1">
+			<div class="lesson-topbar">
+				<div class="lesson-topbar-left">
+					<a class="back-link" href="/e-learning/matematika/matematika_cambridge/matematika_cambridge_stage8/8.2-topic-1">← Back to Topic 1</a>
+					<p class="eyebrow">Cambridge Lower Secondary Mathematics · Stage 8 · 8Ae.03</p>
+					<h1>Lesson 3: Simplifying Expressions with the Distributive Law</h1>
+				</div>
+				<div class="lesson-topbar-right" aria-label="Lesson controls">
+					<span class="objective-pill">8Ae.03</span>
+					<button class="score-pill" type="button" data-total-score aria-live="polite">Score 0</button>
+					<button class="mode-toggle" type="button" data-mode-toggle aria-pressed="false">Teach Mode</button>
+					<button class="fullscreen-toggle" type="button" data-fullscreen-toggle aria-pressed="false">Exit Full Screen</button>
+				</div>
+			</div>
+
+			<div class="progress-area" aria-label="Lesson progress">
+				<div class="progress-meta">
+					<span data-progress-label>Slide 1 of 10</span>
+					<span>50 minutes</span>
+				</div>
+				<div class="progress-track"><span data-progress-bar></span></div>
+			</div>
+
+			<div class="deck-layout">
+				<aside class="slide-map" aria-label="Lesson sections">
+					<button type="button" class="slide-dot is-active" data-go-slide="0"><span>1</span> Goal</button>
+					<button type="button" class="slide-dot" data-go-slide="1"><span>2</span> Warm-up</button>
+					<button type="button" class="slide-dot" data-go-slide="2"><span>3</span> Law</button>
+					<button type="button" class="slide-dot" data-go-slide="3"><span>4</span> Expand</button>
+					<button type="button" class="slide-dot" data-go-slide="4"><span>5</span> Collect</button>
+					<button type="button" class="slide-dot" data-go-slide="5"><span>6</span> Simplify</button>
+					<button type="button" class="slide-dot" data-go-slide="6"><span>7</span> Powers</button>
+					<button type="button" class="slide-dot" data-go-slide="7"><span>8</span> Detective</button>
+					<button type="button" class="slide-dot" data-go-slide="8"><span>9</span> Board</button>
+					<button type="button" class="slide-dot" data-go-slide="9"><span>10</span> Exit</button>
+				</aside>
+
+				<section class="slide-stage" aria-live="polite">
+					<article class="lesson-slide is-active" data-slide data-slide-title="Learning Goal">
+						<div class="slide-label"><span>Slide 1</span><strong>Learning Goal</strong></div>
+						<div class="hero-grid">
+							<div>
+								<p class="mini-kicker">8Ae.03</p>
+								<h2>Expand brackets, collect like terms, and simplify.</h2>
+								<p class="slide-lede">Today students connect arithmetic laws to algebra. They will multiply a single term into brackets, then combine like terms to write expressions in a simpler form.</p>
+								<div class="outcome-box">
+									<h3>By the end, I can...</h3>
+									<ul>
+										<li>identify like terms correctly</li>
+										<li>expand a single bracket using the distributive law</li>
+										<li>simplify expressions after expanding</li>
+										<li>explain why unlike terms cannot be combined</li>
+									</ul>
+								</div>
+							</div>
+							<div class="lesson-badge-card">
+								<span class="badge-number">3</span>
+								<span>core moves</span>
+								<hr />
+								<p>Spot like terms · Distribute · Simplify</p>
+							</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Warm-up: Like Terms">
+						<div class="slide-label"><span>Slide 2</span><strong>Warm-up</strong></div>
+						<p class="mini-kicker">Sort before simplifying</p>
+						<h2>Which terms can sit together?</h2>
+						<div class="sort-layout" data-sort-game>
+							<div class="game-panel">
+								<div class="game-head">
+									<div><span class="round-label" data-sort-round>Round 1 / 5</span><h3 data-sort-prompt>Choose the term that is like <span class="math-render" data-tex="3x"></span>.</h3></div>
+									<div class="local-score"><span>Score</span><strong data-sort-score>0</strong></div>
+								</div>
+								<div class="challenge-expression"><span data-sort-target class="math-render" data-tex="3x"></span></div>
+								<div class="option-row" data-sort-options></div>
+								<p class="feedback-line" data-sort-feedback>Like terms have exactly the same letter part.</p>
+								<div class="activity-actions"><button type="button" class="secondary-button" data-sort-next>Next round</button><button type="button" class="secondary-button" data-sort-reset>Reset game</button></div>
+							</div>
+							<aside class="method-card">
+								<h3>Quick rule</h3>
+								<p><strong>Like terms</strong> have the same variable and the same power.</p>
+								<div class="mini-example"><span class="math-render" data-tex="3x"></span> and <span class="math-render" data-tex="-5x"></span></div>
+								<div class="mini-example bad"><span class="math-render" data-tex="3x"></span> and <span class="math-render" data-tex="3x^2"></span></div>
+							</aside>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Concept: Distributive Law">
+						<div class="slide-label"><span>Slide 3</span><strong>Concept</strong></div>
+						<p class="mini-kicker">Theory foundation</p>
+						<h2>The outside term multiplies everything inside.</h2>
+						<div class="concept-grid">
+							<section class="theory-card law-card">
+								<span>Distributive law</span>
+								<div class="expression-banner"><span class="math-render" data-tex="a(b + c) = ab + ac"></span></div>
+								<p>The multiplier outside the bracket is shared with every term inside the bracket.</p>
+							</section>
+							<section class="theory-card law-card orange-card">
+								<span>Example</span>
+								<div class="step-stack compact-stack">
+									<div><span class="math-render" data-tex="3(x + 4)"></span></div>
+									<div><span class="math-render" data-tex="3 \times x + 3 \times 4"></span></div>
+									<div><span class="math-render" data-tex="3x + 12"></span></div>
+								</div>
+							</section>
+						</div>
+						<div class="teacher-prompt"><strong>IFP prompt:</strong> ask students to point to the two terms inside the bracket before multiplying.</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Expand Lab">
+						<div class="slide-label"><span>Slide 4</span><strong>Interactive Lab</strong></div>
+						<p class="mini-kicker">Single bracket expansion</p>
+						<h2>Tap each part to expand the expression.</h2>
+						<div class="expand-lab" data-expand-lab>
+							<div class="game-panel">
+								<div class="game-head">
+									<div><span class="round-label" data-expand-round>Example 1 / 4</span><h3>Expand the bracket step by step.</h3></div>
+								</div>
+								<div class="challenge-expression"><span data-expand-original class="math-render" data-tex="4(x + 3)"></span></div>
+								<div class="distribute-visual">
+									<button type="button" class="factor-chip" data-expand-left>Multiply first term</button>
+									<button type="button" class="factor-chip" data-expand-right>Multiply second term</button>
+								</div>
+								<div class="step-stack" data-expand-steps><p>Tap both multiplication moves to reveal the expanded form.</p></div>
+								<div class="activity-actions"><button type="button" class="primary-button" data-expand-answer>Show final answer</button><button type="button" class="secondary-button" data-expand-new>Next example</button><button type="button" class="secondary-button" data-expand-reset>Reset</button></div>
+							</div>
+							<aside class="method-card navy-card">
+								<h3>Teacher cue</h3>
+								<p>Do not let students multiply only the first term. The outside multiplier must reach every term inside the bracket.</p>
+							</aside>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Collect Like Terms">
+						<div class="slide-label"><span>Slide 5</span><strong>Game 2</strong></div>
+						<p class="mini-kicker">Combine safely</p>
+						<h2>Collect only the terms that match.</h2>
+						<div class="game-panel" data-collect-game>
+							<div class="game-head">
+								<div><span class="round-label" data-collect-round>Round 1 / 5</span><h3>Simplify the expression.</h3></div>
+								<div class="local-score"><span>Score</span><strong data-collect-score>0</strong></div>
+							</div>
+							<div class="challenge-expression"><span data-collect-prompt class="math-render" data-tex="3x + 5x - 2"></span></div>
+							<div class="option-row" data-collect-options></div>
+							<p class="feedback-line" data-collect-feedback>Collect the coefficients of the like terms.</p>
+							<div class="activity-actions"><button type="button" class="secondary-button" data-collect-next>Next expression</button><button type="button" class="secondary-button" data-collect-reset>Reset game</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Simplify After Expanding">
+						<div class="slide-label"><span>Slide 6</span><strong>Guided Practice</strong></div>
+						<p class="mini-kicker">Expand then collect</p>
+						<h2>Simplify in two moves.</h2>
+						<div class="pipeline" data-pipeline>
+							<div class="pipeline-card"><span>Start</span><strong class="math-render" data-tex="2(x + 5) + 3x"></strong></div>
+							<div class="pipeline-arrow">→</div>
+							<div class="pipeline-card" data-pipeline-step="1"><span>Expand</span><strong class="math-render" data-tex="2x + 10 + 3x"></strong></div>
+							<div class="pipeline-arrow">→</div>
+							<div class="pipeline-card" data-pipeline-step="2"><span>Collect</span><strong class="math-render" data-tex="5x + 10"></strong></div>
+						</div>
+						<div class="activity-actions"><button type="button" class="primary-button" data-pipeline-next>Reveal next move</button><button type="button" class="secondary-button" data-pipeline-reset>Reset</button></div>
+						<div class="teacher-prompt"><strong>Board check:</strong> students write their own two-line working before the final answer appears.</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Powers and Brackets">
+						<div class="slide-label"><span>Slide 7</span><strong>Common Trap</strong></div>
+						<p class="mini-kicker">Squares and cubes</p>
+						<h2>Powers must match before terms can combine.</h2>
+						<div class="trap-grid">
+							<div class="trap-card good"><span>Can combine</span><strong class="math-render" data-tex="4x^2 + 3x^2 = 7x^2"></strong><p>The letter part is the same: <span class="math-render" data-tex="x^2"></span>.</p></div>
+							<div class="trap-card bad"><span>Cannot combine</span><strong class="math-render" data-tex="4x^2 + 3x"></strong><p><span class="math-render" data-tex="x^2"></span> and <span class="math-render" data-tex="x"></span> are different kinds of terms.</p></div>
+						</div>
+						<div class="teacher-prompt">Ask students: “What is the letter part?” If the letter part changes, do not collect them.</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Error Detective">
+						<div class="slide-label"><span>Slide 8</span><strong>Game 3</strong></div>
+						<p class="mini-kicker">Find the mistake</p>
+						<h2>Error Detective</h2>
+						<div class="game-panel" data-detective-game>
+							<div class="game-head">
+								<div><span class="round-label" data-detective-round>Mistake 1 / 4</span><h3>What went wrong?</h3></div>
+								<div class="local-score"><span>Score</span><strong data-detective-score>0</strong></div>
+							</div>
+							<div class="student-work"><span>Student work</span><p data-detective-work class="math-render" data-tex="3(x + 4) = 3x + 4"></p></div>
+							<div class="option-row" data-detective-options></div>
+							<p class="feedback-line" data-detective-feedback>Choose the best explanation.</p>
+							<div class="activity-actions"><button type="button" class="secondary-button" data-detective-next>Next mistake</button><button type="button" class="secondary-button" data-detective-reset>Reset game</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Board Challenge">
+						<div class="slide-label"><span>Slide 9</span><strong>Class Challenge</strong></div>
+						<p class="mini-kicker">Pair work</p>
+						<h2>Choose a card. Expand, collect, or simplify.</h2>
+						<div class="board-grid">
+							<div class="challenge-card board-card">
+								<div class="board-card-head"><span class="board-card-tag">Card A</span><strong>Expand</strong></div>
+								<div class="board-card-equation math-render" data-tex="5(x + 2)"></div>
+								<button type="button" class="secondary-button" data-toggle-target="answer-a">Reveal answer</button>
+								<p id="answer-a" class="hidden-answer math-render" data-tex="5x + 10"></p>
+							</div>
+							<div class="challenge-card board-card">
+								<div class="board-card-head"><span class="board-card-tag">Card B</span><strong>Collect</strong></div>
+								<div class="board-card-equation math-render" data-tex="7a - 3a + 9"></div>
+								<button type="button" class="secondary-button" data-toggle-target="answer-b">Reveal answer</button>
+								<p id="answer-b" class="hidden-answer math-render" data-tex="4a + 9"></p>
+							</div>
+							<div class="challenge-card board-card">
+								<div class="board-card-head"><span class="board-card-tag">Card C</span><strong>Simplify</strong></div>
+								<div class="board-card-equation math-render" data-tex="2(3x + 4) - x"></div>
+								<button type="button" class="secondary-button" data-toggle-target="answer-c">Reveal answer</button>
+								<p id="answer-c" class="hidden-answer math-render" data-tex="5x + 8"></p>
+							</div>
+						</div>
+						<div class="teacher-prompt">Students must show the middle line, not only the final answer.</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Exit Ticket">
+						<div class="slide-label"><span>Slide 10</span><strong>Exit Ticket</strong></div>
+						<p class="mini-kicker">Quick formative check</p>
+						<h2>Before leaving, answer these three questions.</h2>
+						<div class="exit-grid">
+							<div class="exit-card">
+								<div class="exit-card-head"><span class="exit-number">1</span><span class="exit-skill">Collect like terms</span></div>
+								<div class="exit-equation"><span class="math-render" data-tex="6x + 2x - 5"></span></div>
+							</div>
+							<div class="exit-card">
+								<div class="exit-card-head"><span class="exit-number">2</span><span class="exit-skill">Expand</span></div>
+								<div class="exit-equation"><span class="math-render" data-tex="4(y - 3)"></span></div>
+							</div>
+							<div class="exit-card">
+								<div class="exit-card-head"><span class="exit-number">3</span><span class="exit-skill">Simplify</span></div>
+								<div class="exit-equation"><span class="math-render" data-tex="3(x + 2) + 4x"></span></div>
+							</div>
+						</div>
+						<button type="button" class="primary-button" data-toggle-target="exit-answer">Reveal sample answers</button>
+						<div id="exit-answer" class="hidden-answer sample-answer exit-answer-grid">
+							<p><strong>1.</strong> <span class="math-render" data-tex="8x - 5"></span></p>
+							<p><strong>2.</strong> <span class="math-render" data-tex="4y - 12"></span></p>
+							<p><strong>3.</strong> <span class="math-render" data-tex="7x + 6"></span></p>
+						</div>
+					</article>
+				</section>
+			</div>
+
+			<div class="deck-controls">
+				<button type="button" class="secondary-button" data-prev-slide>Back</button>
+				<button type="button" class="teacher-note-button" data-teacher-notes-toggle>Teacher Notes</button>
+				<button type="button" class="secondary-button" data-reset-slide>Reset Slide</button>
+				<button type="button" class="primary-button" data-next-slide>Next</button>
+			</div>
+
+			<aside class="teacher-notes" data-teacher-notes hidden>
+				<div class="teacher-notes-card">
+					<div class="teacher-notes-head"><strong>Teacher Notes</strong><button type="button" data-teacher-notes-close aria-label="Close teacher notes">×</button></div>
+					<p data-teacher-notes-text>Use the slide as an IFP prompt. Ask students to explain each operation before revealing the answer.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+</Layout>
+
+<script is:inline type="text/javascript">
+	window.MathJax = {
+		tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+		svg: { fontCache: 'global' }
+	};
+</script>
+<script is:inline async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style is:global>
+	.lesson-3-page { --navy: #23304d; --orange: #f2761e; --sky: #3eb6ea; --ink: #23304d; --muted: #4b5870; --soft: #f3fbff; --cream: #fff8ee; font-family: 'Figtree', Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: radial-gradient(circle at top left, rgba(62, 182, 234, 0.18), transparent 31rem), radial-gradient(circle at bottom right, rgba(242, 118, 30, 0.14), transparent 32rem), #fffaf4; min-height: 100vh; padding: 24px 0 56px; }
+	.lesson-3-page * { box-sizing: border-box; }
+	.lesson-3-page .lesson-shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+	.lesson-3-page .lesson-topbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 22px; background: rgba(255,255,255,0.92); border: 1px solid rgba(43,53,77,0.12); border-radius: 28px; box-shadow: 0 20px 60px rgba(30,41,59,0.08); }
+	.lesson-3-page .back-link { display: inline-flex; margin-bottom: 12px; font-weight: 900; color: #2b5b76; text-decoration: none; }
+	.lesson-3-page .eyebrow, .lesson-3-page .mini-kicker { margin: 0 0 8px; font-size: 0.78rem; font-weight: 950; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); }
+	.lesson-3-page .lesson-topbar h1 { margin: 0; font-size: clamp(1.8rem, 3.2vw, 3.15rem); line-height: 1; color: var(--navy); letter-spacing: -0.035em; }
+	.lesson-3-page .lesson-topbar-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+	.lesson-3-page .objective-pill, .lesson-3-page .mode-toggle, .lesson-3-page .fullscreen-toggle, .lesson-3-page .score-pill { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 10px 16px; border-radius: 999px; font-weight: 950; border: 0; }
+	.lesson-3-page .objective-pill, .lesson-3-page .score-pill { background: var(--navy); color: #fff; }
+	.lesson-3-page .fullscreen-toggle { background: #2c91bd; color: #fff; }
+	.lesson-3-page .mode-toggle, .lesson-3-page .primary-button { background: var(--orange); color: #fff; border: 0; }
+	.lesson-3-page .lesson-shell.is-self-study .mode-toggle { background: var(--sky); }
+	.lesson-3-page .progress-area { margin: 18px 0; padding: 16px 18px; background: rgba(255,255,255,0.78); border: 1px solid rgba(43,53,77,0.1); border-radius: 22px; }
+	.lesson-3-page .progress-meta { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 10px; font-weight: 900; color: var(--navy); }
+	.lesson-3-page .progress-track { height: 12px; background: rgba(35,48,77,0.12); border-radius: 999px; overflow: hidden; }
+	.lesson-3-page .progress-track span { display: block; height: 100%; width: 10%; background: linear-gradient(90deg, var(--orange), var(--sky)); border-radius: inherit; transition: width 0.25s ease; }
+	.lesson-3-page .deck-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 18px; align-items: start; }
+	.lesson-3-page .slide-map { position: sticky; top: 104px; display: grid; gap: 8px; padding: 12px; background: rgba(255,255,255,0.88); border: 1px solid rgba(43,53,77,0.1); border-radius: 24px; box-shadow: 0 18px 50px rgba(30,41,59,0.08); }
+	.lesson-3-page .slide-dot { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 8px 10px; border: 1px solid transparent; border-radius: 16px; background: transparent; color: #46536b; font-weight: 900; text-align: left; cursor: pointer; }
+	.lesson-3-page .slide-dot span { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(35,48,77,0.1); color: var(--navy); font-size: 0.84rem; font-weight: 950; }
+	.lesson-3-page .slide-dot.is-active { background: var(--navy); color: #fff; border-color: var(--navy); }
+	.lesson-3-page .slide-dot.is-active span { background: #fff; color: var(--navy); }
+	.lesson-3-page .lesson-slide { display: none; min-height: 650px; padding: clamp(24px,4vw,44px); background: rgba(255,255,255,0.95); border: 1px solid rgba(43,53,77,0.12); border-radius: 34px; box-shadow: 0 24px 80px rgba(30,41,59,0.1); overflow: hidden; }
+	.lesson-3-page .lesson-slide.is-active { display: block; }
+	.lesson-3-page .slide-label { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; font-weight: 950; color: #526077; }
+	.lesson-3-page .slide-label span { background: #fff3e9; color: var(--orange); border: 1px solid rgba(242,118,30,0.18); padding: 8px 12px; border-radius: 999px; }
+	.lesson-3-page .lesson-slide h2 { margin: 0 0 16px; font-size: clamp(2rem,4.2vw,4.2rem); line-height: 0.98; color: var(--navy); letter-spacing: -0.04em; max-width: 1120px; }
+	.lesson-3-page .lesson-slide h3 { color: var(--navy); }
+	.lesson-3-page .slide-lede { max-width: 860px; font-size: clamp(1.05rem,1.7vw,1.3rem); line-height: 1.45; color: var(--muted); }
+	.lesson-3-page .hero-grid { display: grid; grid-template-columns: minmax(0,1fr) 280px; gap: 28px; align-items: stretch; }
+	.lesson-3-page .outcome-box, .lesson-3-page .teacher-prompt, .lesson-3-page .game-panel, .lesson-3-page .student-work, .lesson-3-page .sample-answer, .lesson-3-page .method-card, .lesson-3-page .challenge-card, .lesson-3-page .theory-card, .lesson-3-page .trap-card { border-radius: 24px; padding: 22px; border: 1px solid rgba(43,53,77,0.12); background: #fff; }
+	.lesson-3-page .outcome-box { margin-top: 22px; background: var(--soft); }
+	.lesson-3-page .outcome-box ul { margin: 12px 0 0; padding-left: 22px; font-size: 1.05rem; line-height: 1.55; color: #334155; }
+	.lesson-3-page .lesson-badge-card { display: grid; place-items: center; align-content: center; text-align: center; padding: 28px; border-radius: 30px; background: linear-gradient(145deg,#23304d,#35507d); color: #fff; }
+	.lesson-3-page .lesson-badge-card .badge-number { font-size: 5.4rem; line-height: 0.9; font-weight: 950; color: #fff; }
+	.lesson-3-page .lesson-badge-card span, .lesson-3-page .lesson-badge-card p { color: #fff; }
+	.lesson-3-page .lesson-badge-card p { margin: 0; line-height: 1.5; }
+	.lesson-3-page .lesson-badge-card hr { width: 80%; border: 0; border-top: 1px solid rgba(255,255,255,0.28); margin: 18px 0; }
+	.lesson-3-page .math-render { font-weight: 900; color: var(--navy); }
+	.lesson-3-page .challenge-expression, .lesson-3-page .expression-banner { display: grid; place-items: center; min-height: 100px; border-radius: 26px; background: var(--cream); border: 2px solid rgba(242,118,30,0.22); font-size: clamp(2.2rem,4.5vw,4.4rem); }
+	.lesson-3-page .sort-layout, .lesson-3-page .expand-lab, .lesson-3-page .concept-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(240px,.45fr); gap: 16px; align-items: stretch; }
+	.lesson-3-page .concept-grid { grid-template-columns: minmax(0,1.05fr) minmax(0,.95fr); }
+	.lesson-3-page .theory-card { display: grid; gap: 12px; align-content: start; }
+	.lesson-3-page .theory-card span { color: var(--orange); font-weight: 950; letter-spacing: 0.1em; text-transform: uppercase; font-size: .78rem; }
+	.lesson-3-page .theory-card p, .lesson-3-page .method-card p { margin: 0; color: var(--muted); font-weight: 850; line-height: 1.48; }
+	.lesson-3-page .orange-card { background: #fffaf4; }
+	.lesson-3-page .game-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 14px; }
+	.lesson-3-page .game-head h3 { margin: 5px 0 0; font-size: clamp(1.15rem,1.8vw,1.6rem); }
+	.lesson-3-page .round-label { display: inline-flex; padding: 7px 11px; border-radius: 999px; background: #fff3e9; color: var(--orange); font-weight: 950; }
+	.lesson-3-page .local-score { display: grid; place-items: center; min-width: 112px; padding: 13px 17px; border-radius: 22px; background: var(--navy); color: #fff; }
+	.lesson-3-page .local-score span, .lesson-3-page .local-score strong { color: #fff; }
+	.lesson-3-page .local-score strong { font-size: 2.2rem; line-height: 1; }
+	.lesson-3-page .option-row { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; margin-top: 14px; }
+	.lesson-3-page .game-option, .lesson-3-page .primary-button, .lesson-3-page .secondary-button, .lesson-3-page .teacher-note-button, .lesson-3-page .fullscreen-toggle, .lesson-3-page .mode-toggle, .lesson-3-page .score-pill, .lesson-3-page .slide-dot, .lesson-3-page .challenge-card button, .lesson-3-page .factor-chip { min-height: 54px; border-radius: 18px; font: inherit; font-weight: 950; cursor: pointer; box-sizing: border-box; }
+	.lesson-3-page .game-option { appearance: none; -webkit-appearance: none; display: grid; grid-template-columns: 64px minmax(0,1fr); align-items: stretch; width: 100%; padding: 0; margin: 0; overflow: hidden; border: 2px solid rgba(35,48,77,0.1); background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%); color: var(--navy); font-size: 1.02rem; text-align: left; box-shadow: 0 8px 18px rgba(35,48,77,0.08); transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease; }
+	.lesson-3-page .game-option > * { pointer-events: none; }
+	.lesson-3-page .game-option:hover, .lesson-3-page .game-option:focus-visible, .lesson-3-page .primary-button:hover, .lesson-3-page .secondary-button:hover, .lesson-3-page .factor-chip:hover { transform: translateY(-2px); }
+	.lesson-3-page .game-option:hover, .lesson-3-page .game-option:focus-visible { border-color: rgba(62,182,234,0.55); box-shadow: 0 12px 24px rgba(35,48,77,0.12); outline: 3px solid rgba(62,182,234,0.22); outline-offset: 2px; }
+	.lesson-3-page .option-badge { display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, #2c3d68 0%, #23304d 100%); color: #fff; font-size: 1.02rem; font-weight: 950; letter-spacing: 0.04em; }
+	.lesson-3-page .option-text { display: flex; align-items: center; justify-content: center; min-height: 68px; padding: 14px 18px; color: var(--navy); font-weight: 900; text-align: center; background: transparent; }
+	.lesson-3-page .option-text mjx-container { margin: 0 auto !important; }
+	.lesson-3-page .game-option.is-correct { background: linear-gradient(180deg,#effcf4 0%,#e2f8ea 100%); border-color: #40a76f; box-shadow: 0 10px 22px rgba(64,167,111,0.16); }
+	.lesson-3-page .game-option.is-correct .option-badge { background: linear-gradient(180deg,#49b375 0%,#3d9d67 100%); }
+	.lesson-3-page .game-option.is-wrong { background: linear-gradient(180deg,#fff5f5 0%,#ffe7e7 100%); border-color: #e66565; box-shadow: 0 10px 22px rgba(230,101,101,0.12); }
+	.lesson-3-page .game-option.is-wrong .option-badge { background: linear-gradient(180deg,#ec7474 0%,#df5a5a 100%); }
+	.lesson-3-page .game-option:disabled { cursor: default; }
+	.lesson-3-page .feedback-line { margin-top: 14px; padding: 14px 16px; border-radius: 16px; background: #f7f8fb; color: #46536b; font-weight: 900; }
+	.lesson-3-page .activity-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+	.lesson-3-page .primary-button, .lesson-3-page .secondary-button, .lesson-3-page .teacher-note-button { border: 0; padding: 13px 20px; }
+	.lesson-3-page .primary-button { background: var(--orange); color: #fff; }
+	.lesson-3-page .secondary-button { background: #eef4f8; color: var(--navy); }
+	.lesson-3-page .teacher-note-button { background: var(--navy); color: #fff; }
+	.lesson-3-page .method-card { background: #f7f8fb; }
+	.lesson-3-page .method-card h3 { margin-top: 0; font-size: 1.5rem; }
+	.lesson-3-page .mini-example { margin-top: 12px; padding: 12px 14px; border-radius: 16px; background: #ecfdf3; color: var(--navy); font-weight: 950; }
+	.lesson-3-page .mini-example.bad { background: #fff1f1; }
+	.lesson-3-page .distribute-visual { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin-top: 14px; }
+	.lesson-3-page .factor-chip { border: 2px solid rgba(62,182,234,0.32); background: #f3fbff; color: #245773; }
+	.lesson-3-page .factor-chip.is-done { background: #ecfdf3; border-color: #40a76f; color: #226340; }
+	.lesson-3-page .step-stack { display: grid; gap: 10px; margin-top: 14px; }
+	.lesson-3-page .step-stack div, .lesson-3-page .step-stack p { margin: 0; padding: 13px 16px; border-radius: 16px; background: #f7f8fb; color: var(--navy); font-weight: 900; }
+	.lesson-3-page .compact-stack { margin: 0; }
+	.lesson-3-page .navy-card { display: grid; align-content: center; background: var(--navy); color: #fff; }
+	.lesson-3-page .navy-card h3, .lesson-3-page .navy-card p { color: #fff; }
+	.lesson-3-page .pipeline { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr); gap: 12px; align-items: center; margin: 18px 0; }
+	.lesson-3-page .pipeline-card { min-height: 160px; padding: 22px; border-radius: 24px; background: #fff; border: 1px solid rgba(43,53,77,0.12); display: grid; gap: 12px; align-content: center; text-align: center; }
+	.lesson-3-page .pipeline-card span { color: var(--orange); font-weight: 950; text-transform: uppercase; letter-spacing: .1em; font-size: .78rem; }
+	.lesson-3-page .pipeline-card strong { font-size: clamp(1.6rem,3vw,3rem); }
+	.lesson-3-page .pipeline-card.is-muted { opacity: .32; }
+	.lesson-3-page .pipeline-arrow { color: var(--sky); font-size: 2.5rem; font-weight: 950; }
+	.lesson-3-page .trap-grid, .lesson-3-page .board-grid, .lesson-3-page .exit-grid { display: grid; gap: 14px; }
+	.lesson-3-page .trap-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+	.lesson-3-page .trap-card { display: grid; gap: 12px; }
+	.lesson-3-page .trap-card span { display: inline-flex; width: fit-content; padding: 8px 12px; border-radius: 999px; font-weight: 950; background: #ecfdf3; color: #226340; }
+	.lesson-3-page .trap-card.bad span { background: #fff1f1; color: #c24141; }
+	.lesson-3-page .trap-card strong { font-size: clamp(1.8rem,3.5vw,3.4rem); }
+	.lesson-3-page .student-work { background: var(--cream); font-size: clamp(1.7rem,3.4vw,3.2rem); text-align: center; }
+	.lesson-3-page .student-work span { display: block; margin-bottom: 10px; color: var(--orange); font-size: 0.95rem; font-weight: 950; letter-spacing: 0.09em; text-transform: uppercase; }
+	.lesson-3-page .teacher-prompt { margin-top: 18px; background: var(--soft); color: #27475b; font-weight: 900; }
+	.lesson-3-page .board-grid { grid-template-columns: repeat(3,minmax(0,1fr)); align-items: stretch; }
+	.lesson-3-page .challenge-card { display: grid; align-content: start; gap: 14px; }
+	.lesson-3-page .board-card { min-height: 300px; background: linear-gradient(180deg,#ffffff 0%,#fbfcff 100%); }
+	.lesson-3-page .board-card-head { display: grid; gap: 10px; align-content: start; }
+	.lesson-3-page .board-card-tag { display: inline-flex; align-items: center; justify-content: center; width: fit-content; min-height: 34px; padding: 0 14px; border-radius: 999px; background: #fff3e9; color: var(--orange); font-weight: 950; font-size: 0.88rem; letter-spacing: 0.03em; }
+	.lesson-3-page .board-card-head strong { font-size: 1.8rem; line-height: 1.1; color: var(--navy); }
+	.lesson-3-page .board-card-equation { display: flex; align-items: center; justify-content: center; min-height: 82px; padding: 8px 14px; border-radius: 18px; background: var(--cream); border: 1px solid rgba(242,118,30,0.18); font-size: clamp(1.45rem,2vw,2rem); }
+	.lesson-3-page .board-card .secondary-button { width: 100%; justify-content: center; }
+	.lesson-3-page .hidden-answer { display: none; margin: 0; background: var(--soft); color: var(--navy); border: 1px solid rgba(62,182,234,0.22); }
+	.lesson-3-page .hidden-answer.is-visible { display: flex; align-items: center; justify-content: center; min-height: 72px; padding: 14px 16px; border-radius: 18px; }
+	.lesson-3-page .exit-grid { grid-template-columns: repeat(3,minmax(0,1fr)); margin: 18px 0; }
+	.lesson-3-page .exit-card { display: grid; gap: 16px; min-height: 160px; padding: 20px; border-radius: 22px; background: #fff; border: 2px solid rgba(35,48,77,0.1); }
+	.lesson-3-page .exit-card-head { display: flex; align-items: center; gap: 12px; }
+	.lesson-3-page .exit-number { display: inline-grid; place-items: center; flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 950; font-size: 1.15rem; }
+	.lesson-3-page .exit-skill { color: var(--navy); font-size: 1.16rem; line-height: 1.25; font-weight: 950; }
+	.lesson-3-page .exit-equation { display: grid; place-items: center; min-height: 74px; padding: 12px 14px; border-radius: 18px; background: #f6faff; border: 1.5px solid rgba(62,182,234,0.22); color: var(--navy); }
+	.lesson-3-page .exit-equation .MathJax,
+	.lesson-3-page .exit-equation mjx-container { font-size: 1.36rem !important; }
+	.lesson-3-page .exit-answer-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+	.lesson-3-page .exit-answer-grid p { margin: 0; padding: 12px 14px; border-radius: 16px; background: #fff; border: 1px solid rgba(35,48,77,0.08); }
+	.lesson-3-page .sample-answer { margin-top: 14px; background: var(--soft); display: none; }
+	.lesson-3-page .sample-answer.is-visible { display: block; }
+	.lesson-3-page .sample-answer p { margin: 0 0 9px; color: var(--navy); }
+	.lesson-3-page .sample-answer p:last-child { margin-bottom: 0; }
+	.lesson-3-page .deck-controls { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 18px; padding: 14px; border-radius: 24px; background: rgba(255,255,255,0.9); border: 1px solid rgba(43,53,77,0.1); }
+	.lesson-3-page .teacher-notes { position: fixed; right: 24px; bottom: 24px; z-index: 20; width: min(430px, calc(100% - 48px)); }
+	.lesson-3-page .teacher-notes-card { padding: 20px; border-radius: 24px; background: var(--navy); color: #fff; box-shadow: 0 24px 80px rgba(30,41,59,0.24); }
+	.lesson-3-page .teacher-notes-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+	.lesson-3-page .teacher-notes-head strong, .lesson-3-page .teacher-notes p { color: #fff; }
+	.lesson-3-page .teacher-notes-head button { width: 38px; height: 38px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.18); color: #fff; font-size: 1.5rem; cursor: pointer; }
+	.lesson-3-page .teacher-notes p { margin: 0; line-height: 1.55; }
+	body:has(.lesson-page.ifp-fullscreen) { overflow: hidden !important; }
+	body:has(.lesson-page.ifp-fullscreen) .site-header, body:has(.lesson-page.ifp-fullscreen) .site-footer, body:has(.lesson-page.ifp-fullscreen) .floating-whatsapp, body:has(.lesson-page.ifp-fullscreen) .whatsapp-float { display: none !important; }
+	.lesson-page.ifp-fullscreen { position: fixed; inset: 0; z-index: 10000; height: 100vh; height: 100dvh; width: 100vw; overflow: hidden; padding: 0; }
+	.lesson-page.ifp-fullscreen .lesson-shell { width: 100%; height: 100%; margin: 0; padding: 12px; display: grid; grid-template-rows: 76px 12px minmax(0,1fr) 68px; gap: 10px; box-sizing: border-box; }
+	.lesson-page.ifp-fullscreen .lesson-topbar { min-height: 0; padding: 10px 16px; border-radius: 20px; align-items: center; }
+	.lesson-page.ifp-fullscreen .lesson-topbar-left { min-width: 0; }
+	.lesson-page.ifp-fullscreen .back-link { margin: 0 0 4px; font-size: 0.85rem; line-height: 1; }
+	.lesson-page.ifp-fullscreen .eyebrow { margin: 0 0 3px; font-size: 0.67rem; }
+	.lesson-page.ifp-fullscreen .lesson-topbar h1 { font-size: clamp(1.25rem,2vw,2.15rem); line-height: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+	.lesson-page.ifp-fullscreen .objective-pill, .lesson-page.ifp-fullscreen .mode-toggle, .lesson-page.ifp-fullscreen .fullscreen-toggle, .lesson-page.ifp-fullscreen .score-pill { min-height: 46px; padding: 8px 14px; font-size: 0.95rem; }
+	.lesson-page.ifp-fullscreen .progress-area { margin: 0; padding: 0; border: 0; background: transparent; border-radius: 999px; }
+	.lesson-page.ifp-fullscreen .progress-meta { display: none; }
+	.lesson-page.ifp-fullscreen .deck-layout { height: 100%; min-height: 0; display: grid; grid-template-columns: minmax(116px,10.5vw) minmax(0,1fr); gap: 10px; align-items: stretch; }
+	.lesson-page.ifp-fullscreen .slide-map { position: static; height: 100%; min-height: 0; overflow: hidden; padding: 8px; border-radius: 18px; gap: 5px; align-content: start; }
+	.lesson-page.ifp-fullscreen .slide-dot { min-height: 0; height: min(5.05vh,39px); padding: 5px 7px; gap: 6px; border-radius: 12px; font-size: clamp(0.62rem,0.78vw,0.8rem); line-height: 1.05; }
+	.lesson-page.ifp-fullscreen .slide-dot span { width: 23px; height: 23px; font-size: 0.72rem; flex: 0 0 auto; }
+	.lesson-page.ifp-fullscreen .slide-stage { height: 100%; min-height: 0; min-width: 0; }
+	.lesson-page.ifp-fullscreen .lesson-slide { height: 100%; min-height: 0; overflow: hidden; padding: clamp(16px,2.25vw,32px); border-radius: 24px; box-sizing: border-box; box-shadow: 0 20px 65px rgba(30,41,59,0.1); }
+	.lesson-page.ifp-fullscreen .lesson-slide.is-active { display: flex; flex-direction: column; }
+	.lesson-page.ifp-fullscreen .slide-label { margin-bottom: clamp(6px,1vh,12px); font-size: clamp(0.8rem,1vw,1rem); flex: 0 0 auto; }
+	.lesson-page.ifp-fullscreen .lesson-slide h2 { font-size: clamp(1.8rem,3.75vw,3.7rem); line-height: 0.96; margin-bottom: clamp(8px,1.2vh,14px); }
+	.lesson-page.ifp-fullscreen .slide-lede { font-size: clamp(0.98rem,1.35vw,1.18rem); line-height: 1.35; margin: 0 0 10px; }
+	.lesson-page.ifp-fullscreen .hero-grid { grid-template-columns: minmax(0,1fr) minmax(220px,22vw); gap: 16px; height: 100%; min-height: 0; }
+	.lesson-page.ifp-fullscreen .lesson-badge-card { padding: 18px; }
+	.lesson-page.ifp-fullscreen .lesson-badge-card .badge-number { font-size: clamp(4rem,7vw,6.4rem); }
+	.lesson-page.ifp-fullscreen .outcome-box, .lesson-page.ifp-fullscreen .teacher-prompt, .lesson-page.ifp-fullscreen .game-panel, .lesson-page.ifp-fullscreen .student-work, .lesson-page.ifp-fullscreen .sample-answer, .lesson-page.ifp-fullscreen .method-card, .lesson-page.ifp-fullscreen .challenge-card, .lesson-page.ifp-fullscreen .theory-card, .lesson-page.ifp-fullscreen .trap-card { padding: clamp(12px,1.5vw,18px); border-radius: 20px; }
+	.lesson-page.ifp-fullscreen .outcome-box { margin-top: 12px; }
+	.lesson-page.ifp-fullscreen .outcome-box ul { font-size: clamp(0.9rem,1vw,1.02rem); line-height: 1.35; }
+	.lesson-page.ifp-fullscreen .challenge-expression, .lesson-page.ifp-fullscreen .expression-banner { min-height: clamp(72px,11vh,108px); font-size: clamp(1.9rem,3.8vw,3.8rem); }
+	.lesson-page.ifp-fullscreen .option-row { gap: 9px; margin-top: 10px; }
+	.lesson-page.ifp-fullscreen .game-option, .lesson-page.ifp-fullscreen .primary-button, .lesson-page.ifp-fullscreen .secondary-button, .lesson-page.ifp-fullscreen .teacher-note-button, .lesson-page.ifp-fullscreen .fullscreen-toggle, .lesson-page.ifp-fullscreen .mode-toggle, .lesson-page.ifp-fullscreen .score-pill, .lesson-page.ifp-fullscreen .challenge-card button, .lesson-page.ifp-fullscreen .factor-chip { min-height: 50px; border-radius: 15px; }
+	.lesson-page.ifp-fullscreen .game-option { grid-template-columns: 54px minmax(0,1fr); font-size: clamp(0.9rem,1vw,1rem); box-shadow: 0 6px 14px rgba(35,48,77,0.08); }
+	.lesson-page.ifp-fullscreen .option-badge { font-size: 0.92rem; }
+	.lesson-page.ifp-fullscreen .option-text { min-height: 56px; padding: 10px 12px; }
+	.lesson-page.ifp-fullscreen .feedback-line { margin-top: 9px; padding: 11px 14px; font-size: clamp(0.88rem,1vw,1.02rem); }
+	.lesson-page.ifp-fullscreen .activity-actions { margin-top: 8px; }
+	.lesson-page.ifp-fullscreen .sort-layout, .lesson-page.ifp-fullscreen .expand-lab { height: 100%; min-height: 0; grid-template-columns: minmax(0,1fr) minmax(220px,24vw); gap: 12px; }
+	.lesson-page.ifp-fullscreen .concept-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 12px; }
+	.lesson-page.ifp-fullscreen .step-stack { gap: 8px; }
+	.lesson-page.ifp-fullscreen .step-stack div, .lesson-page.ifp-fullscreen .step-stack p { padding: 10px 12px; font-size: clamp(0.9rem,1vw,1.05rem); }
+	.lesson-page.ifp-fullscreen .pipeline { grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr); gap: 8px; }
+	.lesson-page.ifp-fullscreen .pipeline-card { min-height: 132px; padding: 14px; }
+	.lesson-page.ifp-fullscreen .pipeline-card strong { font-size: clamp(1.35rem,2.5vw,2.5rem); }
+	.lesson-page.ifp-fullscreen .trap-grid, .lesson-page.ifp-fullscreen .board-grid, .lesson-page.ifp-fullscreen .exit-grid { gap: 10px; }
+	.lesson-page.ifp-fullscreen .exit-card { min-height: 140px; padding: 16px; gap: 12px; }
+	.lesson-page.ifp-fullscreen .exit-number { width: 38px; height: 38px; font-size: 0.95rem; }
+	.lesson-page.ifp-fullscreen .exit-skill { font-size: clamp(0.96rem, 1.08vw, 1.05rem); }
+	.lesson-page.ifp-fullscreen .exit-equation { min-height: 64px; padding: 10px 12px; }
+	.lesson-page.ifp-fullscreen .exit-equation .MathJax, 
+	.lesson-page.ifp-fullscreen .exit-equation mjx-container { font-size: 1.08rem !important; }
+	.lesson-page.ifp-fullscreen .exit-text { font-size: clamp(0.95rem, 1.05vw, 1.05rem); line-height: 1.4; }
+	.lesson-page.ifp-fullscreen .trap-card strong { font-size: clamp(1.5rem,3vw,3rem); }
+	.lesson-page.ifp-fullscreen .student-work { font-size: clamp(1.45rem,2.8vw,2.8rem); padding: 15px; }
+	.lesson-page.ifp-fullscreen .board-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+	.lesson-page.ifp-fullscreen .board-card { min-height: 0; }
+	.lesson-page.ifp-fullscreen .board-card-head strong { font-size: clamp(1.2rem,1.65vw,1.6rem); }
+	.lesson-page.ifp-fullscreen .board-card-equation { min-height: 70px; font-size: clamp(1.2rem,1.8vw,1.7rem); }
+	.lesson-page.ifp-fullscreen .hidden-answer.is-visible { min-height: 58px; }
+	.lesson-page.ifp-fullscreen .exit-grid { grid-template-columns: repeat(3,minmax(0,1fr)); margin: 12px 0; }
+	.lesson-page.ifp-fullscreen .exit-card { min-height: 132px; padding: 14px; }
+	.lesson-page.ifp-fullscreen .exit-answer-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+	.lesson-page.ifp-fullscreen .exit-text { font-size: clamp(0.95rem,1.2vw,1.12rem); }
+	.lesson-page.ifp-fullscreen .deck-controls { margin: 0; padding: 8px; border-radius: 18px; align-items: center; flex-wrap: nowrap; }
+	.lesson-page.ifp-fullscreen .primary-button, .lesson-page.ifp-fullscreen .secondary-button, .lesson-page.ifp-fullscreen .teacher-note-button, .lesson-page.ifp-fullscreen .fullscreen-toggle { min-height: 50px; padding: 10px 20px; font-size: clamp(0.92rem,1.05vw,1.06rem); white-space: nowrap; }
+	.lesson-page.ifp-fullscreen .teacher-notes { position: fixed; right: 18px; bottom: 84px; z-index: 10020; width: min(500px, calc(100vw - 36px)); }
+	@media (max-width: 980px) { .lesson-3-page .deck-layout, .lesson-3-page .hero-grid, .lesson-3-page .sort-layout, .lesson-3-page .expand-lab, .lesson-3-page .concept-grid { grid-template-columns: 1fr; } .lesson-3-page .slide-map { display: none; } .lesson-3-page .pipeline, .lesson-3-page .trap-grid, .lesson-3-page .board-grid, .lesson-3-page .exit-grid, .lesson-3-page .exit-answer-grid { grid-template-columns: 1fr; } .lesson-3-page .pipeline-arrow, .lesson-3-page .lesson-badge-card { display: none; } }
+</style>
+
+<script is:inline type="text/javascript">
+	// @ts-nocheck
+	(function () {
+		const root = document.querySelector('[data-lesson-root]');
+		if (!root || root.dataset.initialized === 'true') return;
+		root.dataset.initialized = 'true';
+
+		const slides = Array.from(root.querySelectorAll('[data-slide]'));
+		const dots = Array.from(root.querySelectorAll('[data-go-slide]'));
+		const progressLabel = root.querySelector('[data-progress-label]');
+		const progressBar = root.querySelector('[data-progress-bar]');
+		const nextButton = root.querySelector('[data-next-slide]');
+		const prevButton = root.querySelector('[data-prev-slide]');
+		const resetSlideButton = root.querySelector('[data-reset-slide]');
+		const modeToggle = root.querySelector('[data-mode-toggle]');
+		const fullscreenButton = root.querySelector('[data-fullscreen-toggle]');
+		const fullscreenTarget = document.querySelector('.lesson-page.ifp-fullscreen') || root;
+		const totalScoreButton = root.querySelector('[data-total-score]');
+		const teacherNotes = root.querySelector('[data-teacher-notes]');
+		const teacherNotesText = root.querySelector('[data-teacher-notes-text]');
+		const teacherNotesToggle = root.querySelector('[data-teacher-notes-toggle]');
+		const teacherNotesClose = root.querySelector('[data-teacher-notes-close]');
+
+		const notes = [
+			'Use this overview to connect the lesson with Lesson 4 later: factorising reverses expanding.',
+			'Pause on the phrase “same letter part”. Ask why x and x² cannot be collected.',
+			'Use arrows or fingers on the board: the outside term multiplies both terms inside.',
+			'Ask students to say both products aloud before revealing the final answer.',
+			'Remind students to collect coefficients only. The variable part stays the same.',
+			'Insist on a middle line after expanding. It prevents skipped-step errors.',
+			'This slide addresses the common x and x² misconception.',
+			'Let students explain the mistake verbally before choosing an option.',
+			'Use this for pair work. Award one point for the middle line and one point for the final answer.',
+			'Collect quick notebook answers before revealing sample answers.'
+		];
+
+		let currentSlide = 0;
+		let totalScore = 0;
+
+		const renderMath = (scope = root) => {
+			const targetScope = scope || root;
+			const mathNodes = targetScope.matches?.('[data-tex]')
+				? [targetScope]
+				: Array.from(targetScope.querySelectorAll?.('[data-tex]') || []);
+			mathNodes.forEach((node) => {
+				const tex = node.getAttribute('data-tex') || '';
+				if (tex) node.textContent = '$' + tex + '$';
+			});
+			if (window.MathJax && window.MathJax.typesetPromise) {
+				window.MathJax.typesetClear?.([targetScope]);
+				window.MathJax.typesetPromise([targetScope]).catch(() => {});
+			}
+		};
+
+		const setMath = (element, tex) => {
+			if (!element) return;
+			element.setAttribute('data-tex', tex);
+			element.textContent = '$' + tex + '$';
+			renderMath(element);
+		};
+
+		const updateTotalScore = (points = 1) => {
+			totalScore += points;
+			if (totalScoreButton) totalScoreButton.textContent = 'Score ' + totalScore;
+		};
+
+		const updateSlide = (index) => {
+			currentSlide = Math.max(0, Math.min(index, slides.length - 1));
+			slides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === currentSlide));
+			dots.forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === currentSlide));
+			if (progressLabel) progressLabel.textContent = 'Slide ' + (currentSlide + 1) + ' of ' + slides.length;
+			if (progressBar) progressBar.style.width = ((currentSlide + 1) / slides.length * 100) + '%';
+			if (teacherNotesText) teacherNotesText.textContent = notes[currentSlide] || notes[0];
+			renderMath(slides[currentSlide]);
+		};
+
+		nextButton?.addEventListener('click', () => updateSlide(currentSlide + 1));
+		prevButton?.addEventListener('click', () => updateSlide(currentSlide - 1));
+		dots.forEach((dot) => dot.addEventListener('click', () => updateSlide(Number(dot.dataset.goSlide || 0))));
+		resetSlideButton?.addEventListener('click', () => updateSlide(currentSlide));
+		modeToggle?.addEventListener('click', () => {
+			root.classList.toggle('is-self-study');
+			const active = root.classList.contains('is-self-study');
+			modeToggle.setAttribute('aria-pressed', String(active));
+			modeToggle.textContent = active ? 'Self-study Mode' : 'Teach Mode';
+		});
+
+		const getFullscreenElement = () => document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+		const updateFullscreenButton = () => {
+			const isFullscreen = Boolean(getFullscreenElement());
+			fullscreenButton?.classList.toggle('is-active', isFullscreen);
+			fullscreenButton?.setAttribute('aria-pressed', String(isFullscreen));
+			if (fullscreenButton) fullscreenButton.textContent = isFullscreen ? 'Exit Full Screen' : '⛶ Present Full Screen';
+		};
+		const enterFullscreen = async () => {
+			if (fullscreenTarget.requestFullscreen) return fullscreenTarget.requestFullscreen();
+			if (fullscreenTarget.webkitRequestFullscreen) return fullscreenTarget.webkitRequestFullscreen();
+			if (fullscreenTarget.msRequestFullscreen) return fullscreenTarget.msRequestFullscreen();
+			throw new Error('Fullscreen is not supported in this browser.');
+		};
+		const exitFullscreen = async () => {
+			if (document.exitFullscreen) return document.exitFullscreen();
+			if (document.webkitExitFullscreen) return document.webkitExitFullscreen();
+			if (document.msExitFullscreen) return document.msExitFullscreen();
+		};
+		fullscreenButton?.addEventListener('click', async () => {
+			try {
+				if (getFullscreenElement()) await exitFullscreen();
+				else await enterFullscreen();
+				updateFullscreenButton();
+			} catch (error) {
+				fullscreenButton.textContent = 'Fullscreen unavailable';
+				fullscreenButton.disabled = true;
+			}
+		});
+		document.addEventListener('fullscreenchange', updateFullscreenButton);
+		document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+		document.addEventListener('MSFullscreenChange', updateFullscreenButton);
+
+		teacherNotesToggle?.addEventListener('click', () => { if (teacherNotes) teacherNotes.hidden = !teacherNotes.hidden; });
+		teacherNotesClose?.addEventListener('click', () => { if (teacherNotes) teacherNotes.hidden = true; });
+
+		root.querySelectorAll('[data-toggle-target]').forEach((button) => {
+			button.addEventListener('click', () => {
+				const id = button.dataset.toggleTarget || '';
+				const target = root.querySelector('#' + CSS.escape(id));
+				if (target) {
+					target.classList.toggle('is-visible');
+					renderMath(target);
+				}
+			});
+		});
+
+		function makeOption(text, correctText, feedback, correctMessage, wrongMessage, points, optionIndex = 0, onCorrect = null, isMath = true) {
+			const button = document.createElement('button');
+			button.type = 'button';
+			button.className = 'game-option';
+			button.dataset.optionValue = text;
+			const badge = document.createElement('span');
+			badge.className = 'option-badge';
+			badge.textContent = String.fromCharCode(65 + (optionIndex % 26));
+			const textSpan = document.createElement('span');
+			textSpan.className = 'option-text' + (isMath ? ' math-render' : '');
+			if (isMath) textSpan.setAttribute('data-tex', text);
+			else textSpan.textContent = text;
+			button.append(badge, textSpan);
+			button.addEventListener('click', () => {
+				const parent = button.parentElement;
+				if (parent) Array.from(parent.children).forEach((child) => child.disabled = true);
+				const correct = text === correctText;
+				button.classList.add(correct ? 'is-correct' : 'is-wrong');
+				if (!correct && parent) Array.from(parent.children).forEach((child) => {
+					if (child.dataset.optionValue === correctText) child.classList.add('is-correct');
+				});
+				if (feedback) feedback.textContent = correct ? correctMessage : wrongMessage;
+				if (correct) {
+					updateTotalScore(points);
+					if (typeof onCorrect === 'function') onCorrect();
+				}
+			});
+			return button;
+		}
+
+		function setupSortGame() {
+			const game = root.querySelector('[data-sort-game]');
+			if (!game) return;
+			const items = [
+				{ target: '3x', answer: '-5x', options: ['-5x', '5', '5x^2', '5y'] },
+				{ target: '4a^2', answer: '-2a^2', options: ['-2a^2', '2a', '2a^3', '2b^2'] },
+				{ target: '-7m', answer: '12m', options: ['12m', '12', '12m^2', '12n'] },
+				{ target: '6pq', answer: '-pq', options: ['-pq', 'p^2q', '6p', '6q'] },
+				{ target: '8', answer: '-3', options: ['-3', '3x', 'x^3', '3y'] }
+			];
+			let index = 0;
+			let score = 0;
+			const round = game.querySelector('[data-sort-round]');
+			const target = game.querySelector('[data-sort-target]');
+			const prompt = game.querySelector('[data-sort-prompt]');
+			const optionsBox = game.querySelector('[data-sort-options]');
+			const feedback = game.querySelector('[data-sort-feedback]');
+			const scoreNode = game.querySelector('[data-sort-score]');
+			function draw() {
+				const item = items[index];
+				if (round) round.textContent = 'Round ' + (index + 1) + ' / ' + items.length;
+				setMath(target, item.target);
+				if (prompt) prompt.innerHTML = 'Choose the term that is like <span class="math-render" data-tex="' + item.target + '"></span>.';
+				renderMath(prompt);
+				if (scoreNode) scoreNode.textContent = String(score);
+				if (feedback) feedback.textContent = 'Like terms have exactly the same letter part.';
+				if (optionsBox) {
+					optionsBox.innerHTML = '';
+					item.options.forEach((option, optionIndex) => optionsBox.appendChild(makeOption(option, item.answer, feedback, 'Correct. Same variable and same power.', 'Not quite. Check the letter part and the power.', 1, optionIndex, () => { score += 1; if (scoreNode) scoreNode.textContent = String(score); })));
+					renderMath(optionsBox);
+				}
+			}
+			game.querySelector('[data-sort-next]')?.addEventListener('click', () => { index = (index + 1) % items.length; draw(); });
+			game.querySelector('[data-sort-reset]')?.addEventListener('click', () => { index = 0; score = 0; draw(); });
+			draw();
+		}
+
+		function setupExpandLab() {
+			const lab = root.querySelector('[data-expand-lab]');
+			if (!lab) return;
+			const items = [
+				{ original: '4(x + 3)', first: '4 \times x = 4x', second: '4 \times 3 = 12', answer: '4x + 12' },
+				{ original: '5(a - 2)', first: '5 \times a = 5a', second: '5 \times (-2) = -10', answer: '5a - 10' },
+				{ original: '2(3m + 4)', first: '2 \times 3m = 6m', second: '2 \times 4 = 8', answer: '6m + 8' },
+				{ original: '-3(y - 6)', first: '-3 \times y = -3y', second: '-3 \times (-6) = 18', answer: '-3y + 18' }
+			];
+			let index = 0;
+			let leftDone = false;
+			let rightDone = false;
+			const round = lab.querySelector('[data-expand-round]');
+			const original = lab.querySelector('[data-expand-original]');
+			const leftButton = lab.querySelector('[data-expand-left]');
+			const rightButton = lab.querySelector('[data-expand-right]');
+			const steps = lab.querySelector('[data-expand-steps]');
+			function draw() {
+				const item = items[index];
+				if (round) round.textContent = 'Example ' + (index + 1) + ' / ' + items.length;
+				setMath(original, item.original);
+				leftButton?.classList.toggle('is-done', leftDone);
+				rightButton?.classList.toggle('is-done', rightDone);
+				if (!steps) return;
+				steps.innerHTML = '';
+				if (!leftDone && !rightDone) {
+					const p = document.createElement('p');
+					p.textContent = 'Tap both multiplication moves to reveal the expanded form.';
+					steps.appendChild(p);
+				} else {
+					if (leftDone) {
+						const div = document.createElement('div');
+						div.className = 'math-render';
+						div.setAttribute('data-tex', item.first);
+						steps.appendChild(div);
+					}
+					if (rightDone) {
+						const div = document.createElement('div');
+						div.className = 'math-render';
+						div.setAttribute('data-tex', item.second);
+						steps.appendChild(div);
+					}
+					if (leftDone && rightDone) {
+						const div = document.createElement('div');
+						div.className = 'math-render';
+						div.setAttribute('data-tex', item.original + ' = ' + item.answer);
+						steps.appendChild(div);
+					}
+					renderMath(steps);
+				}
+			}
+			leftButton?.addEventListener('click', () => { leftDone = true; draw(); });
+			rightButton?.addEventListener('click', () => { rightDone = true; draw(); });
+			lab.querySelector('[data-expand-answer]')?.addEventListener('click', () => { leftDone = true; rightDone = true; draw(); });
+			lab.querySelector('[data-expand-reset]')?.addEventListener('click', () => { leftDone = false; rightDone = false; draw(); });
+			lab.querySelector('[data-expand-new]')?.addEventListener('click', () => { index = (index + 1) % items.length; leftDone = false; rightDone = false; draw(); });
+			draw();
+		}
+
+		function setupCollectGame() {
+			const game = root.querySelector('[data-collect-game]');
+			if (!game) return;
+			const items = [
+				{ prompt: '3x + 5x - 2', answer: '8x - 2', options: ['8x - 2', '8x', '6x', '3x + 3'] },
+				{ prompt: '7a - 2a + 9', answer: '5a + 9', options: ['5a + 9', '9a + 9', '14a + 9', '5a'] },
+				{ prompt: '4m + 6 - m', answer: '3m + 6', options: ['3m + 6', '9m', '4m + 5', '5m + 6'] },
+				{ prompt: '2x^2 + 5x + 3x^2', answer: '5x^2 + 5x', options: ['5x^2 + 5x', '10x^2', '10x', '5x^4 + 5x'] },
+				{ prompt: '9p - 4 + p + 7', answer: '10p + 3', options: ['10p + 3', '10p - 11', '13p', '9p + 3'] }
+			];
+			let index = 0;
+			let score = 0;
+			const round = game.querySelector('[data-collect-round]');
+			const prompt = game.querySelector('[data-collect-prompt]');
+			const optionsBox = game.querySelector('[data-collect-options]');
+			const feedback = game.querySelector('[data-collect-feedback]');
+			const scoreNode = game.querySelector('[data-collect-score]');
+			function draw() {
+				const item = items[index];
+				if (round) round.textContent = 'Round ' + (index + 1) + ' / ' + items.length;
+				setMath(prompt, item.prompt);
+				if (scoreNode) scoreNode.textContent = String(score);
+				if (feedback) feedback.textContent = 'Collect the coefficients of the like terms.';
+				if (optionsBox) {
+					optionsBox.innerHTML = '';
+					item.options.forEach((option, optionIndex) => optionsBox.appendChild(makeOption(option, item.answer, feedback, 'Correct. The like terms have been combined.', 'Not quite. Only collect terms with the same letter part.', 1, optionIndex, () => { score += 1; if (scoreNode) scoreNode.textContent = String(score); })));
+					renderMath(optionsBox);
+				}
+			}
+			game.querySelector('[data-collect-next]')?.addEventListener('click', () => { index = (index + 1) % items.length; draw(); });
+			game.querySelector('[data-collect-reset]')?.addEventListener('click', () => { index = 0; score = 0; draw(); });
+			draw();
+		}
+
+		function setupPipeline() {
+			const lab = root.querySelector('[data-pipeline]');
+			if (!lab) return;
+			let step = 0;
+			const cards = Array.from(lab.querySelectorAll('[data-pipeline-step]'));
+			const draw = () => cards.forEach((card, index) => card.classList.toggle('is-muted', index >= step));
+			root.querySelector('[data-pipeline-next]')?.addEventListener('click', () => { step = Math.min(step + 1, cards.length); draw(); });
+			root.querySelector('[data-pipeline-reset]')?.addEventListener('click', () => { step = 0; draw(); });
+			draw();
+		}
+
+		function setupDetectiveGame() {
+			const game = root.querySelector('[data-detective-game]');
+			if (!game) return;
+			const items = [
+				{ work: '3(x + 4) = 3x + 4', answer: 'Forgot to multiply 4 by 3', options: ['Forgot to multiply 4 by 3', 'Wrong variable', 'Should divide by 3', 'No mistake'], correct: 'Correct. 3 must multiply both x and 4, so the answer is 3x + 12.' },
+				{ work: '5a + 2a^2 = 7a^2', answer: 'Collected unlike terms', options: ['Collected unlike terms', 'Sign error', 'Forgot brackets', 'No mistake'], correct: 'Correct. a and a² are unlike terms, so they cannot be collected.' },
+				{ work: '2(3x - 5) = 6x + 10', answer: 'Sign error', options: ['Sign error', 'Missing x', 'Wrong HCF', 'No mistake'], correct: 'Correct. 2 × -5 is -10, so the answer is 6x - 10.' },
+				{ work: '4y + 7 - y = 4y + 6', answer: 'Forgot to collect y terms', options: ['Forgot to collect y terms', 'Should multiply', 'Wrong constant', 'No mistake'], correct: 'Correct. 4y - y = 3y, so the answer is 3y + 7.' }
+			];
+			let index = 0;
+			let score = 0;
+			const round = game.querySelector('[data-detective-round]');
+			const work = game.querySelector('[data-detective-work]');
+			const optionsBox = game.querySelector('[data-detective-options]');
+			const feedback = game.querySelector('[data-detective-feedback]');
+			const scoreNode = game.querySelector('[data-detective-score]');
+			function draw() {
+				const item = items[index];
+				if (round) round.textContent = 'Mistake ' + (index + 1) + ' / ' + items.length;
+				if (scoreNode) scoreNode.textContent = String(score);
+				setMath(work, item.work);
+				if (feedback) feedback.textContent = 'Choose the best explanation.';
+				if (optionsBox) {
+					optionsBox.innerHTML = '';
+					item.options.forEach((option, optionIndex) => optionsBox.appendChild(makeOption(option, item.answer, feedback, item.correct, 'Not quite. Check the distributive law and like terms again.', 1, optionIndex, () => { score += 1; if (scoreNode) scoreNode.textContent = String(score); }, false)));
+				}
+			}
+			game.querySelector('[data-detective-next]')?.addEventListener('click', () => { index = (index + 1) % items.length; draw(); });
+			game.querySelector('[data-detective-reset]')?.addEventListener('click', () => { index = 0; score = 0; draw(); });
+			draw();
+		}
+
+		setupSortGame();
+		setupExpandLab();
+		setupCollectGame();
+		setupPipeline();
+		setupDetectiveGame();
+		renderMath(root);
+		updateSlide(0);
+	})();
+</script>

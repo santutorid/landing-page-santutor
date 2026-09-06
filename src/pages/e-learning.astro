@@ -1,0 +1,287 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="E-Learning SAN TUTOR — Belajar Asinkronus yang Terarah"
+	titleEn="SAN TUTOR E-Learning — Structured Asynchronous Learning"
+	description="E-Learning SAN TUTOR membantu anak belajar mandiri lewat video pendek, worksheet, quiz, dan progress belajar yang terarah untuk TK, SD, SMP, dan SMA."
+	descriptionEn="SAN TUTOR E-Learning helps children learn independently through short videos, worksheets, quizzes, and structured progress tracking for KG, Primary, Lower Secondary, and High School."
+	currentPage="e-learning"
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Course",
+			"name": "SAN TUTOR E-Learning",
+			"description": "Program belajar asinkronus SAN TUTOR dengan video materi, latihan, quiz, dan progress belajar terarah.",
+			"provider": {
+				"@type": "EducationalOrganization",
+				"name": "SAN TUTOR Learning Studio",
+				"url": "https://santutor.id"
+			}
+		})}></script>
+	</Fragment>
+
+	<main id="top">
+
+			<!-- ======================= HERO ======================= -->
+			<section class="elearn-hero">
+				<div class="section-decor" aria-hidden="true">
+					<span class="dot-grid dot-grid-hero"></span>
+					<span class="blob blob-blue" style="top:-120px; left:-140px; width:340px; height:340px;"></span>
+					<span class="blob blob-orange" style="bottom:-140px; left:38%; width:260px; height:260px;"></span>
+					<svg class="doodle doodle-star" style="top:14%; left:6%;" width="26" height="26" viewBox="0 0 24 24" fill="var(--orange)"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2Z"/></svg>
+					<svg class="doodle doodle-plus" style="top:66%; left:3%;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="3" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg>
+				</div>
+
+				<div class="wrap elearn-hero-inner">
+					<div class="elearn-hero-copy reveal">
+						<p class="eyebrow">SAN TUTOR E-Learning</p>
+						<h1>Belajar Mandiri, tapi Tetap Ada Arah yang Jelas</h1>
+						<p class="hero-lede">
+							E-Learning SAN TUTOR dirancang untuk anak yang butuh latihan tambahan di luar jadwal les. Anak belajar melalui video singkat, worksheet, quiz, dan rangkuman progres yang membantu orang tua melihat perkembangan belajarnya.
+						</p>
+						<div class="hero-cta">
+							<a href="#akses" class="btn btn-primary btn-lg">Lihat Alur Belajar</a>
+							<a href="https://wa.me/6285872000689?text=Halo%20SAN%20TUTOR%2C%20saya%20ingin%20bertanya%20tentang%20E-Learning." class="btn btn-ghost btn-lg" target="_blank" rel="noopener">Tanya Program E-Learning</a>
+						</div>
+						<dl class="hero-stats">
+							<div><dt>Video</dt><dd>Materi pendek & fokus</dd></div>
+							<div><dt>Quiz</dt><dd>Cek pemahaman anak</dd></div>
+							<div><dt>Progress</dt><dd>Belajar lebih terarah</dd></div>
+						</dl>
+					</div>
+
+					<div class="elearn-dashboard reveal">
+						<div class="dashboard-card dashboard-main">
+							<div class="dashboard-top">
+								<span class="dashboard-dot"></span>
+								<span class="dashboard-dot"></span>
+								<span class="dashboard-dot"></span>
+							</div>
+							<div class="video-card">
+								<img src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=850&h=540&fit=crop" width="850" height="540" alt="Anak belajar online dengan laptop" />
+								<span class="play-button" aria-hidden="true">
+									<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg>
+								</span>
+							</div>
+							<div class="lesson-row">
+								<span class="lesson-icon">01</span>
+								<div>
+									<strong>Watch</strong>
+									<small>Video konsep 8–12 menit</small>
+								</div>
+								<span class="lesson-status done">Selesai</span>
+							</div>
+							<div class="lesson-row">
+								<span class="lesson-icon">02</span>
+								<div>
+									<strong>Practice</strong>
+									<small>Worksheet bertahap</small>
+								</div>
+								<span class="lesson-status">Mulai</span>
+							</div>
+						</div>
+
+						<div class="floating-score-card">
+							<span class="score-label">Progress Minggu Ini</span>
+							<strong>72%</strong>
+							<div class="progress-bar"><span style="width:72%"></span></div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ======================= WHY ELEARNING ======================= -->
+			<section class="why-section" id="fitur">
+				<div class="section-decor" aria-hidden="true">
+					<span class="blob blob-sage" style="top:-90px; right:-100px; width:300px; height:300px;"></span>
+					<span class="blob blob-orange" style="bottom:-110px; left:-90px; width:260px; height:260px;"></span>
+				</div>
+				<div class="wrap">
+					<div class="section-head reveal">
+						<p class="eyebrow">Kenapa Perlu E-Learning?</p>
+						<h2>Latihan Tambahan Tanpa Harus Menambah Jadwal Les</h2>
+						<p class="section-lede">Masalah umum anak bukan selalu “tidak bisa”, tetapi kurang latihan yang rapi, konsisten, dan sesuai level. E-Learning membantu anak mengulang konsep kapan saja, lalu latihan dengan urutan yang lebih terstruktur.</p>
+					</div>
+
+					<div class="feature-grid">
+						<article class="feature-card reveal">
+							<span class="feature-icon" style="--icon-bg:#FDEDE0;--icon-fg:#F2761E">▶</span>
+							<h3>Video Materi Singkat</h3>
+							<p>Materi dibuat pendek dan fokus agar anak tidak cepat bosan. Cocok untuk mengulang konsep sebelum mengerjakan latihan.</p>
+						</article>
+						<article class="feature-card reveal">
+							<span class="feature-icon" style="--icon-bg:#E7F7FD;--icon-fg:#3EB6EA">✓</span>
+							<h3>Worksheet Bertahap</h3>
+							<p>Latihan dimulai dari soal dasar, naik ke soal aplikasi, lalu soal tantangan agar kemampuan anak berkembang perlahan.</p>
+						</article>
+						<article class="feature-card reveal">
+							<span class="feature-icon" style="--icon-bg:#F1EEE0;--icon-fg:#6E9B7D">★</span>
+							<h3>Quiz Pemahaman</h3>
+							<p>Quiz membantu anak mengecek bagian mana yang sudah kuat dan bagian mana yang perlu diulang kembali.</p>
+						</article>
+						<article class="feature-card reveal">
+							<span class="feature-icon" style="--icon-bg:#FDEDE0;--icon-fg:#F2761E">↗</span>
+							<h3>Progress Lebih Terlihat</h3>
+							<p>Orang tua bisa melihat arah belajar anak dengan lebih jelas, bukan hanya menunggu nilai ulangan keluar.</p>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<!-- ======================= ACCESS FLOW ======================= -->
+			<section class="journey-section" id="akses">
+				<div class="section-decor" aria-hidden="true">
+					<span class="blob blob-blue" style="top:-80px; left:42%; width:260px; height:260px;"></span>
+				</div>
+				<div class="wrap">
+					<div class="section-head reveal">
+						<p class="eyebrow">Alur Belajar</p>
+						<h2>Belajar Asinkronus yang Tetap Terstruktur</h2>
+						<p class="section-lede">Anak tidak hanya diberi kumpulan video. Setiap topik disusun menjadi learning path supaya anak tahu harus mulai dari mana, latihan apa yang perlu dikerjakan, dan kapan harus mengulang.</p>
+					</div>
+
+					<div class="learning-track">
+						<div class="learning-step reveal">
+							<span class="learning-dot"></span>
+							<div class="learning-card">
+								<span>Step 1</span>
+								<h3>Watch</h3>
+								<p>Anak menonton video konsep singkat dengan contoh soal yang mudah diikuti.</p>
+							</div>
+						</div>
+						<div class="learning-step reveal">
+							<span class="learning-dot"></span>
+							<div class="learning-card">
+								<span>Step 2</span>
+								<h3>Practice</h3>
+								<p>Anak mengerjakan worksheet dari level mudah hingga menantang.</p>
+							</div>
+						</div>
+						<div class="learning-step reveal">
+							<span class="learning-dot"></span>
+							<div class="learning-card">
+								<span>Step 3</span>
+								<h3>Quiz</h3>
+								<p>Anak menguji pemahaman dan melihat topik mana yang perlu diperbaiki.</p>
+							</div>
+						</div>
+						<div class="learning-step reveal">
+							<span class="learning-dot learning-dot-end"></span>
+							<div class="learning-card">
+								<span>Step 4</span>
+								<h3>Review</h3>
+								<p>Anak mengulang bagian lemah dan bisa membawa pertanyaan ke sesi tutor.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ======================= PROGRAM ELEARNING ======================= -->
+			<section class="program-section" id="program-elearning">
+				<div class="section-decor" aria-hidden="true">
+					<span class="dot-grid dot-grid-light"></span>
+				</div>
+				<div class="wrap program-inner">
+					<div class="reveal">
+						<p class="eyebrow eyebrow-light">Pilihan Learning Path</p>
+						<h2 class="light-title">Materi Bisa Disesuaikan dengan Jenjang dan Kebutuhan Anak</h2>
+						<p class="program-lede">E-Learning ini paling efektif jika dipakai sebagai pendamping kelas reguler. Anak mendapat materi untuk belajar mandiri, sedangkan tutor tetap bisa membantu mengarahkan ketika ada topik yang belum kuat.</p>
+					</div>
+					<ul class="program-list reveal">
+						<li>
+							<span class="program-num">01</span>
+							<span class="program-text"><strong>Foundation TK &amp; SD Kecil</strong><small>Literasi, numerasi dasar, kebiasaan belajar, dan aktivitas sederhana.</small></span>
+						</li>
+						<li>
+							<span class="program-num">02</span>
+							<span class="program-text"><strong>Math &amp; Science Booster</strong><small>Konsep inti, latihan bertahap, dan review topik sekolah.</small></span>
+						</li>
+						<li>
+							<span class="program-num">03</span>
+							<span class="program-text"><strong>English Practice Path</strong><small>Vocabulary, grammar, reading practice, dan writing prompt.</small></span>
+						</li>
+						<li>
+							<span class="program-num">04</span>
+							<span class="program-text"><strong>Exam Preparation</strong><small>Rangkuman konsep, drill soal, pembahasan, dan strategi menjawab.</small></span>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- ======================= FOR PARENTS ======================= -->
+			<section class="parent-section" id="parents">
+				<div class="section-decor" aria-hidden="true">
+					<span class="blob blob-orange" style="top:-80px; right:-70px; width:280px; height:280px;"></span>
+				</div>
+				<div class="wrap parent-inner">
+					<div class="parent-photo reveal">
+						<img src="https://images.pexels.com/photos/4145153/pexels-photo-4145153.jpeg?auto=compress&cs=tinysrgb&w=900&h=650&fit=crop" width="900" height="650" loading="lazy" alt="Orang tua mendampingi anak belajar dari rumah" />
+					</div>
+					<div class="parent-copy reveal">
+						<p class="eyebrow">Untuk Orang Tua</p>
+						<h2>Bukan Sekadar “Belajar Online”</h2>
+						<p class="section-lede">Tujuan E-Learning bukan menggantikan tutor, tetapi membuat latihan anak lebih konsisten. Anak bisa belajar ulang di rumah, lalu sesi tatap muka dapat dipakai untuk membahas bagian yang benar-benar sulit.</p>
+						<ul class="check-list">
+							<li><span>✓</span> Cocok untuk anak yang butuh pengulangan materi.</li>
+							<li><span>✓</span> Membantu orang tua melihat topik yang sudah dan belum dikuasai.</li>
+							<li><span>✓</span> Membuat sesi les lebih efektif karena anak datang dengan bekal latihan.</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- ======================= FAQ ======================= -->
+			<section class="faq-section" id="faq-elearning">
+				<div class="section-decor" aria-hidden="true">
+					<span class="blob blob-sage" style="bottom:-90px; left:-80px; width:280px; height:280px;"></span>
+				</div>
+				<div class="wrap">
+					<div class="section-head reveal">
+						<p class="eyebrow">Pertanyaan E-Learning</p>
+						<h2>Sebelum Mulai Belajar Online</h2>
+					</div>
+
+					<div class="faq-list reveal">
+						<details class="faq-item" open>
+							<summary>Apakah E-Learning ini menggantikan kelas tatap muka?</summary>
+							<p>Tidak. E-Learning lebih tepat dipakai sebagai pendamping belajar. Anak bisa mengulang materi dan latihan sendiri, lalu membawa pertanyaan ke tutor ketika ada bagian yang sulit.</p>
+						</details>
+						<details class="faq-item">
+							<summary>Apakah anak bisa belajar kapan saja?</summary>
+							<p>Bisa. Materi asinkronus dapat dipelajari sesuai waktu anak. Namun, kami tetap menyarankan jadwal belajar rutin agar progresnya konsisten.</p>
+						</details>
+						<details class="faq-item">
+							<summary>Untuk jenjang apa saja?</summary>
+							<p>Materi dapat disiapkan untuk TK, SD, SMP, dan SMA. Learning path akan disesuaikan dengan kebutuhan belajar dan kurikulum anak.</p>
+						</details>
+						<details class="faq-item">
+							<summary>Bagaimana cara mendapatkan akses?</summary>
+							<p>Silakan hubungi tim SAN TUTOR melalui WhatsApp. Kami akan bantu cek jenjang anak, kebutuhan belajarnya, lalu rekomendasikan learning path yang sesuai.</p>
+						</details>
+					</div>
+				</div>
+			</section>
+
+			<!-- ======================= CTA ======================= -->
+			<section class="daftar-section" id="mulai">
+				<div class="section-decor" aria-hidden="true">
+					<span class="blob blob-blue" style="top:-100px; right:-90px; width:300px; height:300px;"></span>
+					<span class="blob blob-orange" style="bottom:-90px; left:-70px; width:230px; height:230px;"></span>
+				</div>
+				<div class="wrap cta-card reveal">
+					<p class="eyebrow">Mulai E-Learning</p>
+					<h2>Coba Buat Anak Belajar Lebih Konsisten di Rumah</h2>
+					<p>Hubungi tim kami untuk memilih learning path yang sesuai dengan jenjang, kurikulum sekolah, dan target belajar anak.</p>
+					<div class="cta-actions">
+						<a href="https://wa.me/6285872000689?text=Halo%20SAN%20TUTOR%2C%20saya%20ingin%20minta%20informasi%20tentang%20program%20E-Learning." class="btn btn-primary btn-lg" target="_blank" rel="noopener">Konsultasi via WhatsApp</a>
+						<a href="/" class="btn btn-ghost btn-lg">Kembali ke Beranda</a>
+					</div>
+				</div>
+			</section>
+
+		</main>
+</Layout>

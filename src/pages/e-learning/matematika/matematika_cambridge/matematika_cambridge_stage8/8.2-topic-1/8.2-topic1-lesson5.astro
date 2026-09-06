@@ -1,0 +1,1023 @@
+---
+import Layout from '../../../../../../layouts/Layout.astro';
+
+const pageTitle = 'Lesson 5: Words, Expressions and Formulae — Cambridge Stage 8 Mathematics';
+const pageDescription = 'Interactive full-screen IFP teaching deck for Cambridge Lower Secondary Stage 8 Mathematics 8Ae.04–8Ae.05: translating words into algebra, writing formulae, substituting values, and changing the subject.';
+const pageTitleEn = pageTitle;
+const pageDescriptionEn = pageDescription;
+---
+
+<Layout
+	title={pageTitle}
+	description={pageDescription}
+	titleEn={pageTitleEn}
+	descriptionEn={pageDescriptionEn}
+	ogTitle={pageTitle}
+	ogDescription={pageDescription}
+	ogTitleEn={pageTitleEn}
+	ogDescriptionEn={pageDescriptionEn}
+	currentPage="math"
+>
+	<main id="top" class="lesson-page ifp-fullscreen lesson-5-page">
+		<section class="lesson-shell" data-lesson-root tabindex="-1">
+			<div class="lesson-topbar">
+				<div class="lesson-topbar-left">
+					<a class="back-link" href="/e-learning/matematika/matematika_cambridge/matematika_cambridge_stage8/8.2-topic-1">← Back to Topic 1</a>
+					<p class="eyebrow">Cambridge Stage 8 · Unit 8.2 Topic 1</p>
+					<h1>Lesson 5: Words, Expressions and Formulae</h1>
+				</div>
+				<div class="lesson-topbar-right" aria-label="Lesson controls">
+					<span class="objective-pill">8Ae.04–05</span>
+					<button class="score-pill" type="button" data-total-score aria-live="polite">Score 0</button>
+					<button class="mode-toggle" type="button" data-mode-toggle aria-pressed="false">Teach Mode</button>
+					<button class="fullscreen-toggle" type="button" data-fullscreen-toggle aria-pressed="false">Exit Full Screen</button>
+				</div>
+			</div>
+
+			<div class="progress-area" aria-label="Lesson progress">
+				<div class="progress-meta">
+					<span data-progress-label>Slide 1 of 10</span>
+					<span>50 minutes</span>
+				</div>
+				<div class="progress-track"><span data-progress-bar></span></div>
+			</div>
+
+			<div class="deck-layout">
+				<aside class="slide-map" aria-label="Lesson sections">
+					<button type="button" class="slide-dot is-active" data-go-slide="0"><span>1</span> Goal</button>
+					<button type="button" class="slide-dot" data-go-slide="1"><span>2</span> Theory</button>
+					<button type="button" class="slide-dot" data-go-slide="2"><span>3</span> Words</button>
+					<button type="button" class="slide-dot" data-go-slide="3"><span>4</span> Formula</button>
+					<button type="button" class="slide-dot" data-go-slide="4"><span>5</span> Substitute</button>
+					<button type="button" class="slide-dot" data-go-slide="5"><span>6</span> Subject</button>
+					<button type="button" class="slide-dot" data-go-slide="6"><span>7</span> Lab</button>
+					<button type="button" class="slide-dot" data-go-slide="7"><span>8</span> Detective</button>
+					<button type="button" class="slide-dot" data-go-slide="8"><span>9</span> Board</button>
+					<button type="button" class="slide-dot" data-go-slide="9"><span>10</span> Exit</button>
+				</aside>
+
+				<section class="slide-stage" aria-live="polite">
+					<article class="lesson-slide is-active" data-slide data-slide-title="Learning Goal">
+						<div class="slide-label"><span>Slide 1</span><strong>Learning Goal</strong></div>
+						<div class="hero-grid">
+							<div>
+								<p class="mini-kicker">8Ae.04–8Ae.05</p>
+								<h2>Turn words into algebra, then rearrange formulae.</h2>
+								<p class="slide-lede">Today we translate phrases into expressions, write simple formulae, substitute values, and change the subject using inverse operations.</p>
+								<div class="outcome-box">
+									<h3>By the end, I can...</h3>
+									<ul>
+										<li>translate keywords such as “twice”, “more than”, and “divided by”</li>
+										<li>write formulae for simple situations</li>
+										<li>substitute values into a formula</li>
+										<li>make a chosen letter the subject</li>
+									</ul>
+								</div>
+							</div>
+							<div class="lesson-badge-card">
+								<span class="badge-number">4</span>
+								<span>core skills</span>
+								<hr />
+								<p>Translate · Model · Substitute · Rearrange</p>
+							</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Theory Foundation">
+						<div class="slide-label"><span>Slide 2</span><strong>Theory</strong></div>
+						<p class="mini-kicker">Concept foundation</p>
+						<h2>Know the difference before solving.</h2>
+						<div class="theory-grid">
+							<section class="theory-card">
+								<span>01</span>
+								<h3>Expression</h3>
+								<p>An expression has no equals sign. It shows a calculation using numbers, letters, and operations.</p>
+								<div class="expression-banner small-math"><span class="math-render" data-tex="2n + 5"></span></div>
+							</section>
+							<section class="theory-card">
+								<span>02</span>
+								<h3>Formula</h3>
+								<p>A formula uses an equals sign to connect two or more quantities.</p>
+								<div class="expression-banner small-math"><span class="math-render" data-tex="C = 3n + 5"></span></div>
+							</section>
+							<section class="theory-card">
+								<span>03</span>
+								<h3>Subject</h3>
+								<p>The subject is the letter by itself. To change the subject, undo operations in reverse order.</p>
+								<div class="expression-banner small-math"><span class="math-render" data-tex="n = \frac&#123;C - 5&#125;&#123;3&#125;"></span></div>
+							</section>
+						</div>
+						<div class="keyword-board">
+							<div><strong>more than</strong><span>add after</span></div>
+							<div><strong>less than</strong><span>subtract carefully</span></div>
+							<div><strong>product of</strong><span>multiply</span></div>
+							<div><strong>quotient of</strong><span>divide</span></div>
+							<div><strong>twice</strong><span>multiply by 2</span></div>
+							<div><strong>half of</strong><span>divide by 2</span></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Words to Algebra">
+						<div class="slide-label"><span>Slide 3</span><strong>Game 1</strong></div>
+						<p class="mini-kicker">Words → expression</p>
+						<h2>Translate the phrase into algebra.</h2>
+						<div class="game-panel" data-translator-game>
+							<div class="game-head">
+								<div><span class="round-label" data-translator-round>Phrase 1 / 6</span><h3 data-translator-phrase>Five more than twice a number</h3></div>
+								<div class="local-score"><span>Score</span><strong data-translator-score>0</strong></div>
+							</div>
+							<div class="clue-strip"><div><span>Let</span><strong data-translator-variable>n = the number</strong></div><div><span>Think</span><strong data-translator-clue>twice first, then add 5</strong></div></div>
+							<div class="option-row" data-translator-options></div>
+							<p class="feedback-line" data-translator-feedback>Choose the expression that matches the words.</p>
+							<div class="activity-actions"><button type="button" class="secondary-button" data-translator-next>Next phrase</button><button type="button" class="secondary-button" data-translator-reset>Reset game</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Formula Builder">
+						<div class="slide-label"><span>Slide 4</span><strong>Game 2</strong></div>
+						<p class="mini-kicker">Situation → formula</p>
+						<h2>Build a formula from the situation.</h2>
+						<div class="formula-layout" data-formula-game>
+							<div class="game-panel">
+								<div class="game-head">
+									<div><span class="round-label" data-formula-round>Scenario 1 / 5</span><h3 data-formula-context>A taxi costs 4 units plus 2 units per kilometre.</h3></div>
+									<div class="local-score"><span>Score</span><strong data-formula-score>0</strong></div>
+								</div>
+								<div class="variables-pill" data-formula-variables>Let C = total cost and k = kilometres.</div>
+								<div class="option-row" data-formula-options></div>
+								<p class="feedback-line" data-formula-feedback>Choose the formula that matches the situation.</p>
+								<div class="activity-actions"><button type="button" class="secondary-button" data-formula-next>Next scenario</button><button type="button" class="secondary-button" data-formula-reset>Reset game</button></div>
+							</div>
+							<aside class="method-card">
+								<h3>Formula checklist</h3>
+								<ol>
+									<li>Choose letters for quantities.</li>
+									<li>Identify the fixed amount.</li>
+									<li>Identify the repeated amount.</li>
+									<li>Use an equals sign.</li>
+								</ol>
+							</aside>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Substitution Checkpoint">
+						<div class="slide-label"><span>Slide 5</span><strong>Checkpoint</strong></div>
+						<p class="mini-kicker">Use the formula</p>
+						<h2>Substitute values before rearranging.</h2>
+						<div class="substitution-layout" data-substitution-lab>
+							<div class="game-panel sub-left">
+								<p class="mini-kicker">Formula</p>
+								<div class="challenge-expression"><span class="math-render" data-tex="C = 3n + 5"></span></div>
+								<p class="slide-lede compact-lede">A club charges a 5-unit joining fee plus 3 units per class.</p>
+								<label class="slider-label" for="subValue">Choose the number of classes</label>
+								<input id="subValue" type="range" min="0" max="12" value="4" data-sub-slider />
+								<div class="value-pill">n = <strong data-sub-n>4</strong></div>
+							</div>
+							<div class="game-panel sub-right">
+								<h3>Working</h3>
+								<div class="step-stack" data-sub-working>
+									<div><span class="math-render" data-tex="C = 3(4) + 5"></span></div>
+									<div><span class="math-render" data-tex="C = 12 + 5"></span></div>
+									<div><span class="math-render" data-tex="C = 17"></span></div>
+								</div>
+								<p class="feedback-line" data-sub-feedback>If n = 4, the total cost is 17.</p>
+							</div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Change the Subject">
+						<div class="slide-label"><span>Slide 6</span><strong>Core Skill</strong></div>
+						<p class="mini-kicker">Formulae → new subject</p>
+						<h2>Undo operations in reverse order.</h2>
+						<div class="recipe-board subject-recipe">
+							<div><span>1</span><strong>Start</strong><em class="math-render" data-tex="C = 3n + 5"></em></div>
+							<div><span>2</span><strong>Undo +5</strong><em class="math-render" data-tex="C - 5 = 3n"></em></div>
+							<div><span>3</span><strong>Undo ×3</strong><em class="math-render" data-tex="\frac&#123;C - 5&#125;&#123;3&#125; = n"></em></div>
+							<div><span>4</span><strong>Write subject first</strong><em class="math-render" data-tex="n = \frac&#123;C - 5&#125;&#123;3&#125;"></em></div>
+						</div>
+						<div class="teacher-prompt"><strong>Important:</strong> if a whole expression is divided, use brackets or a fraction bar so the meaning is clear.</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Change the Subject Lab">
+						<div class="slide-label"><span>Slide 7</span><strong>Interactive Lab</strong></div>
+						<p class="mini-kicker">Solve the formula</p>
+						<h2>Make the target letter the subject.</h2>
+						<div class="subject-lab" data-subject-lab>
+							<div class="game-panel">
+								<div class="game-head">
+									<div><span class="round-label" data-subject-round>Formula 1 / 4</span><h3>Target letter: <strong data-subject-target>n</strong></h3></div>
+								</div>
+								<div class="challenge-expression"><span data-subject-original class="math-render" data-tex="C = 3n + 5"></span></div>
+								<div class="step-stack" data-subject-steps><p>Tap “Reveal next step” to solve it.</p></div>
+								<div class="activity-actions"><button type="button" class="primary-button" data-subject-step>Reveal next step</button><button type="button" class="secondary-button" data-subject-new>New formula</button><button type="button" class="secondary-button" data-subject-reset>Reset</button></div>
+							</div>
+							<aside class="method-card navy-card">
+								<h3>Teacher prompt</h3>
+								<p>Before revealing each step, ask: “What operation is currently trapping the target letter?”</p>
+							</aside>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Error Detective">
+						<div class="slide-label"><span>Slide 8</span><strong>Game 3</strong></div>
+						<p class="mini-kicker">Find the mistake</p>
+						<h2>Error Detective</h2>
+						<div class="game-panel" data-detective-game>
+							<div class="game-head">
+								<div><span class="round-label" data-detective-round>Mistake 1 / 4</span><h3 data-detective-prompt>What went wrong?</h3></div>
+								<div class="local-score"><span>Score</span><strong data-detective-score>0</strong></div>
+							</div>
+							<div class="student-work"><span>Student work</span><p data-detective-work class="math-render" data-tex="C = 3n + 5,\quad n = C - 5 \div 3"></p></div>
+							<div class="option-row" data-detective-options></div>
+							<p class="feedback-line" data-detective-feedback>Choose the best explanation.</p>
+							<div class="activity-actions"><button type="button" class="secondary-button" data-detective-next>Next mistake</button><button type="button" class="secondary-button" data-detective-reset>Reset game</button></div>
+						</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Board Challenge">
+						<div class="slide-label"><span>Slide 9</span><strong>Class Challenge</strong></div>
+						<p class="mini-kicker">Pair work</p>
+						<h2>Choose a card. Translate, build, or rearrange.</h2>
+						<div class="board-grid">
+							<div class="challenge-card board-card">
+								<div class="board-card-head"><span class="board-card-tag">Card A</span><strong>Translate</strong></div>
+								<p class="board-card-task">Seven less than three times a number.</p>
+								<button type="button" class="secondary-button" data-toggle-target="answer-a">Reveal answer</button>
+								<p id="answer-a" class="hidden-answer math-render" data-tex="3x - 7"></p>
+							</div>
+							<div class="challenge-card board-card">
+								<div class="board-card-head"><span class="board-card-tag">Card B</span><strong>Build a formula</strong></div>
+								<p class="board-card-task">A rental costs 15 units plus 4 units per hour.</p>
+								<button type="button" class="secondary-button" data-toggle-target="answer-b">Reveal answer</button>
+								<p id="answer-b" class="hidden-answer math-render" data-tex="C = 4h + 15"></p>
+							</div>
+							<div class="challenge-card board-card">
+								<div class="board-card-head"><span class="board-card-tag">Card C</span><strong>Change the subject</strong></div>
+								<p class="board-card-task">Make <strong>x</strong> the subject.</p>
+								<div class="board-card-equation math-render" data-tex="y = 2x + 9"></div>
+								<button type="button" class="secondary-button" data-toggle-target="answer-c">Reveal answer</button>
+								<p id="answer-c" class="hidden-answer math-render" data-tex="x = \frac&#123;y - 9&#125;&#123;2&#125;"></p>
+							</div>
+						</div>
+						<div class="teacher-prompt">Students must explain their operation order. Award one point for the answer and one point for reasoning.</div>
+					</article>
+
+					<article class="lesson-slide" data-slide data-slide-title="Exit Ticket">
+						<div class="slide-label"><span>Slide 10</span><strong>Exit Ticket</strong></div>
+						<p class="mini-kicker">Quick formative check</p>
+						<h2>Before leaving, answer these three questions.</h2>
+						<div class="exit-grid">
+							<div><span>1</span><p>Translate: four more than half of a number.</p></div>
+							<div><span>2</span><p>Write a formula for: 8-unit entry fee plus 3 units per ride.</p></div>
+							<div><span>3</span><p>Make m the subject: <span class="math-render" data-tex="P = 4m + 6"></span></p></div>
+						</div>
+						<button type="button" class="primary-button" data-toggle-target="exit-answer">Reveal sample answers</button>
+						<div id="exit-answer" class="hidden-answer sample-answer">
+							<p><strong>1.</strong> <span class="math-render" data-tex="\frac&#123;x&#125;&#123;2&#125; + 4"></span></p>
+							<p><strong>2.</strong> <span class="math-render" data-tex="C = 3r + 8"></span></p>
+							<p><strong>3.</strong> <span class="math-render" data-tex="m = \frac&#123;P - 6&#125;&#123;4&#125;"></span></p>
+						</div>
+					</article>
+				</section>
+			</div>
+
+			<div class="deck-controls">
+				<button type="button" class="secondary-button" data-prev-slide>Back</button>
+				<button type="button" class="teacher-note-button" data-teacher-notes-toggle>Teacher Notes</button>
+				<button type="button" class="secondary-button" data-reset-slide>Reset Slide</button>
+				<button type="button" class="primary-button" data-next-slide>Next</button>
+			</div>
+
+			<aside class="teacher-notes" data-teacher-notes hidden>
+				<div class="teacher-notes-card">
+					<div class="teacher-notes-head"><strong>Teacher Notes</strong><button type="button" data-teacher-notes-close aria-label="Close teacher notes">×</button></div>
+					<p data-teacher-notes-text>Use the slide as an IFP prompt. Ask students to explain the operation before revealing the answer.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+</Layout>
+
+<script is:inline type="text/javascript">
+	window.MathJax = {
+		tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+		svg: { fontCache: 'global' }
+	};
+</script>
+<script is:inline async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+	.lesson-page { background: radial-gradient(circle at top left, rgba(62, 182, 234, 0.18), transparent 31rem), radial-gradient(circle at bottom right, rgba(242, 118, 30, 0.14), transparent 32rem), #fffaf4; min-height: 100vh; padding: 24px 0 56px; }
+	.lesson-shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+	.lesson-topbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 22px; background: rgba(255,255,255,0.92); border: 1px solid rgba(43,53,77,0.12); border-radius: 28px; box-shadow: 0 20px 60px rgba(30,41,59,0.08); }
+	.back-link { display: inline-flex; margin-bottom: 12px; font-weight: 900; color: #2b5b76; text-decoration: none; }
+	.eyebrow, .mini-kicker { margin: 0 0 8px; font-size: 0.78rem; font-weight: 950; letter-spacing: 0.12em; text-transform: uppercase; color: #f2761e; }
+	.lesson-topbar h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.6rem); line-height: 0.95; color: #23304d; }
+	.lesson-topbar-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+	.objective-pill, .mode-toggle, .fullscreen-toggle, .score-pill { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 10px 16px; border-radius: 999px; font-weight: 950; border: 0; }
+	.objective-pill, .fullscreen-toggle, .score-pill { background: #23304d; color: #fff; }
+	.mode-toggle, .primary-button { background: #f2761e; color: #fff; border: 0; }
+	.lesson-shell.is-self-study .mode-toggle { background: #3eb6ea; }
+	.fullscreen-toggle.is-active { background: #3eb6ea; }
+	.progress-area { margin: 18px 0; padding: 16px 18px; background: rgba(255,255,255,0.78); border: 1px solid rgba(43,53,77,0.1); border-radius: 22px; }
+	.progress-meta { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 10px; font-weight: 900; color: #23304d; }
+	.progress-track { height: 12px; background: rgba(35,48,77,0.12); border-radius: 999px; overflow: hidden; }
+	.progress-track span { display: block; height: 100%; width: 10%; background: linear-gradient(90deg, #f2761e, #3eb6ea); border-radius: inherit; transition: width 0.25s ease; }
+	.deck-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 18px; align-items: start; }
+	.slide-map { position: sticky; top: 104px; display: grid; gap: 8px; padding: 12px; background: rgba(255,255,255,0.88); border: 1px solid rgba(43,53,77,0.1); border-radius: 24px; box-shadow: 0 18px 50px rgba(30,41,59,0.08); }
+	.slide-dot { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 8px 10px; border: 1px solid transparent; border-radius: 16px; background: transparent; color: #46536b; font-weight: 900; text-align: left; cursor: pointer; }
+	.slide-dot span { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(35,48,77,0.1); color: #23304d; font-size: 0.84rem; font-weight: 950; }
+	.slide-dot.is-active { background: #23304d; color: #fff; border-color: #23304d; }
+	.slide-dot.is-active span { background: #fff; color: #23304d; }
+	.lesson-slide { display: none; min-height: 650px; padding: clamp(24px,4vw,44px); background: rgba(255,255,255,0.95); border: 1px solid rgba(43,53,77,0.12); border-radius: 34px; box-shadow: 0 24px 80px rgba(30,41,59,0.1); overflow: hidden; }
+	.lesson-slide.is-active { display: block; }
+	.slide-label { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; font-weight: 950; color: #526077; }
+	.slide-label span { background: #fff3e9; color: #f2761e; border: 1px solid rgba(242,118,30,0.18); padding: 8px 12px; border-radius: 999px; }
+	.lesson-slide h2 { margin: 0 0 16px; font-size: clamp(2rem,4.2vw,4.2rem); line-height: 0.98; color: #23304d; letter-spacing: -0.04em; max-width: 1100px; }
+	.lesson-slide h3 { color: #23304d; }
+	.slide-lede { max-width: 860px; font-size: clamp(1.1rem,2vw,1.42rem); line-height: 1.48; color: #4b5870; }
+	.compact-lede { font-size: clamp(0.98rem,1.3vw,1.16rem); }
+	.hero-grid { display: grid; grid-template-columns: minmax(0,1fr) 280px; gap: 28px; align-items: stretch; }
+	.outcome-box, .teacher-prompt, .game-panel, .student-work, .sample-answer, .method-card, .challenge-card, .theory-card { border-radius: 24px; padding: 22px; border: 1px solid rgba(43,53,77,0.12); background: #fff; }
+	.outcome-box { margin-top: 22px; background: #f3fbff; }
+	.outcome-box ul { margin: 12px 0 0; padding-left: 22px; font-size: 1.1rem; line-height: 1.6; color: #334155; }
+	.lesson-badge-card { display: grid; place-items: center; align-content: center; text-align: center; padding: 28px; border-radius: 30px; background: linear-gradient(145deg,#23304d,#35507d); color: #fff; }
+	.lesson-badge-card .badge-number { font-size: 5.8rem; line-height: 0.9; font-weight: 950; color: #fff; }
+	.lesson-badge-card span, .lesson-badge-card p { color: #fff; }
+	.lesson-badge-card p { margin: 0; line-height: 1.5; }
+	.lesson-badge-card hr { width: 80%; border: 0; border-top: 1px solid rgba(255,255,255,0.28); margin: 18px 0; }
+	.math-render { font-weight: 900; color: #23304d; }
+	.theory-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
+	.theory-card { display: grid; gap: 9px; align-content: start; background: #fff; }
+	.theory-card span { color: #f2761e; font-weight: 950; letter-spacing: 0.1em; }
+	.theory-card h3 { margin: 0; font-size: clamp(1.35rem,1.9vw,1.8rem); }
+	.theory-card p { margin: 0; color: #4b5870; font-weight: 800; line-height: 1.45; }
+	.expression-banner, .challenge-expression { display: grid; place-items: center; min-height: 110px; border-radius: 26px; background: #fff8ee; border: 2px solid rgba(242,118,30,0.22); font-size: clamp(2.4rem,5vw,4.8rem); }
+	.small-math { min-height: 82px; margin-top: 8px; font-size: clamp(1.6rem,2.8vw,2.7rem); }
+	.keyword-board { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 10px; margin-top: 14px; }
+	.keyword-board div { border-radius: 18px; background: #f7f8fb; border: 1px solid rgba(35,48,77,0.1); padding: 12px; }
+	.keyword-board strong { display: block; color: #23304d; }
+	.keyword-board span { display: block; margin-top: 4px; color: #526077; font-weight: 800; font-size: .88rem; }
+	.game-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 14px; }
+	.game-head h3 { margin: 5px 0 0; font-size: clamp(1.15rem,1.8vw,1.6rem); }
+	.round-label { display: inline-flex; padding: 7px 11px; border-radius: 999px; background: #fff3e9; color: #f2761e; font-weight: 950; }
+	.local-score { display: grid; place-items: center; min-width: 112px; padding: 13px 17px; border-radius: 22px; background: #23304d; color: #fff; }
+	.local-score span, .local-score strong { color: #fff; }
+	.local-score strong { font-size: 2.2rem; line-height: 1; }
+	.option-row { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin-top: 14px; }
+	.game-option, .primary-button, .secondary-button, .teacher-note-button, .fullscreen-toggle, .mode-toggle, .score-pill, .slide-dot, .challenge-card button { min-height: 54px; border-radius: 18px; font: inherit; font-weight: 950; cursor: pointer; }
+	.game-option {
+		display: grid;
+		grid-template-columns: 64px minmax(0,1fr);
+		align-items: stretch;
+		padding: 0;
+		overflow: hidden;
+		border: 2px solid rgba(35,48,77,0.1);
+		background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+		color: #23304d;
+		font-size: 1.02rem;
+		text-align: left;
+		box-shadow: 0 8px 18px rgba(35,48,77,0.08);
+		transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+	}
+	.game-option:hover, .game-option:focus-visible, .primary-button:hover, .secondary-button:hover {
+		transform: translateY(-2px);
+	}
+	.game-option:hover, .game-option:focus-visible {
+		border-color: rgba(62,182,234,0.55);
+		box-shadow: 0 12px 24px rgba(35,48,77,0.12);
+	}
+	.game-option .option-badge {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(180deg, #2c3d68 0%, #23304d 100%);
+		color: #fff;
+		font-size: 1.02rem;
+		font-weight: 950;
+		letter-spacing: 0.04em;
+	}
+	.game-option .option-text {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 68px;
+		padding: 14px 18px;
+		color: #23304d;
+		font-weight: 900;
+		text-align: center;
+		background: transparent;
+	}
+	.game-option .option-text mjx-container { margin: 0 auto !important; }
+	.game-option.is-correct {
+		background: linear-gradient(180deg, #effcf4 0%, #e2f8ea 100%);
+		border-color: #40a76f;
+		box-shadow: 0 10px 22px rgba(64,167,111,0.16);
+	}
+	.game-option.is-correct .option-badge { background: linear-gradient(180deg, #49b375 0%, #3d9d67 100%); }
+	.game-option.is-wrong {
+		background: linear-gradient(180deg, #fff5f5 0%, #ffe7e7 100%);
+		border-color: #e66565;
+		box-shadow: 0 10px 22px rgba(230,101,101,0.12);
+	}
+	.game-option.is-wrong .option-badge { background: linear-gradient(180deg, #ec7474 0%, #df5a5a 100%); }
+	.game-option:disabled { cursor: default; }
+	.feedback-line { margin-top: 14px; padding: 14px 16px; border-radius: 16px; background: #f7f8fb; color: #46536b; font-weight: 900; }
+	.activity-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+	.primary-button, .secondary-button, .teacher-note-button { border: 0; padding: 13px 20px; }
+	.primary-button { background: #f2761e; color: #fff; }
+	.secondary-button { background: #eef4f8; color: #23304d; }
+	.teacher-note-button { background: #23304d; color: #fff; }
+	.clue-strip { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+	.clue-strip div, .variables-pill, .value-pill { padding: 14px 16px; border-radius: 18px; background: #f3fbff; border: 1px solid rgba(62,182,234,0.22); color: #23304d; font-weight: 900; }
+	.clue-strip span { display: block; color: #f2761e; text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; }
+	.formula-layout, .substitution-layout, .subject-lab { display: grid; grid-template-columns: minmax(0,1fr) minmax(240px, .46fr); gap: 16px; align-items: stretch; }
+	.method-card { background: #f7f8fb; }
+	.method-card h3 { margin-top: 0; font-size: 1.5rem; }
+	.method-card ol { margin: 0; padding-left: 22px; color: #46536b; font-weight: 850; line-height: 1.55; }
+	.navy-card { display: grid; align-content: center; background: #23304d; color: #fff; }
+	.navy-card h3, .navy-card p { color: #fff; }
+	.substitution-layout { grid-template-columns: minmax(0,.82fr) minmax(0,1fr); }
+	.slider-label { display: block; margin-top: 12px; color: #23304d; font-weight: 950; }
+	input[type="range"] { width: 100%; margin: 12px 0; accent-color: #3eb6ea; }
+	.step-stack { display: grid; gap: 10px; }
+	.step-stack div, .step-stack p { margin: 0; padding: 13px 16px; border-radius: 16px; background: #f7f8fb; color: #23304d; font-weight: 900; }
+	.recipe-board, .board-grid, .exit-grid { display: grid; gap: 14px; }
+	.recipe-board { grid-template-columns: repeat(4,minmax(0,1fr)); }
+	.recipe-board div { display: grid; gap: 10px; padding: 18px; border-radius: 22px; background: #fff; border: 2px solid rgba(35,48,77,0.1); }
+	.recipe-board span, .exit-grid span { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #f2761e; color: #fff; font-weight: 950; }
+	.recipe-board strong { color: #23304d; font-size: 1.15rem; }
+	.recipe-board em { font-style: normal; line-height: 1.35; color: #46536b; }
+	.teacher-prompt { margin-top: 18px; background: #f3fbff; color: #27475b; font-weight: 900; }
+	.student-work { background: #fff8ee; font-size: clamp(1.6rem,3.2vw,3.2rem); text-align: center; }
+	.student-work span { display: block; margin-bottom: 10px; color: #f2761e; font-size: 0.95rem; font-weight: 950; letter-spacing: 0.09em; text-transform: uppercase; }
+	.board-grid { grid-template-columns: repeat(3,minmax(0,1fr)); align-items: stretch; }
+	.challenge-card { display: grid; align-content: start; gap: 12px; }
+	.challenge-card strong { color: #23304d; font-size: 1.35rem; }
+	.challenge-card p { margin: 0; color: #46536b; font-weight: 850; line-height: 1.5; }
+	.board-card { min-height: 300px; background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%); }
+	.board-card-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+	.board-card-tag { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 0 14px; border-radius: 999px; background: #f2761e; color: #fff; font-weight: 950; font-size: 0.95rem; }
+	.board-card-task { min-height: 60px; font-size: 1.05rem; }
+	.board-card-equation { display: flex; align-items: center; justify-content: center; min-height: 70px; padding: 8px 14px; border-radius: 18px; background: #fff8ee; border: 1px solid rgba(242,118,30,0.18); font-size: clamp(1.45rem,2vw,2rem); }
+	.board-card .secondary-button { width: 100%; }
+	.hidden-answer { display: none; margin: 0; background: #f3fbff; color: #23304d; border: 1px solid rgba(62,182,234,0.22); }
+	.hidden-answer.is-visible { display: flex; align-items: center; justify-content: center; min-height: 72px; padding: 14px 16px; border-radius: 18px; }
+	.exit-grid { grid-template-columns: repeat(3,minmax(0,1fr)); margin: 18px 0; }
+	.exit-grid div { display: grid; gap: 12px; min-height: 160px; padding: 20px; border-radius: 22px; background: #fff; border: 2px solid rgba(35,48,77,0.1); }
+	.exit-grid span { background: #23304d; }
+	.exit-grid p { margin: 0; color: #23304d; font-size: 1.18rem; line-height: 1.45; }
+	.sample-answer { margin-top: 14px; background: #f3fbff; }
+	.sample-answer p { margin: 0 0 9px; color: #23304d; }
+	.sample-answer p:last-child { margin-bottom: 0; }
+	.deck-controls { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 18px; padding: 14px; border-radius: 24px; background: rgba(255,255,255,0.9); border: 1px solid rgba(43,53,77,0.1); }
+	.teacher-notes { position: fixed; right: 24px; bottom: 24px; z-index: 20; width: min(430px, calc(100% - 48px)); }
+	.teacher-notes-card { padding: 20px; border-radius: 24px; background: #23304d; color: #fff; box-shadow: 0 24px 80px rgba(30,41,59,0.24); }
+	.teacher-notes-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+	.teacher-notes-head strong, .teacher-notes p { color: #fff; }
+	.teacher-notes-head button { width: 38px; height: 38px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.18); color: #fff; font-size: 1.5rem; cursor: pointer; }
+	.teacher-notes p { margin: 0; line-height: 1.55; }
+
+	:global(body:has(.lesson-page.ifp-fullscreen)) { overflow: hidden !important; }
+	:global(body:has(.lesson-page.ifp-fullscreen) .site-header), :global(body:has(.lesson-page.ifp-fullscreen) .site-footer), :global(body:has(.lesson-page.ifp-fullscreen) .floating-whatsapp), :global(body:has(.lesson-page.ifp-fullscreen) .whatsapp-float) { display: none !important; }
+	.lesson-page.ifp-fullscreen { position: fixed; inset: 0; z-index: 10000; height: 100vh; height: 100dvh; width: 100vw; overflow: hidden; padding: 0; }
+	.ifp-fullscreen .lesson-shell { width: 100%; height: 100%; margin: 0; padding: 12px; display: grid; grid-template-rows: 76px 12px minmax(0,1fr) 68px; gap: 10px; box-sizing: border-box; }
+	.ifp-fullscreen .lesson-topbar { min-height: 0; padding: 10px 16px; border-radius: 20px; align-items: center; }
+	.ifp-fullscreen .lesson-topbar-left { min-width: 0; }
+	.ifp-fullscreen .back-link { margin: 0 0 4px; font-size: 0.85rem; line-height: 1; }
+	.ifp-fullscreen .eyebrow { margin: 0 0 3px; font-size: 0.67rem; }
+	.ifp-fullscreen .lesson-topbar h1 { font-size: clamp(1.35rem,2.2vw,2.45rem); line-height: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+	.ifp-fullscreen .objective-pill, .ifp-fullscreen .mode-toggle, .ifp-fullscreen .fullscreen-toggle, .ifp-fullscreen .score-pill { min-height: 46px; padding: 8px 14px; font-size: 0.95rem; }
+	.ifp-fullscreen .progress-area { margin: 0; padding: 0; border: 0; background: transparent; border-radius: 999px; }
+	.ifp-fullscreen .progress-meta { display: none; }
+	.ifp-fullscreen .deck-layout { height: 100%; min-height: 0; display: grid; grid-template-columns: minmax(116px,10.5vw) minmax(0,1fr); gap: 10px; align-items: stretch; }
+	.ifp-fullscreen .slide-map { position: static; height: 100%; min-height: 0; overflow: hidden; padding: 8px; border-radius: 18px; gap: 5px; align-content: start; }
+	.ifp-fullscreen .slide-dot { min-height: 0; height: min(5.05vh,39px); padding: 5px 7px; gap: 6px; border-radius: 12px; font-size: clamp(0.62rem,0.78vw,0.8rem); line-height: 1.05; }
+	.ifp-fullscreen .slide-dot span { width: 23px; height: 23px; font-size: 0.72rem; flex: 0 0 auto; }
+	.ifp-fullscreen .slide-stage { height: 100%; min-height: 0; min-width: 0; }
+	.ifp-fullscreen .lesson-slide { height: 100%; min-height: 0; overflow: hidden; padding: clamp(16px,2.25vw,34px); border-radius: 24px; box-sizing: border-box; box-shadow: 0 20px 65px rgba(30,41,59,0.1); }
+	.ifp-fullscreen .lesson-slide.is-active { display: flex; flex-direction: column; }
+	.ifp-fullscreen .slide-label { margin-bottom: clamp(6px,1vh,12px); font-size: clamp(0.8rem,1vw,1rem); flex: 0 0 auto; }
+	.ifp-fullscreen .lesson-slide h2 { font-size: clamp(1.8rem,3.8vw,3.75rem); line-height: 0.96; margin-bottom: clamp(8px,1.2vh,14px); }
+	.ifp-fullscreen .slide-lede { font-size: clamp(1rem,1.55vw,1.35rem); line-height: 1.35; margin: 0 0 10px; }
+	.ifp-fullscreen .hero-grid { grid-template-columns: minmax(0,1fr) minmax(220px,22vw); gap: 16px; height: 100%; min-height: 0; }
+	.ifp-fullscreen .lesson-badge-card { padding: 18px; }
+	.ifp-fullscreen .lesson-badge-card .badge-number { font-size: clamp(4rem,7vw,6.4rem); }
+	.ifp-fullscreen .outcome-box, .ifp-fullscreen .teacher-prompt, .ifp-fullscreen .game-panel, .ifp-fullscreen .student-work, .ifp-fullscreen .sample-answer, .ifp-fullscreen .method-card, .ifp-fullscreen .challenge-card, .ifp-fullscreen .theory-card { padding: clamp(12px,1.5vw,18px); border-radius: 20px; }
+	.ifp-fullscreen .outcome-box { margin-top: 12px; }
+	.ifp-fullscreen .outcome-box ul { font-size: clamp(0.92rem,1.05vw,1.08rem); line-height: 1.38; }
+	.ifp-fullscreen .theory-grid { gap: 10px; }
+	.ifp-fullscreen .keyword-board { grid-template-columns: repeat(6,minmax(0,1fr)); gap: 8px; margin-top: 10px; }
+	.ifp-fullscreen .expression-banner, .ifp-fullscreen .challenge-expression { min-height: clamp(70px,12vh,115px); font-size: clamp(2.1rem,4.3vw,4.5rem); }
+	.ifp-fullscreen .small-math { min-height: 68px; font-size: clamp(1.35rem,2.4vw,2.2rem); }
+	.ifp-fullscreen .game-head { margin-bottom: 8px; }
+	.ifp-fullscreen .local-score { min-width: 96px; padding: 10px 14px; }
+	.ifp-fullscreen .local-score strong { font-size: 1.9rem; }
+	.ifp-fullscreen .option-row { gap: 9px; margin-top: 10px; }
+	.ifp-fullscreen .game-option, .ifp-fullscreen .primary-button, .ifp-fullscreen .secondary-button, .ifp-fullscreen .teacher-note-button, .ifp-fullscreen .fullscreen-toggle, .ifp-fullscreen .mode-toggle, .ifp-fullscreen .score-pill, .ifp-fullscreen .challenge-card button { min-height: 50px; border-radius: 15px; }
+	.ifp-fullscreen .game-option { grid-template-columns: 54px minmax(0,1fr); font-size: clamp(0.92rem,1.05vw,1.02rem); box-shadow: 0 6px 14px rgba(35,48,77,0.08); }
+	.ifp-fullscreen .game-option .option-badge { font-size: 0.92rem; }
+	.ifp-fullscreen .game-option .option-text { min-height: 56px; padding: 10px 12px; }
+	.ifp-fullscreen .feedback-line { margin-top: 9px; padding: 11px 14px; font-size: clamp(0.88rem,1vw,1.02rem); }
+	.ifp-fullscreen .activity-actions { margin-top: 8px; }
+	.ifp-fullscreen .recipe-board { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; }
+	.ifp-fullscreen .recipe-board div { padding: 13px; gap: 7px; }
+	.ifp-fullscreen .recipe-board span { width: 38px; height: 38px; }
+	.ifp-fullscreen .recipe-board em { font-size: clamp(0.82rem,0.95vw,0.98rem); }
+	.ifp-fullscreen .formula-layout, .ifp-fullscreen .substitution-layout, .ifp-fullscreen .subject-lab { height: 100%; min-height: 0; grid-template-columns: minmax(0,1fr) minmax(220px,24vw); gap: 12px; }
+	.ifp-fullscreen .step-stack { gap: 8px; }
+	.ifp-fullscreen .step-stack div, .ifp-fullscreen .step-stack p { padding: 10px 12px; font-size: clamp(0.9rem,1vw,1.05rem); }
+	.ifp-fullscreen .student-work { font-size: clamp(1.5rem,3vw,3rem); padding: 15px; }
+	.ifp-fullscreen .board-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; }
+	.ifp-fullscreen .challenge-card { gap: 8px; }
+	.ifp-fullscreen .board-card { min-height: 0; }
+	.ifp-fullscreen .board-card-task { min-height: 48px; font-size: clamp(0.92rem,1vw,1rem); }
+	.ifp-fullscreen .board-card-equation { min-height: 58px; font-size: clamp(1.2rem,1.8vw,1.7rem); }
+	.ifp-fullscreen .hidden-answer.is-visible { min-height: 58px; }
+	.ifp-fullscreen .exit-grid { grid-template-columns: repeat(3,minmax(0,1fr)); margin: 12px 0; gap: 10px; }
+	.ifp-fullscreen .exit-grid div { min-height: 132px; padding: 14px; }
+	.ifp-fullscreen .exit-grid p { font-size: clamp(0.95rem,1.2vw,1.12rem); }
+	.ifp-fullscreen .deck-controls { margin: 0; padding: 8px; border-radius: 18px; align-items: center; flex-wrap: nowrap; }
+	.ifp-fullscreen .primary-button, .ifp-fullscreen .secondary-button, .ifp-fullscreen .teacher-note-button, .ifp-fullscreen .fullscreen-toggle { min-height: 50px; padding: 10px 20px; font-size: clamp(0.92rem,1.05vw,1.06rem); white-space: nowrap; }
+	.ifp-fullscreen .teacher-notes { position: fixed; right: 18px; bottom: 84px; z-index: 10020; width: min(500px, calc(100vw - 36px)); }
+
+	@media (max-width: 980px) { .deck-layout, .hero-grid, .formula-layout, .substitution-layout, .subject-lab { grid-template-columns: 1fr; } .slide-map { display: none; } .recipe-board, .theory-grid, .keyword-board, .board-grid, .exit-grid { grid-template-columns: 1fr; } .lesson-badge-card { display: none; } }
+</style>
+
+<style is:global>
+	/* Global patch: options are created by JavaScript, so Astro scoped CSS will not reach them. */
+	.lesson-5-page .option-row {
+		display: grid !important;
+		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+		gap: 14px !important;
+		margin-top: 14px !important;
+	}
+	.lesson-5-page .option-row .game-option {
+		appearance: none !important;
+		-webkit-appearance: none !important;
+		display: grid !important;
+		grid-template-columns: 64px minmax(0, 1fr) !important;
+		align-items: stretch !important;
+		width: 100% !important;
+		min-height: 68px !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		overflow: hidden !important;
+		border: 2px solid rgba(35, 48, 77, 0.12) !important;
+		border-radius: 18px !important;
+		background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%) !important;
+		color: #23304d !important;
+		box-shadow: 0 9px 20px rgba(35, 48, 77, 0.08) !important;
+		font-family: inherit !important;
+		font-weight: 950 !important;
+		cursor: pointer !important;
+		text-align: left !important;
+		transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease !important;
+	}
+	.lesson-5-page .option-row .game-option:hover,
+	.lesson-5-page .option-row .game-option:focus-visible {
+		transform: translateY(-2px) !important;
+		border-color: rgba(62, 182, 234, 0.62) !important;
+		box-shadow: 0 14px 26px rgba(35, 48, 77, 0.13) !important;
+	}
+	.lesson-5-page .option-row .game-option .option-badge {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		min-width: 64px !important;
+		min-height: 100% !important;
+		background: linear-gradient(180deg, #2d3f6b 0%, #23304d 100%) !important;
+		color: #ffffff !important;
+		font-size: 1.05rem !important;
+		font-weight: 950 !important;
+		letter-spacing: 0.04em !important;
+	}
+	.lesson-5-page .option-row .game-option .option-text {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		min-height: 68px !important;
+		padding: 13px 18px !important;
+		background: transparent !important;
+		color: #23304d !important;
+		font-weight: 900 !important;
+		line-height: 1.25 !important;
+		text-align: center !important;
+	}
+	.lesson-5-page .option-row .game-option .option-text mjx-container {
+		margin: 0 auto !important;
+	}
+	.lesson-5-page .option-row .game-option.is-correct {
+		border-color: #40a76f !important;
+		background: linear-gradient(180deg, #f0fcf5 0%, #e3f8eb 100%) !important;
+		box-shadow: 0 10px 22px rgba(64, 167, 111, 0.16) !important;
+	}
+	.lesson-5-page .option-row .game-option.is-correct .option-badge {
+		background: linear-gradient(180deg, #4ab579 0%, #3d9d67 100%) !important;
+	}
+	.lesson-5-page .option-row .game-option.is-wrong {
+		border-color: #e66565 !important;
+		background: linear-gradient(180deg, #fff5f5 0%, #ffe6e6 100%) !important;
+		box-shadow: 0 10px 22px rgba(230, 101, 101, 0.14) !important;
+	}
+	.lesson-5-page .option-row .game-option.is-wrong .option-badge {
+		background: linear-gradient(180deg, #ec7474 0%, #df5a5a 100%) !important;
+	}
+	.lesson-5-page .option-row .game-option:disabled {
+		cursor: default !important;
+	}
+	.lesson-5-page.ifp-fullscreen .option-row .game-option,
+	.ifp-fullscreen.lesson-5-page .option-row .game-option {
+		grid-template-columns: 54px minmax(0, 1fr) !important;
+		min-height: 56px !important;
+		border-radius: 15px !important;
+		box-shadow: 0 6px 14px rgba(35, 48, 77, 0.08) !important;
+	}
+	.lesson-5-page.ifp-fullscreen .option-row .game-option .option-badge,
+	.ifp-fullscreen.lesson-5-page .option-row .game-option .option-badge {
+		min-width: 54px !important;
+		font-size: 0.92rem !important;
+	}
+	.lesson-5-page.ifp-fullscreen .option-row .game-option .option-text,
+	.ifp-fullscreen.lesson-5-page .option-row .game-option .option-text {
+		min-height: 56px !important;
+		padding: 10px 12px !important;
+		font-size: clamp(0.92rem, 1.05vw, 1.02rem) !important;
+	}
+	.lesson-5-page .board-card-tag {
+		border-radius: 999px !important;
+		width: auto !important;
+		min-height: 34px !important;
+		padding: 0 14px !important;
+	}
+</style>
+
+<script is:inline type="text/javascript">
+	// @ts-nocheck
+	(function () {
+		const root = document.querySelector('[data-lesson-root]');
+		if (!root || root.dataset.initialized === 'true') return;
+		root.dataset.initialized = 'true';
+
+		const slides = Array.from(root.querySelectorAll('[data-slide]'));
+		const dots = Array.from(root.querySelectorAll('[data-go-slide]'));
+		const progressLabel = root.querySelector('[data-progress-label]');
+		const progressBar = root.querySelector('[data-progress-bar]');
+		const nextButton = root.querySelector('[data-next-slide]');
+		const prevButton = root.querySelector('[data-prev-slide]');
+		const resetSlideButton = root.querySelector('[data-reset-slide]');
+		const modeToggle = root.querySelector('[data-mode-toggle]');
+		const fullscreenButton = root.querySelector('[data-fullscreen-toggle]');
+		const fullscreenTarget = document.querySelector('.lesson-page.ifp-fullscreen') || root;
+		const totalScoreButton = root.querySelector('[data-total-score]');
+		const teacherNotes = root.querySelector('[data-teacher-notes]');
+		const teacherNotesText = root.querySelector('[data-teacher-notes-text]');
+		const teacherNotesToggle = root.querySelector('[data-teacher-notes-toggle]');
+		const teacherNotesClose = root.querySelector('[data-teacher-notes-close]');
+
+		const notes = [
+			'Keep this slide as a clean overview. Ask students to name one phrase that can become algebra.',
+			'Slow down here. Students must separate expression, formula, and subject before changing the subject.',
+			'Ask students to underline keywords and decide the order of operations before choosing.',
+			'Focus on the fixed amount and repeated amount. This prevents students from swapping coefficients.',
+			'Use substitution to show why formulae are useful before rearranging them.',
+			'Teach rearranging as undoing operations in reverse order. Keep brackets visible.',
+			'Pause before each reveal. Ask: what operation is trapping the target letter?',
+			'Let students explain the mistake verbally first, then tap an option.',
+			'Use this as pair work. Award one point for answer and one point for reasoning.',
+			'Collect quick notebook answers before revealing the sample answers.'
+		];
+
+		let currentSlide = 0;
+		let totalScore = 0;
+
+		const renderMath = (scope = root) => {
+			const targetScope = scope || root;
+			const mathNodes = targetScope.matches?.('[data-tex]')
+				? [targetScope]
+				: Array.from(targetScope.querySelectorAll?.('[data-tex]') || []);
+			mathNodes.forEach((node) => {
+				const tex = node.getAttribute('data-tex') || '';
+				if (tex) node.textContent = '$' + tex + '$';
+			});
+			if (window.MathJax && window.MathJax.typesetPromise) {
+				window.MathJax.typesetClear?.([targetScope]);
+				window.MathJax.typesetPromise([targetScope]).catch(() => {});
+			}
+		};
+
+		const setMath = (element, tex) => {
+			if (!element) return;
+			element.setAttribute('data-tex', tex);
+			element.textContent = '$' + tex + '$';
+			renderMath(element);
+		};
+
+		const updateTotalScore = (points) => {
+			totalScore += points;
+			if (totalScoreButton) totalScoreButton.textContent = 'Score ' + totalScore;
+		};
+
+		const updateSlide = (index) => {
+			currentSlide = Math.max(0, Math.min(index, slides.length - 1));
+			slides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === currentSlide));
+			dots.forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === currentSlide));
+			if (progressLabel) progressLabel.textContent = 'Slide ' + (currentSlide + 1) + ' of ' + slides.length;
+			if (progressBar) progressBar.style.width = ((currentSlide + 1) / slides.length * 100) + '%';
+			if (prevButton) prevButton.disabled = currentSlide === 0;
+			if (nextButton) nextButton.textContent = currentSlide === slides.length - 1 ? 'Finish' : 'Next';
+			if (teacherNotesText) teacherNotesText.textContent = notes[currentSlide] || '';
+			renderMath(slides[currentSlide]);
+		};
+
+		dots.forEach((dot) => dot.addEventListener('click', () => updateSlide(Number(dot.dataset.goSlide || 0))));
+		nextButton?.addEventListener('click', () => updateSlide(currentSlide + 1));
+		prevButton?.addEventListener('click', () => updateSlide(currentSlide - 1));
+		resetSlideButton?.addEventListener('click', () => updateSlide(currentSlide));
+
+		modeToggle?.addEventListener('click', () => {
+			const isSelfStudy = root.classList.toggle('is-self-study');
+			modeToggle.setAttribute('aria-pressed', String(isSelfStudy));
+			modeToggle.textContent = isSelfStudy ? 'Self-Study Mode' : 'Teach Mode';
+		});
+
+		const getFullscreenElement = () => document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+		const updateFullscreenButton = () => {
+			if (!fullscreenButton) return;
+			const isFullscreen = Boolean(getFullscreenElement());
+			fullscreenButton.classList.toggle('is-active', isFullscreen);
+			fullscreenButton.setAttribute('aria-pressed', String(isFullscreen));
+			fullscreenButton.textContent = isFullscreen ? 'Exit Full Screen' : '⛶ Present Full Screen';
+		};
+		const enterFullscreen = async () => {
+			if (fullscreenTarget.requestFullscreen) return fullscreenTarget.requestFullscreen();
+			if (fullscreenTarget.webkitRequestFullscreen) return fullscreenTarget.webkitRequestFullscreen();
+			if (fullscreenTarget.msRequestFullscreen) return fullscreenTarget.msRequestFullscreen();
+			throw new Error('Fullscreen is not supported in this browser.');
+		};
+		const exitFullscreen = async () => {
+			if (document.exitFullscreen) return document.exitFullscreen();
+			if (document.webkitExitFullscreen) return document.webkitExitFullscreen();
+			if (document.msExitFullscreen) return document.msExitFullscreen();
+		};
+		fullscreenButton?.addEventListener('click', async () => {
+			try {
+				if (getFullscreenElement()) await exitFullscreen();
+				else await enterFullscreen();
+				updateFullscreenButton();
+			} catch (error) {
+				fullscreenButton.textContent = 'Fullscreen unavailable';
+				fullscreenButton.disabled = true;
+			}
+		});
+		document.addEventListener('fullscreenchange', updateFullscreenButton);
+		document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+		document.addEventListener('MSFullscreenChange', updateFullscreenButton);
+
+		teacherNotesToggle?.addEventListener('click', () => { if (teacherNotes) teacherNotes.hidden = !teacherNotes.hidden; });
+		teacherNotesClose?.addEventListener('click', () => { if (teacherNotes) teacherNotes.hidden = true; });
+
+		root.querySelectorAll('[data-toggle-target]').forEach((button) => {
+			button.addEventListener('click', () => {
+				const id = button.dataset.toggleTarget || '';
+				const target = root.querySelector('#' + CSS.escape(id));
+				if (target) {
+					target.classList.toggle('is-visible');
+					renderMath(target);
+				}
+			});
+		});
+
+		function makeOption(text, correctText, feedback, correctMessage, wrongMessage, points, optionIndex = 0, onCorrect = null) {
+			const button = document.createElement('button');
+			button.type = 'button';
+			button.className = 'game-option';
+			button.dataset.optionValue = text;
+			const badge = document.createElement('span');
+			badge.className = 'option-badge';
+			badge.textContent = String.fromCharCode(65 + (optionIndex % 26));
+			const textSpan = document.createElement('span');
+			textSpan.className = 'option-text math-render';
+			textSpan.setAttribute('data-tex', text);
+			button.append(badge, textSpan);
+			button.addEventListener('click', () => {
+				const parent = button.parentElement;
+				if (parent) Array.from(parent.children).forEach((child) => child.disabled = true);
+				const correct = text === correctText;
+				button.classList.add(correct ? 'is-correct' : 'is-wrong');
+				if (!correct && parent) Array.from(parent.children).forEach((child) => {
+					if (child.dataset.optionValue === correctText) child.classList.add('is-correct');
+				});
+				if (feedback) feedback.textContent = correct ? correctMessage : wrongMessage;
+				if (correct) {
+					updateTotalScore(points);
+					if (typeof onCorrect === 'function') onCorrect();
+				}
+			});
+			return button;
+		}
+
+		function setupTranslatorGame() {
+			const game = root.querySelector('[data-translator-game]');
+			if (!game) return;
+			const items = [
+				{ phrase: 'Five more than twice a number', variable: 'n = the number', clue: 'twice first, then add 5', answer: '2n + 5', options: ['2n + 5', '2(n + 5)', 'n + 10', '5n + 2'] },
+				{ phrase: 'Three less than half of a number', variable: 'x = the number', clue: 'half first, then subtract 3', answer: '\\frac{x}{2} - 3', options: ['\\frac{x}{2} - 3', '3 - \\frac{x}{2}', '\\frac{x - 3}{2}', '2x - 3'] },
+				{ phrase: 'The product of 7 and a number', variable: 'm = the number', clue: 'product means multiply', answer: '7m', options: ['7m', '7 + m', '\\frac{m}{7}', '7 - m'] },
+				{ phrase: 'A number divided by 4, then increased by 9', variable: 'a = the number', clue: 'divide first, then add 9', answer: '\\frac{a}{4} + 9', options: ['\\frac{a}{4} + 9', '\\frac{a + 9}{4}', '4a + 9', '\\frac{9a}{4}'] },
+				{ phrase: 'The difference between 20 and a number', variable: 'b = the number', clue: 'order matters: 20 first', answer: '20 - b', options: ['20 - b', 'b - 20', '20b', '20 + b'] },
+				{ phrase: 'One third of a number plus 6', variable: 't = the number', clue: 'one third means divide by 3', answer: '\\frac{t}{3} + 6', options: ['\\frac{t}{3} + 6', '3t + 6', '\\frac{t + 6}{3}', '\\frac{6t}{3}'] }
+			];
+			let index = 0;
+			let score = 0;
+			const round = game.querySelector('[data-translator-round]');
+			const phrase = game.querySelector('[data-translator-phrase]');
+			const variable = game.querySelector('[data-translator-variable]');
+			const clue = game.querySelector('[data-translator-clue]');
+			const scoreNode = game.querySelector('[data-translator-score]');
+			const optionsBox = game.querySelector('[data-translator-options]');
+			const feedback = game.querySelector('[data-translator-feedback]');
+			function draw() {
+				const item = items[index];
+				if (round) round.textContent = 'Phrase ' + (index + 1) + ' / ' + items.length;
+				if (phrase) phrase.textContent = item.phrase;
+				if (variable) variable.textContent = item.variable;
+				if (clue) clue.textContent = item.clue;
+				if (feedback) feedback.textContent = 'Choose the expression that matches the words.';
+				if (scoreNode) scoreNode.textContent = String(score);
+				if (optionsBox) {
+					optionsBox.innerHTML = '';
+					item.options.forEach((option, optionIndex) => optionsBox.appendChild(makeOption(option, item.answer, feedback, 'Correct. The operation order matches the phrase.', 'Not quite. Check the keyword and operation order.', 1, optionIndex, () => { score += 1; if (scoreNode) scoreNode.textContent = String(score); })));
+					renderMath(optionsBox);
+				}
+			}
+			game.querySelector('[data-translator-next]')?.addEventListener('click', () => { index = (index + 1) % items.length; draw(); });
+			game.querySelector('[data-translator-reset]')?.addEventListener('click', () => { index = 0; score = 0; draw(); });
+			draw();
+		}
+
+		function setupFormulaGame() {
+			const game = root.querySelector('[data-formula-game]');
+			if (!game) return;
+			const items = [
+				{ context: 'A taxi costs 4 units plus 2 units per kilometre.', vars: 'Let C = total cost and k = kilometres.', answer: 'C = 2k + 4', options: ['C = 2k + 4', 'C = 4k + 2', 'C = 6k', 'C = k + 6'] },
+				{ context: 'A rectangle has length l and width w. Find the perimeter P.', vars: 'Let P = perimeter, l = length, and w = width.', answer: 'P = 2l + 2w', options: ['P = 2l + 2w', 'P = lw', 'P = l + w', 'P = 2lw'] },
+				{ context: 'A phone plan costs $12 per month plus $0.10 per message.', vars: 'Let C = cost and m = number of messages.', answer: 'C = 12 + 0.10m', options: ['C = 12 + 0.10m', 'C = 12m + 0.10', 'C = 0.10 + m', 'C = 12.10m'] },
+				{ context: 'The total score is 5 marks for each question plus 10 bonus marks.', vars: 'Let T = total score and q = number of questions.', answer: 'T = 5q + 10', options: ['T = 5q + 10', 'T = 10q + 5', 'T = 15q', 'T = q + 15'] },
+				{ context: 'A cube has edge length s. Find its volume V.', vars: 'Let V = volume and s = edge length.', answer: 'V = s^3', options: ['V = s^3', 'V = 3s', 'V = 6s^2', 'V = s + 3'] }
+			];
+			let index = 0;
+			let score = 0;
+			const round = game.querySelector('[data-formula-round]');
+			const context = game.querySelector('[data-formula-context]');
+			const vars = game.querySelector('[data-formula-variables]');
+			const scoreNode = game.querySelector('[data-formula-score]');
+			const optionsBox = game.querySelector('[data-formula-options]');
+			const feedback = game.querySelector('[data-formula-feedback]');
+			function draw() {
+				const item = items[index];
+				if (round) round.textContent = 'Scenario ' + (index + 1) + ' / ' + items.length;
+				if (context) context.textContent = item.context;
+				if (vars) vars.textContent = item.vars;
+				if (scoreNode) scoreNode.textContent = String(score);
+				if (feedback) feedback.textContent = 'Choose the formula that matches the situation.';
+				if (optionsBox) {
+					optionsBox.innerHTML = '';
+					item.options.forEach((option, optionIndex) => optionsBox.appendChild(makeOption(option, item.answer, feedback, 'Correct. The formula connects the variables properly.', 'Not this one. Identify the fixed amount and repeated amount.', 1, optionIndex, () => { score += 1; if (scoreNode) scoreNode.textContent = String(score); })));
+					renderMath(optionsBox);
+				}
+			}
+			game.querySelector('[data-formula-next]')?.addEventListener('click', () => { index = (index + 1) % items.length; draw(); });
+			game.querySelector('[data-formula-reset]')?.addEventListener('click', () => { index = 0; score = 0; draw(); });
+			draw();
+		}
+
+		function setupSubstitutionLab() {
+			const lab = root.querySelector('[data-substitution-lab]');
+			if (!lab) return;
+			const slider = lab.querySelector('[data-sub-slider]');
+			const nNode = lab.querySelector('[data-sub-n]');
+			const working = lab.querySelector('[data-sub-working]');
+			const feedback = lab.querySelector('[data-sub-feedback]');
+			function draw() {
+				const n = Number(slider?.value || 0);
+				const product = 3 * n;
+				const total = product + 5;
+				if (nNode) nNode.textContent = String(n);
+				if (working) {
+					working.innerHTML = '<div><span class="math-render">$C = 3(' + n + ') + 5$</span></div><div><span class="math-render">$C = ' + product + ' + 5$</span></div><div><span class="math-render">$C = ' + total + '$</span></div>';
+					renderMath(working);
+				}
+				if (feedback) feedback.textContent = 'If n = ' + n + ', the total cost is ' + total + '.';
+			}
+			slider?.addEventListener('input', draw);
+			draw();
+		}
+
+		function setupSubjectLab() {
+			const lab = root.querySelector('[data-subject-lab]');
+			if (!lab) return;
+			const items = [
+				{ original: 'C = 3n + 5', target: 'n', steps: ['C - 5 = 3n', '\\frac{C - 5}{3} = n', 'n = \\frac{C - 5}{3}'] },
+				{ original: 'y = 5x - 2', target: 'x', steps: ['y + 2 = 5x', '\\frac{y + 2}{5} = x', 'x = \\frac{y + 2}{5}'] },
+				{ original: 'P = 2l + 2w', target: 'l', steps: ['P - 2w = 2l', '\\frac{P - 2w}{2} = l', 'l = \\frac{P - 2w}{2}'] },
+				{ original: 'v = u + at', target: 't', steps: ['v - u = at', '\\frac{v - u}{a} = t', 't = \\frac{v - u}{a}'] }
+			];
+			let index = 0;
+			let step = 0;
+			const round = lab.querySelector('[data-subject-round]');
+			const target = lab.querySelector('[data-subject-target]');
+			const original = lab.querySelector('[data-subject-original]');
+			const stepsBox = lab.querySelector('[data-subject-steps]');
+			function draw() {
+				const item = items[index];
+				if (round) round.textContent = 'Formula ' + (index + 1) + ' / ' + items.length;
+				if (target) target.textContent = item.target;
+				setMath(original, item.original);
+				if (stepsBox) {
+					stepsBox.innerHTML = '';
+					if (step === 0) {
+						const p = document.createElement('p');
+						p.textContent = 'Tap “Reveal next step” to solve it.';
+						stepsBox.appendChild(p);
+					} else {
+						item.steps.slice(0, step).forEach((text, stepIndex) => {
+							const div = document.createElement('div');
+							div.className = 'math-render';
+							div.textContent = '$' + text + '$';
+							stepsBox.appendChild(div);
+						});
+						renderMath(stepsBox);
+					}
+				}
+			}
+			lab.querySelector('[data-subject-step]')?.addEventListener('click', () => { step = Math.min(step + 1, items[index].steps.length); draw(); });
+			lab.querySelector('[data-subject-reset]')?.addEventListener('click', () => { step = 0; draw(); });
+			lab.querySelector('[data-subject-new]')?.addEventListener('click', () => { index = (index + 1) % items.length; step = 0; draw(); });
+			draw();
+		}
+
+		function setupDetectiveGame() {
+			const game = root.querySelector('[data-detective-game]');
+			if (!game) return;
+			const items = [
+				{ work: 'C = 3n + 5,\\quad n = C - 5 \\div 3', answer: 'Missing brackets', options: ['Missing brackets', 'Wrong variable', 'Should multiply by 3', 'No mistake'], correct: 'Correct. It should be n = (C - 5) ÷ 3.' },
+				{ work: '\\text{Twice a number plus 6} = 2(n + 6)', answer: 'Operation order error', options: ['Operation order error', 'Correct expression', 'Wrong letter only', 'Should be n ÷ 2 + 6'], correct: 'Correct. “Twice a number plus 6” means 2n + 6.' },
+				{ work: 'y = 4x - 1,\\quad x = \\frac{y - 1}{4}', answer: 'Used the wrong inverse', options: ['Used the wrong inverse', 'Forgot to divide', 'Correct answer', 'Wrong subject'], correct: 'Correct. Add 1 first: x = (y + 1) ÷ 4.' },
+				{ work: 'P = 2l + 2w,\\quad l = P - 2w \\div 2', answer: 'Missing brackets', options: ['Missing brackets', 'Should add 2w', 'Should divide by w', 'Correct answer'], correct: 'Correct. It should be l = (P - 2w) ÷ 2.' }
+			];
+			let index = 0;
+			let score = 0;
+			const round = game.querySelector('[data-detective-round]');
+			const work = game.querySelector('[data-detective-work]');
+			const optionsBox = game.querySelector('[data-detective-options]');
+			const feedback = game.querySelector('[data-detective-feedback]');
+			const scoreNode = game.querySelector('[data-detective-score]');
+			function draw() {
+				const item = items[index];
+				if (round) round.textContent = 'Mistake ' + (index + 1) + ' / ' + items.length;
+				if (scoreNode) scoreNode.textContent = String(score);
+				setMath(work, item.work);
+				if (feedback) feedback.textContent = 'Choose the best explanation.';
+				if (optionsBox) {
+					optionsBox.innerHTML = '';
+					item.options.forEach((option, optionIndex) => {
+						const button = document.createElement('button');
+						button.type = 'button';
+						button.className = 'game-option';
+						button.dataset.optionValue = option;
+						const badge = document.createElement('span');
+						badge.className = 'option-badge';
+						badge.textContent = String.fromCharCode(65 + (optionIndex % 26));
+						const textSpan = document.createElement('span');
+						textSpan.className = 'option-text';
+						textSpan.textContent = option;
+						button.append(badge, textSpan);
+						button.addEventListener('click', () => {
+							Array.from(optionsBox.children).forEach((child) => child.disabled = true);
+							const correct = option === item.answer;
+							button.classList.add(correct ? 'is-correct' : 'is-wrong');
+							if (!correct) {
+								Array.from(optionsBox.children).forEach((child) => { if (child.dataset.optionValue === item.answer) child.classList.add('is-correct'); });
+							}
+							if (correct) { score += 1; updateTotalScore(1); }
+							if (scoreNode) scoreNode.textContent = String(score);
+							if (feedback) feedback.textContent = correct ? item.correct : 'Not quite. Expand or reverse the operation again.';
+						});
+						optionsBox.appendChild(button);
+					});
+				}
+			}
+			game.querySelector('[data-detective-next]')?.addEventListener('click', () => { index = (index + 1) % items.length; draw(); });
+			game.querySelector('[data-detective-reset]')?.addEventListener('click', () => { index = 0; score = 0; draw(); });
+			draw();
+		}
+
+		setupTranslatorGame();
+		setupFormulaGame();
+		setupSubstitutionLab();
+		setupSubjectLab();
+		setupDetectiveGame();
+		updateSlide(0);
+	})();
+</script>

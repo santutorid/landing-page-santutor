@@ -1,1087 +1,485 @@
 ---
-// SAN TUTOR Learning Studio — Landing Page
-// santutor.id
-import logoSrc from '../assets/logo.svg';
+import Layout from '../layouts/Layout.astro';
 import ilustrasiHero from '../assets/14739.jpg';
 import ratihpp from '../assets/ratih.jpeg';
 import bimopp from '../assets/bimo.jpeg';
 ---
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>SAN TUTOR Learning Studio — Mitra Belajar Seumur Hidup Anak Anda</title>
-	<meta name="description" content="SAN TUTOR menemani anak Anda dari TK hingga SMA dengan tutor tetap, kurikulum berjenjang, dan kelas kecil yang interaktif. Jadwalkan kelas percobaan gratis sekarang." />
-	<link rel="icon" href={logoSrc.src} type="image/jpeg" />
-
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="SAN TUTOR Learning Studio — Mitra Belajar Seumur Hidup Anak Anda" />
-	<meta property="og:description" content="Bimbingan belajar dari TK hingga SMA dengan tutor tetap, kelas kecil, dan kurikulum personal." />
-	<meta property="og:image" content={logoSrc.src} />
-	<meta name="twitter:card" content="summary" />
-
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link rel="preconnect" href="https://images.pexels.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
-
-	<script type="application/ld+json" set:html={JSON.stringify({
-		"@context": "https://schema.org",
-		"@type": "EducationalOrganization",
-		"name": "SAN TUTOR Learning Studio",
-		"url": "https://santutor.id",
-		"telephone": "+62-811-860-568",
-		"address": {
-			"@type": "PostalAddress",
-			"streetAddress": "Jl. Melati Raya No. 45",
-			"addressLocality": "Jakarta Selatan",
-			"addressRegion": "DKI Jakarta",
-			"postalCode": "12130",
-			"addressCountry": "ID"
-		},
-		"description": "Bimbingan belajar berjenjang dari TK hingga SMA dengan tutor tetap dan kelas kecil."
-	})}></script>
-</head>
-<body>
-
-	<!-- ======================= HEADER ======================= -->
-	<header class="site-header" id="siteHeader">
-		<div class="wrap nav-inner">
-			<a href="#top" class="logo" aria-label="SAN TUTOR Learning Studio — Beranda">
-				<img
-					src={logoSrc.src}
-					style={{ height: '90px', width: 'auto' }}
-					alt="Logo Santutor Learning Studio"
-					class="logo-img"
-				/>
-			</a>
-
-			<nav class="main-nav" id="mainNav" aria-label="Navigasi utama">
-				<a href="#tentang">Tentang Kami</a>
-				<a href="#tutor">Tutor</a>
-				<a href="#jenjang">Jenjang</a>
-				<a href="#program">Program</a>
-				<a href="#testimoni">Testimoni</a>
-			</nav>
-
-			<div class="nav-actions">
-				<a href="https://wa.me/62811860568" class="nav-phone">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-					<span>+62 811-860-568</span>
-				</a>
-				<a href="#pendaftaran" class="btn btn-primary btn-sm">Daftar Sekarang</a>
-				<button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false" aria-controls="mobileNav">
-					<span></span><span></span><span></span>
-				</button>
-			</div>
-		</div>
-
-		<div class="mobile-nav" id="mobileNav">
-			<a href="#tentang">Tentang Kami</a>
-			<a href="#tutor">Tutor</a>
-			<a href="#jenjang">Jenjang</a>
-			<a href="#program">Program</a>
-			<a href="#faq">FAQ</a>
-			<a href="#testimoni">Testimoni</a>
-			<a href="#pendaftaran" class="btn btn-primary">Daftar Sekarang</a>
-		</div>
-	</header>
+<Layout
+	title="SAN TUTOR Learning Studio — Mitra Belajar Seumur Hidup Anak Anda"
+	titleEn="SAN TUTOR Learning Studio — Your Child’s Lifelong Learning Partner"
+	description="SAN TUTOR menemani anak Anda dari TK hingga SMA dengan tutor tetap, kurikulum berjenjang, dan kelas kecil yang interaktif. Jadwalkan kelas percobaan gratis sekarang."
+	descriptionEn="SAN TUTOR supports your child from kindergarten to senior high school with consistent tutors, a structured curriculum, and interactive small classes. Book a free trial class today."
+	currentPage="home"
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "EducationalOrganization",
+			"name": "SAN TUTOR Learning Studio",
+			"url": "https://santutor.id",
+			"telephone": "+62-858-7200-0689",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "Janur Kuning Residence, Jl. Kelapa Puan Raya Blok WS-1 No. 7",
+				"addressLocality": "Kelapa Gading, Jakarta Utara",
+				"addressRegion": "DKI Jakarta",
+				"postalCode": "14240",
+				"addressCountry": "ID"
+			},
+			"description": "Bimbingan belajar berjenjang dari TK hingga SMA dengan tutor tetap dan kelas kecil."
+		})}></script>
+	</Fragment>
 
 	<main id="top">
 
-		<!-- ======================= HERO ======================= -->
-		<section class="hero">
-			<div class="section-decor" aria-hidden="true">
-				<span class="dot-grid dot-grid-hero"></span>
-				<span class="blob blob-blue" style="top:-120px; left:-140px; width:340px; height:340px;"></span>
-				<span class="blob blob-orange" style="bottom:-140px; left:38%; width:260px; height:260px;"></span>
-				<svg class="doodle doodle-star" style="top:14%; left:6%;" width="26" height="26" viewBox="0 0 24 24" fill="var(--orange)"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2Z"/></svg>
-				<svg class="doodle doodle-plus" style="top:66%; left:3%;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="3" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg>
-			</div>
-			<div class="wrap hero-inner">
-				<div class="hero-content reveal">
-					<p class="eyebrow">Sejak TK hingga SMA, satu atap yang sama</p>
-					<h1>Satu Mitra Belajar, untuk Setiap Babak Tumbuh Kembang Anak Anda</h1>
-					<p class="hero-lede">
-						SAN TUTOR mendampingi anak Anda sejak langkah pertama di TK hingga garis akhir SMA — dengan tutor yang mengenal mereka luar-dalam, kurikulum yang ikut berkembang, dan kelas kecil yang membuat setiap anak benar-benar didengar.
-					</p>
-					<div class="hero-cta">
-						<a href="#pendaftaran" class="btn btn-primary btn-lg">Daftar Kelas Percobaan Gratis</a>
-						<a href="#jenjang" class="btn btn-ghost btn-lg">Lihat Jenjang Belajar</a>
-					</div>
-					<dl class="hero-stats">
-						<div><dt>500+</dt><dd>Siswa terbimbing</dd></div>
-						<div><dt>4 Jenjang</dt><dd>TK &middot; SD &middot; SMP &middot; SMA</dd></div>
-						<div><dt>Maks. 5</dt><dd>Anak per kelas</dd></div>
-					</dl>
+			<!-- ======================= HERO ======================= -->
+			<section class="hero">
+				<div class="section-decor" aria-hidden="true">
+					<span class="dot-grid dot-grid-hero"></span>
+					<span class="blob blob-blue" style="top:-120px; left:-140px; width:340px; height:340px;"></span>
+					<span class="blob blob-orange" style="bottom:-140px; left:38%; width:260px; height:260px;"></span>
+					<svg class="doodle doodle-star" style="top:14%; left:6%;" width="26" height="26" viewBox="0 0 24 24" fill="var(--orange)"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2Z"/></svg>
+					<svg class="doodle doodle-plus" style="top:66%; left:3%;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="3" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg>
 				</div>
-
-				<div class="hero-visual reveal">
-					<div class="hero-blob" aria-hidden="true"></div>
-					<img 
-						src={ilustrasiHero.src} 
-						width={ilustrasiHero.width} 
-						height={ilustrasiHero.height} 
-						alt="Ilustrasi tutor dan anak-anak belajar bersama di meja" 
-						class="hero-illustration"
-					/>
-					<div class="hero-badge">
-						<span class="hero-badge-dot"></span>
-						Kelas kecil, maksimal 5 anak
+				<div class="wrap hero-inner">
+					<div class="hero-content reveal">
+						<p class="eyebrow">Sejak TK hingga SMA, satu atap yang sama</p>
+						<h1>Satu Mitra Belajar, untuk Setiap Babak Tumbuh Kembang Anak Anda</h1>
+						<p class="hero-lede">
+							SAN TUTOR mendampingi anak Anda sejak langkah pertama di TK hingga garis akhir SMA — dengan tutor yang mengenal mereka luar-dalam, kurikulum yang ikut berkembang, dan kelas kecil yang membuat setiap anak benar-benar didengar.
+						</p>
+						<div class="hero-cta">
+							<a href="#pendaftaran" class="btn btn-primary btn-lg">Daftar Kelas Percobaan Gratis</a>
+							<a href="#jenjang" class="btn btn-ghost btn-lg">Lihat Jenjang Belajar</a>
+						</div>
+						<dl class="hero-stats">
+							<div><dt>500+</dt><dd>Siswa terbimbing</dd></div>
+							<div><dt>4 Jenjang</dt><dd>TK &middot; SD &middot; SMP &middot; SMA</dd></div>
+							<div><dt>Maks. 5</dt><dd>Anak per kelas</dd></div>
+						</dl>
 					</div>
-					<figure class="hero-photo-chip">
-						<img
-							src="https://images.pexels.com/photos/7156103/pexels-photo-7156103.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop"
-							width="150"
-							height="150"
-							loading="lazy"
-							alt="Tutor SAN TUTOR mendampingi anak-anak belajar dalam kelompok kecil"
+
+					<div class="hero-visual reveal">
+						<div class="hero-blob" aria-hidden="true"></div>
+						<img 
+							src={ilustrasiHero.src} 
+							width={ilustrasiHero.width} 
+							height={ilustrasiHero.height} 
+							alt="Ilustrasi tutor dan anak-anak belajar bersama di meja" 
+							class="hero-illustration"
 						/>
-					</figure>
-				</div>
-			</div>
-		</section>
-
-		<!-- ======================= WHY US ======================= -->
-		<section class="why-section" id="tentang">
-			<div class="section-decor" aria-hidden="true">
-				<span class="blob blob-sage" style="top:-90px; right:-100px; width:300px; height:300px;"></span>
-				<span class="blob blob-orange" style="bottom:-110px; left:-90px; width:260px; height:260px;"></span>
-			</div>
-			<div class="wrap">
-				<div class="section-head reveal">
-					<p class="eyebrow">Kenapa Orang Tua Memilih Kami</p>
-					<h2>Belajar yang Ikut Tumbuh Bersama Anak Anda</h2>
-					<p class="section-lede">Bukan sekadar bimbingan belajar musiman. SAN TUTOR dibangun agar satu tutor bisa benar-benar mengenal anak Anda, dari kebiasaan belajarnya sampai apa yang membuatnya semangat.</p>
-				</div>
-
-				<div class="why-columns">
-					<div class="why-list reveal">
-						<div class="why-list-item">
-							<span class="why-list-icon" style="--icon-bg:#FDEDE0;--icon-fg:#F2761E">
-								<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c4-2 8-2 8 0v14c0-2-4-2-8 0V6Z"/><path d="M20 6c-4-2-8-2-8 0v14c0-2 4-2 8 0V6Z"/></svg>
-							</span>
-							<div>
-								<h3>Tutor untuk Semua Jenjang</h3>
-								<p>Satu tutor dapat mendampingi anak Anda dari TK hingga SMA — kepercayaan dan pemahaman karakter anak terus terjaga, tidak mulai dari nol tiap tahun.</p>
-							</div>
+						<div class="hero-badge">
+							<span class="hero-badge-dot"></span>
+							Kelas kecil, maksimal 5 anak
 						</div>
-						<div class="why-list-item">
-							<span class="why-list-icon" style="--icon-bg:#E7F7FD;--icon-fg:#3EB6EA">
-								<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
-							</span>
-							<div>
-								<h3>Kurikulum Berjenjang &amp; Personal</h3>
-								<p>Materi disusun berbasis proyek dan disesuaikan gaya belajar tiap anak — bukan modul seragam untuk semua orang.</p>
-							</div>
-						</div>
-						<div class="why-list-item">
-							<span class="why-list-icon" style="--icon-bg:#F1EEE0;--icon-fg:#6E9B7D">
-								<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-							</span>
-							<div>
-								<h3>Kelas Kecil &amp; Interaktif</h3>
-								<p>Maksimal 5 anak per kelas, agar setiap pertanyaan terjawab dan setiap anak punya ruang untuk aktif.</p>
-							</div>
-						</div>
-						<div class="why-list-item">
-							<span class="why-list-icon" style="--icon-bg:#FDEDE0;--icon-fg:#F2761E">
-								<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="M9 12l2 2 4-4"/></svg>
-							</span>
-							<div>
-								<h3>Lingkungan Aman &amp; Menyenangkan</h3>
-								<p>Ruang belajar yang nyaman dan pengajar terlatih membuat anak betah — dan orang tua tenang.</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="why-collage reveal">
-						<figure class="collage-item collage-lg">
-							<img src="https://images.unsplash.com/photo-1636202339022-7d67f7447e3a?auto=format&fit=crop&w=800&q=80" alt="Sekelompok kecil anak belajar bersama di dalam kelas" loading="lazy" />
-						</figure>
-						<figure class="collage-item collage-sm" style="transform:rotate(-2deg)">
-							<img src="https://plus.unsplash.com/premium_photo-1726750920964-c953324a3202?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTIxfHxraWRzJTIwYm9va3xlbnwwfHwwfHx8MA%3D%3D" alt="Siswa fokus belajar dengan buku di meja" loading="lazy" />
-						</figure>
-						<figure class="collage-item collage-sm" style="transform:rotate(2deg)">
-							<img src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?auto=format&fit=crop&w=500&q=80" alt="Anak-anak duduk bersama dalam suasana belajar yang santai" loading="lazy" />
+						<figure class="hero-photo-chip">
+							<img
+								src="https://images.pexels.com/photos/7156103/pexels-photo-7156103.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop"
+								width="150"
+								height="150"
+								loading="lazy"
+								alt="Tutor SAN TUTOR mendampingi anak-anak belajar dalam kelompok kecil"
+							/>
 						</figure>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
 
-		<!-- ======================= TUTOR KAMI ======================= -->
-		<section class="tutor-section" id="tutor">
-			<div class="wrap">
-				<div class="section-head reveal">
-					<p class="eyebrow" style="color:var(--blue)">Kenali Tim Pengajar</p>
-					<h2>Tutor yang Akan Mendampingi Anak Anda</h2>
-					<p class="section-lede">Bukan wajah asing yang berganti tiap semester. Ini tutor tetap kami — dipilih lewat seleksi ketat dan dilatih memahami cara belajar tiap anak.</p>
+			<!-- ======================= WHY US ======================= -->
+			<section class="why-section" id="tentang">
+				<div class="section-decor" aria-hidden="true">
+					<span class="blob blob-sage" style="top:-90px; right:-100px; width:300px; height:300px;"></span>
+					<span class="blob blob-orange" style="bottom:-110px; left:-90px; width:260px; height:260px;"></span>
 				</div>
+				<div class="wrap">
+					<div class="section-head reveal">
+						<p class="eyebrow">Kenapa Orang Tua Memilih Kami</p>
+						<h2>Belajar yang Ikut Tumbuh Bersama Anak Anda</h2>
+						<p class="section-lede">Bukan sekadar bimbingan belajar musiman. SAN TUTOR dibangun agar satu tutor bisa benar-benar mengenal anak Anda, dari kebiasaan belajarnya sampai apa yang membuatnya semangat.</p>
+					</div>
 
-				<div class="tutor-carousel reveal">
-					<div class="tutor-track" id="tutorTrack">
-						<article class="tutor-card" style="--accent:#F2761E">
+					<div class="why-columns">
+						<div class="why-list reveal">
+							<div class="why-list-item">
+								<span class="why-list-icon" style="--icon-bg:#FDEDE0;--icon-fg:#F2761E">
+									<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c4-2 8-2 8 0v14c0-2-4-2-8 0V6Z"/><path d="M20 6c-4-2-8-2-8 0v14c0-2 4-2 8 0V6Z"/></svg>
+								</span>
+								<div>
+									<h3>Tutor untuk Semua Jenjang</h3>
+									<p>Satu tutor dapat mendampingi anak Anda dari TK hingga SMA — kepercayaan dan pemahaman karakter anak terus terjaga, tidak mulai dari nol tiap tahun.</p>
+								</div>
+							</div>
+							<div class="why-list-item">
+								<span class="why-list-icon" style="--icon-bg:#E7F7FD;--icon-fg:#3EB6EA">
+									<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+								</span>
+								<div>
+									<h3>Kurikulum Berjenjang &amp; Personal</h3>
+									<p>Materi disusun berbasis proyek dan disesuaikan gaya belajar tiap anak — bukan modul seragam untuk semua orang.</p>
+								</div>
+							</div>
+							<div class="why-list-item">
+								<span class="why-list-icon" style="--icon-bg:#F1EEE0;--icon-fg:#6E9B7D">
+									<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+								</span>
+								<div>
+									<h3>Kelas Kecil &amp; Interaktif</h3>
+									<p>Maksimal 5 anak per kelas, agar setiap pertanyaan terjawab dan setiap anak punya ruang untuk aktif.</p>
+								</div>
+							</div>
+							<div class="why-list-item">
+								<span class="why-list-icon" style="--icon-bg:#FDEDE0;--icon-fg:#F2761E">
+									<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="M9 12l2 2 4-4"/></svg>
+								</span>
+								<div>
+									<h3>Lingkungan Aman &amp; Menyenangkan</h3>
+									<p>Ruang belajar yang nyaman dan pengajar terlatih membuat anak betah — dan orang tua tenang.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="why-collage reveal">
+							<figure class="collage-item collage-lg">
+								<img src="https://images.unsplash.com/photo-1636202339022-7d67f7447e3a?auto=format&fit=crop&w=800&q=80" alt="Sekelompok kecil anak belajar bersama di dalam kelas" loading="lazy" />
+							</figure>
+							<figure class="collage-item collage-sm" style="transform:rotate(-2deg)">
+								<img src="https://plus.unsplash.com/premium_photo-1726750920964-c953324a3202?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTIxfHxraWRzJTIwYm9va3xlbnwwfHwwfHx8MA%3D%3D" alt="Siswa fokus belajar dengan buku di meja" loading="lazy" />
+							</figure>
+							<figure class="collage-item collage-sm" style="transform:rotate(2deg)">
+								<img src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?auto=format&fit=crop&w=500&q=80" alt="Anak-anak duduk bersama dalam suasana belajar yang santai" loading="lazy" />
+							</figure>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ======================= TUTOR KAMI ======================= -->
+			<section class="tutor-section" id="tutor">
+				<div class="wrap">
+					<div class="section-head reveal">
+						<p class="eyebrow" style="color:var(--blue)">Kenali Tim Pengajar</p>
+						<h2>Tutor yang Akan Mendampingi Anak Anda</h2>
+						<p class="section-lede">Bukan wajah asing yang berganti tiap semester. Ini tutor tetap kami — dipilih lewat seleksi ketat dan dilatih memahami cara belajar tiap anak.</p>
+					</div>
+
+					<div class="tutor-carousel reveal">
+						<div class="tutor-track" id="tutorTrack">
+							<article class="tutor-card" style="--accent:#F2761E">
 							
-								<img src="https://media.licdn.com/dms/image/v2/D5603AQHu96oAAK4rLw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1714817054451?e=2147483647&v=beta&t=z6ld6QvJG7y-VoxfozxBPk3fULaaE4kSZTwh9xXOrWc" 
-								style="width: 100px; height: 100px; border-radius: 50%; border: 1px solid #555555; object-fit: cover; display: block; margin: 0 auto;" 
-								alt="Profile Picture">
+									<img src="https://media.licdn.com/dms/image/v2/D5603AQHu96oAAK4rLw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1714817054451?e=2147483647&v=beta&t=z6ld6QvJG7y-VoxfozxBPk3fULaaE4kSZTwh9xXOrWc" 
+									style="width: 100px; height: 100px; border-radius: 50%; border: 1px solid #555555; object-fit: cover; display: block; margin: 0 auto;" 
+									alt="Profile Picture">
 							
-							<h3>Ms. Sansan</h3>
-							<p class="tutor-role">Tutor TK SD &amp;SMP</p>
-							<p class="tutor-edu">Guru Sekolah Internasional Berpengalaman lebih dari 5 tahun Mengajar</p>
-							<p class="tutor-quote">"Semua anak pasti bisa!"</p>
-						</article>
+								<h3>Ms. Sansan</h3>
+								<p class="tutor-role">Tutor TK SD &amp;SMP</p>
+								<p class="tutor-edu">Guru Sekolah Internasional Berpengalaman lebih dari 5 tahun Mengajar</p>
+								<p class="tutor-quote">"Semua anak pasti bisa!"</p>
+							</article>
 
-						<article class="tutor-card" style="--accent:#3EB6EA">
-							<img src="https://i1.rgstatic.net/ii/profile.image/955756656467970-1604881552637_Q512/Halley-Kuncoro.jpg" 
-								style="width: 100px; height: 100px; border-radius: 50%; border: 1px solid #555555; object-fit: cover; display: block; margin: 0 auto;" 
-								alt="Profile Picture">
-							<h3>Mr. Rafael Halley</h3>
-							<p class="tutor-role">Spesialis STEM</p>
-							<p class="tutor-edu">Master pendidikan dan Pendidik Tersertifikasi, Pengalaman lebih dari 15 tahun mengajar</p>
-							<p class="tutor-quote">"Kalau konsep dasarnya kuat, soal sesulit apa pun jadi terasa masuk akal."</p>
-						</article>
+							<article class="tutor-card" style="--accent:#3EB6EA">
+								<img src="https://i1.rgstatic.net/ii/profile.image/955756656467970-1604881552637_Q512/Halley-Kuncoro.jpg" 
+									style="width: 100px; height: 100px; border-radius: 50%; border: 1px solid #555555; object-fit: cover; display: block; margin: 0 auto;" 
+									alt="Profile Picture">
+								<h3>Mr. Rafael Halley</h3>
+								<p class="tutor-role">Spesialis STEM</p>
+								<p class="tutor-edu">Master pendidikan dan Pendidik Tersertifikasi, Pengalaman lebih dari 15 tahun mengajar</p>
+								<p class="tutor-quote">"Kalau konsep dasarnya kuat, soal sesulit apa pun jadi terasa masuk akal."</p>
+							</article>
 
-						<article class="tutor-card" style="--accent:#6E9B7D">
-							<img 
-								src={ratihpp.src} alt="Foto Profil Ratih Puspitasari" 
-								style="width: 100px; height: 100px; border-radius: 50%; border: 1px solid #555555; object-fit: cover; display: block; margin: 0 auto;" 
-								/>
-							<h3>Ms. Ratih Puspitasari</h3>
-							<p class="tutor-role">Spesialis Bahasa &amp; Persiapan Ujian SMA</p>
-							<p class="tutor-edu">S.Pd Pendidikan Bahasa Inggris, Universitas Padjadjaran</p>
-							<p class="tutor-quote">"Persiapan ujian paling efektif kalau anak juga percaya diri, bukan cuma hafal rumus."</p>
-						</article>
+							<article class="tutor-card" style="--accent:#6E9B7D">
+								<img 
+									src={ratihpp.src} alt="Foto Profil Ratih Puspitasari" 
+									style="width: 100px; height: 100px; border-radius: 50%; border: 1px solid #555555; object-fit: cover; display: block; margin: 0 auto;" 
+									/>
+								<h3>Ms. Ratih Puspitasari</h3>
+								<p class="tutor-role">Spesialis Bahasa &amp; Persiapan Ujian SMA</p>
+								<p class="tutor-edu">S.Pd Pendidikan Bahasa Inggris, Universitas Padjadjaran</p>
+								<p class="tutor-quote">"Persiapan ujian paling efektif kalau anak juga percaya diri, bukan cuma hafal rumus."</p>
+							</article>
 
-						<article class="tutor-card" style="--accent:#F2761E">
-							<img 
-								src={bimopp.src} alt="Foto Profil Ratih Puspitasari" 
-								style="width: 100px; height: 100px; border-radius: 50%; border: 1px solid #555555; object-fit: cover; display: block; margin: 0 auto;" 
-								/>
-							<h3>Mr. Bimo Aditya</h3>
-							<p class="tutor-role">Spesialis Sains SMP &amp; SMA</p>
-							<p class="tutor-edu">S.Pd Pendidikan Fisika, Universitas Gadjah Mada</p>
-							<p class="tutor-quote">"Sains itu paling seru kalau dikaitkan ke hal-hal yang anak lihat sehari-hari."</p>
-						</article>
+							<article class="tutor-card" style="--accent:#F2761E">
+								<img 
+									src={bimopp.src} alt="Foto Profil Ratih Puspitasari" 
+									style="width: 100px; height: 100px; border-radius: 50%; border: 1px solid #555555; object-fit: cover; display: block; margin: 0 auto;" 
+									/>
+								<h3>Mr. Bimo Aditya</h3>
+								<p class="tutor-role">Spesialis Sains SMP &amp; SMA</p>
+								<p class="tutor-edu">S.Pd Pendidikan Fisika, Universitas Gadjah Mada</p>
+								<p class="tutor-quote">"Sains itu paling seru kalau dikaitkan ke hal-hal yang anak lihat sehari-hari."</p>
+							</article>
+						</div>
+						<div class="tutor-nav">
+							<button type="button" id="tutorPrev" aria-label="Tutor sebelumnya">
+								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+							</button>
+							<button type="button" id="tutorNext" aria-label="Tutor berikutnya">
+								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+							</button>
+						</div>
 					</div>
-					<div class="tutor-nav">
-						<button type="button" id="tutorPrev" aria-label="Tutor sebelumnya">
-							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-						</button>
-						<button type="button" id="tutorNext" aria-label="Tutor berikutnya">
-							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-						</button>
-					</div>
-				</div>
 				
-			</div>
-		</section>
-
-		<!-- ======================= JENJANG / JOURNEY ======================= -->
-		<section class="journey-section" id="jenjang">
-			<div class="section-decor" aria-hidden="true">
-				<span class="blob blob-blue" style="top:-80px; left:42%; width:260px; height:260px;"></span>
-			</div>
-			<div class="wrap">
-				<div class="section-head reveal">
-					<p class="eyebrow">Perjalanan Belajar Bersama Kami</p>
-					<h2>Satu Jalur, Empat Babak Pertumbuhan</h2>
-					<p class="section-lede">Di mana pun posisi belajar anak Anda saat ini, SAN TUTOR siap menjadi mitra terbaiknya. Kami menyediakan program belajar adaptif untuk semua jenjang—mulai dari pondasi dasar di TK/SD, persiapan kelulusan SMP, hingga strategi sukses ujian di SMA.</p>
 				</div>
+			</section>
 
-				<div class="journey-track">
-					<div class="journey-stop reveal" style="--offset:0px">
-						<span class="journey-dot"></span>
-						<div class="journey-card">
-							<img class="journey-photo" src="https://images.pexels.com/photos/8363102/pexels-photo-8363102.jpeg?auto=compress&cs=tinysrgb&w=500&h=360&fit=crop" width="500" height="360" loading="lazy" alt="Anak-anak TK belajar sambil bermain bersama guru" />
-							<div class="journey-card-body">
-								<span class="journey-age">4–6 tahun</span>
-								<h3>TK</h3>
-								<p>Mengenal huruf, angka, dan kebiasaan belajar lewat permainan dan cerita.</p>
+			<!-- ======================= JENJANG / JOURNEY ======================= -->
+			<section class="journey-section" id="jenjang">
+				<div class="section-decor" aria-hidden="true">
+					<span class="blob blob-blue" style="top:-80px; left:42%; width:260px; height:260px;"></span>
+				</div>
+				<div class="wrap">
+					<div class="section-head reveal">
+						<p class="eyebrow">Perjalanan Belajar Bersama Kami</p>
+						<h2>Satu Jalur, Empat Babak Pertumbuhan</h2>
+						<p class="section-lede">Di mana pun posisi belajar anak Anda saat ini, SAN TUTOR siap menjadi mitra terbaiknya. Kami menyediakan program belajar adaptif untuk semua jenjang—mulai dari pondasi dasar di TK/SD, persiapan kelulusan SMP, hingga strategi sukses ujian di SMA.</p>
+					</div>
+
+					<div class="journey-track">
+						<div class="journey-stop reveal" style="--offset:0px">
+							<span class="journey-dot"></span>
+							<div class="journey-card">
+								<img class="journey-photo" src="https://images.pexels.com/photos/8363102/pexels-photo-8363102.jpeg?auto=compress&cs=tinysrgb&w=500&h=360&fit=crop" width="500" height="360" loading="lazy" alt="Anak-anak TK belajar sambil bermain bersama guru" />
+								<div class="journey-card-body">
+									<span class="journey-age">4–6 tahun</span>
+									<h3>TK</h3>
+									<p>Mengenal huruf, angka, dan kebiasaan belajar lewat permainan dan cerita.</p>
+								</div>
+							</div>
+						</div>
+						<div class="journey-stop reveal" style="--offset:-26px">
+							<span class="journey-dot"></span>
+							<div class="journey-card">
+								<img class="journey-photo" src="https://images.pexels.com/photos/8617971/pexels-photo-8617971.jpeg?auto=compress&cs=tinysrgb&w=500&h=360&fit=crop" width="500" height="360" loading="lazy" alt="Siswa SD belajar aktif di kelas kecil" />
+								<div class="journey-card-body">
+									<span class="journey-age">7–12 tahun</span>
+									<h3>SD</h3>
+									<p>Menguatkan dasar Matematika, Bahasa, dan Sains sambil menumbuhkan rasa percaya diri.</p>
+								</div>
+							</div>
+						</div>
+						<div class="journey-stop reveal" style="--offset:0px">
+							<span class="journey-dot"></span>
+							<div class="journey-card">
+								<img class="journey-photo" src="https://images.pexels.com/photos/7694945/pexels-photo-7694945.jpeg?auto=compress&cs=tinysrgb&w=500&h=360&fit=crop" width="500" height="360" loading="lazy" alt="Siswa SMP belajar mandiri di rumah" />
+								<div class="journey-card-body">
+									<span class="journey-age">13–15 tahun</span>
+									<h3>SMP</h3>
+									<p>Memperdalam pemahaman konsep dan melatih kebiasaan belajar yang lebih mandiri.</p>
+								</div>
+							</div>
+						</div>
+						<div class="journey-stop reveal" style="--offset:-26px">
+							<span class="journey-dot journey-dot-end"></span>
+							<div class="journey-card">
+								<img class="journey-photo" src="https://images.pexels.com/photos/7516544/pexels-photo-7516544.jpeg?auto=compress&cs=tinysrgb&w=500&h=360&fit=crop" width="500" height="360" loading="lazy" alt="Siswa SMA fokus mempersiapkan ujian besar" />
+								<div class="journey-card-body">
+									<span class="journey-age">16–18 tahun</span>
+									<h3>SMA</h3>
+									<p>Fokus pada pendalaman materi, strategi ujian, dan persiapan menuju jenjang berikutnya.</p>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="journey-stop reveal" style="--offset:-26px">
-						<span class="journey-dot"></span>
-						<div class="journey-card">
-							<img class="journey-photo" src="https://images.pexels.com/photos/8617971/pexels-photo-8617971.jpeg?auto=compress&cs=tinysrgb&w=500&h=360&fit=crop" width="500" height="360" loading="lazy" alt="Siswa SD belajar aktif di kelas kecil" />
-							<div class="journey-card-body">
-								<span class="journey-age">7–12 tahun</span>
-								<h3>SD</h3>
-								<p>Menguatkan dasar Matematika, Bahasa, dan Sains sambil menumbuhkan rasa percaya diri.</p>
-							</div>
-						</div>
+				</div>
+			</section>
+
+			<!-- ======================= PROGRAM ======================= -->
+			<section class="program-section" id="program">
+				<div class="section-decor" aria-hidden="true">
+					<span class="dot-grid dot-grid-light"></span>
+				</div>
+				<div class="wrap program-inner">
+					<div class="reveal">
+						<p class="eyebrow eyebrow-light">Program Kami</p>
+						<h2 class="light-title">Dirancang Sesuai Kebutuhan, Bukan Sekadar Jadwal</h2>
+						<p class="program-lede">Dari pendampingan reguler mingguan hingga kelas intensif menjelang ujian, setiap program disusun bersama orang tua agar benar-benar menjawab kebutuhan anak. Biaya bervariasi tergantung jenjang dan frekuensi — tim kami akan bantu hitungkan paket yang paling pas saat konsultasi.</p>
 					</div>
-					<div class="journey-stop reveal" style="--offset:0px">
-						<span class="journey-dot"></span>
-						<div class="journey-card">
-							<img class="journey-photo" src="https://images.pexels.com/photos/7694945/pexels-photo-7694945.jpeg?auto=compress&cs=tinysrgb&w=500&h=360&fit=crop" width="500" height="360" loading="lazy" alt="Siswa SMP belajar mandiri di rumah" />
-							<div class="journey-card-body">
-								<span class="journey-age">13–15 tahun</span>
-								<h3>SMP</h3>
-								<p>Memperdalam pemahaman konsep dan melatih kebiasaan belajar yang lebih mandiri.</p>
-							</div>
-						</div>
-					</div>
-					<div class="journey-stop reveal" style="--offset:-26px">
-						<span class="journey-dot journey-dot-end"></span>
-						<div class="journey-card">
-							<img class="journey-photo" src="https://images.pexels.com/photos/7516544/pexels-photo-7516544.jpeg?auto=compress&cs=tinysrgb&w=500&h=360&fit=crop" width="500" height="360" loading="lazy" alt="Siswa SMA fokus mempersiapkan ujian besar" />
-							<div class="journey-card-body">
-								<span class="journey-age">16–18 tahun</span>
-								<h3>SMA</h3>
-								<p>Fokus pada pendalaman materi, strategi ujian, dan persiapan menuju jenjang berikutnya.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- ======================= PROGRAM ======================= -->
-		<section class="program-section" id="program">
-			<div class="section-decor" aria-hidden="true">
-				<span class="dot-grid dot-grid-light"></span>
-			</div>
-			<div class="wrap program-inner">
-				<div class="reveal">
-					<p class="eyebrow eyebrow-light">Program Kami</p>
-					<h2 class="light-title">Dirancang Sesuai Kebutuhan, Bukan Sekadar Jadwal</h2>
-					<p class="program-lede">Dari pendampingan reguler mingguan hingga kelas intensif menjelang ujian, setiap program disusun bersama orang tua agar benar-benar menjawab kebutuhan anak. Biaya bervariasi tergantung jenjang dan frekuensi — tim kami akan bantu hitungkan paket yang paling pas saat konsultasi.</p>
-				</div>
-				<ul class="program-list reveal">
-					<li>
-						<span class="program-num">01</span>
-						<span class="program-text">
-							<strong>Bimbingan Reguler Mingguan</strong>
-							<small class="packet-list">
-								• 1× seminggu (60 menit/sesi)<br>
-								• 2× seminggu (60 menit/sesi)<br>
-								• 3× seminggu (60 menit/sesi)
-							</small>
-						</span>
-					</li>
-					<li>
-						<span class="program-num">02</span>
-						<span class="program-text"><strong>Kelas Intensif Persiapan Ujian</strong><small>Jadwal padat menjelang UTS/UAS/ujian masuk</small></span>
-					</li>
-					<li>
-						<span class="program-num">03</span>
-						<span class="program-text"><strong>Pendampingan Tugas &amp; PR</strong><small>Fleksibel, disesuaikan jadwal sekolah anak</small></span>
-					</li>
-					<li>
-						<span class="program-num">04</span>
-						<span class="program-text"><strong>Konsultasi Perkembangan Bulanan</strong><small>Laporan progres langsung ke orang tua</small></span>
-					</li>
-				</ul>
-			</div>
-		</section>
-
-		<!-- ======================= FAQ ======================= -->
-		<section class="faq-section" id="faq">
-			<div class="section-decor" aria-hidden="true">
-				<span class="blob blob-orange" style="top:-70px; right:-90px; width:260px; height:260px;"></span>
-			</div>
-			<div class="wrap">
-				<div class="section-head reveal">
-					<p class="eyebrow">Pertanyaan yang Sering Ditanyakan</p>
-					<h2>Sebelum Anda Mendaftar</h2>
-				</div>
-
-				<div class="faq-list reveal">
-					<details class="faq-item" open>
-						<summary>Apakah ada kelas percobaan sebelum mendaftar?</summary>
-						<p>Ada. Kami menyediakan satu sesi kelas percobaan gratis agar Anda dan anak bisa merasakan langsung cara mengajar tutor kami sebelum memutuskan.</p>
-					</details>
-					<details class="faq-item">
-						<summary>Bagaimana proses seleksi tutor di SAN TUTOR?</summary>
-						<p>Setiap tutor melalui seleksi kompetensi akademik, wawancara, dan pelatihan cara mengajar anak sebelum diizinkan memegang kelas — bukan sekadar menguasai materi pelajaran.</p>
-					</details>
-					<details class="faq-item">
-						<summary>Apakah jadwal bisa disesuaikan dengan kegiatan sekolah anak?</summary>
-						<p>Bisa. Jadwal kelas reguler kami atur bersama orang tua di awal, dan bisa disesuaikan lagi jika ada perubahan kegiatan sekolah atau ekstrakurikuler anak.</p>
-					</details>
-					<details class="faq-item">
-						<summary>Bagaimana sistem pembayarannya?</summary>
-						<p>Pembayaran dilakukan per paket bulanan. Rincian biaya akan kami sampaikan setelah mengetahui jenjang dan program yang dipilih saat konsultasi.</p>
-					</details>
-					<details class="faq-item">
-						<summary>Apa yang terjadi kalau anak naik jenjang, misalnya dari SD ke SMP?</summary>
-						<p>Karena tutor kami mendampingi lintas jenjang, sebisa mungkin kami pertahankan tutor yang sama agar anak tidak perlu beradaptasi dari awal lagi.</p>
-					</details>
-				</div>
-			</div>
-		</section>
-
-		<!-- ======================= TESTIMONIALS ======================= -->
-		<section class="testimonials-section" id="testimoni">
-			<div class="section-decor" aria-hidden="true">
-				<span class="blob blob-sage" style="bottom:-90px; left:-80px; width:280px; height:280px;"></span>
-			</div>
-			<div class="wrap">
-				<div class="section-head reveal">
-					<p class="eyebrow">Kata Orang Tua</p>
-					<h2>Dipercaya oleh Keluarga di Sekitar Anda</h2>
-				</div>
-
-				<div class="testi-grid">
-					<figure class="testi-card reveal">
-						<div class="testi-stars" aria-label="5 dari 5 bintang">★★★★★</div>
-						<blockquote>Anak saya yang tadinya malu-malu sekarang senang cerita apa yang dipelajarinya hari itu. Tutornya sabar sekali.</blockquote>
-						<figcaption>
-							<span class="testi-avatar">S</span>
-							<span>
-								<strong>Ibu Sari</strong><br />Putra, kelas 2 TK
-								<span class="testi-badge" style="--badge-bg:var(--sage-light);--badge-fg:var(--sage)">🌱 Lebih percaya diri &amp; aktif</span>
+					<ul class="program-list reveal">
+						<li>
+							<span class="program-num">01</span>
+							<span class="program-text">
+								<strong>Bimbingan Reguler Mingguan</strong>
+								<small class="packet-list">
+									• 1× seminggu (60 menit/sesi)<br>
+									• 2× seminggu (60 menit/sesi)<br>
+									• 3× seminggu (60 menit/sesi)
+								</small>
 							</span>
-						</figcaption>
-					</figure>
-
-					<figure class="testi-card reveal">
-						<div class="testi-stars" aria-label="5 dari 5 bintang">★★★★★</div>
-						<blockquote>Karena tutornya sama sejak SD, dia sudah paham betul cara belajar anak saya. Persiapan SMA-nya jadi tenang, dan sekarang dia diterima di jurusan impiannya.</blockquote>
-						<figcaption>
-							<span class="testi-avatar">A</span>
-							<span>
-								<strong>Bapak Andi</strong><br />Putri, kini mahasiswa
-								<span class="testi-badge" style="--badge-bg:var(--blue-light);--badge-fg:var(--blue)">🎓 Lolos UI 2025</span>
-							</span>
-						</figcaption>
-					</figure>
-
-					<figure class="testi-card reveal">
-						<div class="testi-stars" aria-label="5 dari 5 bintang">★★★★★</div>
-						<blockquote>Kelasnya kecil jadi anak saya benar-benar diperhatikan, bukan cuma ikut rombongan. Nilainya membaik dalam dua bulan.</blockquote>
-						<figcaption>
-							<span class="testi-avatar">R</span>
-							<span>
-								<strong>Ibu Ratna</strong><br />Putra, kelas 8 SMP
-								<span class="testi-badge" style="--badge-bg:var(--orange-light);--badge-fg:var(--orange)">🏆 Juara 1 Olimpiade Matematika Kota</span>
-							</span>
-						</figcaption>
-					</figure>
+						</li>
+						<li>
+							<span class="program-num">02</span>
+							<span class="program-text"><strong>Kelas Intensif Persiapan Ujian</strong><small>Jadwal padat menjelang UTS/UAS/ujian masuk</small></span>
+						</li>
+						<li>
+							<span class="program-num">03</span>
+							<span class="program-text"><strong>Pendampingan Tugas &amp; PR</strong><small>Fleksibel, disesuaikan jadwal sekolah anak</small></span>
+						</li>
+						<li>
+							<span class="program-num">04</span>
+							<span class="program-text"><strong>Konsultasi Perkembangan Bulanan</strong><small>Laporan progres langsung ke orang tua</small></span>
+						</li>
+					</ul>
 				</div>
-			</div>
-		</section>
+			</section>
 
-		<!-- ======================= PENDAFTARAN ======================= -->
-		<section class="daftar-section" id="pendaftaran">
-			<div class="section-decor" aria-hidden="true">
-				<span class="blob blob-blue" style="top:-100px; right:-90px; width:300px; height:300px;"></span>
-				<span class="blob blob-orange" style="bottom:-90px; left:-70px; width:230px; height:230px;"></span>
-			</div>
-			<div class="wrap daftar-inner">
-				<div class="daftar-copy reveal">
-					<p class="eyebrow">Mulai Sekarang</p>
-					<h2>Daftarkan Kelas Percobaan Gratis Anak Anda</h2>
-					<p class="section-lede daftar-lede">Isi formulir singkat ini, dan kami akan bantu carikan jenjang serta program yang paling pas untuk anak Anda.</p>
-					<ol class="daftar-steps">
-						<li><span>1</span>Isi data singkat di formulir</li>
-						<li><span>2</span>Tim kami hubungi Anda dalam 1×24 jam</li>
-						<li><span>3</span>Jadwalkan kelas percobaan gratis</li>
-					</ol>
+			<!-- ======================= FAQ ======================= -->
+			<section class="faq-section" id="faq">
+				<div class="section-decor" aria-hidden="true">
+					<span class="blob blob-orange" style="top:-70px; right:-90px; width:260px; height:260px;"></span>
 				</div>
+				<div class="wrap">
+					<div class="section-head reveal">
+						<p class="eyebrow">Pertanyaan yang Sering Ditanyakan</p>
+						<h2>Sebelum Anda Mendaftar</h2>
+					</div>
 
-				<form class="daftar-form reveal" id="daftarForm">
-					<div class="form-row">
-						<label for="nama_ortu">Nama Orang Tua</label>
-						<input type="text" id="nama_ortu" name="nama_ortu" required placeholder="Nama lengkap Anda" />
+					<div class="faq-list reveal">
+						<details class="faq-item" open>
+							<summary>Apakah ada kelas percobaan sebelum mendaftar?</summary>
+							<p>Ada. Kami menyediakan satu sesi kelas percobaan gratis agar Anda dan anak bisa merasakan langsung cara mengajar tutor kami sebelum memutuskan.</p>
+						</details>
+						<details class="faq-item">
+							<summary>Bagaimana proses seleksi tutor di SAN TUTOR?</summary>
+							<p>Setiap tutor melalui seleksi kompetensi akademik, wawancara, dan pelatihan cara mengajar anak sebelum diizinkan memegang kelas — bukan sekadar menguasai materi pelajaran.</p>
+						</details>
+						<details class="faq-item">
+							<summary>Apakah jadwal bisa disesuaikan dengan kegiatan sekolah anak?</summary>
+							<p>Bisa. Jadwal kelas reguler kami atur bersama orang tua di awal, dan bisa disesuaikan lagi jika ada perubahan kegiatan sekolah atau ekstrakurikuler anak.</p>
+						</details>
+						<details class="faq-item">
+							<summary>Bagaimana sistem pembayarannya?</summary>
+							<p>Pembayaran dilakukan per paket bulanan. Rincian biaya akan kami sampaikan setelah mengetahui jenjang dan program yang dipilih saat konsultasi.</p>
+						</details>
+						<details class="faq-item">
+							<summary>Apa yang terjadi kalau anak naik jenjang, misalnya dari SD ke SMP?</summary>
+							<p>Karena tutor kami mendampingi lintas jenjang, sebisa mungkin kami pertahankan tutor yang sama agar anak tidak perlu beradaptasi dari awal lagi.</p>
+						</details>
 					</div>
-					<div class="form-row">
-						<label for="nama_anak">Nama Anak</label>
-						<input type="text" id="nama_anak" name="nama_anak" required placeholder="Nama lengkap anak" />
+				</div>
+			</section>
+
+			<!-- ======================= TESTIMONIALS ======================= -->
+			<section class="testimonials-section" id="testimoni">
+				<div class="section-decor" aria-hidden="true">
+					<span class="blob blob-sage" style="bottom:-90px; left:-80px; width:280px; height:280px;"></span>
+				</div>
+				<div class="wrap">
+					<div class="section-head reveal">
+						<p class="eyebrow">Kata Orang Tua</p>
+						<h2>Dipercaya oleh Keluarga di Sekitar Anda</h2>
 					</div>
-					<div class="form-row form-row-split">
-						<div>
-							<label for="jenjang">Jenjang</label>
-							<select id="jenjang" name="jenjang" required>
-								<option value="" disabled selected>Pilih jenjang</option>
-								<option value="TK">TK</option>
-								<option value="SD">SD</option>
-								<option value="SMP">SMP</option>
-								<option value="SMA">SMA</option>
-							</select>
+
+					<div class="testi-grid">
+						<figure class="testi-card reveal">
+							<div class="testi-stars" aria-label="5 dari 5 bintang">★★★★★</div>
+							<blockquote>Anak saya yang tadinya malu-malu sekarang senang cerita apa yang dipelajarinya hari itu. Tutornya sabar sekali.</blockquote>
+							<figcaption>
+								<span class="testi-avatar">S</span>
+								<span>
+									<strong>Ibu Sari</strong><br />Putra, kelas 2 TK
+									<span class="testi-badge" style="--badge-bg:var(--sage-light);--badge-fg:var(--sage)">🌱 Lebih percaya diri &amp; aktif</span>
+								</span>
+							</figcaption>
+						</figure>
+
+						<figure class="testi-card reveal">
+							<div class="testi-stars" aria-label="5 dari 5 bintang">★★★★★</div>
+							<blockquote>Karena tutornya sama sejak SD, dia sudah paham betul cara belajar anak saya. Persiapan SMA-nya jadi tenang, dan sekarang dia diterima di jurusan impiannya.</blockquote>
+							<figcaption>
+								<span class="testi-avatar">A</span>
+								<span>
+									<strong>Bapak Andi</strong><br />Putri, kini mahasiswa
+									<span class="testi-badge" style="--badge-bg:var(--blue-light);--badge-fg:var(--blue)">🎓 Lolos UI 2025</span>
+								</span>
+							</figcaption>
+						</figure>
+
+						<figure class="testi-card reveal">
+							<div class="testi-stars" aria-label="5 dari 5 bintang">★★★★★</div>
+							<blockquote>Kelasnya kecil jadi anak saya benar-benar diperhatikan, bukan cuma ikut rombongan. Nilainya membaik dalam dua bulan.</blockquote>
+							<figcaption>
+								<span class="testi-avatar">R</span>
+								<span>
+									<strong>Ibu Ratna</strong><br />Putra, kelas 8 SMP
+									<span class="testi-badge" style="--badge-bg:var(--orange-light);--badge-fg:var(--orange)">🏆 Juara 1 Olimpiade Matematika Kota</span>
+								</span>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+			</section>
+
+			<!-- ======================= PENDAFTARAN ======================= -->
+			<section class="daftar-section" id="pendaftaran">
+				<div class="section-decor" aria-hidden="true">
+					<span class="blob blob-blue" style="top:-100px; right:-90px; width:300px; height:300px;"></span>
+					<span class="blob blob-orange" style="bottom:-90px; left:-70px; width:230px; height:230px;"></span>
+				</div>
+				<div class="wrap daftar-inner">
+					<div class="daftar-copy reveal">
+						<p class="eyebrow">Mulai Sekarang</p>
+						<h2>Daftarkan Kelas Percobaan Gratis Anak Anda</h2>
+						<p class="section-lede daftar-lede">Isi formulir singkat ini, dan kami akan bantu carikan jenjang serta program yang paling pas untuk anak Anda.</p>
+						<ol class="daftar-steps">
+							<li><span>1</span>Isi data singkat di formulir</li>
+							<li><span>2</span>Tim kami hubungi Anda dalam 1×24 jam</li>
+							<li><span>3</span>Jadwalkan kelas percobaan gratis</li>
+						</ol>
+					</div>
+
+					<form class="daftar-form reveal" id="daftarForm">
+						<div class="form-row">
+							<label for="nama_ortu">Nama Orang Tua</label>
+							<input type="text" id="nama_ortu" name="nama_ortu" required placeholder="Nama lengkap Anda" data-i18n-placeholder-id="Nama lengkap Anda" data-i18n-placeholder-en="Your full name" />
 						</div>
-						<div>
-							<label for="program">Program Diminati</label>
-							<select id="program" name="program">
-								<option value="" disabled selected>Pilih program (opsional)</option>
-								<option value="Bimbingan Reguler Mingguan">Bimbingan Reguler Mingguan</option>
-								<option value="Kelas Intensif Persiapan Ujian">Kelas Intensif Persiapan Ujian</option>
-								<option value="Pendampingan Tugas & PR">Pendampingan Tugas &amp; PR</option>
-								<option value="Konsultasi Perkembangan Bulanan">Konsultasi Perkembangan Bulanan</option>
-							</select>
+						<div class="form-row">
+							<label for="nama_anak">Nama Anak</label>
+							<input type="text" id="nama_anak" name="nama_anak" required placeholder="Nama lengkap anak" data-i18n-placeholder-id="Nama lengkap anak" data-i18n-placeholder-en="Child’s full name" />
 						</div>
-					</div>
-					<div class="form-row">
-						<label for="whatsapp">Nomor WhatsApp</label>
-						<input type="tel" id="whatsapp" name="whatsapp" required placeholder="08xx-xxxx-xxxx" />
-					</div>
-					<div class="form-row">
-						<label for="catatan">Catatan (opsional)</label>
-						<textarea id="catatan" name="catatan" rows="3" placeholder="Ceritakan kebutuhan belajar anak Anda"></textarea>
-					</div>
-					<button type="submit" class="btn btn-primary btn-lg btn-block">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2.003c-5.53 0-10.02 4.49-10.02 10.02 0 1.77.46 3.44 1.27 4.9L2 22l5.2-1.27a9.96 9.96 0 0 0 4.84 1.24h.01c5.53 0 10.02-4.49 10.02-10.02 0-2.67-1.04-5.19-2.93-7.08a9.96 9.96 0 0 0-7.1-2.85Z" opacity=".18"/><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/></svg>
-						Kirim ke WhatsApp
-					</button>
-					<p class="form-hint">Tombol di atas membuka WhatsApp dengan data Anda terisi otomatis — tinggal periksa dan kirim.</p>
-				</form>
-			</div>
-		</section>
+						<div class="form-row form-row-split">
+							<div>
+								<label for="jenjang">Jenjang</label>
+								<select id="jenjang" name="jenjang" required>
+									<option value="" disabled selected>Pilih jenjang</option>
+									<option value="TK">TK</option>
+									<option value="SD">SD</option>
+									<option value="SMP">SMP</option>
+									<option value="SMA">SMA</option>
+								</select>
+							</div>
+							<div>
+								<label for="program">Program Diminati</label>
+								<select id="program" name="program">
+									<option value="" disabled selected>Pilih program (opsional)</option>
+									<option value="Bimbingan Reguler Mingguan">Bimbingan Reguler Mingguan</option>
+									<option value="Kelas Intensif Persiapan Ujian">Kelas Intensif Persiapan Ujian</option>
+									<option value="Pendampingan Tugas & PR">Pendampingan Tugas &amp; PR</option>
+									<option value="Konsultasi Perkembangan Bulanan">Konsultasi Perkembangan Bulanan</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-row">
+							<label for="whatsapp">Nomor WhatsApp</label>
+							<input type="tel" id="whatsapp" name="whatsapp" required placeholder="08xx-xxxx-xxxx" />
+						</div>
+						<div class="form-row">
+							<label for="catatan">Catatan (opsional)</label>
+							<textarea id="catatan" name="catatan" rows="3" placeholder="Ceritakan kebutuhan belajar anak Anda" data-i18n-placeholder-id="Ceritakan kebutuhan belajar anak Anda" data-i18n-placeholder-en="Tell us about your child’s learning needs"></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary btn-lg btn-block">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2.003c-5.53 0-10.02 4.49-10.02 10.02 0 1.77.46 3.44 1.27 4.9L2 22l5.2-1.27a9.96 9.96 0 0 0 4.84 1.24h.01c5.53 0 10.02-4.49 10.02-10.02 0-2.67-1.04-5.19-2.93-7.08a9.96 9.96 0 0 0-7.1-2.85Z" opacity=".18"/><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/></svg>
+							Kirim ke WhatsApp
+						</button>
+						<p class="form-hint">Tombol di atas membuka WhatsApp dengan data Anda terisi otomatis — tinggal periksa dan kirim.</p>
+					</form>
+				</div>
+			</section>
 
-	</main>
-
-	<!-- ======================= FLOATING WHATSAPP ======================= -->
-	<a href="https://wa.me/62811860568?text=Halo%20SAN%20TUTOR%2C%20saya%20ingin%20bertanya%20tentang%20program%20belajar." class="wa-float" target="_blank" rel="noopener" aria-label="Chat dengan SAN TUTOR via WhatsApp">
-		<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2.003c-5.53 0-10.02 4.49-10.02 10.02 0 1.77.46 3.44 1.27 4.9L2 22l5.2-1.27a9.96 9.96 0 0 0 4.84 1.24h.01c5.53 0 10.02-4.49 10.02-10.02 0-2.67-1.04-5.19-2.93-7.08a9.96 9.96 0 0 0-7.1-2.85Z" opacity=".18"/><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/></svg>
-	</a>
-
-	<!-- ======================= FOOTER ======================= -->
-	<footer class="site-footer">
-		<div class="wrap footer-grid">
-			<div class="footer-brand">
-				<a href="#top" aria-label="Santutor Learning Studio">
-					<img 
-						src={logoSrc.src} 
-						alt="Logo Santutor Learning Studio" 
-						class="logo-img" 
-						style="filter: invert(1) brightness(100); mix-blend-mode: color-dodge; height: 90px; width: auto;" 
-					/>
-				</a>
-				<p>Mitra belajar anak Anda, dari TK hingga SMA.</p>
-			</div>
-
-			<div class="footer-col">
-				<h4>Lokasi</h4>
-				<p>Janur Kuning Residence<br />Jl. Kelapa puan raya Blok WS-1 No. 7<br />Kelapa Gading, Jakarta Utara<br />DKI Jakarta, 14240</p>
-				<a class="footer-map-link" href="https://maps.app.goo.gl/NGiAVGoFEdXkbChr5" target="_blank" rel="noopener">Buka di Google Maps →</a>
-			</div>
-
-			<div class="footer-col">
-				<h4>Kontak</h4>
-				<p><a href="mailto:halo@santutor.id">halo@santutor.id</a></p>
-				<p><a href="tel:+62811860568">+62 811-860-568</a></p>
-			</div>
-
-			<div class="footer-col">
-				<h4>Media Sosial</h4>
-				<p><a href="https://www.instagram.com/santutor.id/" target="_blank" rel="noopener">Instagram — @santutor.id</a></p>
-				<p><a href="#" target="_blank" rel="noopener">TikTok — @santutor.id</a></p>
-			</div>
-		</div>
-		<div class="wrap footer-bottom">
-			<p>© 2026 SAN TUTOR Learning Studio. Seluruh hak cipta dilindungi.</p>
-			<a href="#top">Kembali ke atas ↑</a>
-		</div>
-	</footer>
-
-	<style>
-		:root {
-			--cream: #FCF8F1;
-			--white: #FFFFFF;
-			--orange: #F2761E;
-			--orange-light: #FDEDE0;
-			--blue: #3EB6EA;
-			--blue-light: #E7F7FD;
-			--sage: #6E9B7D;
-			--sage-light: #F1EEE0;
-			--navy: #1D2B45;
-			--ink-soft: #57607A;
-			--border: #EDE4D3;
-			--whatsapp: #25D366;
-			--radius-lg: 28px;
-			--radius-md: 20px;
-			--shadow-soft: 0 18px 40px -22px rgba(29, 43, 69, 0.28);
-			--font-display: "Fredoka", sans-serif;
-			--font-body: "Nunito", sans-serif;
-			--font-label: "Quicksand", sans-serif;
-		}
-
-		* { box-sizing: border-box; }
-		html { scroll-behavior: smooth; }
-		body {
-			margin: 0;
-			font-family: var(--font-body);
-			color: var(--navy);
-			background: var(--white);
-			-webkit-font-smoothing: antialiased;
-			overflow-x: hidden;
-		}
-		img, svg { max-width: 100%; display: block; }
-		a { color: inherit; text-decoration: none; }
-		ul, ol { list-style: none; margin: 0; padding: 0; }
-		h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; color: var(--navy); }
-		p { margin: 0; line-height: 1.65; color: var(--ink-soft); }
-		:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
-
-		.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-
-		/* ---------- Decorative background system ---------- */
-		.section-decor { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-		.blob { position: absolute; border-radius: 50%; filter: blur(46px); opacity: 0.55; }
-		.blob-orange { background: var(--orange-light); }
-		.blob-blue { background: var(--blue-light); }
-		.blob-sage { background: var(--sage-light); }
-		.dot-grid {
-			position: absolute; inset: 0;
-			background-image: radial-gradient(circle, var(--border) 1.6px, transparent 1.6px);
-			background-size: 26px 26px;
-			-webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 90%);
-			mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 90%);
-			opacity: 0.7;
-		}
-		.dot-grid-hero { -webkit-mask-image: radial-gradient(ellipse 60% 80% at 20% 30%, #000 30%, transparent 80%); mask-image: radial-gradient(ellipse 60% 80% at 20% 30%, #000 30%, transparent 80%); }
-		.doodle { position: absolute; opacity: 0.55; }
-		@media (prefers-reduced-motion: no-preference) {
-			.doodle-star { animation: doodle-float 5s ease-in-out infinite; }
-			.doodle-plus { animation: doodle-float 6.5s ease-in-out infinite 0.5s; }
-		}
-		@keyframes doodle-float {
-			0%, 100% { transform: translateY(0) rotate(0deg); }
-			50% { transform: translateY(-10px) rotate(12deg); }
-		}
-		@media (max-width: 680px) {
-			.section-decor .blob { transform: scale(0.7); }
-		}
-
-		.eyebrow {
-			font-family: var(--font-label);
-			font-weight: 700;
-			font-size: 0.82rem;
-			letter-spacing: 0.12em;
-			text-transform: uppercase;
-			color: var(--orange);
-			margin: 0 0 10px;
-		}
-		.eyebrow-light { color: var(--blue-light); }
-
-		/* ---------- Buttons ---------- */
-		.btn {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			gap: 8px;
-			font-family: var(--font-body);
-			font-weight: 800;
-			font-size: 0.95rem;
-			padding: 13px 26px;
-			border: none;
-			border-radius: 100px;
-			cursor: pointer;
-			transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
-			white-space: nowrap;
-		}
-		.btn-sm { padding: 9px 20px; font-size: 0.88rem; }
-		.btn-lg { padding: 15px 30px; font-size: 1rem; }
-		.btn-block { width: 100%; }
-		.btn-primary { background: var(--orange); color: var(--white); box-shadow: 0 12px 24px -12px rgba(242, 118, 30, 0.6); }
-		.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 28px -12px rgba(242, 118, 30, 0.7); }
-		.btn-ghost { color: var(--navy); border: 2px solid var(--border); background: transparent; }
-		.btn-ghost:hover { border-color: var(--navy); transform: translateY(-2px); }
-
-		/* ---------- Header ---------- */
-		.site-header {
-			position: sticky;
-			top: 0;
-			z-index: 100;
-			background: rgba(255, 255, 255, 0.85);
-			backdrop-filter: blur(10px);
-			border-bottom: 1px solid var(--border);
-			transition: border-color 0.25s ease, box-shadow 0.25s ease;
-		}
-		.site-header.scrolled { border-bottom-color: var(--border); box-shadow: 0 8px 24px -20px rgba(29,43,69,0.4); }
-		.nav-inner { display: flex; align-items: center; justify-content: space-between; padding-block: 8px; gap: 20px; }
-
-		.logo { display: flex; align-items: center; }
-		.logo-img { height: 64px; width: auto; }
-
-		.main-nav { display: flex; gap: 28px; }
-		.main-nav a { font-weight: 700; font-size: 0.92rem; color: var(--navy); position: relative; padding: 4px 0; }
-		.main-nav a::after {
-			content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px;
-			background: var(--orange); transition: width 0.2s ease;
-		}
-		.main-nav a:hover::after { width: 100%; }
-
-		.nav-actions { display: flex; align-items: center; gap: 16px; }
-		.nav-phone { display: none; align-items: center; gap: 6px; font-weight: 700; font-size: 0.86rem; color: var(--ink-soft); }
-		.nav-phone:hover { color: var(--orange); }
-		.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 6px; cursor: pointer; }
-		.nav-toggle span { width: 22px; height: 2.5px; background: var(--navy); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
-		.mobile-nav {
-			display: none; flex-direction: column; gap: 4px; padding: 8px 24px 20px;
-			background: var(--cream); border-bottom: 1px solid var(--border);
-		}
-		.mobile-nav a { padding: 12px 4px; font-weight: 700; border-bottom: 1px solid var(--border); }
-		.mobile-nav .btn { margin-top: 12px; width: 100%; }
-		.mobile-nav.open { display: flex; }
-
-		@media (min-width: 1140px) {
-			.nav-phone { display: flex; }
-		}
-
-		/* ---------- Hero ---------- */
-		.hero { padding: 64px 0 96px; overflow: hidden; position: relative; }
-		.hero-inner { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
-		.hero-content h1 { font-size: clamp(2.1rem, 4vw, 3.15rem); line-height: 1.14; letter-spacing: -0.005em; margin-bottom: 20px; }
-		.hero-lede { font-size: 1.08rem; max-width: 52ch; margin-bottom: 32px; }
-		.hero-cta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 44px; }
-		.hero-stats { display: flex; gap: 34px; margin: 0; }
-		.hero-stats dt { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--navy); }
-		.hero-stats dd { margin: 2px 0 0; font-size: 0.82rem; color: var(--ink-soft); }
-
-		.hero-visual { position: relative; }
-		.hero-blob {
-						position: absolute;
-						top: 50%;
-						left: 50%;
-						transform: translate(-50%, -50%);
-						width: 120%; 
-						aspect-ratio: 1 / 1; 
-						background: linear-gradient(135deg, var(--blue-light), var(--orange-light));
-						border-radius: 62% 38% 55% 45% / 45% 55% 45% 55%;
-						z-index: 0;
-					}
-		.hero-illustration {
-						width: 100%;
-						height: 100%;
-						
-						/* INI KUNCINYA: Memaksa gambar memenuhi area tanpa gepeng */
-						object-fit: cover; 
-						
-						/* Mengembalikan sudut melengkung seperti desain awal */
-						border-radius: 28px; 
-						
-						/* Memastikan gambar berada di depan blob latar belakang */
-						position: relative;
-						z-index: 1; 
-					}
-		.hero-badge {
-			position: absolute; z-index: 2; bottom: -18px; left: 24px;
-			background: var(--white); border-radius: 100px; padding: 10px 18px;
-			display: flex; align-items: center; gap: 9px;
-			font-weight: 700; font-size: 0.84rem; box-shadow: var(--shadow-soft);
-		}
-		.hero-badge-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--sage); flex-shrink: 0; }
-		.hero-photo-chip {
-			position: absolute; z-index: 2; top: -22px; right: -18px;
-			width: 92px; height: 92px; border-radius: 22px; overflow: hidden;
-			border: 5px solid var(--white); box-shadow: var(--shadow-soft);
-			transform: rotate(6deg); margin: 0;
-		}
-		.hero-photo-chip img { width: 100%; height: 100%; object-fit: cover; }
-		@media (max-width: 860px) {
-			.hero-photo-chip { width: 76px; height: 76px; top: -14px; right: 6px; }
-		}
-
-		/* ---------- Section head ---------- */
-		.section-head { max-width: 640px; margin: 0 auto 52px; text-align: center; }
-		.section-head h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); margin-bottom: 14px; }
-		.section-lede { font-size: 1.02rem; }
-
-		/* ---------- Why: list + collage ---------- */
-		.why-section { padding: 90px 0; background: var(--cream); position: relative; overflow: hidden; }
-		.why-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-		.why-list { display: flex; flex-direction: column; }
-		.why-list-item { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--border); }
-		.why-list-item:first-child { padding-top: 0; }
-		.why-list-item:last-child { border-bottom: none; padding-bottom: 0; }
-		.why-list-icon {
-			display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-			width: 44px; height: 44px; border-radius: 13px;
-			background: var(--icon-bg); color: var(--icon-fg);
-		}
-		.why-list-item h3 { font-size: 1.02rem; margin-bottom: 4px; }
-		.why-list-item p { font-size: 0.88rem; }
-
-		.why-collage { display: grid; grid-template-columns: 1.2fr 1fr; grid-template-rows: repeat(2, 1fr); gap: 14px; height: 420px; }
-		.collage-item { margin: 0; }
-		.collage-item img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md); box-shadow: var(--shadow-soft); }
-		.collage-lg { grid-row: 1 / 3; }
-
-		/* ---------- Tutor carousel ---------- */
-		.tutor-section { padding: 90px 0; background: var(--white); position: relative; }
-		.tutor-carousel { position: relative; }
-		.tutor-track {
-			display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
-			padding: 6px 6px 10px; margin: 0 -6px;
-			-ms-overflow-style: none; scrollbar-width: none;
-		}
-		.tutor-track::-webkit-scrollbar { display: none; }
-		.tutor-card {
-			flex: 0 0 250px; scroll-snap-align: start;
-			background: var(--white); border: 1px solid var(--border); border-top: 4px solid var(--accent);
-			border-radius: var(--radius-md); padding: 28px 22px; text-align: center;
-			transition: transform 0.22s ease, box-shadow 0.22s ease;
-		}
-		.tutor-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); }
-		.tutor-avatar {
-			display: flex; align-items: center; justify-content: center;
-			width: 84px; height: 84px; border-radius: 50%; background: var(--avatar-bg);
-			margin: 0 auto 16px;
-		}
-		.tutor-card h3 { font-size: 1.02rem; margin-bottom: 4px; }
-		.tutor-role { font-weight: 700; color: var(--accent); font-size: 0.82rem; margin-bottom: 6px; }
-		.tutor-edu { font-size: 0.78rem; margin-bottom: 12px; }
-		.tutor-quote { font-size: 0.84rem; font-style: italic; color: var(--navy); line-height: 1.55; }
-		.tutor-nav { display: flex; justify-content: center; gap: 12px; margin-top: 18px; }
-		.tutor-nav button {
-			width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--white);
-			display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--navy);
-			transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-		}
-		.tutor-nav button:hover { background: var(--orange-light); border-color: var(--orange); color: var(--orange); }
-		.tutor-note { text-align: center; font-size: 0.78rem; color: var(--ink-soft); margin-top: 24px; opacity: 0.8; }
-
-		/* ---------- Journey ---------- */
-		.journey-section { padding: 90px 0 110px; background: var(--white); position: relative; }
-		.journey-track {
-			display: flex; justify-content: space-between; gap: 20px;
-			position: relative; padding-top: 28px;
-		}
-		.journey-track::before {
-			content: ""; position: absolute; top: 32px; left: 4%; right: 4%; height: 0;
-			border-top: 2.5px dashed var(--border); z-index: 0;
-		}
-		.journey-stop { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; transform: translateY(var(--offset)); }
-		.journey-dot {
-			width: 16px; height: 16px; border-radius: 50%; background: var(--blue);
-			border: 4px solid var(--white); box-shadow: 0 0 0 3px var(--blue-light);
-			position: relative; z-index: 1; margin-bottom: 22px;
-		}
-		.journey-dot-end { background: var(--orange); box-shadow: 0 0 0 3px var(--orange-light); }
-		.journey-card {
-			background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-md);
-			width: 100%; overflow: hidden;
-		}
-		.journey-photo { width: 100%; height: 118px; object-fit: cover; display: block; }
-		.journey-card-body { padding: 18px 18px 22px; }
-		.journey-age { font-family: var(--font-label); font-size: 0.78rem; font-weight: 700; color: var(--blue); letter-spacing: 0.04em; }
-		.journey-card h3 { font-size: 1.3rem; margin: 4px 0 8px; }
-		.journey-card p { font-size: 0.86rem; }
-
-		/* ---------- Program ---------- */
-		.program-section { background: var(--navy); padding: 84px 0; position: relative; overflow: hidden; }
-		.dot-grid-light {
-			background-image: radial-gradient(circle, rgba(255,255,255,0.14) 1.6px, transparent 1.6px);
-			background-size: 26px 26px;
-			-webkit-mask-image: radial-gradient(ellipse 60% 70% at 85% 20%, #000 30%, transparent 80%);
-			mask-image: radial-gradient(ellipse 60% 70% at 85% 20%, #000 30%, transparent 80%);
-		}
-		.program-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-		.light-title { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 10px 0 16px; }
-		.program-lede { color: rgba(255,255,255,0.72); max-width: 48ch; }
-		.program-list { display: flex; flex-direction: column; gap: 0; }
-		.program-list li {
-			display: flex; align-items: flex-start; gap: 18px;
-			padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.14);
-		}
-		.program-list li:last-child { border-bottom: none; }
-		.program-num {
-			font-family: var(--font-display); font-weight: 600; color: var(--blue); font-size: 0.9rem; padding-top: 2px;
-		}
-		.program-text { display: flex; flex-direction: column; gap: 4px; }
-		.program-text strong { color: var(--white); font-size: 1.02rem; font-weight: 700; }
-		.program-text small { color: rgba(255,255,255,0.6); font-size: 0.82rem; }
-
-		/* ---------- FAQ ---------- */
-		.faq-section { padding: 90px 0; background: var(--cream); position: relative; overflow: hidden; }
-		.faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
-		.faq-item {
-			background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md);
-			padding: 6px 24px;
-		}
-		.faq-item summary {
-			cursor: pointer; list-style: none; padding: 18px 0;
-			font-weight: 700; font-size: 1rem; color: var(--navy);
-			display: flex; justify-content: space-between; align-items: center; gap: 16px;
-		}
-		.faq-item summary::-webkit-details-marker { display: none; }
-		.faq-item summary::after {
-			content: "+"; font-family: var(--font-display); font-size: 1.4rem; color: var(--orange);
-			flex-shrink: 0; transition: transform 0.2s ease;
-		}
-		.faq-item[open] summary::after { transform: rotate(45deg); }
-		.faq-item p { padding-bottom: 20px; font-size: 0.94rem; }
-
-		/* ---------- Testimonials ---------- */
-		.testimonials-section { padding: 90px 0; background: var(--white); position: relative; overflow: hidden; }
-		.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-		.testi-card {
-			background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-md);
-			padding: 30px 26px; margin: 0; display: flex; flex-direction: column; gap: 16px;
-		}
-		.testi-stars { color: var(--orange); letter-spacing: 2px; font-size: 0.95rem; }
-		.testi-card blockquote { margin: 0; font-size: 0.98rem; color: var(--navy); line-height: 1.6; }
-		.testi-card figcaption { display: flex; align-items: center; gap: 12px; font-size: 0.86rem; color: var(--ink-soft); }
-		.testi-avatar {
-			width: 38px; height: 38px; border-radius: 50%; background: var(--blue-light); color: var(--blue);
-			display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0;
-			font-family: var(--font-display);
-		}
-		.testi-badge {
-			display: inline-flex; align-items: center; gap: 4px; margin-top: 7px;
-			padding: 3px 10px; border-radius: 100px; background: var(--badge-bg); color: var(--badge-fg);
-			font-size: 0.72rem; font-weight: 700; white-space: nowrap;
-		}
-		.testi-note { text-align: center; font-size: 0.78rem; color: var(--ink-soft); margin-top: 28px; opacity: 0.8; }
-
-		/* ---------- Pendaftaran ---------- */
-		.daftar-section { padding: 90px 0 100px; background: var(--cream); position: relative; overflow: hidden; }
-		.daftar-inner { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
-		.daftar-lede { margin: 4px 0 28px; max-width: 44ch; }
-		.daftar-steps { display: flex; flex-direction: column; gap: 16px; }
-		.daftar-steps li { display: flex; align-items: center; gap: 14px; font-weight: 700; color: var(--navy); font-size: 0.98rem; }
-		.daftar-steps span {
-			width: 30px; height: 30px; border-radius: 50%; background: var(--orange-light); color: var(--orange);
-			display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 600;
-			flex-shrink: 0; font-size: 0.92rem;
-		}
-
-		.daftar-form {
-			background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
-			padding: 34px; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 18px;
-		}
-		.form-row { display: flex; flex-direction: column; gap: 7px; }
-		.form-row-split { flex-direction: row; gap: 16px; }
-		.form-row-split > div { flex: 1; display: flex; flex-direction: column; gap: 7px; }
-		label { font-weight: 700; font-size: 0.86rem; color: var(--navy); }
-		input, select, textarea {
-			font-family: var(--font-body); font-size: 0.96rem; color: var(--navy);
-			border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px;
-			background: var(--cream); transition: border-color 0.18s ease;
-		}
-		input:focus, select:focus, textarea:focus { border-color: var(--blue); outline: none; }
-		textarea { resize: vertical; font-family: var(--font-body); }
-		.form-hint { font-size: 0.8rem; text-align: center; color: var(--ink-soft); }
-
-		/* ---------- Floating WhatsApp ---------- */
-		.wa-float {
-			position: fixed; bottom: 24px; right: 24px; z-index: 200;
-			width: 58px; height: 58px; border-radius: 50%; background: var(--whatsapp); color: var(--white);
-			display: flex; align-items: center; justify-content: center;
-			box-shadow: 0 14px 28px -10px rgba(37, 211, 102, 0.6);
-			transition: transform 0.2s ease;
-		}
-		.wa-float:hover { transform: scale(1.08); }
-		.wa-float::before {
-			content: ""; position: absolute; inset: 0; border-radius: 50%;
-			border: 2px solid var(--whatsapp); animation: wa-pulse 2.2s ease-out infinite;
-		}
-		@keyframes wa-pulse {
-			0% { transform: scale(1); opacity: 0.7; }
-			100% { transform: scale(1.6); opacity: 0; }
-		}
-		@media (prefers-reduced-motion: reduce) {
-			.wa-float::before { animation: none; display: none; }
-		}
-
-		/* ---------- Footer ---------- */
-		.site-footer { background: var(--navy); padding: 70px 0 0; }
-		.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.12); }
-		.logo-chip {
-			display: inline-flex; background: var(--white); border-radius: 14px; padding: 8px 14px; margin-bottom: 4px;
-		}
-		.footer-brand .logo-img { height: 52px; }
-		.footer-brand p { color: rgba(255,255,255,0.65); margin-top: 14px; font-size: 0.92rem; max-width: 30ch; }
-		.footer-col h4 { color: var(--white); font-family: var(--font-label); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 16px; }
-		.footer-col p { color: rgba(255,255,255,0.68); font-size: 0.92rem; margin-bottom: 8px; }
-		.footer-col a:hover { color: var(--blue); }
-		.footer-map-link { color: var(--blue); font-weight: 700; font-size: 0.86rem; display: inline-block; margin-top: 6px; }
-		.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding: 22px 24px; }
-		.footer-bottom p, .footer-bottom a { color: rgba(255,255,255,0.55); font-size: 0.82rem; }
-		.footer-bottom a:hover { color: var(--white); }
-
-		/* ---------- Reveal on scroll ---------- */
-		.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-		.reveal.in-view { opacity: 1; transform: translateY(0); }
-		@media (prefers-reduced-motion: reduce) {
-			.reveal { opacity: 1; transform: none; transition: none; }
-			html { scroll-behavior: auto; }
-		}
-
-		/* ---------- Responsive ---------- */
-		@media (max-width: 980px) {
-			.why-columns { grid-template-columns: 1fr; gap: 32px; }
-			.why-collage { height: 320px; }
-			.testi-grid { grid-template-columns: 1fr; }
-			.program-inner { grid-template-columns: 1fr; }
-			.daftar-inner { grid-template-columns: 1fr; }
-		}
-		@media (max-width: 860px) {
-			.main-nav { display: none; }
-			.nav-toggle { display: flex; }
-			.hero-inner { grid-template-columns: 1fr; }
-			.hero-visual { order: -1; max-width: 420px; margin: 0 auto; }
-			.hero-cta { justify-content: center; }
-			.hero-content { text-align: center; }
-			.hero-stats { justify-content: center; }
-			.hero-lede { margin-inline: auto; }
-			.journey-track { flex-direction: column; gap: 34px; }
-			.journey-track::before { top: 4%; bottom: 4%; left: 24px; right: auto; width: 0; border-top: none; border-left: 2.5px dashed var(--border); height: auto; }
-			.journey-stop { flex-direction: row; text-align: left; transform: none !important; align-items: flex-start; }
-			.journey-dot { margin: 4px 20px 0 8px; flex-shrink: 0; }
-			.footer-grid { grid-template-columns: 1fr 1fr; }
-			.form-row-split { flex-direction: column; }
-			.tutor-card { flex-basis: 220px; }
-		}
-		@media (max-width: 560px) {
-			.why-collage { grid-template-columns: 1fr; grid-template-rows: repeat(3, 130px); height: auto; }
-			.collage-lg { grid-row: auto; }
-			.hero-stats { flex-direction: column; gap: 14px; }
-			.hero-cta { flex-direction: column; }
-			.hero-cta .btn { width: 100%; }
-			.footer-grid { grid-template-columns: 1fr; }
-			.footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
-			.daftar-form { padding: 24px; }
-			.wa-float { bottom: 16px; right: 16px; width: 52px; height: 52px; }
-			.tutor-card { flex-basis: 82vw; }
-		}
-	</style>
+		</main>
 
 	<script>
-		const header = document.getElementById('siteHeader');
-		const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 8);
-		onScroll();
-		window.addEventListener('scroll', onScroll, { passive: true });
-
-		const toggle = document.getElementById('navToggle');
-		const mobileNav = document.getElementById('mobileNav');
-		toggle?.addEventListener('click', () => {
-			const open = mobileNav?.classList.toggle('open');
-			toggle.setAttribute('aria-expanded', String(!!open));
-		});
-		mobileNav?.querySelectorAll('a').forEach((a) =>
-			a.addEventListener('click', () => {
-				mobileNav.classList.remove('open');
-				toggle?.setAttribute('aria-expanded', 'false');
-			})
-		);
-
-		const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-		if (!prefersReduced && 'IntersectionObserver' in window) {
-			const io = new IntersectionObserver(
-				(entries) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add('in-view');
-							io.unobserve(entry.target);
-						}
-					});
-				},
-				{ threshold: 0.15 }
-			);
-			document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-		} else {
-			document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in-view'));
-		}
-
 		const tutorTrack = document.getElementById('tutorTrack');
-		const scrollTutor = (dir: number) => {
+		const scrollTutor = (dir) => {
 			if (!tutorTrack) return;
 			const card = tutorTrack.querySelector('.tutor-card');
 			const step = card ? card.getBoundingClientRect().width + 20 : 270;
@@ -1095,7 +493,17 @@ import bimopp from '../assets/bimo.jpeg';
 			e.preventDefault();
 			if (!(daftarForm instanceof HTMLFormElement) || !daftarForm.reportValidity()) return;
 			const data = new FormData(daftarForm);
-			const pesan = `Halo SAN TUTOR, saya ingin mendaftarkan anak saya.
+			const activeLang = document.body.dataset.lang === 'en' ? 'en' : 'id';
+			const pesan = activeLang === 'en'
+				? `Hello SAN TUTOR, I would like to register my child.
+
+Parent’s Name: ${data.get('nama_ortu')}
+Child’s Name: ${data.get('nama_anak')}
+Level: ${data.get('jenjang')}
+Programme: ${data.get('program') || '-'}
+WhatsApp Number: ${data.get('whatsapp')}
+Notes: ${data.get('catatan') || '-'}`
+				: `Halo SAN TUTOR, saya ingin mendaftarkan anak saya.
 
 Nama Orang Tua: ${data.get('nama_ortu')}
 Nama Anak: ${data.get('nama_anak')}
@@ -1103,10 +511,8 @@ Jenjang: ${data.get('jenjang')}
 Program: ${data.get('program') || '-'}
 No. WhatsApp: ${data.get('whatsapp')}
 Catatan: ${data.get('catatan') || '-'}`;
-			const url = `https://wa.me/62811860568?text=${encodeURIComponent(pesan)}`;
+			const url = `https://wa.me/6285872000689?text=${encodeURIComponent(pesan)}`;
 			window.open(url, '_blank', 'noopener');
 		});
 	</script>
-
-</body>
-</html>
+</Layout>
