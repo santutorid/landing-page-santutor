@@ -1,0 +1,140 @@
+---
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+
+    <meta
+      name="robots"
+      content="noindex,nofollow,noarchive"
+    />
+
+    <title>Santutor Portal</title>
+  </head>
+
+  <body>
+
+    <main class="loading-page">
+      <div>
+        <h1>Santutor</h1>
+        <p>Loading your dashboard...</p>
+      </div>
+    </main>
+
+
+    <script>
+      import { supabase } from '../../lib/supabase';
+
+
+      // 1. Check login
+      const {
+        data: { user }
+      } = await supabase.auth.getUser();
+
+
+      if (!user) {
+
+        window.location.href =
+          '/portal/';
+
+      } else {
+
+        // 2. Get role
+        const {
+          data: profile,
+          error
+        } = await supabase
+          .from('profiles')
+          .select('role, active')
+          .eq('id', user.id)
+          .single();
+
+
+        if (
+          error ||
+          !profile ||
+          profile.active !== true
+        ) {
+
+          await supabase.auth.signOut();
+
+          window.location.href =
+            '/portal/';
+
+        } else {
+
+          // 3. Redirect by role
+
+          if (profile.role === 'admin') {
+
+            window.location.href =
+              '/portal/admin/';
+
+          }
+
+          else if (profile.role === 'tutor') {
+
+            window.location.href =
+              '/portal/tutor/';
+
+          }
+
+          else {
+
+            window.location.href =
+              '/portal/parent/';
+
+          }
+
+        }
+
+      }
+    </script>
+
+
+    <style>
+
+      body {
+        margin: 0;
+
+        font-family:
+          Inter,
+          system-ui,
+          sans-serif;
+
+        background: #f5f8fc;
+
+        color: #17375e;
+      }
+
+
+      .loading-page {
+        min-height: 100vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+      }
+
+
+      h1 {
+        margin-bottom: 8px;
+      }
+
+
+      p {
+        color: #7a879a;
+      }
+
+    </style>
+
+  </body>
+</html>

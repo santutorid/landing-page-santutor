@@ -1,0 +1,3309 @@
+---
+import logoSrc from '../../../../assets/logo.svg';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <title>Payments | Santutor Admin</title>
+</head>
+
+<body>
+
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loader"></div>
+    <p>Loading Santutor...</p>
+  </div>
+
+  <div id="app" class="app" hidden>
+
+    <aside class="sidebar">
+
+      <div class="brand">
+        <a href="/portal/admin/">
+          <div class="logo-box">
+            <img src={logoSrc.src} alt="Santutor Learning Studio" />
+          </div>
+        </a>
+        <span class="portal-label">ADMIN PORTAL</span>
+      </div>
+
+      <nav>
+        <a class="nav-item" href="/portal/admin/">
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/students/">
+          <span class="nav-icon">👨‍🎓</span>
+          <span>Students</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/schedule/">
+          <span class="nav-icon">📅</span>
+          <span>Schedule</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/attendance/">
+          <span class="nav-icon">✓</span>
+          <span>Attendance</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/reports/">
+          <span class="nav-icon">📚</span>
+          <span>Learning Reports</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/packages/">
+          <span class="nav-icon">🎟</span>
+          <span>Packages</span>
+        </a>
+
+        <a class="nav-item active" href="/portal/admin/payments/">
+          <span class="nav-icon">💳</span>
+          <span>Payments</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/parents/">
+          <span class="nav-icon">👪</span>
+          <span>Parents</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/tutors/">
+          <span class="nav-icon">👩‍🏫</span>
+          <span>Tutors</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button id="logoutButton" class="logout-button" type="button">
+          ↪ <span>Sign Out</span>
+        </button>
+      </div>
+
+    </aside>
+
+    <main class="main">
+
+      <header class="page-header">
+
+        <div>
+          <a class="back-link" href="/portal/admin/">
+            ← Back to Dashboard
+          </a>
+
+          <p class="eyebrow">FINANCE MANAGEMENT</p>
+          <h1>Payments</h1>
+          <p class="subtitle">
+            Record student payments and track package balances.
+          </p>
+        </div>
+
+        <button id="showFormButton" class="add-button" type="button">
+          <span class="plus">+</span>
+          Add Payment
+        </button>
+
+      </header>
+
+      <section class="stats-grid">
+
+        <article class="stat-card">
+          <div class="stat-icon collected-icon">Rp</div>
+          <div>
+            <span class="stat-label">Total Collected</span>
+            <strong id="totalCollected">—</strong>
+            <span class="stat-note">All received payments</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon month-icon">↗</div>
+          <div>
+            <span class="stat-label">This Month</span>
+            <strong id="thisMonth">—</strong>
+            <span class="stat-note">Received this month</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon outstanding-icon">!</div>
+          <div>
+            <span class="stat-label">Outstanding</span>
+            <strong id="outstandingBalance">—</strong>
+            <span class="stat-note">Unpaid package balance</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon transaction-icon">#</div>
+          <div>
+            <span class="stat-label">Transactions</span>
+            <strong id="transactionCount">—</strong>
+            <span class="stat-note">Received transactions</span>
+          </div>
+        </article>
+
+      </section>
+
+      <section class="payment-panel">
+
+        <div class="panel-top">
+
+          <div>
+            <p class="section-label">PAYMENT HISTORY</p>
+            <h2>Transactions</h2>
+            <p class="panel-description">
+              Package payment status updates automatically from received transactions.
+            </p>
+          </div>
+
+          <div class="toolbar">
+
+            <div class="search-box">
+              <span class="search-icon">⌕</span>
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="Search student, package..."
+              />
+            </div>
+
+            <select id="statusFilter">
+              <option value="all">All Status</option>
+              <option value="received">Received</option>
+              <option value="cancelled">Cancelled</option>
+              <option value="refunded">Refunded</option>
+            </select>
+
+            <select id="methodFilter">
+              <option value="all">All Methods</option>
+              <option value="bank_transfer">Bank Transfer</option>
+              <option value="cash">Cash</option>
+              <option value="qris">QRIS</option>
+              <option value="e_wallet">E-Wallet</option>
+              <option value="card">Card</option>
+              <option value="other">Other</option>
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="table-wrapper">
+
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Student</th>
+                <th>Package</th>
+                <th>Amount</th>
+                <th>Method</th>
+                <th>Status</th>
+                <th>Reference</th>
+                <th class="action-heading">Action</th>
+              </tr>
+            </thead>
+
+            <tbody id="paymentTableBody">
+              <tr>
+                <td colspan="8" class="empty-row">
+                  Loading payments...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <div id="paymentModal" class="modal-backdrop" hidden>
+
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+
+      <div class="modal-header">
+
+        <div>
+          <p id="modalEyebrow" class="section-label">NEW PAYMENT</p>
+          <h2 id="modalTitle">Add Payment</h2>
+          <p id="modalDescription">
+            Record a payment against a student package.
+          </p>
+        </div>
+
+        <button
+          id="closeFormButton"
+          class="modal-close"
+          type="button"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <form id="paymentForm">
+
+        <div class="form-grid">
+
+          <label class="full-width">
+            <span>Package *</span>
+            <select id="packageId" required>
+              <option value="">Select package</option>
+            </select>
+          </label>
+
+          <div class="full-width package-summary" id="packageSummary" hidden>
+            <div>
+              <span class="summary-label">Student</span>
+              <strong id="summaryStudent">—</strong>
+            </div>
+
+            <div>
+              <span class="summary-label">Package Price</span>
+              <strong id="summaryPrice">—</strong>
+            </div>
+
+            <div>
+              <span class="summary-label">Received</span>
+              <strong id="summaryReceived">—</strong>
+            </div>
+
+            <div>
+              <span class="summary-label">Balance</span>
+              <strong id="summaryBalance">—</strong>
+            </div>
+          </div>
+
+          <label>
+            <span>Payment Code</span>
+            <input
+              id="paymentCode"
+              type="text"
+              autocomplete="off"
+              placeholder="e.g. PAY001"
+            />
+          </label>
+
+          <label>
+            <span>Amount (IDR) *</span>
+            <input
+              id="amount"
+              type="number"
+              min="1"
+              step="1000"
+              required
+              placeholder="0"
+            />
+          </label>
+
+          <label>
+            <span>Payment Date *</span>
+            <input
+              id="paymentDate"
+              type="date"
+              required
+            />
+          </label>
+
+          <label>
+            <span>Payment Method *</span>
+            <select id="paymentMethod" required>
+              <option value="bank_transfer">Bank Transfer</option>
+              <option value="cash">Cash</option>
+              <option value="qris">QRIS</option>
+              <option value="e_wallet">E-Wallet</option>
+              <option value="card">Card</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Status</span>
+            <select id="paymentStatus">
+              <option value="received">Received</option>
+              <option value="cancelled">Cancelled</option>
+              <option value="refunded">Refunded</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Reference No.</span>
+            <input
+              id="referenceNo"
+              type="text"
+              autocomplete="off"
+              placeholder="Transfer / receipt reference"
+            />
+          </label>
+
+          <label class="full-width">
+            <span>Notes</span>
+            <textarea
+              id="notes"
+              rows="4"
+              placeholder="Optional payment notes..."
+            ></textarea>
+          </label>
+
+        </div>
+
+        <div id="formMessage" class="form-message"></div>
+
+        <div class="form-actions">
+
+          <button
+            id="cancelPaymentButton"
+            type="button"
+            class="danger-button"
+            hidden
+          >
+            Cancel Payment
+          </button>
+
+          <div class="form-spacer"></div>
+
+          <button id="cancelButton" type="button" class="cancel-button">
+            Close
+          </button>
+
+          <button id="saveButton" type="submit" class="save-button">
+            Add Payment
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    import { supabase }
+      from '../../../../lib/supabase';
+
+
+    type StudentStatus =
+      'active' |
+      'inactive';
+
+
+    type PackageStatus =
+      'active' |
+      'completed' |
+      'expired' |
+      'cancelled';
+
+
+    type PackagePaymentStatus =
+      'unpaid' |
+      'partial' |
+      'paid';
+
+
+    type PaymentStatus =
+      'received' |
+      'cancelled' |
+      'refunded';
+
+
+    type PaymentMethod =
+      'cash' |
+      'bank_transfer' |
+      'qris' |
+      'e_wallet' |
+      'card' |
+      'other';
+
+
+    type Student = {
+      id: string;
+      student_code: string | null;
+      name: string;
+      status: StudentStatus;
+    };
+
+
+    type StudentPackage = {
+      id: string;
+      package_code: string | null;
+      student_id: string;
+      package_name: string;
+      price: number | null;
+      payment_status: PackagePaymentStatus;
+      status: PackageStatus;
+      remaining_sessions: number;
+    };
+
+
+    type Payment = {
+      id: string;
+      payment_code: string | null;
+      package_id: string;
+      student_id: string;
+      amount: number;
+      payment_date: string;
+      payment_method: PaymentMethod;
+      status: PaymentStatus;
+      reference_no: string | null;
+      notes: string | null;
+      created_at: string;
+      updated_at: string | null;
+    };
+
+
+    let students: Student[] = [];
+    let packages: StudentPackage[] = [];
+    let payments: Payment[] = [];
+    let editingPaymentId: string | null = null;
+
+
+    function getEl<T extends Element>(
+      selector: string
+    ): T {
+
+      const element =
+        document.querySelector<T>(
+          selector
+        );
+
+
+      if (!element) {
+
+        throw new Error(
+          `Element not found: ${selector}`
+        );
+
+      }
+
+
+      return element;
+
+    }
+
+
+    const loadingScreen =
+      getEl<HTMLDivElement>(
+        '#loadingScreen'
+      );
+
+
+    const app =
+      getEl<HTMLDivElement>(
+        '#app'
+      );
+
+
+    const paymentTableBody =
+      getEl<HTMLTableSectionElement>(
+        '#paymentTableBody'
+      );
+
+
+    const searchInput =
+      getEl<HTMLInputElement>(
+        '#searchInput'
+      );
+
+
+    const statusFilter =
+      getEl<HTMLSelectElement>(
+        '#statusFilter'
+      );
+
+
+    const methodFilter =
+      getEl<HTMLSelectElement>(
+        '#methodFilter'
+      );
+
+
+    const paymentModal =
+      getEl<HTMLDivElement>(
+        '#paymentModal'
+      );
+
+
+    const paymentForm =
+      getEl<HTMLFormElement>(
+        '#paymentForm'
+      );
+
+
+    const packageIdInput =
+      getEl<HTMLSelectElement>(
+        '#packageId'
+      );
+
+
+    const paymentCodeInput =
+      getEl<HTMLInputElement>(
+        '#paymentCode'
+      );
+
+
+    const amountInput =
+      getEl<HTMLInputElement>(
+        '#amount'
+      );
+
+
+    const paymentDateInput =
+      getEl<HTMLInputElement>(
+        '#paymentDate'
+      );
+
+
+    const paymentMethodInput =
+      getEl<HTMLSelectElement>(
+        '#paymentMethod'
+      );
+
+
+    const paymentStatusInput =
+      getEl<HTMLSelectElement>(
+        '#paymentStatus'
+      );
+
+
+    const referenceNoInput =
+      getEl<HTMLInputElement>(
+        '#referenceNo'
+      );
+
+
+    const notesInput =
+      getEl<HTMLTextAreaElement>(
+        '#notes'
+      );
+
+
+    const packageSummary =
+      getEl<HTMLDivElement>(
+        '#packageSummary'
+      );
+
+
+    const formMessage =
+      getEl<HTMLDivElement>(
+        '#formMessage'
+      );
+
+
+    const saveButton =
+      getEl<HTMLButtonElement>(
+        '#saveButton'
+      );
+
+
+    const cancelPaymentButton =
+      getEl<HTMLButtonElement>(
+        '#cancelPaymentButton'
+      );
+
+
+    async function initPage() {
+
+      const {
+        data: { user }
+      } =
+        await supabase.auth.getUser();
+
+
+      if (!user) {
+
+        window.location.href =
+          '/portal/';
+
+        return;
+
+      }
+
+
+      const {
+        data: profile,
+        error
+      } =
+        await supabase
+          .from('profiles')
+          .select('role, active')
+          .eq('id', user.id)
+          .single();
+
+
+      if (
+        error ||
+        !profile ||
+        profile.role !== 'admin' ||
+        profile.active !== true
+      ) {
+
+        await supabase.auth.signOut();
+
+        window.location.href =
+          '/portal/';
+
+        return;
+
+      }
+
+
+      loadingScreen.style.display =
+        'none';
+
+
+      app.hidden =
+        false;
+
+
+      await loadAllData();
+
+    }
+
+
+    async function loadAllData() {
+
+      const [
+        studentsResult,
+        packagesResult,
+        paymentsResult
+      ] =
+        await Promise.all([
+
+          supabase
+            .from('students')
+            .select(`
+              id,
+              student_code,
+              name,
+              status
+            `)
+            .order(
+              'name',
+              {
+                ascending: true
+              }
+            ),
+
+          supabase
+            .from('student_packages')
+            .select(`
+              id,
+              package_code,
+              student_id,
+              package_name,
+              price,
+              payment_status,
+              status,
+              remaining_sessions
+            `)
+            .order(
+              'created_at',
+              {
+                ascending: false
+              }
+            ),
+
+          supabase
+            .from('payments')
+            .select(`
+              id,
+              payment_code,
+              package_id,
+              student_id,
+              amount,
+              payment_date,
+              payment_method,
+              status,
+              reference_no,
+              notes,
+              created_at,
+              updated_at
+            `)
+            .order(
+              'payment_date',
+              {
+                ascending: false
+              }
+            )
+            .order(
+              'created_at',
+              {
+                ascending: false
+              }
+            )
+
+        ]);
+
+
+      if (
+        studentsResult.error
+      ) {
+
+        throw new Error(
+          studentsResult.error.message
+        );
+
+      }
+
+
+      if (
+        packagesResult.error
+      ) {
+
+        throw new Error(
+          packagesResult.error.message
+        );
+
+      }
+
+
+      if (
+        paymentsResult.error
+      ) {
+
+        throw new Error(
+          paymentsResult.error.message
+        );
+
+      }
+
+
+      students =
+        (studentsResult.data || []) as Student[];
+
+
+      packages =
+        (packagesResult.data || []) as StudentPackage[];
+
+
+      payments =
+        (paymentsResult.data || []) as Payment[];
+
+
+      populatePackageDropdown();
+
+      applyFilters();
+
+      updateStats();
+
+    }
+
+
+    function populatePackageDropdown() {
+
+      const currentValue =
+        packageIdInput.value;
+
+
+      const options =
+        packages
+          .filter(
+            item =>
+              item.status !==
+                'cancelled' ||
+              item.id ===
+                currentValue
+          )
+          .map(
+            item => {
+
+              const student =
+                getStudent(
+                  item.student_id
+                );
+
+
+              return `
+                <option value="${escapeHtml(item.id)}">
+                  ${escapeHtml(student?.name || 'Unknown student')}
+                  — ${escapeHtml(item.package_name)}
+                  ${
+                    item.package_code
+                      ? `(${escapeHtml(item.package_code)})`
+                      : ''
+                  }
+                </option>
+              `;
+
+            }
+          )
+          .join('');
+
+
+      packageIdInput.innerHTML = `
+        <option value="">Select package</option>
+        ${options}
+      `;
+
+
+      packageIdInput.value =
+        currentValue;
+
+    }
+
+
+    function applyFilters() {
+
+      const search =
+        searchInput.value
+          .toLowerCase()
+          .trim();
+
+
+      const status =
+        statusFilter.value;
+
+
+      const method =
+        methodFilter.value;
+
+
+      const filtered =
+        payments.filter(
+          payment => {
+
+            const student =
+              getStudent(
+                payment.student_id
+              );
+
+
+            const packageItem =
+              getPackage(
+                payment.package_id
+              );
+
+
+            const combined = `
+              ${student?.name || ''}
+              ${student?.student_code || ''}
+              ${packageItem?.package_name || ''}
+              ${packageItem?.package_code || ''}
+              ${payment.payment_code || ''}
+              ${payment.reference_no || ''}
+              ${payment.notes || ''}
+            `
+              .toLowerCase();
+
+
+            const matchesSearch =
+              combined.includes(
+                search
+              );
+
+
+            const matchesStatus =
+              status === 'all' ||
+              payment.status ===
+                status;
+
+
+            const matchesMethod =
+              method === 'all' ||
+              payment.payment_method ===
+                method;
+
+
+            return (
+              matchesSearch &&
+              matchesStatus &&
+              matchesMethod
+            );
+
+          }
+        );
+
+
+      renderPayments(
+        filtered
+      );
+
+    }
+
+
+    function renderPayments(
+      list: Payment[]
+    ) {
+
+      if (
+        list.length === 0
+      ) {
+
+        paymentTableBody.innerHTML = `
+          <tr>
+            <td colspan="8" class="empty-row">
+
+              <div class="empty-state">
+                <div class="empty-icon">💳</div>
+
+                <strong>
+                  No payments found
+                </strong>
+
+                <p>
+                  Add a payment or change your filters.
+                </p>
+              </div>
+
+            </td>
+          </tr>
+        `;
+
+        return;
+
+      }
+
+
+      paymentTableBody.innerHTML =
+        list
+          .map(
+            payment =>
+              renderPaymentRow(
+                payment
+              )
+          )
+          .join('');
+
+    }
+
+
+    function renderPaymentRow(
+      payment: Payment
+    ): string {
+
+      const student =
+        getStudent(
+          payment.student_id
+        );
+
+
+      const packageItem =
+        getPackage(
+          payment.package_id
+        );
+
+
+      return `
+        <tr>
+
+          <td>
+            <div class="date-cell">
+              <strong>
+                ${escapeHtml(
+                  formatDate(
+                    payment.payment_date
+                  )
+                )}
+              </strong>
+
+              <span>
+                ${escapeHtml(
+                  payment.payment_code ||
+                  'No payment code'
+                )}
+              </span>
+            </div>
+          </td>
+
+          <td>
+            <div class="student-cell">
+
+              <div class="avatar">
+                ${escapeHtml(
+                  getInitials(
+                    student?.name ||
+                    '?'
+                  )
+                )}
+              </div>
+
+              <div>
+                <div class="student-name">
+                  ${escapeHtml(
+                    student?.name ||
+                    'Unknown student'
+                  )}
+                </div>
+
+                <div class="student-code">
+                  ${escapeHtml(
+                    student?.student_code ||
+                    'No student code'
+                  )}
+                </div>
+              </div>
+
+            </div>
+          </td>
+
+          <td>
+            <div class="package-name">
+              ${escapeHtml(
+                packageItem?.package_name ||
+                'Unknown package'
+              )}
+            </div>
+
+            <div class="package-code">
+              ${escapeHtml(
+                packageItem?.package_code ||
+                'No package code'
+              )}
+            </div>
+          </td>
+
+          <td>
+            <strong class="amount-text">
+              ${escapeHtml(
+                formatCurrency(
+                  payment.amount
+                )
+              )}
+            </strong>
+          </td>
+
+          <td>
+            <span class="method-badge">
+              ${escapeHtml(
+                methodLabel(
+                  payment.payment_method
+                )
+              )}
+            </span>
+          </td>
+
+          <td>
+            <span
+              class="
+                status-badge
+                ${payment.status}
+              "
+            >
+              <span class="status-dot"></span>
+              ${capitalize(payment.status)}
+            </span>
+          </td>
+
+          <td>
+            <span class="reference-text">
+              ${escapeHtml(
+                payment.reference_no ||
+                '—'
+              )}
+            </span>
+          </td>
+
+          <td class="action-cell">
+            <button
+              class="edit-button edit-payment-button"
+              data-id="${escapeHtml(payment.id)}"
+              type="button"
+            >
+              Edit
+            </button>
+          </td>
+
+        </tr>
+      `;
+
+    }
+
+
+    function updateStats() {
+
+      const received =
+        payments.filter(
+          payment =>
+            payment.status ===
+              'received'
+        );
+
+
+      const totalCollected =
+        received.reduce(
+          (
+            total,
+            payment
+          ) =>
+            total +
+            Number(payment.amount),
+          0
+        );
+
+
+      const now =
+        new Date();
+
+
+      const currentYear =
+        now.getFullYear();
+
+
+      const currentMonth =
+        now.getMonth() + 1;
+
+
+      const monthCollected =
+        received
+          .filter(
+            payment => {
+
+              const [
+                year,
+                month
+              ] =
+                payment.payment_date
+                  .split('-')
+                  .map(Number);
+
+
+              return (
+                year ===
+                  currentYear &&
+                month ===
+                  currentMonth
+              );
+
+            }
+          )
+          .reduce(
+            (
+              total,
+              payment
+            ) =>
+              total +
+              Number(payment.amount),
+            0
+          );
+
+
+      const outstanding =
+        packages.reduce(
+          (
+            total,
+            item
+          ) => {
+
+            if (
+              item.price ===
+                null ||
+              item.price <= 0 ||
+              item.status ===
+                'cancelled'
+            ) {
+
+              return total;
+
+            }
+
+
+            const receivedForPackage =
+              payments
+                .filter(
+                  payment =>
+                    payment.package_id ===
+                      item.id &&
+                    payment.status ===
+                      'received'
+                )
+                .reduce(
+                  (
+                    sum,
+                    payment
+                  ) =>
+                    sum +
+                    Number(
+                      payment.amount
+                    ),
+                  0
+                );
+
+
+            return (
+              total +
+              Math.max(
+                0,
+                Number(item.price) -
+                receivedForPackage
+              )
+            );
+
+          },
+          0
+        );
+
+
+      setText(
+        '#totalCollected',
+        compactCurrency(
+          totalCollected
+        )
+      );
+
+
+      setText(
+        '#thisMonth',
+        compactCurrency(
+          monthCollected
+        )
+      );
+
+
+      setText(
+        '#outstandingBalance',
+        compactCurrency(
+          outstanding
+        )
+      );
+
+
+      setText(
+        '#transactionCount',
+        received.length
+      );
+
+    }
+
+
+    function showModal() {
+
+      editingPaymentId =
+        null;
+
+
+      paymentForm.reset();
+
+
+      clearFormMessage();
+
+
+      populatePackageDropdown();
+
+
+      paymentDateInput.value =
+        getLocalDateString(
+          new Date()
+        );
+
+
+      paymentMethodInput.value =
+        'bank_transfer';
+
+
+      paymentStatusInput.value =
+        'received';
+
+
+      setText(
+        '#modalEyebrow',
+        'NEW PAYMENT'
+      );
+
+
+      setText(
+        '#modalTitle',
+        'Add Payment'
+      );
+
+
+      setText(
+        '#modalDescription',
+        'Record a payment against a student package.'
+      );
+
+
+      saveButton.textContent =
+        'Add Payment';
+
+
+      cancelPaymentButton.hidden =
+        true;
+
+
+      packageSummary.hidden =
+        true;
+
+
+      paymentModal.hidden =
+        false;
+
+
+      document.body.classList.add(
+        'modal-open'
+      );
+
+
+      setTimeout(
+        () =>
+          packageIdInput.focus(),
+        0
+      );
+
+    }
+
+
+    function openEditModal(
+      paymentId: string
+    ) {
+
+      const payment =
+        payments.find(
+          item =>
+            item.id ===
+            paymentId
+        );
+
+
+      if (!payment) return;
+
+
+      editingPaymentId =
+        payment.id;
+
+
+      clearFormMessage();
+
+
+      packageIdInput.value =
+        payment.package_id;
+
+
+      populatePackageDropdown();
+
+
+      packageIdInput.value =
+        payment.package_id;
+
+
+      paymentCodeInput.value =
+        payment.payment_code ||
+        '';
+
+
+      amountInput.value =
+        String(
+          payment.amount
+        );
+
+
+      paymentDateInput.value =
+        payment.payment_date;
+
+
+      paymentMethodInput.value =
+        payment.payment_method;
+
+
+      paymentStatusInput.value =
+        payment.status;
+
+
+      referenceNoInput.value =
+        payment.reference_no ||
+        '';
+
+
+      notesInput.value =
+        payment.notes ||
+        '';
+
+
+      updatePackageSummary();
+
+
+      setText(
+        '#modalEyebrow',
+        'PAYMENT DETAILS'
+      );
+
+
+      setText(
+        '#modalTitle',
+        'Edit Payment'
+      );
+
+
+      setText(
+        '#modalDescription',
+        'Update this payment transaction.'
+      );
+
+
+      saveButton.textContent =
+        'Save Changes';
+
+
+      cancelPaymentButton.hidden =
+        payment.status ===
+        'cancelled';
+
+
+      paymentModal.hidden =
+        false;
+
+
+      document.body.classList.add(
+        'modal-open'
+      );
+
+    }
+
+
+    function hideModal() {
+
+      paymentModal.hidden =
+        true;
+
+
+      document.body.classList.remove(
+        'modal-open'
+      );
+
+
+      clearFormMessage();
+
+    }
+
+
+    function updatePackageSummary() {
+
+      const packageId =
+        packageIdInput.value;
+
+
+      const packageItem =
+        getPackage(
+          packageId
+        );
+
+
+      if (!packageItem) {
+
+        packageSummary.hidden =
+          true;
+
+        return;
+
+      }
+
+
+      const student =
+        getStudent(
+          packageItem.student_id
+        );
+
+
+      const received =
+        payments
+          .filter(
+            payment =>
+              payment.package_id ===
+                packageItem.id &&
+              payment.status ===
+                'received' &&
+              payment.id !==
+                editingPaymentId
+          )
+          .reduce(
+            (
+              total,
+              payment
+            ) =>
+              total +
+              Number(payment.amount),
+            0
+          );
+
+
+      const price =
+        packageItem.price;
+
+
+      const balance =
+        price === null
+          ? null
+          : Math.max(
+              0,
+              Number(price) -
+              received
+            );
+
+
+      setText(
+        '#summaryStudent',
+        student?.name ||
+        'Unknown student'
+      );
+
+
+      setText(
+        '#summaryPrice',
+        price === null
+          ? 'Not set'
+          : formatCurrency(
+              Number(price)
+            )
+      );
+
+
+      setText(
+        '#summaryReceived',
+        formatCurrency(
+          received
+        )
+      );
+
+
+      setText(
+        '#summaryBalance',
+        balance === null
+          ? '—'
+          : formatCurrency(
+              balance
+            )
+      );
+
+
+      packageSummary.hidden =
+        false;
+
+
+      if (
+        !editingPaymentId &&
+        balance !== null &&
+        balance > 0
+      ) {
+
+        amountInput.value =
+          String(balance);
+
+      }
+
+    }
+
+
+    function clearFormMessage() {
+
+      formMessage.textContent =
+        '';
+
+
+      formMessage.className =
+        'form-message';
+
+    }
+
+
+    function showFormError(
+      message: string
+    ) {
+
+      formMessage.textContent =
+        message;
+
+
+      formMessage.className =
+        'form-message error';
+
+    }
+
+
+    paymentForm
+      .addEventListener(
+        'submit',
+        async event => {
+
+          event.preventDefault();
+
+
+          const packageId =
+            packageIdInput.value;
+
+
+          const packageItem =
+            getPackage(
+              packageId
+            );
+
+
+          if (!packageItem) {
+
+            showFormError(
+              'Please select a valid package.'
+            );
+
+            return;
+
+          }
+
+
+          const amount =
+            Number(
+              amountInput.value
+            );
+
+
+          if (
+            !Number.isFinite(
+              amount
+            ) ||
+            amount <= 0
+          ) {
+
+            showFormError(
+              'Payment amount must be greater than zero.'
+            );
+
+            return;
+
+          }
+
+
+          if (
+            !paymentDateInput.value
+          ) {
+
+            showFormError(
+              'Payment date is required.'
+            );
+
+            return;
+
+          }
+
+
+          const status =
+            paymentStatusInput.value as PaymentStatus;
+
+
+          const method =
+            paymentMethodInput.value as PaymentMethod;
+
+
+          const paymentData = {
+
+            package_id:
+              packageItem.id,
+
+            student_id:
+              packageItem.student_id,
+
+            payment_code:
+              paymentCodeInput.value
+                .trim() ||
+              null,
+
+            amount,
+
+            payment_date:
+              paymentDateInput.value,
+
+            payment_method:
+              method,
+
+            status,
+
+            reference_no:
+              referenceNoInput.value
+                .trim() ||
+              null,
+
+            notes:
+              notesInput.value
+                .trim() ||
+              null,
+
+            updated_at:
+              new Date()
+                .toISOString()
+
+          };
+
+
+          saveButton.disabled =
+            true;
+
+
+          saveButton.textContent =
+            editingPaymentId
+              ? 'Saving Changes...'
+              : 'Saving...';
+
+
+          let errorMessage:
+            string | null = null;
+
+
+          if (
+            editingPaymentId
+          ) {
+
+            const {
+              error
+            } =
+              await supabase
+                .from('payments')
+                .update(
+                  paymentData
+                )
+                .eq(
+                  'id',
+                  editingPaymentId
+                );
+
+
+            errorMessage =
+              error?.message ||
+              null;
+
+          } else {
+
+            const {
+              error
+            } =
+              await supabase
+                .from('payments')
+                .insert(
+                  paymentData
+                );
+
+
+            errorMessage =
+              error?.message ||
+              null;
+
+          }
+
+
+          if (
+            errorMessage
+          ) {
+
+            showFormError(
+              errorMessage
+            );
+
+
+            saveButton.disabled =
+              false;
+
+
+            saveButton.textContent =
+              editingPaymentId
+                ? 'Save Changes'
+                : 'Add Payment';
+
+
+            return;
+
+          }
+
+
+          await loadAllData();
+
+
+          hideModal();
+
+
+          saveButton.disabled =
+            false;
+
+
+          saveButton.textContent =
+            'Add Payment';
+
+
+          editingPaymentId =
+            null;
+
+        }
+      );
+
+
+    cancelPaymentButton
+      .addEventListener(
+        'click',
+        async () => {
+
+          if (
+            !editingPaymentId
+          ) {
+
+            return;
+
+          }
+
+
+          const confirmed =
+            window.confirm(
+              'Cancel this payment? It will no longer count toward the package balance.'
+            );
+
+
+          if (!confirmed) return;
+
+
+          cancelPaymentButton.disabled =
+            true;
+
+
+          cancelPaymentButton.textContent =
+            'Cancelling...';
+
+
+          const {
+            error
+          } =
+            await supabase
+              .from('payments')
+              .update({
+
+                status:
+                  'cancelled',
+
+                updated_at:
+                  new Date()
+                    .toISOString()
+
+              })
+              .eq(
+                'id',
+                editingPaymentId
+              );
+
+
+          if (error) {
+
+            window.alert(
+              error.message
+            );
+
+
+            cancelPaymentButton.disabled =
+              false;
+
+
+            cancelPaymentButton.textContent =
+              'Cancel Payment';
+
+
+            return;
+
+          }
+
+
+          await loadAllData();
+
+
+          cancelPaymentButton.disabled =
+            false;
+
+
+          cancelPaymentButton.textContent =
+            'Cancel Payment';
+
+
+          hideModal();
+
+
+          editingPaymentId =
+            null;
+
+        }
+      );
+
+
+    packageIdInput
+      .addEventListener(
+        'change',
+        updatePackageSummary
+      );
+
+
+    searchInput
+      .addEventListener(
+        'input',
+        applyFilters
+      );
+
+
+    statusFilter
+      .addEventListener(
+        'change',
+        applyFilters
+      );
+
+
+    methodFilter
+      .addEventListener(
+        'change',
+        applyFilters
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#showFormButton'
+    )
+      .addEventListener(
+        'click',
+        showModal
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#closeFormButton'
+    )
+      .addEventListener(
+        'click',
+        hideModal
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#cancelButton'
+    )
+      .addEventListener(
+        'click',
+        hideModal
+      );
+
+
+    paymentTableBody
+      .addEventListener(
+        'click',
+        event => {
+
+          const target =
+            event.target;
+
+
+          if (
+            !(target instanceof Element)
+          ) {
+
+            return;
+
+          }
+
+
+          const button =
+            target.closest<HTMLButtonElement>(
+              '.edit-payment-button'
+            );
+
+
+          if (!button) return;
+
+
+          const paymentId =
+            button.dataset.id;
+
+
+          if (paymentId) {
+
+            openEditModal(
+              paymentId
+            );
+
+          }
+
+        }
+      );
+
+
+    paymentModal
+      .addEventListener(
+        'click',
+        event => {
+
+          if (
+            event.target ===
+            paymentModal
+          ) {
+
+            hideModal();
+
+          }
+
+        }
+      );
+
+
+    document
+      .addEventListener(
+        'keydown',
+        event => {
+
+          if (
+            event.key ===
+              'Escape' &&
+            !paymentModal.hidden
+          ) {
+
+            hideModal();
+
+          }
+
+        }
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#logoutButton'
+    )
+      .addEventListener(
+        'click',
+        async () => {
+
+          await supabase.auth
+            .signOut();
+
+
+          window.location.href =
+            '/portal/';
+
+        }
+      );
+
+
+    function getStudent(
+      studentId: string
+    ): Student | undefined {
+
+      return students.find(
+        student =>
+          student.id ===
+          studentId
+      );
+
+    }
+
+
+    function getPackage(
+      packageId: string
+    ): StudentPackage | undefined {
+
+      return packages.find(
+        item =>
+          item.id ===
+          packageId
+      );
+
+    }
+
+
+    function setText(
+      selector: string,
+      value: string | number
+    ) {
+
+      getEl<HTMLElement>(
+        selector
+      ).textContent =
+        String(value);
+
+    }
+
+
+    function getInitials(
+      name: string
+    ): string {
+
+      return (
+        name || '?'
+      )
+        .split(' ')
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(
+          part =>
+            part
+              .charAt(0)
+              .toUpperCase()
+        )
+        .join('');
+
+    }
+
+
+    function methodLabel(
+      value: PaymentMethod
+    ): string {
+
+      const labels:
+        Record<PaymentMethod, string> = {
+
+          cash:
+            'Cash',
+
+          bank_transfer:
+            'Bank Transfer',
+
+          qris:
+            'QRIS',
+
+          e_wallet:
+            'E-Wallet',
+
+          card:
+            'Card',
+
+          other:
+            'Other'
+
+        };
+
+
+      return labels[value];
+
+    }
+
+
+    function capitalize(
+      value: string
+    ): string {
+
+      if (!value) return '';
+
+
+      return (
+        value.charAt(0)
+          .toUpperCase() +
+        value.slice(1)
+      );
+
+    }
+
+
+    function formatCurrency(
+      value: number
+    ): string {
+
+      return new Intl
+        .NumberFormat(
+          'id-ID',
+          {
+            style:
+              'currency',
+            currency:
+              'IDR',
+            maximumFractionDigits:
+              0
+          }
+        )
+        .format(value);
+
+    }
+
+
+    function compactCurrency(
+      value: number
+    ): string {
+
+      if (
+        Math.abs(value) >=
+        1_000_000
+      ) {
+
+        const millions =
+          value /
+          1_000_000;
+
+
+        return `Rp ${millions.toLocaleString(
+          'id-ID',
+          {
+            maximumFractionDigits:
+              1
+          }
+        )} jt`;
+
+      }
+
+
+      if (
+        Math.abs(value) >=
+        1_000
+      ) {
+
+        const thousands =
+          value /
+          1_000;
+
+
+        return `Rp ${thousands.toLocaleString(
+          'id-ID',
+          {
+            maximumFractionDigits:
+              0
+          }
+        )} rb`;
+
+      }
+
+
+      return `Rp ${value.toLocaleString(
+        'id-ID'
+      )}`;
+
+    }
+
+
+    function formatDate(
+      value: string
+    ): string {
+
+      const [
+        year,
+        month,
+        day
+      ] =
+        value
+          .split('-')
+          .map(Number);
+
+
+      const date =
+        new Date(
+          year,
+          month - 1,
+          day
+        );
+
+
+      return new Intl
+        .DateTimeFormat(
+          'en-GB',
+          {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+          }
+        )
+        .format(date);
+
+    }
+
+
+    function getLocalDateString(
+      date: Date
+    ): string {
+
+      const year =
+        date.getFullYear();
+
+
+      const month =
+        String(
+          date.getMonth() + 1
+        )
+          .padStart(
+            2,
+            '0'
+          );
+
+
+      const day =
+        String(
+          date.getDate()
+        )
+          .padStart(
+            2,
+            '0'
+          );
+
+
+      return `${year}-${month}-${day}`;
+
+    }
+
+
+    function escapeHtml(
+      value: string
+    ): string {
+
+      const div =
+        document.createElement(
+          'div'
+        );
+
+
+      div.textContent =
+        value ?? '';
+
+
+      return div.innerHTML;
+
+    }
+
+
+    initPage()
+      .catch(
+        error => {
+
+          console.error(
+            'Payments page error:',
+            error
+          );
+
+
+          loadingScreen.innerHTML = `
+            <p class="error-text">
+              Unable to load Payments.
+            </p>
+          `;
+
+        }
+      );
+
+  </script>
+
+  <style is:global>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #f5f7fb;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .loading-screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #78869a;
+    }
+
+    .loader {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 3px solid #e2e7ed;
+      border-top-color: #f28b2d;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns:
+        240px minmax(0, 1fr);
+    }
+
+    .sidebar {
+      min-height: 100vh;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      padding: 24px 15px;
+      background:
+        linear-gradient(
+          180deg,
+          #17375e 0%,
+          #102a4b 100%
+        );
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand {
+      padding: 4px 10px 27px;
+    }
+
+    .brand a {
+      text-decoration: none;
+    }
+
+    .logo-box {
+      width: 172px;
+      background: white;
+      border-radius: 12px;
+      padding: 8px 12px;
+    }
+
+    .brand img {
+      width: 100%;
+      display: block;
+    }
+
+    .portal-label {
+      display: block;
+      margin-top: 12px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .17em;
+      opacity: .48;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-item,
+    .nav-item:visited,
+    .nav-item:hover,
+    .nav-item:active {
+      text-decoration: none;
+    }
+
+    .nav-item {
+      color:
+        rgba(255, 255, 255, .72);
+      padding: 11px 12px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 13px;
+    }
+
+    .nav-item:hover {
+      color: white;
+      background:
+        rgba(255, 255, 255, .07);
+    }
+
+    .nav-item.active {
+      color: white;
+      background:
+        rgba(255, 255, 255, .13);
+      font-weight: 750;
+      box-shadow:
+        inset 3px 0 #f28b2d;
+    }
+
+    .nav-icon {
+      width: 22px;
+      text-align: center;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+    }
+
+    .logout-button {
+      width: 100%;
+      border:
+        1px solid
+        rgba(255, 255, 255, .12);
+      background:
+        rgba(255, 255, 255, .06);
+      color: white;
+      border-radius: 10px;
+      padding: 11px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .main {
+      width: 100%;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 36px 38px 60px;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 25px;
+      margin-bottom: 28px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      margin-bottom: 18px;
+      color: #77859a;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .eyebrow,
+    .section-label {
+      color: #f28b2d;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .14em;
+      margin: 0 0 6px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #17375e;
+      font-size: 36px;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+
+    h2 {
+      margin: 0;
+      color: #17375e;
+      font-size: 20px;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: #8591a3;
+      font-size: 14px;
+    }
+
+    .add-button {
+      border: none;
+      background:
+        linear-gradient(
+          135deg,
+          #17375e,
+          #234d7b
+        );
+      color: white;
+      border-radius: 11px;
+      padding: 12px 18px;
+      font-weight: 750;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow:
+        0 8px 20px
+        rgba(23, 55, 94, .14);
+    }
+
+    .plus {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .stat-card {
+      min-height: 110px;
+      background: white;
+      border: 1px solid #e5eaf0;
+      border-radius: 16px;
+      padding: 19px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow:
+        0 4px 18px
+        rgba(28, 45, 70, .035);
+    }
+
+    .stat-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .collected-icon {
+      background: #eaf8ef;
+      color: #238455;
+    }
+
+    .month-icon {
+      background: #eef4fb;
+      color: #3b6eaa;
+    }
+
+    .outstanding-icon {
+      background: #fff3e8;
+      color: #d9721b;
+    }
+
+    .transaction-icon {
+      background: #f0ecff;
+      color: #6e57bf;
+    }
+
+    .stat-label {
+      display: block;
+      color: #7d899b;
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .stat-card strong {
+      display: block;
+      color: #17375e;
+      font-size: 22px;
+      line-height: 1;
+      margin: 7px 0;
+    }
+
+    .stat-note {
+      display: block;
+      color: #a0a8b4;
+      font-size: 10px;
+    }
+
+    .payment-panel {
+      background: white;
+      border: 1px solid #e3e8ef;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow:
+        0 5px 20px
+        rgba(20, 40, 65, .035);
+    }
+
+    .panel-top {
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content:
+        space-between;
+      gap: 20px;
+      border-bottom:
+        1px solid #edf0f4;
+    }
+
+    .panel-description {
+      margin: 5px 0 0;
+      color: #909aaa;
+      font-size: 12px;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      width: 240px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f8fafc;
+      border: 1px solid #dfe5ed;
+      border-radius: 10px;
+      padding: 0 11px;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #27364c;
+      font-size: 13px;
+    }
+
+    .toolbar select {
+      height: 40px;
+      border: 1px solid #dfe5ed;
+      border-radius: 10px;
+      padding: 0 12px;
+      background: white;
+      color: #59677b;
+      outline: none;
+      font-size: 12px;
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1160px;
+    }
+
+    th {
+      padding: 11px 20px;
+      background: #fafbfd;
+      border-bottom:
+        1px solid #e8edf2;
+      text-align: left;
+      color: #8793a4;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 15px 20px;
+      border-bottom:
+        1px solid #edf0f4;
+      color: #536176;
+      font-size: 13px;
+      vertical-align: middle;
+    }
+
+    tbody tr:hover {
+      background: #fbfcfe;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .date-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .date-cell strong {
+      color: #20324b;
+      font-size: 12px;
+    }
+
+    .date-cell span {
+      color: #9aa4b1;
+      font-size: 9px;
+    }
+
+    .student-cell {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background:
+        linear-gradient(
+          135deg,
+          #e8f1fb,
+          #f4f8fc
+        );
+      color: #17375e;
+      border: 1px solid #dce6f1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 850;
+      flex-shrink: 0;
+    }
+
+    .student-name,
+    .package-name {
+      color: #20324b;
+      font-weight: 750;
+      margin-bottom: 3px;
+    }
+
+    .student-code,
+    .package-code {
+      color: #98a2b0;
+      font-size: 9px;
+    }
+
+    .amount-text {
+      color: #17375e;
+      white-space: nowrap;
+    }
+
+    .method-badge {
+      display: inline-flex;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #f3f6f9;
+      color: #5d6b7e;
+      font-size: 9px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .status-badge.received {
+      background: #eaf8ef;
+      color: #26844f;
+    }
+
+    .status-badge.cancelled {
+      background: #f3f3f5;
+      color: #737c88;
+    }
+
+    .status-badge.refunded {
+      background: #fff0f0;
+      color: #b94141;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .reference-text {
+      color: #7d8998;
+      font-size: 10px;
+    }
+
+    .action-heading,
+    .action-cell {
+      text-align: right;
+    }
+
+    .edit-button {
+      border: 1px solid #dce4ed;
+      background: white;
+      color: #42536b;
+      border-radius: 8px;
+      padding: 7px 11px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .edit-button:hover {
+      background: #f7f9fc;
+      color: #17375e;
+    }
+
+    .empty-row {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #8f9aa9;
+    }
+
+    .empty-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #f4f6f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .empty-state strong {
+      color: #536178;
+    }
+
+    .empty-state p {
+      margin: 5px 0 0;
+      font-size: 12px;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background:
+        rgba(15, 29, 47, .52);
+      backdrop-filter:
+        blur(3px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop[hidden] {
+      display: none;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 760px;
+      max-height: 92vh;
+      overflow-y: auto;
+      background: white;
+      border-radius: 19px;
+      box-shadow:
+        0 25px 70px
+        rgba(12, 27, 45, .28);
+    }
+
+    .modal-header {
+      padding: 24px 25px 19px;
+      display: flex;
+      justify-content:
+        space-between;
+      gap: 20px;
+      border-bottom:
+        1px solid #edf0f4;
+    }
+
+    .modal-header p:last-child {
+      color: #8c97a7;
+      font-size: 12px;
+      margin: 5px 0 0;
+    }
+
+    .modal-close {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: none;
+      background: #f3f5f7;
+      color: #667389;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    form {
+      padding: 22px 25px 25px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    label span {
+      display: block;
+      color: #536178;
+      font-size: 11px;
+      font-weight: 750;
+      margin-bottom: 6px;
+    }
+
+    label input,
+    label select,
+    label textarea {
+      width: 100%;
+      border: 1px solid #dce3eb;
+      border-radius: 9px;
+      background: white;
+      padding: 10px 11px;
+      color: #27364b;
+      outline: none;
+      font-size: 13px;
+    }
+
+    label input,
+    label select {
+      height: 42px;
+    }
+
+    label textarea {
+      resize: vertical;
+      min-height: 96px;
+    }
+
+    label input:focus,
+    label select:focus,
+    label textarea:focus {
+      border-color: #769dcc;
+      box-shadow:
+        0 0 0 3px
+        rgba(73, 126, 188, .1);
+    }
+
+    .package-summary {
+      display: grid;
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      padding: 14px;
+      background: #f8fafc;
+      border: 1px solid #e4e9ef;
+      border-radius: 12px;
+    }
+
+    .package-summary[hidden] {
+      display: none;
+    }
+
+    .package-summary > div {
+      min-width: 0;
+    }
+
+    .summary-label {
+      display: block;
+      color: #8c97a7;
+      font-size: 9px;
+      font-weight: 750;
+      margin-bottom: 4px;
+    }
+
+    .package-summary strong {
+      color: #17375e;
+      font-size: 11px;
+      word-break: break-word;
+    }
+
+    .form-message {
+      margin-top: 15px;
+      min-height: 18px;
+      font-size: 12px;
+    }
+
+    .form-message.error {
+      color: #c44242;
+    }
+
+    .form-actions {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top:
+        1px solid #edf0f4;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .form-spacer {
+      flex: 1;
+    }
+
+    .cancel-button,
+    .save-button,
+    .danger-button {
+      border-radius: 9px;
+      padding: 10px 15px;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .cancel-button {
+      border: 1px solid #dce3eb;
+      background: white;
+      color: #536178;
+    }
+
+    .save-button {
+      border: none;
+      background: #17375e;
+      color: white;
+    }
+
+    .danger-button {
+      border: 1px solid #f0caca;
+      background: #fff6f6;
+      color: #bf3d3d;
+    }
+
+    .save-button:disabled,
+    .danger-button:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    .error-text {
+      color: #c44242;
+    }
+
+    @media (max-width: 1150px) {
+
+      .stats-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .panel-top {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+    }
+
+    @media (max-width: 1000px) {
+
+      .app {
+        grid-template-columns:
+          80px minmax(0, 1fr);
+      }
+
+      .sidebar {
+        width: 80px;
+      }
+
+      .logo-box {
+        width: 50px;
+        padding: 6px;
+      }
+
+      .portal-label {
+        display: none;
+      }
+
+      .nav-item {
+        justify-content: center;
+      }
+
+      .nav-item span:not(.nav-icon) {
+        display: none;
+      }
+
+      .logout-button span {
+        display: none;
+      }
+
+      .main {
+        padding: 28px 22px 50px;
+      }
+
+    }
+
+    @media (max-width: 720px) {
+
+      .app {
+        display: block;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        padding: 24px 15px 45px;
+      }
+
+      .page-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .add-button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .search-box,
+      .toolbar select {
+        width: 100%;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full-width {
+        grid-column: auto;
+      }
+
+      .package-summary {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .form-actions {
+        flex-wrap: wrap;
+      }
+
+      .form-spacer {
+        display: none;
+      }
+
+      .danger-button {
+        width: 100%;
+      }
+
+      .cancel-button,
+      .save-button {
+        flex: 1;
+      }
+
+    }
+
+  </style>
+
+</body>
+</html>

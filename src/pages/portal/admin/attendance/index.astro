@@ -1,0 +1,2493 @@
+---
+import logoSrc from '../../../../assets/logo.svg';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+  <meta
+    name="robots"
+    content="noindex,nofollow,noarchive"
+  />
+  <title>Attendance | Santutor Admin</title>
+</head>
+
+<body>
+
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loader"></div>
+    <p>Loading Santutor...</p>
+  </div>
+
+  <div id="app" class="app" hidden>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="brand">
+        <a href="/portal/admin/">
+          <div class="logo-box">
+            <img
+              src={logoSrc.src}
+              alt="Santutor Learning Studio"
+            />
+          </div>
+        </a>
+
+        <span class="portal-label">
+          ADMIN PORTAL
+        </span>
+      </div>
+
+      <nav>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/"
+        >
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/students/"
+        >
+          <span class="nav-icon">👨‍🎓</span>
+          <span>Students</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/schedule/"
+        >
+          <span class="nav-icon">📅</span>
+          <span>Schedule</span>
+        </a>
+
+        <a
+          class="nav-item active"
+          href="/portal/admin/attendance/"
+        >
+          <span class="nav-icon">✓</span>
+          <span>Attendance</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/reports/">
+          <span class="nav-icon">📚</span>
+          <span>Learning Reports</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/packages/">
+          <span class="nav-icon">🎟</span>
+          <span>Packages</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/payments/">
+          <span class="nav-icon">💳</span>
+          <span>Payments</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/parents/"
+        >
+          <span class="nav-icon">👪</span>
+          <span>Parents</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/tutors/"
+        >
+          <span class="nav-icon">👩‍🏫</span>
+          <span>Tutors</span>
+        </a>
+
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button
+          id="logoutButton"
+          class="logout-button"
+          type="button"
+        >
+          ↪
+          <span>Sign Out</span>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <header class="page-header">
+
+        <div>
+          <a
+            class="back-link"
+            href="/portal/admin/"
+          >
+            ← Back to Dashboard
+          </a>
+
+          <p class="eyebrow">
+            CLASS ATTENDANCE
+          </p>
+
+          <h1>Attendance</h1>
+
+          <p class="subtitle">
+            Mark attendance for scheduled Santutor classes.
+          </p>
+        </div>
+
+        <button
+          id="todayButton"
+          class="today-button"
+          type="button"
+        >
+          Today
+        </button>
+
+      </header>
+
+      <!-- DATE CONTROLS -->
+      <section class="date-panel">
+
+        <button
+          id="previousDateButton"
+          class="date-arrow"
+          type="button"
+          aria-label="Previous day"
+        >
+          ←
+        </button>
+
+        <div class="date-main">
+
+          <span class="date-label">
+            SELECTED DATE
+          </span>
+
+          <strong id="selectedDateLabel">
+            —
+          </strong>
+
+          <span id="selectedDayLabel">
+            —
+          </span>
+
+        </div>
+
+        <input
+          id="attendanceDate"
+          type="date"
+        />
+
+        <button
+          id="nextDateButton"
+          class="date-arrow"
+          type="button"
+          aria-label="Next day"
+        >
+          →
+        </button>
+
+      </section>
+
+      <!-- STATS -->
+      <section class="stats-grid">
+
+        <article class="stat-card">
+          <div class="stat-icon scheduled-icon">
+            📅
+          </div>
+
+          <div>
+            <span class="stat-label">
+              Scheduled
+            </span>
+
+            <strong id="scheduledCount">
+              —
+            </strong>
+
+            <span class="stat-note">
+              Classes for this day
+            </span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon present-icon">
+            ✓
+          </div>
+
+          <div>
+            <span class="stat-label">
+              Present
+            </span>
+
+            <strong id="presentCount">
+              —
+            </strong>
+
+            <span class="stat-note">
+              Completed classes
+            </span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon absent-icon">
+            ✕
+          </div>
+
+          <div>
+            <span class="stat-label">
+              Absent
+            </span>
+
+            <strong id="absentCount">
+              —
+            </strong>
+
+            <span class="stat-note">
+              Student absent
+            </span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon pending-icon">
+            •
+          </div>
+
+          <div>
+            <span class="stat-label">
+              Not Marked
+            </span>
+
+            <strong id="pendingCount">
+              —
+            </strong>
+
+            <span class="stat-note">
+              Waiting for attendance
+            </span>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- ATTENDANCE LIST -->
+      <section class="attendance-panel">
+
+        <div class="panel-top">
+
+          <div>
+            <p class="section-label">
+              DAILY CLASSES
+            </p>
+
+            <h2 id="dailyHeading">
+              Attendance List
+            </h2>
+
+            <p class="panel-description">
+              Mark attendance or reschedule a class to a one-off date.
+            </p>
+          </div>
+
+          <div class="toolbar">
+
+            <div class="search-box">
+              <span class="search-icon">⌕</span>
+
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="Search student, tutor..."
+              />
+            </div>
+
+            <select id="modeFilter">
+              <option value="all">
+                All Modes
+              </option>
+
+              <option value="onsite">
+                Onsite
+              </option>
+
+              <option value="online">
+                Online
+              </option>
+            </select>
+
+          </div>
+
+        </div>
+
+        <div
+          id="attendanceList"
+          class="attendance-list"
+        >
+          <div class="list-loading">
+            Loading classes...
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- RESCHEDULE MODAL -->
+  <div
+    id="rescheduleModal"
+    class="reschedule-backdrop"
+    hidden
+  >
+    <div
+      class="reschedule-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="rescheduleTitle"
+    >
+      <div class="reschedule-dialog-header">
+        <div>
+          <p class="section-label">ONE-OFF CLASS</p>
+          <h2 id="rescheduleTitle">Reschedule Class</h2>
+        </div>
+
+        <button
+          id="closeRescheduleButton"
+          class="reschedule-close"
+          type="button"
+          aria-label="Close"
+        >
+          ×
+        </button>
+      </div>
+
+      <p
+        id="rescheduleSummary"
+        class="reschedule-summary"
+      >
+        —
+      </p>
+
+      <label class="reschedule-field">
+        <span>New class date</span>
+        <input
+          id="rescheduleDate"
+          type="date"
+        />
+      </label>
+
+      <div class="reschedule-time-grid">
+        <label class="reschedule-field">
+          <span>Start time</span>
+          <input
+            id="rescheduleStartTime"
+            type="time"
+          />
+        </label>
+
+        <label class="reschedule-field">
+          <span>End time</span>
+          <input
+            id="rescheduleEndTime"
+            type="time"
+          />
+        </label>
+      </div>
+
+      <div class="credit-rule-box">
+        <strong>Credit rule</strong>
+        <span>
+          The original date uses 0 credit. The make-up class uses 1 credit only after it is marked Present.
+        </span>
+      </div>
+
+      <p
+        id="rescheduleMessage"
+        class="reschedule-message"
+      ></p>
+
+      <div class="reschedule-dialog-actions">
+        <button
+          id="cancelRescheduleButton"
+          class="secondary-button"
+          type="button"
+        >
+          Cancel
+        </button>
+
+        <button
+          id="confirmRescheduleButton"
+          class="primary-button"
+          type="button"
+        >
+          Confirm Reschedule
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    import { supabase } from '../../../../lib/supabase';
+
+    type RecordStatus = 'active' | 'inactive';
+    type ClassMode = 'onsite' | 'online';
+    type DayOfWeek =
+      'Monday' |
+      'Tuesday' |
+      'Wednesday' |
+      'Thursday' |
+      'Friday' |
+      'Saturday' |
+      'Sunday';
+
+    type AttendanceStatus =
+      'pending' |
+      'present' |
+      'absent' |
+      'cancelled' |
+      'rescheduled';
+
+    type Student = {
+      id: string;
+      student_code: string | null;
+      name: string;
+      status: RecordStatus;
+    };
+
+    type Tutor = {
+      id: string;
+      tutor_code: string | null;
+      name: string;
+      status: RecordStatus;
+    };
+
+    type Schedule = {
+      id: string;
+      student_id: string;
+      tutor_id: string;
+      subject: string | null;
+      day_of_week: DayOfWeek;
+      start_time: string;
+      end_time: string;
+      class_mode: ClassMode;
+      location: string | null;
+      notes: string | null;
+      status: RecordStatus;
+    };
+
+    type AttendanceRecord = {
+      id: string;
+      schedule_id: string;
+      student_id: string;
+      tutor_id: string;
+      class_date: string;
+      start_time: string | null;
+      end_time: string | null;
+      attendance_status: AttendanceStatus;
+      notes: string | null;
+      rescheduled_to_date: string | null;
+      rescheduled_to_start_time: string | null;
+      rescheduled_to_end_time: string | null;
+      rescheduled_from_attendance_id: string | null;
+      rescheduled_from_date: string | null;
+      legacy_attendance_id: string | null;
+      created_at: string;
+      updated_at: string | null;
+    };
+
+    type InstanceKind =
+      'regular' |
+      'makeup' |
+      'history';
+
+    type ClassInstance = {
+      key: string;
+      kind: InstanceKind;
+      schedule: Schedule;
+      attendance: AttendanceRecord | null;
+    };
+
+    type RescheduleContext = {
+      instanceKey: string;
+      scheduleId: string;
+      sourceAttendanceId: string | null;
+      originalDate: string;
+      note: string | null;
+    };
+
+    const DAY_NAMES: DayOfWeek[] = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'
+    ];
+
+    let students: Student[] = [];
+    let tutors: Tutor[] = [];
+    let schedules: Schedule[] = [];
+    let attendanceRecords: AttendanceRecord[] = [];
+    let rescheduleContext: RescheduleContext | null = null;
+
+    function getEl<T extends Element>(selector: string): T {
+      const element = document.querySelector<T>(selector);
+      if (!element) {
+        throw new Error(`Element not found: ${selector}`);
+      }
+      return element;
+    }
+
+    const loadingScreen = getEl<HTMLDivElement>('#loadingScreen');
+    const app = getEl<HTMLDivElement>('#app');
+    const attendanceDate = getEl<HTMLInputElement>('#attendanceDate');
+    const attendanceList = getEl<HTMLDivElement>('#attendanceList');
+    const searchInput = getEl<HTMLInputElement>('#searchInput');
+    const modeFilter = getEl<HTMLSelectElement>('#modeFilter');
+    const rescheduleModal = getEl<HTMLDivElement>('#rescheduleModal');
+    const rescheduleDate = getEl<HTMLInputElement>('#rescheduleDate');
+    const rescheduleStartTime = getEl<HTMLInputElement>('#rescheduleStartTime');
+    const rescheduleEndTime = getEl<HTMLInputElement>('#rescheduleEndTime');
+    const rescheduleSummary = getEl<HTMLParagraphElement>('#rescheduleSummary');
+    const rescheduleMessage = getEl<HTMLParagraphElement>('#rescheduleMessage');
+    const confirmRescheduleButton = getEl<HTMLButtonElement>('#confirmRescheduleButton');
+
+    async function initPage(): Promise<void> {
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if (!user) {
+        window.location.href = '/portal/';
+        return;
+      }
+
+      const { data: profile, error } = await supabase
+        .from('profiles')
+        .select('role, active')
+        .eq('id', user.id)
+        .single();
+
+      if (
+        error ||
+        !profile ||
+        profile.role !== 'admin' ||
+        profile.active !== true
+      ) {
+        await supabase.auth.signOut();
+        window.location.href = '/portal/';
+        return;
+      }
+
+      attendanceDate.value = getLocalDateString(new Date());
+      await loadMasterData();
+
+      loadingScreen.style.display = 'none';
+      app.hidden = false;
+
+      await loadAttendanceForDate();
+    }
+
+    async function loadMasterData(): Promise<void> {
+      const [studentsResult, tutorsResult, schedulesResult] = await Promise.all([
+        supabase
+          .from('students')
+          .select('id, student_code, name, status'),
+        supabase
+          .from('tutors')
+          .select('id, tutor_code, name, status'),
+        supabase
+          .from('schedules')
+          .select(`
+            id,
+            student_id,
+            tutor_id,
+            subject,
+            day_of_week,
+            start_time,
+            end_time,
+            class_mode,
+            location,
+            notes,
+            status
+          `)
+      ]);
+
+      if (studentsResult.error) throw new Error(studentsResult.error.message);
+      if (tutorsResult.error) throw new Error(tutorsResult.error.message);
+      if (schedulesResult.error) throw new Error(schedulesResult.error.message);
+
+      students = (studentsResult.data || []) as Student[];
+      tutors = (tutorsResult.data || []) as Tutor[];
+      schedules = (schedulesResult.data || []) as Schedule[];
+    }
+
+    async function loadAttendanceForDate(): Promise<void> {
+      const selectedDate = attendanceDate.value;
+      if (!selectedDate) return;
+
+      attendanceList.innerHTML = `
+        <div class="list-loading">Loading classes...</div>
+      `;
+
+      const { data, error } = await supabase
+        .from('attendance')
+        .select(`
+          id,
+          schedule_id,
+          student_id,
+          tutor_id,
+          class_date,
+          start_time,
+          end_time,
+          attendance_status,
+          notes,
+          rescheduled_to_date,
+          rescheduled_to_start_time,
+          rescheduled_to_end_time,
+          rescheduled_from_attendance_id,
+          rescheduled_from_date,
+          legacy_attendance_id,
+          created_at,
+          updated_at
+        `)
+        .eq('class_date', selectedDate);
+
+      if (error) {
+        console.error('Load attendance error:', error);
+        attendanceList.innerHTML = `
+          <div class="list-loading error-text">
+            Unable to load attendance.
+          </div>
+        `;
+        return;
+      }
+
+      attendanceRecords = (data || []) as AttendanceRecord[];
+      updateDateLabels();
+      applyFilters();
+      updateStats();
+    }
+
+    function getSelectedDay(): DayOfWeek {
+      const date = parseLocalDate(attendanceDate.value);
+      return DAY_NAMES[date.getDay()];
+    }
+
+    function updateDateLabels(): void {
+      const date = parseLocalDate(attendanceDate.value);
+      const day = getSelectedDay();
+
+      setText(
+        '#selectedDateLabel',
+        new Intl.DateTimeFormat('en-US', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        }).format(date)
+      );
+
+      setText('#selectedDayLabel', day);
+      setText('#dailyHeading', `${day} Classes`);
+    }
+
+    function changeDate(offsetDays: number): void {
+      const date = parseLocalDate(attendanceDate.value);
+      date.setDate(date.getDate() + offsetDays);
+      attendanceDate.value = getLocalDateString(date);
+      void loadAttendanceForDate();
+    }
+
+    function getRegularSchedulesForSelectedDay(): Schedule[] {
+      const selectedDay = getSelectedDay();
+
+      return schedules
+        .filter(
+          schedule =>
+            schedule.status === 'active' &&
+            schedule.day_of_week === selectedDay
+        )
+        .sort((first, second) =>
+          first.start_time.localeCompare(second.start_time)
+        );
+    }
+
+    function getClassInstances(): ClassInstance[] {
+      const regularSchedules = getRegularSchedulesForSelectedDay();
+      const regularScheduleIds = new Set(
+        regularSchedules.map(schedule => schedule.id)
+      );
+
+      const instances: ClassInstance[] = regularSchedules.map(schedule => {
+        const attendance = attendanceRecords.find(
+          record =>
+            record.schedule_id === schedule.id &&
+            record.rescheduled_from_attendance_id === null
+        ) || null;
+
+        return {
+          key: `regular_${schedule.id}`,
+          kind: 'regular',
+          schedule,
+          attendance
+        };
+      });
+
+      for (const record of attendanceRecords) {
+        const schedule = schedules.find(item => item.id === record.schedule_id);
+        if (!schedule) continue;
+
+        if (record.rescheduled_from_attendance_id) {
+          instances.push({
+            key: `makeup_${record.id}`,
+            kind: 'makeup',
+            schedule,
+            attendance: record
+          });
+          continue;
+        }
+
+        if (!regularScheduleIds.has(record.schedule_id)) {
+          instances.push({
+            key: `history_${record.id}`,
+            kind: 'history',
+            schedule,
+            attendance: record
+          });
+        }
+      }
+
+      return instances.sort((first, second) => {
+        const firstTime =
+          first.attendance?.start_time || first.schedule.start_time;
+        const secondTime =
+          second.attendance?.start_time || second.schedule.start_time;
+
+        const timeCompare = firstTime.localeCompare(secondTime);
+        if (timeCompare !== 0) return timeCompare;
+
+        const firstName = getStudent(first.schedule.student_id)?.name || '';
+        const secondName = getStudent(second.schedule.student_id)?.name || '';
+        return firstName.localeCompare(secondName);
+      });
+    }
+
+    function getInstance(instanceKey: string): ClassInstance | undefined {
+      return getClassInstances().find(instance => instance.key === instanceKey);
+    }
+
+    function applyFilters(): void {
+      const search = searchInput.value.toLowerCase().trim();
+      const mode = modeFilter.value;
+
+      const filtered = getClassInstances().filter(instance => {
+        const student = getStudent(instance.schedule.student_id);
+        const tutor = getTutor(instance.schedule.tutor_id);
+
+        const combined = `
+          ${student?.name || ''}
+          ${student?.student_code || ''}
+          ${tutor?.name || ''}
+          ${tutor?.tutor_code || ''}
+          ${instance.schedule.subject || ''}
+          ${instance.schedule.location || ''}
+          ${instance.kind}
+        `.toLowerCase();
+
+        const matchesSearch = combined.includes(search);
+        const matchesMode =
+          mode === 'all' || instance.schedule.class_mode === mode;
+
+        return matchesSearch && matchesMode;
+      });
+
+      renderAttendanceList(filtered);
+    }
+
+    function renderAttendanceList(list: ClassInstance[]): void {
+      if (list.length === 0) {
+        attendanceList.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">📅</div>
+            <strong>No classes</strong>
+            <p>There are no recurring or one-off classes for this date.</p>
+          </div>
+        `;
+        return;
+      }
+
+      attendanceList.innerHTML = list
+        .map(instance => renderAttendanceCard(instance))
+        .join('');
+    }
+
+    function renderAttendanceCard(instance: ClassInstance): string {
+      const { schedule, attendance, kind } = instance;
+      const student = getStudent(schedule.student_id);
+      const tutor = getTutor(schedule.tutor_id);
+      const currentStatus = attendance?.attendance_status || null;
+      const note = attendance?.notes || '';
+      const isLegacy = Boolean(attendance?.legacy_attendance_id);
+      const startTime = attendance?.start_time || schedule.start_time;
+      const endTime = attendance?.end_time || schedule.end_time;
+
+      const instanceBanner =
+        kind === 'makeup'
+          ? `
+            <div class="instance-banner makeup-banner">
+              ↪ One-off rescheduled class
+              ${
+                attendance?.rescheduled_from_date
+                  ? `• from ${escapeHtml(formatDateShort(attendance.rescheduled_from_date))}`
+                  : ''
+              }
+            </div>
+          `
+          : kind === 'history' || isLegacy
+            ? `
+              <div class="instance-banner history-banner">
+                Historical attendance record
+              </div>
+            `
+            : '';
+
+      const movedTarget =
+        currentStatus === 'rescheduled' && attendance?.rescheduled_to_date
+          ? `
+            <div class="reschedule-target">
+              Moved to <strong>${escapeHtml(formatDateShort(attendance.rescheduled_to_date))}</strong>
+              ${
+                attendance.rescheduled_to_start_time && attendance.rescheduled_to_end_time
+                  ? `at <strong>${escapeHtml(formatTime(attendance.rescheduled_to_start_time))}–${escapeHtml(formatTime(attendance.rescheduled_to_end_time))}</strong>`
+                  : ''
+              }.
+              The recurring schedule is unchanged.
+            </div>
+          `
+          : '';
+
+      return `
+        <article
+          class="attendance-card ${kind === 'makeup' ? 'makeup-card' : ''}"
+          data-instance-key="${escapeHtml(instance.key)}"
+        >
+          ${instanceBanner}
+
+          <div class="class-info">
+            <div class="time-box">
+              <strong>${escapeHtml(formatTime(startTime))}</strong>
+              <span>${escapeHtml(formatTime(endTime))}</span>
+            </div>
+
+            <div class="student-box">
+              <div class="avatar">
+                ${escapeHtml(getInitials(student?.name || '?'))}
+              </div>
+
+              <div>
+                <strong>${escapeHtml(student?.name || 'Unknown student')}</strong>
+                <span>
+                  ${schedule.subject ? escapeHtml(schedule.subject) : 'General Class'}
+                </span>
+              </div>
+            </div>
+
+            <div class="meta-box">
+              <span>👩‍🏫 ${escapeHtml(tutor?.name || 'Unknown tutor')}</span>
+              <span>
+                ${schedule.class_mode === 'online' ? '💻 Online' : '🏠 Onsite'}
+              </span>
+              ${
+                schedule.location
+                  ? `<span>📍 ${escapeHtml(schedule.location)}</span>`
+                  : ''
+              }
+            </div>
+          </div>
+
+          <div class="attendance-actions">
+            ${movedTarget}
+
+            <div class="status-buttons">
+              ${renderStatusButton(instance, 'present', 'Present', currentStatus, isLegacy)}
+              ${renderStatusButton(instance, 'absent', 'Absent', currentStatus, isLegacy)}
+              ${renderStatusButton(instance, 'cancelled', 'Cancelled', currentStatus, isLegacy)}
+              ${renderStatusButton(instance, 'rescheduled', 'Reschedule', currentStatus, isLegacy)}
+            </div>
+
+            <div class="note-row">
+              <input
+                class="attendance-note"
+                data-instance-key="${escapeHtml(instance.key)}"
+                type="text"
+                value="${escapeHtml(note)}"
+                placeholder="Optional note..."
+                ${isLegacy ? 'disabled' : ''}
+              />
+
+              <button
+                class="save-note-button"
+                data-instance-key="${escapeHtml(instance.key)}"
+                type="button"
+                ${attendance && !isLegacy ? '' : 'disabled'}
+              >
+                Save Note
+              </button>
+            </div>
+
+            <div class="saved-state">
+              ${renderSavedState(attendance)}
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderStatusButton(
+      instance: ClassInstance,
+      status: Exclude<AttendanceStatus, 'pending'>,
+      label: string,
+      currentStatus: AttendanceStatus | null,
+      disabled: boolean
+    ): string {
+      const activeClass = currentStatus === status ? 'active' : '';
+
+      return `
+        <button
+          class="status-button ${status} ${activeClass}"
+          data-instance-key="${escapeHtml(instance.key)}"
+          data-status="${status}"
+          type="button"
+          ${disabled ? 'disabled' : ''}
+        >
+          ${escapeHtml(label)}
+        </button>
+      `;
+    }
+
+    function renderSavedState(attendance: AttendanceRecord | null): string {
+      if (!attendance) {
+        return `<span class="not-marked">Not marked</span>`;
+      }
+
+      if (attendance.legacy_attendance_id) {
+        return `<span class="history-state">Imported history • credit locked</span>`;
+      }
+
+      if (attendance.attendance_status === 'pending') {
+        return `<span class="pending-makeup-state">One-off class • awaiting attendance</span>`;
+      }
+
+      if (attendance.attendance_status === 'rescheduled') {
+        return `<span class="rescheduled-state">Rescheduled • no credit used</span>`;
+      }
+
+      if (attendance.attendance_status === 'present') {
+        return `<span class="saved-badge">Saved • 1 credit used</span>`;
+      }
+
+      return `<span class="saved-badge neutral-saved">Saved • no credit used</span>`;
+    }
+
+    async function saveAttendanceStatus(
+      instance: ClassInstance,
+      status: 'present' | 'absent' | 'cancelled'
+    ): Promise<void> {
+      if (instance.attendance?.legacy_attendance_id) return;
+
+      const noteInput = attendanceList.querySelector<HTMLInputElement>(
+        `.attendance-note[data-instance-key="${CSS.escape(instance.key)}"]`
+      );
+
+      const note = noteInput?.value.trim() || null;
+      const classDate = instance.attendance?.class_date || attendanceDate.value;
+
+      const { error } = await supabase.rpc('mark_attendance', {
+        p_schedule_id: instance.schedule.id,
+        p_class_date: classDate,
+        p_status: status,
+        p_attendance_id: instance.attendance?.id || null,
+        p_notes: note
+      });
+
+      if (error) {
+        console.error('Save attendance error:', error);
+        window.alert(error.message);
+        return;
+      }
+
+      await loadAttendanceForDate();
+    }
+
+    async function saveAttendanceNote(instance: ClassInstance): Promise<void> {
+      const attendance = instance.attendance;
+
+      if (!attendance) {
+        window.alert('Please mark attendance first.');
+        return;
+      }
+
+      if (attendance.legacy_attendance_id) {
+        window.alert('Imported historical attendance is read-only.');
+        return;
+      }
+
+      const noteInput = attendanceList.querySelector<HTMLInputElement>(
+        `.attendance-note[data-instance-key="${CSS.escape(instance.key)}"]`
+      );
+
+      const note = noteInput?.value.trim() || null;
+
+      const { error } = await supabase
+        .from('attendance')
+        .update({
+          notes: note,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', attendance.id);
+
+      if (error) {
+        window.alert(error.message);
+        return;
+      }
+
+      await loadAttendanceForDate();
+    }
+
+    function openRescheduleModal(instance: ClassInstance): void {
+      if (instance.attendance?.legacy_attendance_id) {
+        window.alert('Imported historical attendance is read-only.');
+        return;
+      }
+
+      const student = getStudent(instance.schedule.student_id);
+      const originalDate = instance.attendance?.class_date || attendanceDate.value;
+      const noteInput = attendanceList.querySelector<HTMLInputElement>(
+        `.attendance-note[data-instance-key="${CSS.escape(instance.key)}"]`
+      );
+
+      rescheduleContext = {
+        instanceKey: instance.key,
+        scheduleId: instance.schedule.id,
+        sourceAttendanceId: instance.attendance?.id || null,
+        originalDate,
+        note: noteInput?.value.trim() || null
+      };
+
+      const isCurrentlyRescheduled =
+        instance.attendance?.attendance_status === 'rescheduled';
+
+      const currentTarget =
+        isCurrentlyRescheduled
+          ? instance.attendance?.rescheduled_to_date
+          : null;
+
+      const currentStart =
+        isCurrentlyRescheduled
+          ? instance.attendance?.rescheduled_to_start_time
+          : null;
+
+      const currentEnd =
+        isCurrentlyRescheduled
+          ? instance.attendance?.rescheduled_to_end_time
+          : null;
+
+      const originalStart =
+        instance.attendance?.start_time || instance.schedule.start_time;
+
+      const originalEnd =
+        instance.attendance?.end_time || instance.schedule.end_time;
+
+      rescheduleDate.value =
+        currentTarget || addDaysToDateString(originalDate, 1);
+
+      rescheduleStartTime.value =
+        toTimeInputValue(currentStart || originalStart);
+
+      rescheduleEndTime.value =
+        toTimeInputValue(currentEnd || originalEnd);
+
+      rescheduleSummary.textContent =
+        `${student?.name || 'Student'} • ${instance.schedule.subject || 'General Class'} • ` +
+        `${formatDateShort(originalDate)} ${formatTime(originalStart)}–${formatTime(originalEnd)} ` +
+        `→ choose the one-off replacement date and time.`;
+
+      rescheduleMessage.textContent = '';
+      confirmRescheduleButton.disabled = false;
+      rescheduleModal.hidden = false;
+      document.body.classList.add('modal-open');
+      rescheduleDate.focus();
+    }
+
+    function closeRescheduleModal(): void {
+      rescheduleContext = null;
+      rescheduleModal.hidden = true;
+      rescheduleMessage.textContent = '';
+      document.body.classList.remove('modal-open');
+    }
+
+    async function confirmReschedule(): Promise<void> {
+      if (!rescheduleContext) return;
+
+      const targetDate = rescheduleDate.value;
+      const targetStartTime = rescheduleStartTime.value;
+      const targetEndTime = rescheduleEndTime.value;
+
+      if (!targetDate) {
+        rescheduleMessage.textContent = 'Please choose the new class date.';
+        return;
+      }
+
+      if (!targetStartTime || !targetEndTime) {
+        rescheduleMessage.textContent = 'Please choose the start and end time.';
+        return;
+      }
+
+      if (targetEndTime <= targetStartTime) {
+        rescheduleMessage.textContent = 'End time must be later than start time.';
+        return;
+      }
+
+      if (targetDate === rescheduleContext.originalDate) {
+        rescheduleMessage.textContent = 'Please choose a different date.';
+        return;
+      }
+
+      confirmRescheduleButton.disabled = true;
+      confirmRescheduleButton.textContent = 'Saving...';
+      rescheduleMessage.textContent = '';
+
+      const { error } = await supabase.rpc('reschedule_class', {
+        p_schedule_id: rescheduleContext.scheduleId,
+        p_original_date: rescheduleContext.originalDate,
+        p_target_date: targetDate,
+        p_target_start_time: targetStartTime,
+        p_target_end_time: targetEndTime,
+        p_source_attendance_id: rescheduleContext.sourceAttendanceId,
+        p_notes: rescheduleContext.note
+      });
+
+      confirmRescheduleButton.disabled = false;
+      confirmRescheduleButton.textContent = 'Confirm Reschedule';
+
+      if (error) {
+        console.error('Reschedule error:', error);
+        rescheduleMessage.textContent = error.message;
+        return;
+      }
+
+      closeRescheduleModal();
+      await loadAttendanceForDate();
+    }
+
+    function updateStats(): void {
+      const instances = getClassInstances();
+      const present = instances.filter(
+        instance => instance.attendance?.attendance_status === 'present'
+      ).length;
+      const absent = instances.filter(
+        instance => instance.attendance?.attendance_status === 'absent'
+      ).length;
+      const pending = instances.filter(instance => {
+        const status = instance.attendance?.attendance_status;
+        return !status || status === 'pending';
+      }).length;
+
+      setText('#scheduledCount', instances.length);
+      setText('#presentCount', present);
+      setText('#absentCount', absent);
+      setText('#pendingCount', pending);
+    }
+
+    attendanceDate.addEventListener('change', () => {
+      void loadAttendanceForDate();
+    });
+
+    searchInput.addEventListener('input', applyFilters);
+    modeFilter.addEventListener('change', applyFilters);
+
+    getEl<HTMLButtonElement>('#todayButton').addEventListener('click', () => {
+      attendanceDate.value = getLocalDateString(new Date());
+      void loadAttendanceForDate();
+    });
+
+    getEl<HTMLButtonElement>('#previousDateButton').addEventListener('click', () => {
+      changeDate(-1);
+    });
+
+    getEl<HTMLButtonElement>('#nextDateButton').addEventListener('click', () => {
+      changeDate(1);
+    });
+
+    attendanceList.addEventListener('click', event => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      const statusButton = target.closest<HTMLButtonElement>('.status-button');
+      if (statusButton) {
+        const instanceKey = statusButton.dataset.instanceKey;
+        const status = statusButton.dataset.status as
+          | 'present'
+          | 'absent'
+          | 'cancelled'
+          | 'rescheduled'
+          | undefined;
+
+        if (!instanceKey || !status) return;
+
+        const instance = getInstance(instanceKey);
+        if (!instance) return;
+
+        if (status === 'rescheduled') {
+          openRescheduleModal(instance);
+        } else {
+          void saveAttendanceStatus(instance, status);
+        }
+        return;
+      }
+
+      const noteButton = target.closest<HTMLButtonElement>('.save-note-button');
+      if (noteButton) {
+        const instanceKey = noteButton.dataset.instanceKey;
+        if (!instanceKey) return;
+
+        const instance = getInstance(instanceKey);
+        if (instance) void saveAttendanceNote(instance);
+      }
+    });
+
+    getEl<HTMLButtonElement>('#closeRescheduleButton').addEventListener(
+      'click',
+      closeRescheduleModal
+    );
+
+    getEl<HTMLButtonElement>('#cancelRescheduleButton').addEventListener(
+      'click',
+      closeRescheduleModal
+    );
+
+    confirmRescheduleButton.addEventListener('click', () => {
+      void confirmReschedule();
+    });
+
+    rescheduleModal.addEventListener('click', event => {
+      if (event.target === rescheduleModal) closeRescheduleModal();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !rescheduleModal.hidden) {
+        closeRescheduleModal();
+      }
+    });
+
+    getEl<HTMLButtonElement>('#logoutButton').addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      window.location.href = '/portal/';
+    });
+
+    function getStudent(studentId: string): Student | undefined {
+      return students.find(student => student.id === studentId);
+    }
+
+    function getTutor(tutorId: string): Tutor | undefined {
+      return tutors.find(tutor => tutor.id === tutorId);
+    }
+
+    function setText(selector: string, value: string | number): void {
+      getEl<HTMLElement>(selector).textContent = String(value);
+    }
+
+    function formatTime(value: string): string {
+      return value ? value.slice(0, 5) : '';
+    }
+
+    function formatDateShort(value: string): string {
+      const date = parseLocalDate(value);
+      return new Intl.DateTimeFormat('en-GB', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+      }).format(date);
+    }
+
+    function parseLocalDate(value: string): Date {
+      const [year, month, day] = value.split('-').map(Number);
+      return new Date(year, month - 1, day);
+    }
+
+    function getLocalDateString(date: Date): string {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    function toTimeInputValue(value: string | null | undefined): string {
+      if (!value) return '';
+      return value.slice(0, 5);
+    }
+
+    function addDaysToDateString(value: string, days: number): string {
+      const date = parseLocalDate(value);
+      date.setDate(date.getDate() + days);
+      return getLocalDateString(date);
+    }
+
+    function getInitials(value: string): string {
+      return value
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(part => part.charAt(0).toUpperCase())
+        .join('');
+    }
+
+    function escapeHtml(value: string): string {
+      return value
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    void initPage().catch(error => {
+      console.error(error);
+      loadingScreen.innerHTML = `
+        <p class="error-text">${escapeHtml(
+          error instanceof Error ? error.message : 'Unable to load attendance.'
+        )}</p>
+      `;
+    });
+  </script>
+
+  <style is:global>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #f5f7fb;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* LOADING */
+
+    .loading-screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #78869a;
+    }
+
+    .loader {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 3px solid #e2e7ed;
+      border-top-color: #f28b2d;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* APP LAYOUT */
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+    }
+
+    .sidebar {
+      min-height: 100vh;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      padding: 24px 15px;
+      background:
+        linear-gradient(
+          180deg,
+          #17375e 0%,
+          #102a4b 100%
+        );
+      color: white;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        8px 0 25px
+        rgba(15, 38, 67, .04);
+    }
+
+    .brand {
+      padding: 4px 10px 27px;
+    }
+
+    .brand a {
+      text-decoration: none;
+    }
+
+    .logo-box {
+      width: 172px;
+      background: white;
+      border-radius: 12px;
+      padding: 8px 12px;
+    }
+
+    .brand img {
+      width: 100%;
+      display: block;
+    }
+
+    .portal-label {
+      display: block;
+      margin-top: 12px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .17em;
+      opacity: .48;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-item,
+    .nav-item:visited,
+    .nav-item:hover,
+    .nav-item:active {
+      text-decoration: none;
+    }
+
+    .nav-item {
+      color: rgba(255, 255, 255, .72);
+      padding: 11px 12px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 13px;
+      transition: .15s ease;
+    }
+
+    .nav-item:hover {
+      color: white;
+      background: rgba(255, 255, 255, .07);
+    }
+
+    .nav-item.active {
+      color: white;
+      background: rgba(255, 255, 255, .13);
+      font-weight: 750;
+      box-shadow: inset 3px 0 #f28b2d;
+    }
+
+    .nav-icon {
+      width: 22px;
+      text-align: center;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+    }
+
+    .logout-button {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .06);
+      color: white;
+      border-radius: 10px;
+      padding: 11px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* MAIN */
+
+    .main {
+      width: 100%;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 36px 38px 60px;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 25px;
+      margin-bottom: 28px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      margin-bottom: 18px;
+      color: #77859a;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .back-link:hover {
+      color: #17375e;
+    }
+
+    .eyebrow,
+    .section-label {
+      color: #f28b2d;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .14em;
+      margin: 0 0 6px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #17375e;
+      font-size: 36px;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+
+    h2 {
+      margin: 0;
+      color: #17375e;
+      font-size: 20px;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: #8591a3;
+      font-size: 14px;
+    }
+
+    .today-button {
+      border: none;
+      background:
+        linear-gradient(
+          135deg,
+          #17375e,
+          #234d7b
+        );
+      color: white;
+      border-radius: 11px;
+      padding: 12px 18px;
+      font-weight: 750;
+      cursor: pointer;
+      box-shadow:
+        0 8px 20px
+        rgba(23, 55, 94, .14);
+    }
+
+    /* DATE CARD */
+
+    .date-panel {
+      margin-bottom: 18px;
+      background: white;
+      border: 1px solid #e3e8ef;
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      align-items: center;
+      gap: 14px;
+      box-shadow:
+        0 4px 18px
+        rgba(28, 45, 70, .035);
+    }
+
+    .date-arrow {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #dce3eb;
+      background: #f8fafc;
+      color: #536178;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: .15s ease;
+    }
+
+    .date-arrow:hover {
+      background: #eef3f8;
+      color: #17375e;
+    }
+
+    .date-main {
+      min-width: 0;
+    }
+
+    .date-label {
+      display: block;
+      color: #9aa4b1;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    .date-main strong {
+      display: block;
+      margin-top: 4px;
+      color: #17375e;
+      font-size: 20px;
+      line-height: 1.1;
+    }
+
+    .date-main > span:last-child {
+      display: block;
+      margin-top: 4px;
+      color: #f28b2d;
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    #attendanceDate {
+      height: 40px;
+      border: 1px solid #dce3eb;
+      border-radius: 10px;
+      padding: 0 11px;
+      color: #42536b;
+      background: white;
+      outline: none;
+    }
+
+    #attendanceDate:focus {
+      border-color: #769dcc;
+      box-shadow:
+        0 0 0 3px
+        rgba(73, 126, 188, .1);
+    }
+
+    /* STATS */
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .stat-card {
+      min-height: 110px;
+      background: white;
+      border: 1px solid #e5eaf0;
+      border-radius: 16px;
+      padding: 19px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow:
+        0 4px 18px
+        rgba(28, 45, 70, .035);
+    }
+
+    .stat-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 19px;
+    }
+
+    .scheduled-icon {
+      background: #eef4fb;
+      color: #17375e;
+    }
+
+    .present-icon {
+      background: #eaf8f0;
+      color: #238455;
+    }
+
+    .absent-icon {
+      background: #fff0f0;
+      color: #bb4343;
+    }
+
+    .pending-icon {
+      background: #fff3e8;
+      color: #d9721b;
+    }
+
+    .stat-label {
+      display: block;
+      color: #7d899b;
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .stat-card strong {
+      display: block;
+      color: #17375e;
+      font-size: 29px;
+      line-height: 1;
+      margin: 6px 0;
+    }
+
+    .stat-note {
+      display: block;
+      color: #a0a8b4;
+      font-size: 10px;
+    }
+
+    /* PANEL */
+
+    .attendance-panel {
+      background: white;
+      border: 1px solid #e3e8ef;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow:
+        0 5px 20px
+        rgba(20, 40, 65, .035);
+    }
+
+    .panel-top {
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid #edf0f4;
+    }
+
+    .panel-description {
+      margin: 5px 0 0;
+      color: #909aaa;
+      font-size: 12px;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-box {
+      width: 260px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f8fafc;
+      border: 1px solid #dfe5ed;
+      border-radius: 10px;
+      padding: 0 11px;
+      color: #9ba6b5;
+    }
+
+    .search-icon {
+      font-size: 16px;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #27364c;
+      font-size: 13px;
+    }
+
+    #modeFilter {
+      height: 40px;
+      border: 1px solid #dfe5ed;
+      border-radius: 10px;
+      padding: 0 12px;
+      background: white;
+      color: #59677b;
+      outline: none;
+      font-size: 12px;
+    }
+
+    /* ATTENDANCE ROWS */
+
+    .attendance-list {
+      padding: 0;
+      display: block;
+    }
+
+    .attendance-card {
+      display: grid;
+      grid-template-columns:
+        minmax(430px, 1.1fr)
+        minmax(420px, .9fr);
+      gap: 24px;
+      padding: 18px 24px;
+      border-bottom: 1px solid #edf0f4;
+      background: white;
+      transition: .15s ease;
+    }
+
+    .attendance-card:last-child {
+      border-bottom: none;
+    }
+
+    .attendance-card:hover {
+      background: #fbfcfe;
+    }
+
+    .class-info {
+      display: grid;
+      grid-template-columns:
+        82px
+        minmax(180px, 1fr)
+        minmax(160px, .9fr);
+      align-items: center;
+      gap: 16px;
+    }
+
+    .time-box {
+      padding-right: 14px;
+      border-right: 1px solid #edf0f4;
+    }
+
+    .time-box strong {
+      display: block;
+      color: #17375e;
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    .time-box span {
+      display: block;
+      margin-top: 3px;
+      color: #929dab;
+      font-size: 10px;
+    }
+
+    .student-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background:
+        linear-gradient(
+          135deg,
+          #e8f1fb,
+          #f4f8fc
+        );
+      color: #17375e;
+      border: 1px solid #dce6f1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .student-box strong {
+      display: block;
+      color: #20324b;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .student-box span {
+      display: block;
+      margin-top: 3px;
+      color: #f28b2d;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .meta-box {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      color: #7d8998;
+      font-size: 10px;
+      line-height: 1.35;
+    }
+
+    .attendance-actions {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .status-buttons {
+      display: grid;
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .status-button {
+      min-height: 34px;
+      border: 1px solid #dce3ea;
+      background: white;
+      color: #697588;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 750;
+      transition: .15s ease;
+    }
+
+    .status-button:hover {
+      background: #f7f9fb;
+      border-color: #cbd5e1;
+    }
+
+    .status-button.present.active {
+      border-color: #b9ddc6;
+      background: #eaf8ef;
+      color: #27814f;
+    }
+
+    .status-button.absent.active {
+      border-color: #e8c2c2;
+      background: #fff0f0;
+      color: #b74242;
+    }
+
+    .status-button.cancelled.active {
+      border-color: #d9dde2;
+      background: #f1f2f4;
+      color: #646d79;
+    }
+
+    .status-button.rescheduled.active {
+      border-color: #efd1ae;
+      background: #fff5e8;
+      color: #bc6a1e;
+    }
+
+    .note-row {
+      display: grid;
+      grid-template-columns:
+        1fr auto;
+      gap: 8px;
+    }
+
+    .attendance-note {
+      min-width: 0;
+      height: 36px;
+      border: 1px solid #dde4eb;
+      border-radius: 8px;
+      padding: 0 10px;
+      outline: none;
+      color: #46566b;
+      background: white;
+      font-size: 11px;
+    }
+
+    .attendance-note:focus {
+      border-color: #769dcc;
+      box-shadow:
+        0 0 0 3px
+        rgba(73, 126, 188, .08);
+    }
+
+    .save-note-button {
+      min-width: 90px;
+      border: 1px solid #dce3ea;
+      background: #f8fafc;
+      color: #4e5d72;
+      border-radius: 8px;
+      padding: 0 12px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .save-note-button:hover:not(:disabled) {
+      background: #eef3f8;
+      color: #17375e;
+    }
+
+    .save-note-button:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .saved-state {
+      min-height: 15px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .saved-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: #27814f;
+      font-size: 9px;
+      font-weight: 750;
+    }
+
+    .saved-badge::before {
+      content: "✓";
+    }
+
+    .not-marked {
+      color: #9aa4b1;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .list-loading,
+    .empty-state {
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #929dab;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .empty-icon {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: #f2f5f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .empty-state p {
+      margin: 5px 0 0;
+      font-size: 12px;
+    }
+
+    .error-text {
+      color: #c44242;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1180px) {
+
+      .stats-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .attendance-card {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 1000px) {
+
+      .app {
+        grid-template-columns:
+          80px minmax(0, 1fr);
+      }
+
+      .sidebar {
+        width: 80px;
+      }
+
+      .logo-box {
+        width: 50px;
+        padding: 6px;
+      }
+
+      .portal-label {
+        display: none;
+      }
+
+      .nav-item {
+        justify-content: center;
+      }
+
+      .nav-item span:not(.nav-icon) {
+        display: none;
+      }
+
+      .logout-button span {
+        display: none;
+      }
+
+      .main {
+        padding: 28px 22px 50px;
+      }
+
+      .panel-top {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+    }
+
+    @media (max-width: 720px) {
+
+      .app {
+        display: block;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        padding: 24px 15px 45px;
+      }
+
+      .page-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .today-button {
+        width: 100%;
+      }
+
+      .date-panel {
+        grid-template-columns:
+          auto 1fr auto;
+        gap: 9px;
+      }
+
+      #attendanceDate {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .search-box,
+      #modeFilter {
+        width: 100%;
+      }
+
+      .attendance-card {
+        padding: 16px;
+      }
+
+      .class-info {
+        grid-template-columns:
+          70px 1fr;
+      }
+
+      .meta-box {
+        grid-column: 1 / -1;
+        padding-top: 10px;
+        border-top: 1px solid #edf0f4;
+      }
+
+      .status-buttons {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .note-row {
+        grid-template-columns: 1fr;
+      }
+
+      .save-note-button {
+        height: 36px;
+      }
+
+    }
+
+    /* RESCHEDULE / ONE-OFF */
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    .instance-banner {
+      grid-column: 1 / -1;
+      margin: -2px 0 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+
+    .makeup-banner {
+      color: #9a571a;
+      background: #fff4e5;
+      border: 1px solid #f1d4ad;
+    }
+
+    .history-banner {
+      color: #687483;
+      background: #f5f7f9;
+      border: 1px solid #e2e6eb;
+    }
+
+    .makeup-card {
+      border-color: #efd1ae;
+      box-shadow: 0 8px 22px rgba(188, 106, 30, .06);
+    }
+
+    .reschedule-target {
+      border: 1px solid #efd1ae;
+      background: #fff8ef;
+      color: #9a571a;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .status-button:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .pending-makeup-state,
+    .rescheduled-state,
+    .history-state {
+      font-size: 9px;
+      font-weight: 750;
+    }
+
+    .pending-makeup-state,
+    .rescheduled-state {
+      color: #bc6a1e;
+    }
+
+    .history-state {
+      color: #7a8491;
+    }
+
+    .neutral-saved {
+      color: #687483;
+    }
+
+    .reschedule-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(13, 32, 55, .48);
+      backdrop-filter: blur(3px);
+    }
+
+    .reschedule-backdrop[hidden] {
+      display: none;
+    }
+
+    .reschedule-dialog {
+      width: min(480px, 100%);
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 24px 70px rgba(13, 32, 55, .24);
+      padding: 22px;
+    }
+
+    .reschedule-dialog-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .reschedule-dialog-header h2 {
+      margin: 3px 0 0;
+      color: #17375e;
+      font-size: 22px;
+    }
+
+    .reschedule-close {
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 8px;
+      background: #f2f5f8;
+      color: #607086;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .reschedule-summary {
+      margin: 16px 0;
+      color: #5c697b;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .reschedule-field {
+      display: grid;
+      gap: 7px;
+      color: #3f4f64;
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .reschedule-field input {
+      width: 100%;
+      height: 42px;
+      border: 1px solid #d9e1e8;
+      border-radius: 9px;
+      padding: 0 11px;
+      outline: none;
+      color: #17375e;
+      background: white;
+      font: inherit;
+    }
+
+    .reschedule-field input:focus {
+      border-color: #769dcc;
+      box-shadow: 0 0 0 3px rgba(73, 126, 188, .08);
+    }
+
+    .reschedule-time-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .credit-rule-box {
+      display: grid;
+      gap: 4px;
+      margin-top: 14px;
+      padding: 12px;
+      border: 1px solid #cfe2d6;
+      border-radius: 9px;
+      background: #f2faf5;
+      color: #42624d;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .credit-rule-box strong {
+      color: #277148;
+    }
+
+    .reschedule-message {
+      min-height: 18px;
+      margin: 10px 0 0;
+      color: #b74242;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .reschedule-dialog-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 9px;
+      margin-top: 10px;
+    }
+
+    .secondary-button,
+    .primary-button {
+      min-height: 38px;
+      border-radius: 9px;
+      padding: 0 14px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .secondary-button {
+      border: 1px solid #d9e1e8;
+      background: white;
+      color: #536276;
+    }
+
+    .primary-button {
+      border: 1px solid #17375e;
+      background: #17375e;
+      color: white;
+    }
+
+    .primary-button:disabled {
+      opacity: .55;
+      cursor: wait;
+    }
+
+    @media (max-width: 520px) {
+      .reschedule-time-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reschedule-dialog-actions {
+        flex-direction: column-reverse;
+      }
+
+      .secondary-button,
+      .primary-button {
+        width: 100%;
+      }
+    }
+
+  </style>
+
+</body>
+</html>

@@ -1,0 +1,2431 @@
+---
+import logoSrc from '../../../assets/logo.svg';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+  <meta
+    name="robots"
+    content="noindex,nofollow,noarchive"
+  />
+  <title>Dashboard | Santutor Admin</title>
+</head>
+
+<body>
+
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loader"></div>
+    <p>Loading Santutor...</p>
+  </div>
+
+
+  <div id="app" class="app" hidden>
+
+    <!-- ============================= -->
+    <!-- SIDEBAR -->
+    <!-- ============================= -->
+
+    <aside class="sidebar">
+
+      <div class="brand">
+
+        <a href="/portal/admin/">
+          <div class="logo-box">
+            <img
+              src={logoSrc.src}
+              alt="Santutor Learning Studio"
+            />
+          </div>
+        </a>
+
+        <span class="portal-label">
+          ADMIN PORTAL
+        </span>
+
+      </div>
+
+
+      <nav>
+
+        <a
+          class="nav-item active"
+          href="/portal/admin/"
+        >
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/students/"
+        >
+          <span class="nav-icon">👨‍🎓</span>
+          <span>Students</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/schedule/"
+        >
+          <span class="nav-icon">📅</span>
+          <span>Schedule</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/attendance/"
+        >
+          <span class="nav-icon">✓</span>
+          <span>Attendance</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/reports/"
+        >
+          <span class="nav-icon">📚</span>
+          <span>Learning Reports</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/packages/"
+        >
+          <span class="nav-icon">🎟</span>
+          <span>Packages</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/payments/"
+        >
+          <span class="nav-icon">💳</span>
+          <span>Payments</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/parents/"
+        >
+          <span class="nav-icon">👪</span>
+          <span>Parents</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/tutors/"
+        >
+          <span class="nav-icon">👩‍🏫</span>
+          <span>Tutors</span>
+        </a>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <button
+          id="logoutButton"
+          class="logout-button"
+          type="button"
+        >
+          ↪
+          <span>Sign Out</span>
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- ============================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================= -->
+
+    <main class="main">
+
+      <header class="page-header">
+
+        <div>
+
+          <p class="eyebrow">
+            SANTUTOR MANAGEMENT
+          </p>
+
+          <h1>Dashboard</h1>
+
+          <p class="subtitle">
+            Welcome back,
+            <strong id="displayName">SANTUTOR</strong>.
+            Here is today's learning overview.
+          </p>
+
+        </div>
+
+
+        <div class="header-actions">
+
+          <a
+            class="secondary-action"
+            href="/portal/admin/students/"
+          >
+            <span class="plus">+</span>
+            Add Student
+          </a>
+
+          <a
+            class="add-button"
+            href="/portal/admin/schedule/"
+          >
+            <span class="plus">+</span>
+            Add Schedule
+          </a>
+
+        </div>
+
+      </header>
+
+
+      <!-- ============================= -->
+      <!-- STATS -->
+      <!-- ============================= -->
+
+      <section class="stats-grid">
+
+        <article class="stat-card">
+
+          <div class="stat-icon students-icon">
+            👨‍🎓
+          </div>
+
+          <div>
+            <span class="stat-label">
+              Active Students
+            </span>
+
+            <strong id="activeStudents">
+              —
+            </strong>
+
+            <span class="stat-note">
+              Currently enrolled
+            </span>
+          </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-icon class-icon">
+            📅
+          </div>
+
+          <div>
+            <span class="stat-label">
+              Classes Today
+            </span>
+
+            <strong id="classesToday">
+              —
+            </strong>
+
+            <span class="stat-note">
+              Regular + one-off
+            </span>
+          </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-icon pending-icon">
+            ✓
+          </div>
+
+          <div>
+            <span class="stat-label">
+              Attendance Pending
+            </span>
+
+            <strong id="attendancePending">
+              —
+            </strong>
+
+            <span class="stat-note">
+              Need attendance action
+            </span>
+          </div>
+
+        </article>
+
+
+        <article class="stat-card renewal-stat-card">
+
+          <div class="stat-icon renewal-icon">
+            !
+          </div>
+
+          <div>
+            <span class="stat-label">
+              Renewal Needed
+            </span>
+
+            <strong id="renewalNeeded">
+              —
+            </strong>
+
+            <span class="stat-note">
+              ≤ 1 session remaining
+            </span>
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- ============================= -->
+      <!-- WEEKLY TIMETABLE -->
+      <!-- ============================= -->
+
+      <section class="dashboard-panel weekly-panel">
+
+        <div class="panel-top">
+
+          <div>
+
+            <p class="section-label">
+              WEEKLY OVERVIEW
+            </p>
+
+            <h2>
+              Weekly Class Timetable
+            </h2>
+
+            <p class="panel-description">
+              Regular teaching schedule from Monday to Saturday.
+            </p>
+
+          </div>
+
+
+          <a
+            class="panel-button"
+            href="/portal/admin/schedule/"
+          >
+            Manage Schedule
+          </a>
+
+        </div>
+
+
+        <div
+          id="weeklyGrid"
+          class="weekly-grid"
+        >
+          <div class="loading-inline">
+            Loading schedule...
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- ============================= -->
+      <!-- LOWER PANELS -->
+      <!-- ============================= -->
+
+      <div class="bottom-grid">
+
+        <section class="dashboard-panel">
+
+          <div class="panel-top compact">
+
+            <div>
+
+              <p class="section-label">
+                TODAY
+              </p>
+
+              <h2>
+                Today's Classes
+              </h2>
+
+              <p
+                id="todayLabel"
+                class="panel-description"
+              >
+                Loading...
+              </p>
+
+            </div>
+
+
+            <a
+              class="text-link"
+              href="/portal/admin/attendance/"
+            >
+              Open Attendance →
+            </a>
+
+          </div>
+
+
+          <div
+            id="todayClasses"
+            class="today-list"
+          >
+            <div class="empty-state">
+              <strong>
+                Loading classes...
+              </strong>
+            </div>
+          </div>
+
+        </section>
+
+
+        <section class="dashboard-panel">
+
+          <div class="panel-top compact">
+
+            <div>
+
+              <p class="section-label">
+                ACTION REQUIRED
+              </p>
+
+              <h2>
+                Package Renewals
+              </h2>
+
+              <p class="panel-description">
+                Students approaching the end of their package.
+              </p>
+
+            </div>
+
+
+            <a
+              class="text-link"
+              href="/portal/admin/packages/"
+            >
+              Open Packages →
+            </a>
+
+          </div>
+
+
+          <div
+            id="renewalList"
+            class="renewal-list"
+          >
+            <div class="empty-state">
+              <strong>
+                Loading packages...
+              </strong>
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <section
+        id="errorPanel"
+        class="error-panel"
+        hidden
+      >
+        <strong>
+          Some dashboard data could not be loaded.
+        </strong>
+
+        <p id="errorText"></p>
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <script>
+
+    import { supabase } from '../../../lib/supabase';
+
+    type Student = {
+      id: string;
+      student_code: string | null;
+      name: string;
+      status: 'active' | 'inactive';
+    };
+
+    type Tutor = {
+      id: string;
+      tutor_code: string | null;
+      name: string;
+      status: 'active' | 'inactive';
+    };
+
+    type Schedule = {
+      id: string;
+      schedule_code: string | null;
+      student_id: string;
+      tutor_id: string;
+      subject: string | null;
+      day_of_week: string;
+      start_time: string;
+      end_time: string;
+      class_mode: 'onsite' | 'online';
+      status: 'active' | 'inactive';
+    };
+
+    type AttendanceStatus =
+      | 'pending'
+      | 'present'
+      | 'absent'
+      | 'cancelled'
+      | 'rescheduled';
+
+    type Attendance = {
+      id: string;
+      schedule_id: string;
+      student_id: string;
+      tutor_id: string;
+      class_date: string;
+      start_time: string | null;
+      end_time: string | null;
+      attendance_status: AttendanceStatus;
+      rescheduled_from_attendance_id: string | null;
+      rescheduled_from_date: string | null;
+      rescheduled_to_date: string | null;
+      rescheduled_to_start_time: string | null;
+      rescheduled_to_end_time: string | null;
+      legacy_attendance_id: string | null;
+    };
+
+    type StudentPackage = {
+      id: string;
+      package_code: string | null;
+      student_id: string;
+      package_name: string;
+      total_sessions: number;
+      remaining_sessions: number;
+      payment_status: 'unpaid' | 'partial' | 'paid';
+      status: 'active' | 'completed' | 'expired' | 'cancelled';
+      expiry_date: string | null;
+    };
+
+    type DashboardClass = {
+      key: string;
+      scheduleId: string;
+      studentId: string;
+      tutorId: string;
+      subject: string;
+      startTime: string;
+      endTime: string;
+      mode: string;
+      status: AttendanceStatus | 'unmarked';
+      isMakeup: boolean;
+      rescheduledFromDate: string | null;
+      rescheduledToDate: string | null;
+      rescheduledToStartTime: string | null;
+      rescheduledToEndTime: string | null;
+    };
+
+    const WEEKDAYS = [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'
+    ];
+
+    const SHORT_DAYS: Record<string, string> = {
+      Monday: 'MON',
+      Tuesday: 'TUE',
+      Wednesday: 'WED',
+      Thursday: 'THU',
+      Friday: 'FRI',
+      Saturday: 'SAT'
+    };
+
+    let students: Student[] = [];
+    let tutors: Tutor[] = [];
+    let schedules: Schedule[] = [];
+    let todayAttendance: Attendance[] = [];
+    let packages: StudentPackage[] = [];
+
+    function getEl<T extends Element>(selector: string): T {
+      const element = document.querySelector<T>(selector);
+
+      if (!element) {
+        throw new Error(`Element not found: ${selector}`);
+      }
+
+      return element;
+    }
+
+    function setText(selector: string, value: string | number): void {
+      getEl<HTMLElement>(selector).textContent = String(value);
+    }
+
+    function escapeHtml(value: string): string {
+      const div = document.createElement('div');
+      div.textContent = value;
+      return div.innerHTML;
+    }
+
+    function formatTime(value: string | null): string {
+      if (!value) return '—';
+      return value.slice(0, 5);
+    }
+
+    function jakartaParts(): {
+      isoDate: string;
+      weekday: string;
+      displayDate: string;
+    } {
+      const now = new Date();
+
+      const parts = new Intl.DateTimeFormat(
+        'en-CA',
+        {
+          timeZone: 'Asia/Jakarta',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          weekday: 'long'
+        }
+      ).formatToParts(now);
+
+      const byType = Object.fromEntries(
+        parts.map(part => [part.type, part.value])
+      );
+
+      const isoDate =
+        `${byType.year}-${byType.month}-${byType.day}`;
+
+      const displayDate =
+        new Intl.DateTimeFormat(
+          'en-GB',
+          {
+            timeZone: 'Asia/Jakarta',
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          }
+        ).format(now);
+
+      return {
+        isoDate,
+        weekday: byType.weekday,
+        displayDate
+      };
+    }
+
+    function studentById(id: string): Student | undefined {
+      return students.find(item => item.id === id);
+    }
+
+    function tutorById(id: string): Tutor | undefined {
+      return tutors.find(item => item.id === id);
+    }
+
+    function showError(message: string): void {
+      getEl<HTMLElement>('#errorPanel').hidden = false;
+      setText('#errorText', message);
+    }
+
+    async function requireAdmin(): Promise<void> {
+      const {
+        data: { user }
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        window.location.href = '/portal/';
+        throw new Error('Not authenticated');
+      }
+
+      const {
+        data: profile,
+        error
+      } = await supabase
+        .from('profiles')
+        .select('role, active, display_name')
+        .eq('id', user.id)
+        .single();
+
+      if (
+        error ||
+        !profile ||
+        profile.role !== 'admin' ||
+        profile.active !== true
+      ) {
+        await supabase.auth.signOut();
+        window.location.href = '/portal/';
+        throw new Error('Admin access required');
+      }
+
+      setText(
+        '#displayName',
+        String(profile.display_name || 'SANTUTOR').toUpperCase()
+      );
+    }
+
+    async function loadDashboardData(): Promise<void> {
+      const today = jakartaParts();
+
+      const [
+        studentResult,
+        tutorResult,
+        scheduleResult,
+        attendanceResult,
+        packageResult
+      ] = await Promise.all([
+        supabase
+          .from('students')
+          .select('id, student_code, name, status')
+          .order('name'),
+
+        supabase
+          .from('tutors')
+          .select('id, tutor_code, name, status')
+          .order('name'),
+
+        supabase
+          .from('schedules')
+          .select(`
+            id,
+            schedule_code,
+            student_id,
+            tutor_id,
+            subject,
+            day_of_week,
+            start_time,
+            end_time,
+            class_mode,
+            status
+          `)
+          .eq('status', 'active')
+          .order('start_time'),
+
+        supabase
+          .from('attendance')
+          .select(`
+            id,
+            schedule_id,
+            student_id,
+            tutor_id,
+            class_date,
+            start_time,
+            end_time,
+            attendance_status,
+            rescheduled_from_attendance_id,
+            rescheduled_from_date,
+            rescheduled_to_date,
+            rescheduled_to_start_time,
+            rescheduled_to_end_time,
+            legacy_attendance_id
+          `)
+          .eq('class_date', today.isoDate)
+          .order('start_time'),
+
+        supabase
+          .from('student_packages')
+          .select(`
+            id,
+            package_code,
+            student_id,
+            package_name,
+            total_sessions,
+            remaining_sessions,
+            payment_status,
+            status,
+            expiry_date
+          `)
+          .in('status', ['active', 'completed', 'expired'])
+          .order('remaining_sessions')
+      ]);
+
+      const errors = [
+        studentResult.error,
+        tutorResult.error,
+        scheduleResult.error,
+        attendanceResult.error,
+        packageResult.error
+      ].filter(Boolean);
+
+      if (errors.length > 0) {
+        throw new Error(
+          errors
+            .map(error => error?.message || 'Unknown database error')
+            .join(' | ')
+        );
+      }
+
+      students = (studentResult.data || []) as Student[];
+      tutors = (tutorResult.data || []) as Tutor[];
+      schedules = (scheduleResult.data || []) as Schedule[];
+      todayAttendance = (attendanceResult.data || []) as Attendance[];
+      packages = (packageResult.data || []) as StudentPackage[];
+    }
+
+    function buildTodayClasses(): DashboardClass[] {
+      const today = jakartaParts();
+
+      const regularSchedules =
+        schedules.filter(
+          schedule =>
+            schedule.day_of_week === today.weekday
+        );
+
+      const regularAttendanceBySchedule =
+        new Map<string, Attendance>();
+
+      for (const attendance of todayAttendance) {
+        if (!attendance.rescheduled_from_attendance_id) {
+          regularAttendanceBySchedule.set(
+            attendance.schedule_id,
+            attendance
+          );
+        }
+      }
+
+      const regularClasses: DashboardClass[] =
+        regularSchedules.map(schedule => {
+          const attendance =
+            regularAttendanceBySchedule.get(schedule.id);
+
+          return {
+            key: `regular-${schedule.id}`,
+            scheduleId: schedule.id,
+            studentId: schedule.student_id,
+            tutorId: schedule.tutor_id,
+            subject: schedule.subject || 'Class',
+            startTime:
+              attendance?.start_time ||
+              schedule.start_time,
+            endTime:
+              attendance?.end_time ||
+              schedule.end_time,
+            mode: schedule.class_mode,
+            status:
+              attendance?.attendance_status ||
+              'unmarked',
+            isMakeup: false,
+            rescheduledFromDate: null,
+            rescheduledToDate:
+              attendance?.rescheduled_to_date || null,
+            rescheduledToStartTime:
+              attendance?.rescheduled_to_start_time || null,
+            rescheduledToEndTime:
+              attendance?.rescheduled_to_end_time || null
+          };
+        });
+
+      const makeupClasses: DashboardClass[] =
+        todayAttendance
+          .filter(
+            attendance =>
+              attendance.rescheduled_from_attendance_id !== null
+          )
+          .map(attendance => {
+            const schedule =
+              schedules.find(
+                item => item.id === attendance.schedule_id
+              );
+
+            return {
+              key: `makeup-${attendance.id}`,
+              scheduleId: attendance.schedule_id,
+              studentId: attendance.student_id,
+              tutorId: attendance.tutor_id,
+              subject: schedule?.subject || 'Make-up Class',
+              startTime:
+                attendance.start_time ||
+                schedule?.start_time ||
+                '',
+              endTime:
+                attendance.end_time ||
+                schedule?.end_time ||
+                '',
+              mode: schedule?.class_mode || 'onsite',
+              status: attendance.attendance_status,
+              isMakeup: true,
+              rescheduledFromDate:
+                attendance.rescheduled_from_date,
+              rescheduledToDate:
+                attendance.rescheduled_to_date,
+              rescheduledToStartTime:
+                attendance.rescheduled_to_start_time,
+              rescheduledToEndTime:
+                attendance.rescheduled_to_end_time
+            };
+          });
+
+      return [...regularClasses, ...makeupClasses]
+        .sort(
+          (a, b) =>
+            a.startTime.localeCompare(b.startTime)
+        );
+    }
+
+    function renderStats(todayClasses: DashboardClass[]): void {
+      const renewalPackages =
+        packages.filter(
+          item =>
+            item.remaining_sessions <= 1 &&
+            item.status !== 'cancelled'
+        );
+
+      const pending =
+        todayClasses.filter(
+          item =>
+            item.status === 'unmarked' ||
+            item.status === 'pending'
+        ).length;
+
+      setText(
+        '#activeStudents',
+        students.filter(student => student.status === 'active').length
+      );
+      setText('#classesToday', todayClasses.length);
+      setText('#attendancePending', pending);
+      setText('#renewalNeeded', renewalPackages.length);
+    }
+
+    function renderWeeklyTimetable(): void {
+      const weeklyGrid =
+        getEl<HTMLElement>('#weeklyGrid');
+
+      weeklyGrid.innerHTML =
+        WEEKDAYS.map(day => {
+          const daySchedules =
+            schedules
+              .filter(
+                schedule =>
+                  schedule.day_of_week === day
+              )
+              .sort(
+                (a, b) =>
+                  a.start_time.localeCompare(
+                    b.start_time
+                  )
+              );
+
+          const content =
+            daySchedules.length === 0
+              ? `
+                <div class="day-empty">
+                  No classes
+                </div>
+              `
+              : daySchedules
+                  .map(schedule => {
+                    const student =
+                      studentById(schedule.student_id);
+
+                    const tutor =
+                      tutorById(schedule.tutor_id);
+
+                    return `
+                      <article class="class-chip">
+                        <div class="class-time">
+                          ${escapeHtml(formatTime(schedule.start_time))}
+                        </div>
+
+                        <div class="class-student">
+                          ${escapeHtml(student?.name || 'Unknown student')}
+                        </div>
+
+                        <div class="class-meta">
+                          ${escapeHtml(schedule.subject || 'Class')}
+                        </div>
+
+                        <div class="class-meta muted">
+                          ${escapeHtml(tutor?.name || 'Unknown tutor')}
+                          ·
+                          ${escapeHtml(schedule.class_mode)}
+                        </div>
+                      </article>
+                    `;
+                  })
+                  .join('');
+
+          return `
+            <div class="day-column">
+              <div class="day-title">
+                ${SHORT_DAYS[day]}
+              </div>
+
+              <div class="day-content">
+                ${content}
+              </div>
+            </div>
+          `;
+        }).join('');
+    }
+
+    function statusBadge(status: DashboardClass['status']): string {
+      const labelMap: Record<DashboardClass['status'], string> = {
+        unmarked: 'Pending',
+        pending: 'Pending',
+        present: 'Present',
+        absent: 'Absent',
+        cancelled: 'Cancelled',
+        rescheduled: 'Rescheduled'
+      };
+
+      return `
+        <span class="status-badge ${status}">
+          ${labelMap[status]}
+        </span>
+      `;
+    }
+
+    function renderTodayClasses(
+      todayClasses: DashboardClass[]
+    ): void {
+      const container =
+        getEl<HTMLElement>('#todayClasses');
+
+      setText(
+        '#todayLabel',
+        jakartaParts().displayDate
+      );
+
+      if (todayClasses.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <strong>No classes today</strong>
+            <p>No active regular or make-up classes are scheduled.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML =
+        todayClasses
+          .map(item => {
+            const student =
+              studentById(item.studentId);
+
+            const tutor =
+              tutorById(item.tutorId);
+
+            const rescheduleNote =
+              item.status === 'rescheduled' &&
+              item.rescheduledToDate
+                ? `
+                  <div class="reschedule-note">
+                    Moved to
+                    ${escapeHtml(item.rescheduledToDate)}
+                    ${
+                      item.rescheduledToStartTime
+                        ? ` · ${escapeHtml(formatTime(item.rescheduledToStartTime))}`
+                        : ''
+                    }
+                  </div>
+                `
+                : '';
+
+            return `
+              <article class="today-row">
+                <div class="time-box">
+                  <strong>
+                    ${escapeHtml(formatTime(item.startTime))}
+                  </strong>
+                  <span>
+                    ${escapeHtml(formatTime(item.endTime))}
+                  </span>
+                </div>
+
+                <div class="today-main">
+                  <div class="today-name">
+                    ${escapeHtml(student?.name || 'Unknown student')}
+
+                    ${
+                      item.isMakeup
+                        ? '<span class="makeup-tag">MAKE-UP</span>'
+                        : ''
+                    }
+                  </div>
+
+                  <div class="today-subject">
+                    ${escapeHtml(item.subject)}
+                  </div>
+
+                  <div class="today-meta">
+                    ${escapeHtml(tutor?.name || 'Unknown tutor')}
+                    ·
+                    ${escapeHtml(item.mode)}
+                  </div>
+
+                  ${
+                    item.isMakeup &&
+                    item.rescheduledFromDate
+                      ? `
+                        <div class="makeup-origin">
+                          Rescheduled from
+                          ${escapeHtml(item.rescheduledFromDate)}
+                        </div>
+                      `
+                      : ''
+                  }
+
+                  ${rescheduleNote}
+                </div>
+
+                <div class="today-status">
+                  ${statusBadge(item.status)}
+                </div>
+              </article>
+            `;
+          })
+          .join('');
+    }
+
+    function renderRenewals(): void {
+      const container =
+        getEl<HTMLElement>('#renewalList');
+
+      const renewals =
+        packages
+          .filter(
+            item =>
+              item.remaining_sessions <= 1 &&
+              item.status !== 'cancelled'
+          )
+          .sort(
+            (a, b) =>
+              a.remaining_sessions -
+              b.remaining_sessions
+          );
+
+      if (renewals.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <strong>No renewal needed</strong>
+            <p>No student currently has one session or fewer remaining.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML =
+        renewals
+          .map(item => {
+            const student =
+              studentById(item.student_id);
+
+            return `
+              <article class="renewal-row">
+                <div>
+                  <div class="renewal-name">
+                    ${escapeHtml(student?.name || 'Unknown student')}
+                  </div>
+
+                  <div class="renewal-package">
+                    ${escapeHtml(item.package_name)}
+                  </div>
+
+                  <div class="renewal-meta">
+                    ${escapeHtml(item.package_code || 'No package code')}
+                    ·
+                    ${escapeHtml(item.payment_status)}
+                  </div>
+                </div>
+
+                <div class="remaining-pill ${
+                  item.remaining_sessions === 0
+                    ? 'zero'
+                    : ''
+                }">
+                  ${item.remaining_sessions}
+                  <span>left</span>
+                </div>
+              </article>
+            `;
+          })
+          .join('');
+    }
+
+    async function initPage(): Promise<void> {
+      try {
+        await requireAdmin();
+        await loadDashboardData();
+
+        const todayClasses =
+          buildTodayClasses();
+
+        renderStats(todayClasses);
+        renderWeeklyTimetable();
+        renderTodayClasses(todayClasses);
+        renderRenewals();
+
+        getEl<HTMLElement>('#loadingScreen')
+          .setAttribute('style', 'display:none');
+
+        getEl<HTMLElement>('#app')
+          .removeAttribute('hidden');
+      } catch (error) {
+        console.error(error);
+
+        getEl<HTMLElement>('#loadingScreen')
+          .setAttribute('style', 'display:none');
+
+        getEl<HTMLElement>('#app')
+          .removeAttribute('hidden');
+
+        showError(
+          error instanceof Error
+            ? error.message
+            : 'Unknown dashboard error'
+        );
+      }
+    }
+
+    getEl<HTMLButtonElement>('#logoutButton')
+      .addEventListener(
+        'click',
+        async () => {
+          await supabase.auth.signOut();
+          window.location.href = '/portal/';
+        }
+      );
+
+    void initPage();
+  
+  </script>
+
+
+  <style is:global>
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+      margin: 0;
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+
+    /* LOADING */
+
+    .loading-screen {
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 12px;
+
+      color: #78869a;
+    }
+
+
+    .loader {
+      width: 30px;
+      height: 30px;
+
+      border-radius: 50%;
+
+      border:
+        3px solid #e2e7ed;
+
+      border-top-color:
+        #f28b2d;
+
+      animation:
+        spin .8s linear infinite;
+    }
+
+
+    @keyframes spin {
+      to {
+        transform:
+          rotate(360deg);
+      }
+    }
+
+
+    /* LAYOUT */
+
+    .app {
+      min-height: 100vh;
+
+      display: grid;
+
+      grid-template-columns:
+        240px minmax(0, 1fr);
+    }
+
+
+    /* SIDEBAR */
+
+    .sidebar {
+      background:
+        linear-gradient(
+          180deg,
+          #17375e 0%,
+          #102a4b 100%
+        );
+
+      color: white;
+
+      min-height: 100vh;
+      height: 100vh;
+
+      position: sticky;
+      top: 0;
+
+      padding:
+        24px 15px;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    .brand {
+      padding:
+        4px 10px 27px;
+    }
+
+
+    .brand a {
+      text-decoration: none;
+    }
+
+
+    .logo-box {
+      background: white;
+
+      border-radius: 12px;
+
+      padding:
+        8px 12px;
+
+      width: 172px;
+    }
+
+
+    .brand img {
+      width: 100%;
+      display: block;
+    }
+
+
+    .portal-label {
+      display: block;
+
+      margin-top: 12px;
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: .17em;
+
+      opacity: .48;
+    }
+
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+
+    .nav-item,
+    .nav-item:visited,
+    .nav-item:hover,
+    .nav-item:active {
+      text-decoration: none;
+    }
+
+
+    .nav-item {
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          .72
+        );
+
+      padding:
+        11px 12px;
+
+      border-radius: 10px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 11px;
+
+      font-size: 13px;
+
+      transition:
+        .15s ease;
+    }
+
+
+    .nav-item:hover {
+      color: white;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .07
+        );
+    }
+
+
+    .nav-item.active {
+      color: white;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .13
+        );
+
+      font-weight: 750;
+
+      box-shadow:
+        inset 3px 0
+        #f28b2d;
+    }
+
+
+    .nav-icon {
+      width: 22px;
+      text-align: center;
+    }
+
+
+    .sidebar-bottom {
+      margin-top: auto;
+    }
+
+
+    .logout-button {
+      width: 100%;
+
+      border:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          .12
+        );
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .06
+        );
+
+      color: white;
+
+      border-radius: 10px;
+
+      padding: 11px;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 8px;
+    }
+
+
+    /* MAIN */
+
+    .main {
+      width: 100%;
+
+      max-width: 1500px;
+
+      margin: 0 auto;
+
+      padding:
+        36px 38px 60px;
+    }
+
+
+    /* PAGE HEADER */
+
+    .page-header {
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        flex-end;
+
+      gap: 25px;
+
+      margin-bottom: 28px;
+    }
+
+
+    .eyebrow,
+    .section-label {
+      color: #f28b2d;
+
+      font-size: 10px;
+      font-weight: 850;
+
+      letter-spacing: .14em;
+
+      margin:
+        0 0 6px;
+    }
+
+
+    h1 {
+      margin: 0;
+
+      color: #17375e;
+
+      font-size: 36px;
+      line-height: 1.1;
+
+      letter-spacing:
+        -.02em;
+    }
+
+
+    h2 {
+      margin: 0;
+
+      color: #17375e;
+
+      font-size: 20px;
+    }
+
+
+    .subtitle {
+      margin:
+        8px 0 0;
+
+      color: #8591a3;
+
+      font-size: 14px;
+    }
+
+
+    .subtitle strong {
+      color: #66758a;
+    }
+
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+
+    .add-button,
+    .secondary-action,
+    .panel-button {
+      text-decoration: none;
+    }
+
+
+    .add-button {
+      border: none;
+
+      background: #17375e;
+
+      color: white;
+
+      border-radius: 11px;
+
+      padding:
+        12px 18px;
+
+      font-weight: 750;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 20px
+        rgba(
+          23,
+          55,
+          94,
+          .14
+        );
+
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+    }
+
+
+    .add-button:hover {
+      transform:
+        translateY(-1px);
+
+      box-shadow:
+        0 10px 25px
+        rgba(
+          23,
+          55,
+          94,
+          .20
+        );
+    }
+
+
+    .secondary-action {
+      border:
+        1px solid #dce3eb;
+
+      background: white;
+      color: #17375e;
+
+      border-radius: 11px;
+
+      padding:
+        11px 17px;
+
+      font-weight: 750;
+
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+    }
+
+
+    .secondary-action:hover {
+      background: #fbfcfe;
+    }
+
+
+    .plus {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+
+    /* STATS */
+
+    .stats-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          4,
+          minmax(0, 1fr)
+        );
+
+      gap: 16px;
+
+      margin-bottom: 22px;
+    }
+
+
+    .stat-card {
+      background: white;
+
+      border:
+        1px solid #e5eaf0;
+
+      border-radius: 16px;
+
+      padding: 19px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 16px;
+
+      box-shadow:
+        0 3px 12px
+        rgba(
+          28,
+          45,
+          70,
+          .03
+        );
+    }
+
+
+    .renewal-stat-card {
+      border-color: #f1d2ad;
+      background: #fffaf5;
+    }
+
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+
+      border-radius: 13px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      font-size: 19px;
+    }
+
+
+    .students-icon {
+      background: #eef4fb;
+    }
+
+
+    .class-icon {
+      background: #eef4fb;
+    }
+
+
+    .pending-icon {
+      background: #eaf8f0;
+      color: #238455;
+    }
+
+
+    .renewal-icon {
+      background: #fff0e2;
+      color: #d46e08;
+
+      font-weight: 900;
+    }
+
+
+    .stat-label {
+      display: block;
+
+      color: #7d899b;
+
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+
+    .stat-card strong {
+      display: block;
+
+      color: #17375e;
+
+      font-size: 27px;
+      line-height: 1;
+
+      margin:
+        6px 0;
+    }
+
+
+    .renewal-stat-card strong {
+      color: #d46e08;
+    }
+
+
+    .stat-note {
+      display: block;
+
+      color: #a0a8b4;
+
+      font-size: 10px;
+    }
+
+
+    /* PANELS */
+
+    .dashboard-panel {
+      background: white;
+
+      border:
+        1px solid #e3e8ef;
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 5px 20px
+        rgba(
+          20,
+          40,
+          65,
+          .035
+        );
+
+      padding:
+        24px 26px;
+    }
+
+
+    .weekly-panel {
+      margin-bottom: 22px;
+    }
+
+
+    .panel-top {
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        flex-start;
+
+      gap: 20px;
+
+      margin-bottom: 20px;
+    }
+
+
+    .panel-top.compact {
+      align-items: center;
+    }
+
+
+    .panel-description {
+      margin:
+        6px 0 0;
+
+      color: #8a96a8;
+
+      font-size: 12px;
+    }
+
+
+    .panel-button {
+      border:
+        1px solid #dce4ec;
+
+      background: white;
+
+      color: #17375e;
+
+      border-radius: 10px;
+
+      padding:
+        10px 14px;
+
+      font-size: 12px;
+      font-weight: 750;
+
+      white-space: nowrap;
+    }
+
+
+    .panel-button:hover {
+      background: #f8fafc;
+    }
+
+
+    .text-link {
+      color: #17375e;
+
+      text-decoration: none;
+
+      font-size: 11px;
+      font-weight: 750;
+
+      white-space: nowrap;
+    }
+
+
+    .text-link:hover {
+      color: #f28b2d;
+    }
+
+
+    /* WEEKLY */
+
+    .weekly-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          6,
+          minmax(145px, 1fr)
+        );
+
+      gap: 10px;
+
+      overflow-x: auto;
+    }
+
+
+    .day-column {
+      min-height: 230px;
+
+      border:
+        1px solid #e4e9ef;
+
+      border-radius: 13px;
+
+      overflow: hidden;
+
+      background: #fbfcfe;
+    }
+
+
+    .day-title {
+      padding:
+        11px 8px;
+
+      background: #f6f8fb;
+
+      border-bottom:
+        1px solid #e6ebf1;
+
+      color: #17375e;
+
+      text-align: center;
+
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+
+    .day-content {
+      padding: 9px;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 7px;
+    }
+
+
+    .day-empty {
+      padding:
+        28px 6px;
+
+      color: #a1aab7;
+
+      text-align: center;
+
+      font-size: 11px;
+    }
+
+
+    .class-chip {
+      background: white;
+
+      border:
+        1px solid #e6ebf1;
+
+      border-radius: 10px;
+
+      padding:
+        9px 10px;
+
+      box-shadow:
+        0 2px 6px
+        rgba(
+          31,
+          53,
+          80,
+          .025
+        );
+    }
+
+
+    .class-time {
+      color: #f28b2d;
+
+      font-size: 9px;
+      font-weight: 850;
+    }
+
+
+    .class-student {
+      margin-top: 3px;
+
+      color: #17375e;
+
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+
+    .class-meta {
+      margin-top: 3px;
+
+      color: #69798e;
+
+      font-size: 9px;
+      line-height: 1.35;
+    }
+
+
+    .class-meta.muted {
+      color: #9ba5b3;
+    }
+
+
+    /* BOTTOM */
+
+    .bottom-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.55fr)
+        minmax(310px, .75fr);
+
+      gap: 22px;
+    }
+
+
+    .today-list,
+    .renewal-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    .today-row {
+      display: grid;
+
+      grid-template-columns:
+        74px minmax(0, 1fr) auto;
+
+      gap: 14px;
+
+      align-items: center;
+
+      padding:
+        13px 0;
+
+      border-bottom:
+        1px solid #edf0f4;
+    }
+
+
+    .today-row:last-child,
+    .renewal-row:last-child {
+      border-bottom: none;
+    }
+
+
+    .time-box {
+      background: #f5f8fc;
+
+      border:
+        1px solid #e6ebf1;
+
+      border-radius: 10px;
+
+      padding:
+        8px 9px;
+
+      text-align: center;
+    }
+
+
+    .time-box strong {
+      display: block;
+
+      color: #17375e;
+
+      font-size: 13px;
+    }
+
+
+    .time-box span {
+      display: block;
+
+      margin-top: 2px;
+
+      color: #929eae;
+
+      font-size: 9px;
+    }
+
+
+    .today-name,
+    .renewal-name {
+      color: #20324b;
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+
+    .today-subject,
+    .renewal-package {
+      margin-top: 2px;
+
+      color: #65758b;
+
+      font-size: 10px;
+    }
+
+
+    .today-meta,
+    .renewal-meta,
+    .makeup-origin,
+    .reschedule-note {
+      margin-top: 3px;
+
+      color: #9aa4b2;
+
+      font-size: 9px;
+    }
+
+
+    .makeup-tag {
+      margin-left: 6px;
+
+      padding:
+        2px 5px;
+
+      border-radius: 999px;
+
+      background: #fff0df;
+
+      color: #d66d00;
+
+      font-size: 7px;
+      font-weight: 900;
+
+      letter-spacing: .05em;
+
+      vertical-align: middle;
+    }
+
+
+    .status-badge {
+      display: inline-flex;
+
+      padding:
+        5px 8px;
+
+      border-radius: 999px;
+
+      font-size: 9px;
+      font-weight: 800;
+
+      text-transform: capitalize;
+    }
+
+
+    .status-badge.unmarked,
+    .status-badge.pending {
+      background: #fff2d9;
+      color: #a96b00;
+    }
+
+
+    .status-badge.present {
+      background: #eaf8ef;
+      color: #26844f;
+    }
+
+
+    .status-badge.absent {
+      background: #fdeaea;
+      color: #b34444;
+    }
+
+
+    .status-badge.cancelled {
+      background: #f1f2f4;
+      color: #737c88;
+    }
+
+
+    .status-badge.rescheduled {
+      background: #eaf0fa;
+      color: #3c69a5;
+    }
+
+
+    .renewal-row {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 12px;
+
+      padding:
+        12px 0;
+
+      border-bottom:
+        1px solid #edf0f4;
+    }
+
+
+    .remaining-pill {
+      min-width: 52px;
+
+      padding:
+        7px;
+
+      border-radius: 10px;
+
+      background: #fff4e6;
+
+      color: #cc6906;
+
+      text-align: center;
+
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+
+    .remaining-pill.zero {
+      background: #fdeaea;
+      color: #b34444;
+    }
+
+
+    .remaining-pill span {
+      display: block;
+
+      margin-top: 1px;
+
+      font-size: 7px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+    }
+
+
+    .empty-state,
+    .loading-inline {
+      padding:
+        38px 15px;
+
+      color: #98a3b2;
+
+      text-align: center;
+
+      font-size: 11px;
+    }
+
+
+    .empty-state strong {
+      display: block;
+
+      color: #56657a;
+
+      font-size: 12px;
+    }
+
+
+    .empty-state p {
+      margin:
+        5px 0 0;
+
+      font-size: 10px;
+    }
+
+
+    .error-panel {
+      margin-top: 20px;
+
+      padding:
+        13px 15px;
+
+      border:
+        1px solid #edb8b8;
+
+      border-radius: 11px;
+
+      background: #fff2f2;
+
+      color: #a03b3b;
+
+      font-size: 11px;
+    }
+
+
+    .error-panel p {
+      margin:
+        5px 0 0;
+    }
+
+
+    /* RESPONSIVE */
+
+    @media
+    (max-width: 1180px) {
+
+      .stats-grid {
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0,1fr)
+          );
+      }
+
+
+      .bottom-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media
+    (max-width: 1000px) {
+
+      .app {
+        grid-template-columns:
+          80px minmax(0,1fr);
+      }
+
+
+      .logo-box {
+        width: 50px;
+        padding: 6px;
+      }
+
+
+      .portal-label {
+        display: none;
+      }
+
+
+      .nav-item {
+        justify-content: center;
+      }
+
+
+      .nav-item span:not(
+        .nav-icon
+      ) {
+        display: none;
+      }
+
+
+      .nav-icon {
+        font-size: 18px;
+      }
+
+
+      .logout-button span {
+        display: none;
+      }
+
+
+      .main {
+        padding:
+          28px 22px 50px;
+      }
+
+    }
+
+
+    @media
+    (max-width: 720px) {
+
+      .app {
+        display: block;
+      }
+
+
+      .sidebar {
+        display: none;
+      }
+
+
+      .main {
+        padding:
+          24px 15px 45px;
+      }
+
+
+      .page-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+
+      .header-actions {
+        width: 100%;
+      }
+
+
+      .header-actions a {
+        flex: 1;
+        justify-content: center;
+      }
+
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .panel-top {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+
+      .today-row {
+        grid-template-columns:
+          66px minmax(0,1fr);
+      }
+
+
+      .today-status {
+        grid-column: 2;
+      }
+
+    }
+
+  </style>
+
+</body>
+</html>

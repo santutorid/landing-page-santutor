@@ -1,0 +1,554 @@
+---
+import logoSrc from '../../assets/logo.svg';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+
+    <meta
+      name="robots"
+      content="noindex,nofollow,noarchive"
+    />
+
+    <title>Santutor Portal</title>
+  </head>
+
+  <body>
+    <main class="page">
+      <section class="login-card">
+
+        <div class="brand">
+            <p class="private-label">PRIVATE ACCESS</p>
+
+            <img
+                src={logoSrc.src}
+                alt="Santutor Learning Studio"
+                class="logo"
+            />
+        </div>
+
+        <div class="heading">
+          <h2>Welcome back</h2>
+
+          <p>
+            Sign in to access your Santutor account.
+          </p>
+        </div>
+
+        <form id="loginForm">
+
+          <label>
+            Email
+
+            <input
+              id="email"
+              type="email"
+              placeholder="parent@email.com"
+              autocomplete="email"
+              required
+            />
+          </label>
+
+          <label>
+            Password
+
+            <div class="password-field">
+
+              <input
+                id="password"
+                type="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              />
+
+              <button
+                id="showPassword"
+                type="button"
+              >
+                Show
+              </button>
+
+            </div>
+          </label>
+
+          <button
+            id="loginButton"
+            class="login-button"
+            type="submit"
+          >
+            Sign in
+          </button>
+
+          <p
+            id="message"
+            class="message"
+          ></p>
+
+        </form>
+
+        <div class="footer-note">
+          <strong>Private Santutor Portal</strong>
+
+          <p>
+            Accounts are provided directly by Santutor.
+            Public registration is not available.
+          </p>
+        </div>
+
+      </section>
+    </main>
+
+
+    <script>
+      import { supabase } from '../../lib/supabase';
+
+      const form =
+        document.querySelector('#loginForm') as HTMLFormElement;
+
+      const emailInput =
+        document.querySelector('#email') as HTMLInputElement;
+
+      const passwordInput =
+        document.querySelector('#password') as HTMLInputElement;
+
+      const loginButton =
+        document.querySelector('#loginButton') as HTMLButtonElement;
+
+      const message =
+        document.querySelector('#message') as HTMLParagraphElement;
+
+      const showPassword =
+        document.querySelector('#showPassword') as HTMLButtonElement;
+
+
+      // Show / hide password
+      showPassword?.addEventListener('click', () => {
+
+        const showing =
+          passwordInput.type === 'text';
+
+        passwordInput.type =
+          showing ? 'password' : 'text';
+
+        showPassword.textContent =
+          showing ? 'Show' : 'Hide';
+
+      });
+
+
+      // If already logged in
+      const {
+        data: { session }
+      } = await supabase.auth.getSession();
+
+      if (session) {
+        window.location.href = '/portal/dashboard';
+      }
+
+
+      form?.addEventListener(
+        'submit',
+        async (event) => {
+
+          event.preventDefault();
+
+          message.textContent = '';
+
+          loginButton.disabled = true;
+          loginButton.textContent = 'Signing in...';
+
+
+          const email =
+            emailInput.value.trim();
+
+          const password =
+            passwordInput.value;
+
+
+          const {
+            data,
+            error
+          } =
+            await supabase.auth.signInWithPassword({
+              email,
+              password,
+            });
+
+
+          if (error) {
+            console.error('Supabase login error:', error);
+
+            message.textContent = error.message;
+
+            message.className = 'message error';
+
+            loginButton.disabled = false;
+            loginButton.textContent = 'Sign in';
+
+            return;
+            }
+
+
+          if (data.user) {
+
+            message.textContent =
+              'Signed in successfully.';
+
+            message.className =
+              'message success';
+
+            window.location.href =
+              '/portal/dashboard';
+
+          }
+
+        }
+      );
+    </script>
+
+
+    <style>
+
+      :global(*) {
+        box-sizing: border-box;
+      }
+
+
+      body {
+        margin: 0;
+
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(56, 183, 232, 0.14),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(255, 116, 24, 0.12),
+            transparent 30%
+          ),
+          #f5f8fc;
+
+        min-height: 100vh;
+      }
+
+
+      .page {
+        min-height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 24px;
+      }
+
+
+      .login-card {
+        width: 100%;
+        max-width: 430px;
+
+        background: white;
+
+        border:
+          1px solid #e4eaf1;
+
+        border-radius: 26px;
+
+        padding: 34px;
+
+        box-shadow:
+          0 20px 55px
+          rgba(21, 55, 95, 0.12);
+      }
+
+    .brand {
+    text-align: center;
+    margin-bottom: 30px;
+    }
+
+    .logo {
+    width: 220px;
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    }
+
+    .private-label {
+    margin: 0 0 16px;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+
+    color: #ff7418;
+    }
+
+
+      .private-label {
+        margin: 0 0 12px;
+
+        font-size: 11px;
+        font-weight: 800;
+
+        letter-spacing: .16em;
+
+        color: #ff7418;
+      }
+
+
+      .brand h1 {
+        margin: 0;
+
+        font-size: 40px;
+        font-weight: 800;
+
+        line-height: 1;
+      }
+
+
+      .san {
+        color: #ff7418;
+      }
+
+
+      .tutor {
+        color: #38b7e8;
+      }
+
+
+      .subtitle {
+        margin-top: 7px;
+
+        font-size: 12px;
+
+        letter-spacing: .15em;
+
+        color: #718096;
+      }
+
+
+      .heading {
+        margin-bottom: 25px;
+      }
+
+
+      .heading h2 {
+        margin: 0 0 8px;
+
+        font-size: 26px;
+
+        color: #17375e;
+      }
+
+
+      .heading p {
+        margin: 0;
+
+        color: #758198;
+
+        line-height: 1.5;
+
+        font-size: 14px;
+      }
+
+
+      label {
+        display: block;
+
+        margin-bottom: 18px;
+
+        font-size: 14px;
+        font-weight: 700;
+
+        color: #243550;
+      }
+
+
+      input {
+        width: 100%;
+
+        margin-top: 8px;
+
+        padding: 14px 15px;
+
+        border:
+          1px solid #ced7e4;
+
+        border-radius: 12px;
+
+        outline: none;
+
+        font: inherit;
+
+        transition: .2s;
+      }
+
+
+      input:focus {
+        border-color: #38b7e8;
+
+        box-shadow:
+          0 0 0 4px
+          rgba(56, 183, 232, .12);
+      }
+
+
+      .password-field {
+        position: relative;
+      }
+
+
+      .password-field input {
+        padding-right: 70px;
+      }
+
+
+      .password-field button {
+        position: absolute;
+
+        right: 8px;
+        top: 50%;
+
+        transform: translateY(-38%);
+
+        border: none;
+
+        background: transparent;
+
+        color: #17375e;
+
+        font-weight: 700;
+
+        cursor: pointer;
+      }
+
+
+      .login-button {
+        width: 100%;
+
+        border: none;
+
+        border-radius: 12px;
+
+        padding: 14px 18px;
+
+        background: #17375e;
+
+        color: white;
+
+        font: inherit;
+        font-weight: 800;
+
+        cursor: pointer;
+
+        transition: .2s;
+      }
+
+
+      .login-button:hover {
+        background: #102944;
+      }
+
+
+      .login-button:disabled {
+        opacity: .65;
+
+        cursor: wait;
+      }
+
+
+      .message {
+        min-height: 20px;
+
+        margin: 12px 0 0;
+
+        font-size: 13px;
+
+        text-align: center;
+      }
+
+
+      .message.error {
+        color: #b42318;
+      }
+
+
+      .message.success {
+        color: #067647;
+      }
+
+
+      .footer-note {
+        margin-top: 25px;
+
+        padding-top: 20px;
+
+        border-top:
+          1px solid #e6ebf2;
+
+        color: #7b8798;
+
+        font-size: 12px;
+
+        line-height: 1.5;
+
+        text-align: center;
+      }
+
+
+      .footer-note strong {
+        color: #17375e;
+      }
+
+
+      .footer-note p {
+        margin-bottom: 0;
+      }
+
+
+      @media (max-width: 520px) {
+
+        .page {
+          align-items: flex-start;
+
+          padding:
+            40px 16px 20px;
+        }
+
+
+        .login-card {
+          padding:
+            28px 21px;
+
+          border-radius: 21px;
+        }
+
+
+        .brand h1 {
+          font-size: 34px;
+        }
+
+      }
+
+    </style>
+
+  </body>
+</html>

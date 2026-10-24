@@ -1,0 +1,3817 @@
+---
+import logoSrc from '../../../../assets/logo.svg';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+  <meta
+    name="robots"
+    content="noindex,nofollow,noarchive"
+  />
+  <title>Parents | Santutor Admin</title>
+</head>
+
+<body>
+
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loader"></div>
+    <p>Loading Santutor...</p>
+  </div>
+
+  <div id="app" class="app" hidden>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="brand">
+        <a href="/portal/admin/">
+          <div class="logo-box">
+            <img
+              src={logoSrc.src}
+              alt="Santutor Learning Studio"
+            />
+          </div>
+        </a>
+
+        <span class="portal-label">
+          ADMIN PORTAL
+        </span>
+      </div>
+
+      <nav>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/"
+        >
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/students/"
+        >
+          <span class="nav-icon">👨‍🎓</span>
+          <span>Students</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/schedule/">
+          <span class="nav-icon">📅</span>
+          <span>Schedule</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/attendance/">
+          <span class="nav-icon">✓</span>
+          <span>Attendance</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/reports/">
+          <span class="nav-icon">📚</span>
+          <span>Learning Reports</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/packages/">
+          <span class="nav-icon">🎟</span>
+          <span>Packages</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/payments/">
+          <span class="nav-icon">💳</span>
+          <span>Payments</span>
+        </a>
+
+        <a
+          class="nav-item active"
+          href="/portal/admin/parents/"
+        >
+          <span class="nav-icon">👪</span>
+          <span>Parents</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/tutors/">
+          <span class="nav-icon">👩‍🏫</span>
+          <span>Tutors</span>
+        </a>
+
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button
+          id="logoutButton"
+          class="logout-button"
+          type="button"
+        >
+          ↪
+          <span>Sign Out</span>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <header class="page-header">
+
+        <div>
+          <a
+            class="back-link"
+            href="/portal/admin/"
+          >
+            ← Back to Dashboard
+          </a>
+
+          <p class="eyebrow">
+            PARENT MANAGEMENT
+          </p>
+
+          <h1>Parents</h1>
+
+          <p class="subtitle">
+            Manage parent contacts and link them to Santutor students.
+          </p>
+        </div>
+
+        <button
+          id="showFormButton"
+          class="add-button"
+          type="button"
+        >
+          <span class="plus">+</span>
+          Add Parent
+        </button>
+
+      </header>
+
+      <!-- STATS -->
+      <section class="stats-grid">
+
+        <article class="stat-card">
+          <div class="stat-icon total-icon">
+            👪
+          </div>
+
+          <div>
+            <span class="stat-label">
+              Total Parents
+            </span>
+
+            <strong id="totalParents">
+              —
+            </strong>
+
+            <span class="stat-note">
+              Registered contacts
+            </span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon active-icon">
+            ✓
+          </div>
+
+          <div>
+            <span class="stat-label">
+              Active Parents
+            </span>
+
+            <strong id="activeParents">
+              —
+            </strong>
+
+            <span class="stat-note">
+              Currently active
+            </span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon linked-icon">
+            ↔
+          </div>
+
+          <div>
+            <span class="stat-label">
+              Linked Students
+            </span>
+
+            <strong id="linkedStudents">
+              —
+            </strong>
+
+            <span class="stat-note">
+              Students with parent links
+            </span>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- PARENT LIST -->
+      <section class="parent-panel">
+
+        <div class="panel-top">
+
+          <div>
+            <p class="section-label">
+              PARENT DATABASE
+            </p>
+
+            <h2>All Parents</h2>
+
+            <p class="panel-description">
+              Parent and guardian contacts registered in Santutor.
+            </p>
+          </div>
+
+          <div class="toolbar">
+
+            <div class="search-box">
+              <span class="search-icon">⌕</span>
+
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="Search parents..."
+              />
+            </div>
+
+            <select id="statusFilter">
+              <option value="all">
+                All Status
+              </option>
+
+              <option value="active">
+                Active
+              </option>
+
+              <option value="inactive">
+                Inactive
+              </option>
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Parent</th>
+                <th>Contact</th>
+                <th>Student(s)</th>
+                <th>Relationship</th>
+                <th>Status</th>
+                <th class="action-heading">
+                  Action
+                </th>
+              </tr>
+            </thead>
+
+            <tbody id="parentTableBody">
+              <tr>
+                <td
+                  colspan="6"
+                  class="empty-row"
+                >
+                  Loading parents...
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- ADD / EDIT PARENT MODAL -->
+  <div
+    id="parentModal"
+    class="modal-backdrop"
+    hidden
+  >
+
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+
+      <div class="modal-header">
+
+        <div>
+          <p
+            id="modalEyebrow"
+            class="section-label"
+          >
+            NEW PARENT
+          </p>
+
+          <h2 id="modalTitle">
+            Add Parent
+          </h2>
+
+          <p id="modalDescription">
+            Add a new parent or guardian to Santutor.
+          </p>
+        </div>
+
+        <button
+          id="closeFormButton"
+          class="modal-close"
+          type="button"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <form id="parentForm">
+
+        <div class="form-grid">
+
+          <label class="full-width">
+            <span>Parent / Guardian Name *</span>
+
+            <input
+              id="name"
+              type="text"
+              required
+              autocomplete="off"
+              placeholder="Full parent or guardian name"
+            />
+          </label>
+
+          <label>
+            <span>Parent Code</span>
+
+            <input
+              id="parentCode"
+              type="text"
+              autocomplete="off"
+              placeholder="e.g. PR001"
+            />
+          </label>
+
+          <label>
+            <span>Status</span>
+
+            <select id="status">
+              <option value="active">
+                Active
+              </option>
+
+              <option value="inactive">
+                Inactive
+              </option>
+            </select>
+          </label>
+
+          <label>
+            <span>WhatsApp / Phone</span>
+
+            <input
+              id="phone"
+              type="tel"
+              autocomplete="off"
+              placeholder="e.g. 0812..."
+            />
+          </label>
+
+          <label>
+            <span>Email</span>
+
+            <input
+              id="email"
+              type="email"
+              autocomplete="off"
+              placeholder="parent@email.com"
+            />
+          </label>
+
+        </div>
+
+        <div class="student-link-section">
+
+          <div class="student-link-heading">
+            <div>
+              <span class="field-title">
+                Link Student(s)
+              </span>
+
+              <p>
+                Choose one or more students connected to this parent.
+              </p>
+            </div>
+
+            <span
+              id="selectedStudentCount"
+              class="selection-count"
+            >
+              0 selected
+            </span>
+          </div>
+
+          <div class="relationship-grid">
+
+            <label>
+              <span>Relationship</span>
+
+              <select id="relationship">
+                <option value="">
+                  Select relationship
+                </option>
+
+                <option value="Mother">
+                  Mother
+                </option>
+
+                <option value="Father">
+                  Father
+                </option>
+
+                <option value="Guardian">
+                  Guardian
+                </option>
+
+                <option value="Grandparent">
+                  Grandparent
+                </option>
+
+                <option value="Other">
+                  Other
+                </option>
+              </select>
+            </label>
+
+            <label class="primary-check">
+              <input
+                id="isPrimary"
+                type="checkbox"
+              />
+
+              <span>
+                Primary contact for selected student(s)
+              </span>
+            </label>
+
+          </div>
+
+          <div class="student-picker-toolbar">
+
+            <input
+              id="studentSearch"
+              type="search"
+              placeholder="Search students to link..."
+            />
+
+          </div>
+
+          <div
+            id="studentPicker"
+            class="student-picker"
+          >
+            <div class="student-picker-empty">
+              Loading students...
+            </div>
+          </div>
+
+        </div>
+
+        <div
+          id="formMessage"
+          class="form-message"
+        ></div>
+
+        <div class="form-actions">
+
+          <button
+            id="deactivateButton"
+            type="button"
+            class="danger-button"
+            hidden
+          >
+            Deactivate
+          </button>
+
+          <div class="form-spacer"></div>
+
+          <button
+            id="cancelButton"
+            type="button"
+            class="cancel-button"
+          >
+            Cancel
+          </button>
+
+          <button
+            id="saveButton"
+            type="submit"
+            class="save-button"
+          >
+            Add Parent
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    import { supabase }
+      from '../../../../lib/supabase';
+
+
+    type Parent = {
+      id: string;
+      parent_code: string | null;
+      name: string;
+      phone: string | null;
+      email: string | null;
+      status: 'active' | 'inactive';
+      created_at: string;
+      updated_at?: string | null;
+    };
+
+
+    type Student = {
+      id: string;
+      student_code: string | null;
+      name: string;
+      status: 'active' | 'inactive';
+    };
+
+
+    type StudentParent = {
+      id: string;
+      student_id: string;
+      parent_id: string;
+      relationship: string | null;
+      is_primary: boolean;
+    };
+
+
+    let parents: Parent[] = [];
+
+    let students: Student[] = [];
+
+    let links: StudentParent[] = [];
+
+    let editingParentId: string | null =
+      null;
+
+
+    // ==============================
+    // AUTH
+    // ==============================
+
+    async function initPage() {
+
+      const {
+        data: { user }
+      } =
+        await supabase.auth.getUser();
+
+
+      if (!user) {
+
+        window.location.href =
+          '/portal/';
+
+        return;
+
+      }
+
+
+      const {
+        data: profile,
+        error
+      } =
+        await supabase
+          .from('profiles')
+          .select(
+            'role, active'
+          )
+          .eq(
+            'id',
+            user.id
+          )
+          .single();
+
+
+      if (
+        error ||
+        !profile ||
+        profile.role !== 'admin' ||
+        profile.active !== true
+      ) {
+
+        await supabase.auth.signOut();
+
+        window.location.href =
+          '/portal/';
+
+        return;
+
+      }
+
+
+      document
+        .querySelector(
+          '#loadingScreen'
+        )
+        ?.setAttribute(
+          'style',
+          'display:none'
+        );
+
+
+      document
+        .querySelector(
+          '#app'
+        )
+        ?.removeAttribute(
+          'hidden'
+        );
+
+
+      await loadAllData();
+
+    }
+
+
+    // ==============================
+    // LOAD DATA
+    // ==============================
+
+    async function loadAllData() {
+
+      const [
+        parentsResult,
+        studentsResult,
+        linksResult
+      ] =
+        await Promise.all([
+
+          supabase
+            .from('parents')
+            .select(`
+              id,
+              parent_code,
+              name,
+              phone,
+              email,
+              status,
+              created_at,
+              updated_at
+            `)
+            .order(
+              'name',
+              {
+                ascending: true
+              }
+            ),
+
+          supabase
+            .from('students')
+            .select(`
+              id,
+              student_code,
+              name,
+              status
+            `)
+            .order(
+              'name',
+              {
+                ascending: true
+              }
+            ),
+
+          supabase
+            .from('student_parents')
+            .select(`
+              id,
+              student_id,
+              parent_id,
+              relationship,
+              is_primary
+            `)
+
+        ]);
+
+
+      if (parentsResult.error) {
+
+        console.error(
+          'Load parents error:',
+          parentsResult.error
+        );
+
+      }
+
+
+      if (studentsResult.error) {
+
+        console.error(
+          'Load students error:',
+          studentsResult.error
+        );
+
+      }
+
+
+      if (linksResult.error) {
+
+        console.error(
+          'Load parent links error:',
+          linksResult.error
+        );
+
+      }
+
+
+      parents =
+        (parentsResult.data || []) as Parent[];
+
+
+      students =
+        (studentsResult.data || []) as Student[];
+
+
+      links =
+        (linksResult.data || []) as StudentParent[];
+
+
+      applyFilters();
+
+      updateStats();
+
+      renderStudentPicker();
+
+    }
+
+
+    // ==============================
+    // TABLE
+    // ==============================
+
+    function renderParents(
+      list: Parent[]
+    ) {
+
+      const tbody =
+        document.querySelector(
+          '#parentTableBody'
+        );
+
+
+      if (!tbody) return;
+
+
+      if (
+        list.length === 0
+      ) {
+
+        tbody.innerHTML = `
+          <tr>
+            <td
+              colspan="6"
+              class="empty-row"
+            >
+              <div class="empty-state">
+
+                <div class="empty-icon">
+                  👪
+                </div>
+
+                <strong>
+                  No parents found
+                </strong>
+
+                <p>
+                  Add your first parent or
+                  change your search filters.
+                </p>
+
+              </div>
+            </td>
+          </tr>
+        `;
+
+        return;
+
+      }
+
+
+      tbody.innerHTML =
+        list
+          .map(parent => {
+
+            const initials =
+              getInitials(
+                parent.name
+              );
+
+
+            const parentLinks =
+              links.filter(
+                link =>
+                  link.parent_id ===
+                  parent.id
+              );
+
+
+            const linkedNames =
+              parentLinks
+                .map(link => {
+
+                  const student =
+                    students.find(
+                      item =>
+                        item.id ===
+                        link.student_id
+                    );
+
+
+                  return student
+                    ? student.name
+                    : null;
+
+                })
+                .filter(Boolean)
+                .join(', ');
+
+
+            const relationships =
+              Array.from(
+                new Set(
+                  parentLinks
+                    .map(
+                      link =>
+                        link.relationship
+                    )
+                    .filter(Boolean)
+                )
+              )
+                .join(', ');
+
+
+            const contact =
+              [
+                parent.phone,
+                parent.email
+              ]
+                .filter(Boolean)
+                .map(
+                  value =>
+                    escapeHtml(
+                      value as string
+                    )
+                )
+                .join(
+                  '<br>'
+                ) ||
+              '—';
+
+
+            return `
+              <tr>
+
+                <td>
+                  <div class="parent-cell">
+
+                    <div class="avatar">
+                      ${escapeHtml(initials)}
+                    </div>
+
+                    <div>
+                      <div class="parent-name">
+                        ${escapeHtml(parent.name)}
+                      </div>
+
+                      <div class="parent-code">
+                        ${
+                          escapeHtml(
+                            parent.parent_code ||
+                            'No parent code'
+                          )
+                        }
+                      </div>
+                    </div>
+
+                  </div>
+                </td>
+
+                <td class="contact-cell">
+                  ${contact}
+                </td>
+
+                <td>
+                  ${
+                    linkedNames
+                      ? escapeHtml(
+                          linkedNames
+                        )
+                      : '<span class="muted">Not linked</span>'
+                  }
+                </td>
+
+                <td>
+                  ${
+                    relationships
+                      ? escapeHtml(
+                          relationships
+                        )
+                      : '—'
+                  }
+                </td>
+
+                <td>
+                  <span
+                    class="
+                      status-badge
+                      ${
+                        parent.status ===
+                        'active'
+                          ? 'active'
+                          : 'inactive'
+                      }
+                    "
+                  >
+                    <span
+                      class="status-dot"
+                    ></span>
+
+                    ${
+                      parent.status ===
+                      'active'
+                        ? 'Active'
+                        : 'Inactive'
+                    }
+                  </span>
+                </td>
+
+                <td class="action-cell">
+                  <button
+                    class="edit-button edit-parent-button"
+                    data-id="${escapeHtml(parent.id)}"
+                    type="button"
+                  >
+                    Edit
+                  </button>
+                </td>
+
+              </tr>
+            `;
+
+          })
+          .join('');
+
+    }
+
+
+    // ==============================
+    // STATS
+    // ==============================
+
+    function updateStats() {
+
+      const active =
+        parents.filter(
+          parent =>
+            parent.status ===
+            'active'
+        ).length;
+
+
+      const linkedStudents =
+        new Set(
+          links.map(
+            link =>
+              link.student_id
+          )
+        ).size;
+
+
+      setText(
+        '#totalParents',
+        parents.length
+      );
+
+
+      setText(
+        '#activeParents',
+        active
+      );
+
+
+      setText(
+        '#linkedStudents',
+        linkedStudents
+      );
+
+    }
+
+
+    function setText(
+      selector: string,
+      value: string | number
+    ) {
+
+      const element =
+        document.querySelector(
+          selector
+        );
+
+
+      if (element) {
+
+        element.textContent =
+          String(value);
+
+      }
+
+    }
+
+
+    // ==============================
+    // FILTERS
+    // ==============================
+
+    function applyFilters() {
+
+      const search =
+        (
+          document.querySelector(
+            '#searchInput'
+          ) as HTMLInputElement
+        )?.value
+          .toLowerCase()
+          .trim() || '';
+
+
+      const status =
+        (
+          document.querySelector(
+            '#statusFilter'
+          ) as HTMLSelectElement
+        )?.value || 'all';
+
+
+      const filtered =
+        parents.filter(
+          parent => {
+
+            const parentLinks =
+              links.filter(
+                link =>
+                  link.parent_id ===
+                  parent.id
+              );
+
+
+            const studentNames =
+              parentLinks
+                .map(link => {
+
+                  const student =
+                    students.find(
+                      item =>
+                        item.id ===
+                        link.student_id
+                    );
+
+
+                  return student?.name ||
+                    '';
+
+                })
+                .join(' ');
+
+
+            const combined = `
+              ${parent.name || ''}
+              ${parent.parent_code || ''}
+              ${parent.phone || ''}
+              ${parent.email || ''}
+              ${studentNames}
+            `
+              .toLowerCase();
+
+
+            const matchesSearch =
+              combined.includes(
+                search
+              );
+
+
+            const matchesStatus =
+              status === 'all' ||
+              parent.status === status;
+
+
+            return (
+              matchesSearch &&
+              matchesStatus
+            );
+
+          }
+        );
+
+
+      renderParents(
+        filtered
+      );
+
+    }
+
+
+    document
+      .querySelector(
+        '#searchInput'
+      )
+      ?.addEventListener(
+        'input',
+        applyFilters
+      );
+
+
+    document
+      .querySelector(
+        '#statusFilter'
+      )
+      ?.addEventListener(
+        'change',
+        applyFilters
+      );
+
+
+    // ==============================
+    // STUDENT PICKER
+    // ==============================
+
+    function getSelectedStudentIds() {
+
+      return Array.from(
+        document.querySelectorAll(
+          '.student-checkbox:checked'
+        )
+      )
+        .map(
+          checkbox =>
+            (
+              checkbox as
+              HTMLInputElement
+            ).value
+        );
+
+    }
+
+
+    function updateSelectedCount() {
+
+      const count =
+        getSelectedStudentIds()
+          .length;
+
+
+      setText(
+        '#selectedStudentCount',
+        `${count} selected`
+      );
+
+    }
+
+
+    function renderStudentPicker(
+      selectedIds:
+        string[] = []
+    ) {
+
+      const picker =
+        document.querySelector(
+          '#studentPicker'
+        );
+
+
+      if (!picker) return;
+
+
+      const search =
+        (
+          document.querySelector(
+            '#studentSearch'
+          ) as HTMLInputElement
+        )?.value
+          .toLowerCase()
+          .trim() || '';
+
+
+      const visibleStudents =
+        students.filter(
+          student => {
+
+            const combined = `
+              ${student.name || ''}
+              ${student.student_code || ''}
+            `
+              .toLowerCase();
+
+
+            return (
+              combined.includes(
+                search
+              )
+            );
+
+          }
+        );
+
+
+      if (
+        visibleStudents.length === 0
+      ) {
+
+        picker.innerHTML = `
+          <div class="student-picker-empty">
+            No students found.
+          </div>
+        `;
+
+        updateSelectedCount();
+
+        return;
+
+      }
+
+
+      picker.innerHTML =
+        visibleStudents
+          .map(student => {
+
+            const checked =
+              selectedIds.includes(
+                student.id
+              );
+
+
+            return `
+              <label class="student-option">
+
+                <input
+                  class="student-checkbox"
+                  type="checkbox"
+                  value="${escapeHtml(student.id)}"
+                  ${checked ? 'checked' : ''}
+                />
+
+                <span class="student-option-avatar">
+                  ${escapeHtml(
+                    getInitials(
+                      student.name
+                    )
+                  )}
+                </span>
+
+                <span class="student-option-info">
+
+                  <strong>
+                    ${escapeHtml(student.name)}
+                  </strong>
+
+                  <small>
+                    ${
+                      escapeHtml(
+                        student.student_code ||
+                        'No student code'
+                      )
+                    }
+                    ·
+                    ${
+                      student.status ===
+                      'active'
+                        ? 'Active'
+                        : 'Inactive'
+                    }
+                  </small>
+
+                </span>
+
+              </label>
+            `;
+
+          })
+          .join('');
+
+
+      picker
+        .querySelectorAll(
+          '.student-checkbox'
+        )
+        .forEach(
+          checkbox => {
+
+            checkbox.addEventListener(
+              'change',
+              updateSelectedCount
+            );
+
+          }
+        );
+
+
+      updateSelectedCount();
+
+    }
+
+
+    document
+      .querySelector(
+        '#studentSearch'
+      )
+      ?.addEventListener(
+        'input',
+        () => {
+
+          const selectedIds =
+            getSelectedStudentIds();
+
+
+          renderStudentPicker(
+            selectedIds
+          );
+
+        }
+      );
+
+
+    // ==============================
+    // MODAL
+    // ==============================
+
+    function clearFormMessage() {
+
+      const message =
+        document.querySelector(
+          '#formMessage'
+        );
+
+
+      if (!message) return;
+
+
+      message.textContent =
+        '';
+
+
+      message.className =
+        'form-message';
+
+    }
+
+
+    function resetStudentSearch() {
+
+      const search =
+        document.querySelector(
+          '#studentSearch'
+        ) as HTMLInputElement;
+
+
+      if (search) {
+
+        search.value =
+          '';
+
+      }
+
+    }
+
+
+    function showModal() {
+
+      editingParentId =
+        null;
+
+
+      const form =
+        document.querySelector(
+          '#parentForm'
+        ) as HTMLFormElement;
+
+
+      form?.reset();
+
+
+      clearFormMessage();
+
+      resetStudentSearch();
+
+
+      setText(
+        '#modalEyebrow',
+        'NEW PARENT'
+      );
+
+
+      setText(
+        '#modalTitle',
+        'Add Parent'
+      );
+
+
+      setText(
+        '#modalDescription',
+        'Add a new parent or guardian to Santutor.'
+      );
+
+
+      setText(
+        '#saveButton',
+        'Add Parent'
+      );
+
+
+      const deactivateButton =
+        document.querySelector(
+          '#deactivateButton'
+        ) as HTMLButtonElement;
+
+
+      if (deactivateButton) {
+
+        deactivateButton.hidden =
+          true;
+
+      }
+
+
+      renderStudentPicker(
+        []
+      );
+
+
+      document
+        .querySelector(
+          '#parentModal'
+        )
+        ?.removeAttribute(
+          'hidden'
+        );
+
+
+      document.body.classList.add(
+        'modal-open'
+      );
+
+
+      setTimeout(() => {
+
+        (
+          document.querySelector(
+            '#name'
+          ) as HTMLInputElement
+        )?.focus();
+
+      }, 0);
+
+    }
+
+
+    function openEditModal(
+      parentId: string
+    ) {
+
+      const parent =
+        parents.find(
+          item =>
+            item.id === parentId
+        );
+
+
+      if (!parent) return;
+
+
+      editingParentId =
+        parent.id;
+
+
+      clearFormMessage();
+
+      resetStudentSearch();
+
+
+      (
+        document.querySelector(
+          '#name'
+        ) as HTMLInputElement
+      ).value =
+        parent.name ||
+        '';
+
+
+      (
+        document.querySelector(
+          '#parentCode'
+        ) as HTMLInputElement
+      ).value =
+        parent.parent_code ||
+        '';
+
+
+      (
+        document.querySelector(
+          '#phone'
+        ) as HTMLInputElement
+      ).value =
+        parent.phone ||
+        '';
+
+
+      (
+        document.querySelector(
+          '#email'
+        ) as HTMLInputElement
+      ).value =
+        parent.email ||
+        '';
+
+
+      (
+        document.querySelector(
+          '#status'
+        ) as HTMLSelectElement
+      ).value =
+        parent.status;
+
+
+      const parentLinks =
+        links.filter(
+          link =>
+            link.parent_id ===
+            parent.id
+        );
+
+
+      const selectedIds =
+        parentLinks.map(
+          link =>
+            link.student_id
+        );
+
+
+      const firstRelationship =
+        parentLinks
+          .find(
+            link =>
+              Boolean(
+                link.relationship
+              )
+          )
+          ?.relationship ||
+        '';
+
+
+      const anyPrimary =
+        parentLinks.some(
+          link =>
+            link.is_primary
+        );
+
+
+      (
+        document.querySelector(
+          '#relationship'
+        ) as HTMLSelectElement
+      ).value =
+        firstRelationship;
+
+
+      (
+        document.querySelector(
+          '#isPrimary'
+        ) as HTMLInputElement
+      ).checked =
+        anyPrimary;
+
+
+      renderStudentPicker(
+        selectedIds
+      );
+
+
+      setText(
+        '#modalEyebrow',
+        'PARENT PROFILE'
+      );
+
+
+      setText(
+        '#modalTitle',
+        'Edit Parent'
+      );
+
+
+      setText(
+        '#modalDescription',
+        `Update ${parent.name}'s contact and student links.`
+      );
+
+
+      setText(
+        '#saveButton',
+        'Save Changes'
+      );
+
+
+      const deactivateButton =
+        document.querySelector(
+          '#deactivateButton'
+        ) as HTMLButtonElement;
+
+
+      if (deactivateButton) {
+
+        deactivateButton.hidden =
+          false;
+
+
+        deactivateButton.textContent =
+          parent.status ===
+          'active'
+            ? 'Deactivate'
+            : 'Reactivate';
+
+
+        deactivateButton
+          .classList
+          .toggle(
+            'reactivate',
+            parent.status ===
+              'inactive'
+          );
+
+      }
+
+
+      document
+        .querySelector(
+          '#parentModal'
+        )
+        ?.removeAttribute(
+          'hidden'
+        );
+
+
+      document.body.classList.add(
+        'modal-open'
+      );
+
+    }
+
+
+    function hideModal() {
+
+      document
+        .querySelector(
+          '#parentModal'
+        )
+        ?.setAttribute(
+          'hidden',
+          ''
+        );
+
+
+      document.body.classList.remove(
+        'modal-open'
+      );
+
+
+      clearFormMessage();
+
+    }
+
+
+    // ==============================
+    // SAVE PARENT + RELATIONSHIPS
+    // ==============================
+
+    document
+      .querySelector(
+        '#parentForm'
+      )
+      ?.addEventListener(
+        'submit',
+        async event => {
+
+          event.preventDefault();
+
+
+          const nameInput =
+            document.querySelector(
+              '#name'
+            ) as HTMLInputElement;
+
+
+          const codeInput =
+            document.querySelector(
+              '#parentCode'
+            ) as HTMLInputElement;
+
+
+          const phoneInput =
+            document.querySelector(
+              '#phone'
+            ) as HTMLInputElement;
+
+
+          const emailInput =
+            document.querySelector(
+              '#email'
+            ) as HTMLInputElement;
+
+
+          const statusInput =
+            document.querySelector(
+              '#status'
+            ) as HTMLSelectElement;
+
+
+          const relationshipInput =
+            document.querySelector(
+              '#relationship'
+            ) as HTMLSelectElement;
+
+
+          const primaryInput =
+            document.querySelector(
+              '#isPrimary'
+            ) as HTMLInputElement;
+
+
+          const saveButton =
+            document.querySelector(
+              '#saveButton'
+            ) as HTMLButtonElement;
+
+
+          const message =
+            document.querySelector(
+              '#formMessage'
+            );
+
+
+          const name =
+            nameInput.value
+              .trim();
+
+
+          if (!name) {
+
+            if (message) {
+
+              message.textContent =
+                'Parent name is required.';
+
+
+              message.className =
+                'form-message error';
+
+            }
+
+            return;
+
+          }
+
+
+          saveButton.disabled =
+            true;
+
+
+          saveButton.textContent =
+            editingParentId
+              ? 'Saving Changes...'
+              : 'Saving...';
+
+
+          clearFormMessage();
+
+
+          const parentData = {
+
+            name,
+
+            parent_code:
+              codeInput.value
+                .trim() ||
+              null,
+
+            phone:
+              phoneInput.value
+                .trim() ||
+              null,
+
+            email:
+              emailInput.value
+                .trim() ||
+              null,
+
+            status:
+              statusInput.value,
+
+            updated_at:
+              new Date()
+                .toISOString()
+
+          };
+
+
+          let parentId =
+            editingParentId;
+
+
+          if (
+            editingParentId
+          ) {
+
+            const {
+              error
+            } =
+              await supabase
+                .from('parents')
+                .update(
+                  parentData
+                )
+                .eq(
+                  'id',
+                  editingParentId
+                );
+
+
+            if (error) {
+
+              handleSaveError(
+                error.message
+              );
+
+              return;
+
+            }
+
+          } else {
+
+            const {
+              data,
+              error
+            } =
+              await supabase
+                .from('parents')
+                .insert(
+                  parentData
+                )
+                .select(
+                  'id'
+                )
+                .single();
+
+
+            if (
+              error ||
+              !data
+            ) {
+
+              handleSaveError(
+                error?.message ||
+                'Unable to create parent.'
+              );
+
+              return;
+
+            }
+
+
+            parentId =
+              data.id;
+
+          }
+
+
+          if (!parentId) {
+
+            handleSaveError(
+              'Parent ID is missing.'
+            );
+
+            return;
+
+          }
+
+
+          const {
+            error: deleteError
+          } =
+            await supabase
+              .from(
+                'student_parents'
+              )
+              .delete()
+              .eq(
+                'parent_id',
+                parentId
+              );
+
+
+          if (deleteError) {
+
+            handleSaveError(
+              deleteError.message
+            );
+
+            return;
+
+          }
+
+
+          const selectedIds =
+            getSelectedStudentIds();
+
+
+          if (
+            selectedIds.length >
+            0
+          ) {
+
+            const relationship =
+              relationshipInput.value ||
+              null;
+
+
+            const newLinks =
+              selectedIds.map(
+                studentId => ({
+
+                  student_id:
+                    studentId,
+
+                  parent_id:
+                    parentId,
+
+                  relationship,
+
+                  is_primary:
+                    primaryInput.checked
+
+                })
+              );
+
+
+            const {
+              error: linkError
+            } =
+              await supabase
+                .from(
+                  'student_parents'
+                )
+                .insert(
+                  newLinks
+                );
+
+
+            if (linkError) {
+
+              handleSaveError(
+                linkError.message
+              );
+
+              return;
+
+            }
+
+          }
+
+
+          await loadAllData();
+
+
+          hideModal();
+
+
+          saveButton.disabled =
+            false;
+
+
+          saveButton.textContent =
+            'Add Parent';
+
+
+          editingParentId =
+            null;
+
+        }
+      );
+
+
+    function handleSaveError(
+      errorMessage: string
+    ) {
+
+      console.error(
+        'Save parent error:',
+        errorMessage
+      );
+
+
+      const message =
+        document.querySelector(
+          '#formMessage'
+        );
+
+
+      const saveButton =
+        document.querySelector(
+          '#saveButton'
+        ) as HTMLButtonElement;
+
+
+      if (message) {
+
+        message.textContent =
+          errorMessage;
+
+
+        message.className =
+          'form-message error';
+
+      }
+
+
+      if (saveButton) {
+
+        saveButton.disabled =
+          false;
+
+
+        saveButton.textContent =
+          editingParentId
+            ? 'Save Changes'
+            : 'Add Parent';
+
+      }
+
+    }
+
+
+    // ==============================
+    // EDIT BUTTON
+    // ==============================
+
+    document
+      .querySelector(
+        '#parentTableBody'
+      )
+      ?.addEventListener(
+        'click',
+        event => {
+
+          const target =
+            event.target as HTMLElement;
+
+
+          const button =
+            target.closest(
+              '.edit-parent-button'
+            ) as HTMLButtonElement |
+              null;
+
+
+          if (!button) return;
+
+
+          const parentId =
+            button.dataset.id;
+
+
+          if (parentId) {
+
+            openEditModal(
+              parentId
+            );
+
+          }
+
+        }
+      );
+
+
+    // ==============================
+    // DEACTIVATE / REACTIVATE
+    // ==============================
+
+    document
+      .querySelector(
+        '#deactivateButton'
+      )
+      ?.addEventListener(
+        'click',
+        async () => {
+
+          if (!editingParentId) {
+            return;
+          }
+
+
+          const parent =
+            parents.find(
+              item =>
+                item.id ===
+                editingParentId
+            );
+
+
+          if (!parent) return;
+
+
+          const newStatus:
+            'active' |
+            'inactive' =
+              parent.status ===
+              'active'
+                ? 'inactive'
+                : 'active';
+
+
+          const actionLabel =
+            newStatus ===
+            'inactive'
+              ? 'deactivate'
+              : 'reactivate';
+
+
+          const confirmed =
+            window.confirm(
+              `Are you sure you want to ${actionLabel} ${parent.name}?`
+            );
+
+
+          if (!confirmed) {
+            return;
+          }
+
+
+          const button =
+            document.querySelector(
+              '#deactivateButton'
+            ) as HTMLButtonElement;
+
+
+          button.disabled =
+            true;
+
+
+          button.textContent =
+            newStatus ===
+            'inactive'
+              ? 'Deactivating...'
+              : 'Reactivating...';
+
+
+          const {
+            error
+          } =
+            await supabase
+              .from('parents')
+              .update({
+
+                status:
+                  newStatus,
+
+                updated_at:
+                  new Date()
+                    .toISOString()
+
+              })
+              .eq(
+                'id',
+                editingParentId
+              );
+
+
+          if (error) {
+
+            window.alert(
+              error.message
+            );
+
+
+            button.disabled =
+              false;
+
+
+            button.textContent =
+              parent.status ===
+              'active'
+                ? 'Deactivate'
+                : 'Reactivate';
+
+
+            return;
+
+          }
+
+
+          await loadAllData();
+
+
+          button.disabled =
+            false;
+
+
+          hideModal();
+
+
+          editingParentId =
+            null;
+
+        }
+      );
+
+
+    // ==============================
+    // MODAL EVENTS
+    // ==============================
+
+    document
+      .querySelector(
+        '#showFormButton'
+      )
+      ?.addEventListener(
+        'click',
+        showModal
+      );
+
+
+    document
+      .querySelector(
+        '#closeFormButton'
+      )
+      ?.addEventListener(
+        'click',
+        hideModal
+      );
+
+
+    document
+      .querySelector(
+        '#cancelButton'
+      )
+      ?.addEventListener(
+        'click',
+        hideModal
+      );
+
+
+    document
+      .querySelector(
+        '#parentModal'
+      )
+      ?.addEventListener(
+        'click',
+        event => {
+
+          if (
+            event.target ===
+            event.currentTarget
+          ) {
+
+            hideModal();
+
+          }
+
+        }
+      );
+
+
+    document
+      .addEventListener(
+        'keydown',
+        event => {
+
+          if (
+            event.key ===
+            'Escape'
+          ) {
+
+            hideModal();
+
+          }
+
+        }
+      );
+
+
+    // ==============================
+    // LOGOUT
+    // ==============================
+
+    document
+      .querySelector(
+        '#logoutButton'
+      )
+      ?.addEventListener(
+        'click',
+        async () => {
+
+          await supabase.auth
+            .signOut();
+
+
+          window.location.href =
+            '/portal/';
+
+        }
+      );
+
+
+    // ==============================
+    // HELPERS
+    // ==============================
+
+    function getInitials(
+      name: string
+    ) {
+
+      return (
+        name || '?'
+      )
+        .split(' ')
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(
+          part =>
+            part
+              .charAt(0)
+              .toUpperCase()
+        )
+        .join('');
+
+    }
+
+
+    function escapeHtml(
+      value: string
+    ) {
+
+      const div =
+        document.createElement(
+          'div'
+        );
+
+
+      div.textContent =
+        value ?? '';
+
+
+      return div.innerHTML;
+
+    }
+
+
+    initPage();
+
+  </script>
+
+
+  <style is:global>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #f5f7fb;
+    }
+
+    body {
+      margin: 0;
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      -webkit-tap-highlight-color:
+        transparent;
+    }
+
+    /* LOADING */
+
+    .loading-screen {
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      gap: 12px;
+
+      color: #78869a;
+    }
+
+    .loader {
+      width: 30px;
+      height: 30px;
+
+      border-radius: 50%;
+
+      border:
+        3px solid #e2e7ed;
+
+      border-top-color:
+        #f28b2d;
+
+      animation:
+        spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform:
+          rotate(360deg);
+      }
+    }
+
+    /* LAYOUT */
+
+    .app {
+      min-height: 100vh;
+
+      display: grid;
+
+      grid-template-columns:
+        240px minmax(0, 1fr);
+    }
+
+    /* SIDEBAR */
+
+    .sidebar {
+      background:
+        linear-gradient(
+          180deg,
+          #17375e 0%,
+          #102a4b 100%
+        );
+
+      color: white;
+
+      min-height: 100vh;
+      height: 100vh;
+
+      position: sticky;
+      top: 0;
+
+      padding:
+        24px 15px;
+
+      display: flex;
+      flex-direction: column;
+
+      box-shadow:
+        8px 0 25px
+        rgba(
+          15,
+          38,
+          67,
+          .04
+        );
+    }
+
+    .brand {
+      padding:
+        4px 10px 27px;
+    }
+
+    .brand a {
+      text-decoration: none;
+    }
+
+    .logo-box {
+      width: 172px;
+
+      background: white;
+
+      border-radius: 12px;
+
+      padding:
+        8px 12px;
+    }
+
+    .brand img {
+      width: 100%;
+      display: block;
+    }
+
+    .portal-label {
+      display: block;
+
+      margin-top: 12px;
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: .17em;
+
+      opacity: .48;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+
+      gap: 4px;
+    }
+
+    .nav-item,
+    .nav-item:visited,
+    .nav-item:hover,
+    .nav-item:active {
+      text-decoration: none;
+    }
+
+    .nav-item {
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          .72
+        );
+
+      padding:
+        11px 12px;
+
+      border-radius: 10px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 11px;
+
+      font-size: 13px;
+
+      transition:
+        .15s ease;
+    }
+
+    .nav-item:hover {
+      color: white;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .07
+        );
+    }
+
+    .nav-item.active {
+      color: white;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .13
+        );
+
+      font-weight: 750;
+
+      box-shadow:
+        inset 3px 0
+        #f28b2d;
+    }
+
+    .nav-icon {
+      width: 22px;
+      text-align: center;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+    }
+
+    .logout-button {
+      width: 100%;
+
+      border:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          .12
+        );
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .06
+        );
+
+      color: white;
+
+      border-radius: 10px;
+
+      padding: 11px;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 8px;
+    }
+
+    /* MAIN */
+
+    .main {
+      width: 100%;
+      max-width: 1500px;
+
+      margin: 0 auto;
+
+      padding:
+        36px 38px 60px;
+    }
+
+    /* HEADER */
+
+    .page-header {
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        flex-end;
+
+      gap: 25px;
+
+      margin-bottom: 28px;
+    }
+
+    .back-link {
+      display: inline-flex;
+
+      margin-bottom: 18px;
+
+      color: #77859a;
+
+      text-decoration: none;
+
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .back-link:hover {
+      color: #17375e;
+    }
+
+    .eyebrow,
+    .section-label {
+      color: #f28b2d;
+
+      font-size: 10px;
+      font-weight: 850;
+
+      letter-spacing: .14em;
+
+      margin:
+        0 0 6px;
+    }
+
+    h1 {
+      margin: 0;
+
+      color: #17375e;
+
+      font-size: 36px;
+      line-height: 1.1;
+
+      letter-spacing: -.02em;
+    }
+
+    h2 {
+      margin: 0;
+
+      color: #17375e;
+
+      font-size: 20px;
+    }
+
+    .subtitle {
+      margin:
+        8px 0 0;
+
+      color: #8591a3;
+
+      font-size: 14px;
+    }
+
+    .add-button {
+      border: none;
+
+      background:
+        linear-gradient(
+          135deg,
+          #17375e,
+          #234d7b
+        );
+
+      color: white;
+
+      border-radius: 11px;
+
+      padding:
+        12px 18px;
+
+      font-weight: 750;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 20px
+        rgba(
+          23,
+          55,
+          94,
+          .14
+        );
+
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+    }
+
+    .plus {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    /* STATS */
+
+    .stats-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          3,
+          minmax(0, 1fr)
+        );
+
+      gap: 16px;
+
+      margin-bottom: 22px;
+    }
+
+    .stat-card {
+      min-height: 110px;
+
+      background: white;
+
+      border:
+        1px solid #e5eaf0;
+
+      border-radius: 16px;
+
+      padding: 19px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 16px;
+
+      box-shadow:
+        0 4px 18px
+        rgba(
+          28,
+          45,
+          70,
+          .035
+        );
+    }
+
+    .stat-icon {
+      width: 50px;
+      height: 50px;
+
+      border-radius: 14px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      font-size: 19px;
+    }
+
+    .total-icon {
+      background: #eef4fb;
+    }
+
+    .active-icon {
+      background: #eaf8f0;
+      color: #238455;
+    }
+
+    .linked-icon {
+      background: #fff3e8;
+      color: #d9721b;
+    }
+
+    .stat-label {
+      display: block;
+
+      color: #7d899b;
+
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .stat-card strong {
+      display: block;
+
+      color: #17375e;
+
+      font-size: 29px;
+      line-height: 1;
+
+      margin:
+        6px 0;
+    }
+
+    .stat-note {
+      display: block;
+
+      color: #a0a8b4;
+
+      font-size: 10px;
+    }
+
+    /* PANEL */
+
+    .parent-panel {
+      background: white;
+
+      border:
+        1px solid #e3e8ef;
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 5px 20px
+        rgba(
+          20,
+          40,
+          65,
+          .035
+        );
+    }
+
+    .panel-top {
+      padding:
+        22px 24px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content:
+        space-between;
+
+      gap: 20px;
+
+      border-bottom:
+        1px solid #edf0f4;
+    }
+
+    .panel-description {
+      margin:
+        5px 0 0;
+
+      color: #909aaa;
+
+      font-size: 12px;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+    }
+
+    .search-box {
+      width: 260px;
+      height: 40px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      background: #f8fafc;
+
+      border:
+        1px solid #dfe5ed;
+
+      border-radius: 10px;
+
+      padding:
+        0 11px;
+
+      color: #9ba6b5;
+    }
+
+    .search-icon {
+      font-size: 16px;
+    }
+
+    .search-box input {
+      width: 100%;
+
+      border: none;
+      outline: none;
+
+      background: transparent;
+
+      color: #27364c;
+
+      font-size: 13px;
+    }
+
+    #statusFilter {
+      height: 40px;
+
+      border:
+        1px solid #dfe5ed;
+
+      border-radius: 10px;
+
+      padding:
+        0 12px;
+
+      background: white;
+
+      color: #59677b;
+
+      outline: none;
+
+      font-size: 12px;
+    }
+
+    /* TABLE */
+
+    .table-wrapper {
+      width: 100%;
+
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+
+      border-collapse: collapse;
+
+      min-width: 980px;
+    }
+
+    th {
+      padding:
+        11px 24px;
+
+      background: #fafbfd;
+
+      border-bottom:
+        1px solid #e8edf2;
+
+      text-align: left;
+
+      color: #8793a4;
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .07em;
+
+      text-transform: uppercase;
+    }
+
+    td {
+      padding:
+        15px 24px;
+
+      border-bottom:
+        1px solid #edf0f4;
+
+      color: #536176;
+
+      font-size: 13px;
+
+      vertical-align: middle;
+    }
+
+    tbody tr:hover {
+      background: #fbfcfe;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .parent-cell {
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #e8f1fb,
+          #f4f8fc
+        );
+
+      color: #17375e;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 11px;
+      font-weight: 850;
+
+      border:
+        1px solid #dce6f1;
+
+      flex-shrink: 0;
+    }
+
+    .parent-name {
+      color: #20324b;
+
+      font-weight: 750;
+
+      margin-bottom: 3px;
+    }
+
+    .parent-code {
+      color: #98a2b0;
+
+      font-size: 10px;
+    }
+
+    .contact-cell {
+      line-height: 1.55;
+    }
+
+    .muted {
+      color: #a0a8b4;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 6px;
+
+      padding:
+        5px 9px;
+
+      border-radius: 999px;
+
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .status-badge.active {
+      background: #eaf8ef;
+      color: #26844f;
+    }
+
+    .status-badge.inactive {
+      background: #f1f2f4;
+      color: #737c88;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: currentColor;
+    }
+
+    .action-heading,
+    .action-cell {
+      text-align: right;
+    }
+
+    .edit-button {
+      border:
+        1px solid #dce4ed;
+
+      background: white;
+
+      color: #42536b;
+
+      border-radius: 8px;
+
+      padding:
+        7px 11px;
+
+      cursor: pointer;
+
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .edit-button:hover {
+      border-color: #bfcddd;
+
+      background: #f7f9fc;
+
+      color: #17375e;
+    }
+
+    .empty-row {
+      padding:
+        60px 20px;
+
+      text-align: center;
+    }
+
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      color: #8f9aa9;
+    }
+
+    .empty-icon {
+      width: 50px;
+      height: 50px;
+
+      border-radius: 50%;
+
+      background: #f4f6f9;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-bottom: 12px;
+    }
+
+    .empty-state strong {
+      color: #536178;
+    }
+
+    .empty-state p {
+      margin:
+        5px 0 0;
+
+      font-size: 12px;
+    }
+
+    /* MODAL */
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+
+      z-index: 100;
+
+      background:
+        rgba(
+          15,
+          29,
+          47,
+          .52
+        );
+
+      backdrop-filter:
+        blur(3px);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+    }
+
+    .modal-backdrop[hidden] {
+      display: none;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 720px;
+
+      max-height: 92vh;
+
+      overflow-y: auto;
+
+      background: white;
+
+      border-radius: 19px;
+
+      box-shadow:
+        0 25px 70px
+        rgba(
+          12,
+          27,
+          45,
+          .28
+        );
+    }
+
+    .modal-header {
+      padding:
+        24px 25px 19px;
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      gap: 20px;
+
+      border-bottom:
+        1px solid #edf0f4;
+    }
+
+    .modal-header p:last-child {
+      color: #8c97a7;
+
+      font-size: 12px;
+
+      margin:
+        5px 0 0;
+    }
+
+    .modal-close {
+      width: 34px;
+      height: 34px;
+
+      flex-shrink: 0;
+
+      border-radius: 50%;
+
+      border: none;
+
+      background: #f3f5f7;
+
+      color: #667389;
+
+      cursor: pointer;
+
+      font-size: 20px;
+    }
+
+    form {
+      padding:
+        22px 25px 25px;
+    }
+
+    .form-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 16px;
+    }
+
+    .full-width {
+      grid-column:
+        1 / -1;
+    }
+
+    label span,
+    .field-title {
+      display: block;
+
+      color: #536178;
+
+      font-size: 11px;
+      font-weight: 750;
+
+      margin-bottom: 6px;
+    }
+
+    label input,
+    label select,
+    .student-picker-toolbar input {
+      width: 100%;
+      height: 42px;
+
+      border:
+        1px solid #dce3eb;
+
+      border-radius: 9px;
+
+      background: #fff;
+
+      padding:
+        0 11px;
+
+      color: #27364b;
+
+      outline: none;
+
+      font-size: 13px;
+    }
+
+    label input:focus,
+    label select:focus,
+    .student-picker-toolbar input:focus {
+      border-color: #769dcc;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(
+          73,
+          126,
+          188,
+          .1
+        );
+    }
+
+    /* STUDENT LINK SECTION */
+
+    .student-link-section {
+      margin-top: 22px;
+
+      padding-top: 20px;
+
+      border-top:
+        1px solid #edf0f4;
+    }
+
+    .student-link-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 15px;
+    }
+
+    .student-link-heading p {
+      margin:
+        2px 0 0;
+
+      color: #909aaa;
+
+      font-size: 11px;
+    }
+
+    .selection-count {
+      background: #eef4fb;
+
+      color: #17375e;
+
+      border-radius: 999px;
+
+      padding:
+        5px 9px;
+
+      font-size: 10px;
+      font-weight: 750;
+
+      white-space: nowrap;
+    }
+
+    .relationship-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+      align-items: end;
+
+      gap: 16px;
+
+      margin-bottom: 14px;
+    }
+
+    .primary-check {
+      min-height: 42px;
+
+      border:
+        1px solid #e1e7ee;
+
+      border-radius: 9px;
+
+      padding:
+        9px 11px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 9px;
+
+      cursor: pointer;
+    }
+
+    .primary-check input {
+      width: 16px;
+      height: 16px;
+
+      margin: 0;
+    }
+
+    .primary-check span {
+      margin: 0;
+
+      font-weight: 650;
+    }
+
+    .student-picker-toolbar {
+      margin-bottom: 10px;
+    }
+
+    .student-picker {
+      max-height: 230px;
+
+      overflow-y: auto;
+
+      border:
+        1px solid #e1e7ee;
+
+      border-radius: 11px;
+
+      background: #fafbfd;
+    }
+
+    .student-option {
+      display: flex;
+      align-items: center;
+
+      gap: 11px;
+
+      padding:
+        11px 12px;
+
+      border-bottom:
+        1px solid #e9edf2;
+
+      cursor: pointer;
+    }
+
+    .student-option:last-child {
+      border-bottom: none;
+    }
+
+    .student-option:hover {
+      background: white;
+    }
+
+    .student-option > input {
+      width: 16px;
+      height: 16px;
+
+      margin: 0;
+
+      flex-shrink: 0;
+    }
+
+    .student-option-avatar {
+      width: 34px;
+      height: 34px;
+
+      border-radius: 10px;
+
+      background: #edf4fb;
+
+      color: #17375e;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 10px;
+      font-weight: 850;
+
+      flex-shrink: 0;
+    }
+
+    .student-option-info {
+      min-width: 0;
+    }
+
+    .student-option-info strong {
+      display: block;
+
+      color: #2d3c51;
+
+      font-size: 12px;
+    }
+
+    .student-option-info small {
+      display: block;
+
+      margin-top: 2px;
+
+      color: #98a2b0;
+
+      font-size: 10px;
+    }
+
+    .student-picker-empty {
+      padding: 28px 15px;
+
+      text-align: center;
+
+      color: #98a2b0;
+
+      font-size: 12px;
+    }
+
+    /* FORM ACTIONS */
+
+    .form-message {
+      margin-top: 15px;
+
+      min-height: 18px;
+
+      font-size: 12px;
+    }
+
+    .form-message.error {
+      color: #c44242;
+    }
+
+    .form-actions {
+      margin-top: 18px;
+
+      padding-top: 18px;
+
+      border-top:
+        1px solid #edf0f4;
+
+      display: flex;
+      align-items: center;
+
+      gap: 9px;
+    }
+
+    .form-spacer {
+      flex: 1;
+    }
+
+    .cancel-button,
+    .save-button,
+    .danger-button {
+      border-radius: 9px;
+
+      padding:
+        10px 15px;
+
+      font-weight: 750;
+
+      cursor: pointer;
+    }
+
+    .cancel-button {
+      border:
+        1px solid #dce3eb;
+
+      background: white;
+
+      color: #536178;
+    }
+
+    .save-button {
+      border: none;
+
+      background: #17375e;
+
+      color: white;
+    }
+
+    .save-button:disabled,
+    .danger-button:disabled {
+      opacity: .55;
+
+      cursor: not-allowed;
+    }
+
+    .danger-button {
+      border:
+        1px solid #f0caca;
+
+      background: #fff6f6;
+
+      color: #bf3d3d;
+    }
+
+    .danger-button.reactivate {
+      border-color: #cce8d6;
+
+      background: #f1fbf5;
+
+      color: #238455;
+    }
+
+    /* RESPONSIVE */
+
+    @media
+    (max-width: 1000px) {
+
+      .app {
+        grid-template-columns:
+          80px minmax(0, 1fr);
+      }
+
+      .sidebar {
+        width: 80px;
+      }
+
+      .logo-box {
+        width: 50px;
+
+        padding: 6px;
+      }
+
+      .portal-label {
+        display: none;
+      }
+
+      .nav-item {
+        justify-content: center;
+      }
+
+      .nav-item span:not(
+        .nav-icon
+      ) {
+        display: none;
+      }
+
+      .nav-icon {
+        font-size: 18px;
+      }
+
+      .logout-button span {
+        display: none;
+      }
+
+      .main {
+        padding:
+          28px 22px 50px;
+      }
+
+    }
+
+    @media
+    (max-width: 720px) {
+
+      .app {
+        display: block;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        padding:
+          24px 15px 45px;
+      }
+
+      .page-header {
+        align-items: stretch;
+
+        flex-direction: column;
+      }
+
+      .add-button {
+        justify-content: center;
+
+        width: 100%;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-top {
+        align-items: stretch;
+
+        flex-direction: column;
+      }
+
+      .toolbar {
+        width: 100%;
+
+        flex-direction: column;
+      }
+
+      .search-box,
+      #statusFilter {
+        width: 100%;
+      }
+
+      .form-grid,
+      .relationship-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full-width {
+        grid-column: auto;
+      }
+
+      .form-actions {
+        flex-wrap: wrap;
+      }
+
+      .form-spacer {
+        display: none;
+      }
+
+      .danger-button {
+        width: 100%;
+      }
+
+      .cancel-button,
+      .save-button {
+        flex: 1;
+      }
+
+    }
+
+  </style>
+
+</body>
+</html>

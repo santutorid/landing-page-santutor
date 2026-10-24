@@ -1,0 +1,3412 @@
+---
+import logoSrc from '../../../../assets/logo.svg';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <title>Packages | Santutor Admin</title>
+</head>
+
+<body>
+
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loader"></div>
+    <p>Loading Santutor...</p>
+  </div>
+
+  <div id="app" class="app" hidden>
+
+    <aside class="sidebar">
+
+      <div class="brand">
+        <a href="/portal/admin/">
+          <div class="logo-box">
+            <img src={logoSrc.src} alt="Santutor Learning Studio" />
+          </div>
+        </a>
+        <span class="portal-label">ADMIN PORTAL</span>
+      </div>
+
+      <nav>
+        <a class="nav-item" href="/portal/admin/">
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/students/">
+          <span class="nav-icon">👨‍🎓</span>
+          <span>Students</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/schedule/">
+          <span class="nav-icon">📅</span>
+          <span>Schedule</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/attendance/">
+          <span class="nav-icon">✓</span>
+          <span>Attendance</span>
+        </a>
+
+        <a class="nav-item" href="#">
+          <span class="nav-icon">📚</span>
+          <span>Learning Reports</span>
+        </a>
+
+        <a class="nav-item active" href="/portal/admin/packages/">
+          <span class="nav-icon">🎟</span>
+          <span>Packages</span>
+        </a>
+
+        <a class="nav-item" href="#">
+          <span class="nav-icon">💳</span>
+          <span>Payments</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/parents/">
+          <span class="nav-icon">👪</span>
+          <span>Parents</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/tutors/">
+          <span class="nav-icon">👩‍🏫</span>
+          <span>Tutors</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button id="logoutButton" class="logout-button" type="button">
+          ↪ <span>Sign Out</span>
+        </button>
+      </div>
+
+    </aside>
+
+    <main class="main">
+
+      <header class="page-header">
+
+        <div>
+          <a class="back-link" href="/portal/admin/">
+            ← Back to Dashboard
+          </a>
+
+          <p class="eyebrow">SESSION MANAGEMENT</p>
+          <h1>Packages</h1>
+          <p class="subtitle">
+            Manage student session credits, renewal alerts, expiry dates, and payment status.
+          </p>
+        </div>
+
+        <button id="showFormButton" class="add-button" type="button">
+          <span class="plus">+</span>
+          Add Package
+        </button>
+
+      </header>
+
+      <section class="stats-grid">
+
+        <article class="stat-card">
+          <div class="stat-icon total-icon">🎟</div>
+          <div>
+            <span class="stat-label">Active Packages</span>
+            <strong id="activePackages">—</strong>
+            <span class="stat-note">Currently usable</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon credit-icon">◉</div>
+          <div>
+            <span class="stat-label">Remaining Sessions</span>
+            <strong id="remainingSessions">—</strong>
+            <span class="stat-note">Across active packages</span>
+          </div>
+        </article>
+
+        <article class="stat-card warning-stat">
+          <div class="stat-icon warning-icon">!</div>
+          <div>
+            <span class="stat-label">Renewal Needed</span>
+            <strong id="renewalNeeded">—</strong>
+            <span class="stat-note">1 session or less</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon payment-icon">💳</div>
+          <div>
+            <span class="stat-label">Payment Pending</span>
+            <strong id="paymentPending">—</strong>
+            <span class="stat-note">Unpaid or partial</span>
+          </div>
+        </article>
+
+      </section>
+
+      <section class="package-panel">
+
+        <div class="panel-top">
+
+          <div>
+            <p class="section-label">STUDENT PACKAGES</p>
+            <h2>All Packages</h2>
+            <p class="panel-description">
+              Packages with 1 session remaining are highlighted automatically.
+            </p>
+          </div>
+
+          <div class="toolbar">
+
+            <div class="search-box">
+              <span class="search-icon">⌕</span>
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="Search student or package..."
+              />
+            </div>
+
+            <select id="statusFilter">
+              <option value="all">All Status</option>
+              <option value="active">Active</option>
+              <option value="completed">Completed</option>
+              <option value="expired">Expired</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+
+            <select id="paymentFilter">
+              <option value="all">All Payments</option>
+              <option value="paid">Paid</option>
+              <option value="partial">Partial</option>
+              <option value="unpaid">Unpaid</option>
+            </select>
+
+            <select
+              id="sortFilter"
+              aria-label="Sort packages"
+              title="Sort packages"
+            >
+              <option value="name-asc">
+                Name A–Z
+              </option>
+              <option value="name-desc">
+                Name Z–A
+              </option>
+              <option value="remaining-asc">
+                Remaining: Low → High
+              </option>
+              <option value="remaining-desc">
+                Remaining: High → Low
+              </option>
+              <option value="newest">
+                Newest Package
+              </option>
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Package</th>
+                <th>Sessions</th>
+                <th>Validity</th>
+                <th>Payment</th>
+                <th>Status</th>
+                <th class="action-heading">Action</th>
+              </tr>
+            </thead>
+
+            <tbody id="packageTableBody">
+              <tr>
+                <td colspan="7" class="empty-row">
+                  Loading packages...
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <div id="packageModal" class="modal-backdrop" hidden>
+
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+
+      <div class="modal-header">
+
+        <div>
+          <p id="modalEyebrow" class="section-label">NEW PACKAGE</p>
+          <h2 id="modalTitle">Add Package</h2>
+          <p id="modalDescription">
+            Assign a session package to a student.
+          </p>
+        </div>
+
+        <button
+          id="closeFormButton"
+          class="modal-close"
+          type="button"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <form id="packageForm">
+
+        <div class="form-grid">
+
+          <label class="full-width">
+            <span>Student *</span>
+            <select id="studentId" required>
+              <option value="">Select student</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Package Code</span>
+            <input
+              id="packageCode"
+              type="text"
+              autocomplete="off"
+              placeholder="e.g. PKG001"
+            />
+          </label>
+
+          <label>
+            <span>Package Name *</span>
+            <input
+              id="packageName"
+              type="text"
+              autocomplete="off"
+              required
+              placeholder="e.g. Mathematics 8 Sessions"
+            />
+          </label>
+
+          <label>
+            <span>Total Sessions *</span>
+            <input
+              id="totalSessions"
+              type="number"
+              min="1"
+              step="1"
+              required
+              placeholder="8"
+            />
+          </label>
+
+          <label>
+            <span>Remaining Sessions *</span>
+            <input
+              id="remainingInput"
+              type="number"
+              min="0"
+              step="1"
+              required
+              placeholder="8"
+            />
+          </label>
+
+          <label>
+            <span>Price (IDR)</span>
+            <input
+              id="price"
+              type="number"
+              min="0"
+              step="1000"
+              placeholder="0"
+            />
+          </label>
+
+          <label>
+            <span>Payment Status</span>
+            <select id="paymentStatus">
+              <option value="unpaid">Unpaid</option>
+              <option value="partial">Partial</option>
+              <option value="paid">Paid</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Purchase Date</span>
+            <input id="purchaseDate" type="date" />
+          </label>
+
+          <label>
+            <span>Start Date</span>
+            <input id="startDate" type="date" />
+          </label>
+
+          <label>
+            <span>Expiry Date</span>
+            <input id="expiryDate" type="date" />
+          </label>
+
+          <label>
+            <span>Status</span>
+            <select id="packageStatus">
+              <option value="active">Active</option>
+              <option value="completed">Completed</option>
+              <option value="expired">Expired</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </label>
+
+          <label class="full-width">
+            <span>Notes</span>
+            <textarea
+              id="notes"
+              rows="4"
+              placeholder="Optional notes..."
+            ></textarea>
+          </label>
+
+        </div>
+
+        <div id="formMessage" class="form-message"></div>
+
+        <div class="form-actions">
+
+          <button
+            id="cancelPackageButton"
+            type="button"
+            class="danger-button"
+            hidden
+          >
+            Cancel Package
+          </button>
+
+          <div class="form-spacer"></div>
+
+          <button id="cancelButton" type="button" class="cancel-button">
+            Close
+          </button>
+
+          <button id="saveButton" type="submit" class="save-button">
+            Add Package
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    import { supabase }
+      from '../../../../lib/supabase';
+
+
+    type StudentStatus =
+      'active' |
+      'inactive';
+
+
+    type PackageStatus =
+      'active' |
+      'completed' |
+      'expired' |
+      'cancelled';
+
+
+    type PaymentStatus =
+      'unpaid' |
+      'partial' |
+      'paid';
+
+
+    type Student = {
+      id: string;
+      student_code: string | null;
+      name: string;
+      status: StudentStatus;
+    };
+
+
+    type StudentPackage = {
+      id: string;
+      package_code: string | null;
+      student_id: string;
+      package_name: string;
+      total_sessions: number;
+      remaining_sessions: number;
+      price: number | null;
+      payment_status: PaymentStatus;
+      purchase_date: string | null;
+      start_date: string | null;
+      expiry_date: string | null;
+      status: PackageStatus;
+      notes: string | null;
+      created_at: string;
+      updated_at: string | null;
+    };
+
+
+    let students: Student[] = [];
+    let packages: StudentPackage[] = [];
+    let editingPackageId: string | null = null;
+
+
+    function getEl<T extends Element>(
+      selector: string
+    ): T {
+
+      const element =
+        document.querySelector<T>(
+          selector
+        );
+
+
+      if (!element) {
+
+        throw new Error(
+          `Element not found: ${selector}`
+        );
+
+      }
+
+
+      return element;
+
+    }
+
+
+    const loadingScreen =
+      getEl<HTMLDivElement>(
+        '#loadingScreen'
+      );
+
+
+    const app =
+      getEl<HTMLDivElement>(
+        '#app'
+      );
+
+
+    const packageTableBody =
+      getEl<HTMLTableSectionElement>(
+        '#packageTableBody'
+      );
+
+
+    const searchInput =
+      getEl<HTMLInputElement>(
+        '#searchInput'
+      );
+
+
+    const statusFilter =
+      getEl<HTMLSelectElement>(
+        '#statusFilter'
+      );
+
+
+    const paymentFilter =
+      getEl<HTMLSelectElement>(
+        '#paymentFilter'
+      );
+
+
+    const sortFilter =
+      getEl<HTMLSelectElement>(
+        '#sortFilter'
+      );
+
+
+    const packageModal =
+      getEl<HTMLDivElement>(
+        '#packageModal'
+      );
+
+
+    const packageForm =
+      getEl<HTMLFormElement>(
+        '#packageForm'
+      );
+
+
+    const studentIdInput =
+      getEl<HTMLSelectElement>(
+        '#studentId'
+      );
+
+
+    const packageCodeInput =
+      getEl<HTMLInputElement>(
+        '#packageCode'
+      );
+
+
+    const packageNameInput =
+      getEl<HTMLInputElement>(
+        '#packageName'
+      );
+
+
+    const totalSessionsInput =
+      getEl<HTMLInputElement>(
+        '#totalSessions'
+      );
+
+
+    const remainingInput =
+      getEl<HTMLInputElement>(
+        '#remainingInput'
+      );
+
+
+    const priceInput =
+      getEl<HTMLInputElement>(
+        '#price'
+      );
+
+
+    const paymentStatusInput =
+      getEl<HTMLSelectElement>(
+        '#paymentStatus'
+      );
+
+
+    const purchaseDateInput =
+      getEl<HTMLInputElement>(
+        '#purchaseDate'
+      );
+
+
+    const startDateInput =
+      getEl<HTMLInputElement>(
+        '#startDate'
+      );
+
+
+    const expiryDateInput =
+      getEl<HTMLInputElement>(
+        '#expiryDate'
+      );
+
+
+    const packageStatusInput =
+      getEl<HTMLSelectElement>(
+        '#packageStatus'
+      );
+
+
+    const notesInput =
+      getEl<HTMLTextAreaElement>(
+        '#notes'
+      );
+
+
+    const formMessage =
+      getEl<HTMLDivElement>(
+        '#formMessage'
+      );
+
+
+    const saveButton =
+      getEl<HTMLButtonElement>(
+        '#saveButton'
+      );
+
+
+    const cancelPackageButton =
+      getEl<HTMLButtonElement>(
+        '#cancelPackageButton'
+      );
+
+
+    async function initPage() {
+
+      const {
+        data: { user }
+      } =
+        await supabase.auth.getUser();
+
+
+      if (!user) {
+
+        window.location.href =
+          '/portal/';
+
+        return;
+
+      }
+
+
+      const {
+        data: profile,
+        error
+      } =
+        await supabase
+          .from('profiles')
+          .select('role, active')
+          .eq('id', user.id)
+          .single();
+
+
+      if (
+        error ||
+        !profile ||
+        profile.role !== 'admin' ||
+        profile.active !== true
+      ) {
+
+        await supabase.auth.signOut();
+
+        window.location.href =
+          '/portal/';
+
+        return;
+
+      }
+
+
+      loadingScreen.style.display =
+        'none';
+
+
+      app.hidden =
+        false;
+
+
+      await loadAllData();
+
+    }
+
+
+    async function loadAllData() {
+
+      const [
+        studentsResult,
+        packagesResult
+      ] =
+        await Promise.all([
+
+          supabase
+            .from('students')
+            .select(`
+              id,
+              student_code,
+              name,
+              status
+            `)
+            .order(
+              'name',
+              {
+                ascending: true
+              }
+            ),
+
+          supabase
+            .from('student_packages')
+            .select(`
+              id,
+              package_code,
+              student_id,
+              package_name,
+              total_sessions,
+              remaining_sessions,
+              price,
+              payment_status,
+              purchase_date,
+              start_date,
+              expiry_date,
+              status,
+              notes,
+              created_at,
+              updated_at
+            `)
+            .order(
+              'created_at',
+              {
+                ascending: false
+              }
+            )
+
+        ]);
+
+
+      if (
+        studentsResult.error
+      ) {
+
+        throw new Error(
+          studentsResult.error.message
+        );
+
+      }
+
+
+      if (
+        packagesResult.error
+      ) {
+
+        throw new Error(
+          packagesResult.error.message
+        );
+
+      }
+
+
+      students =
+        (studentsResult.data || []) as Student[];
+
+
+      packages =
+        (packagesResult.data || []) as StudentPackage[];
+
+
+      populateStudentDropdown();
+
+      applyFilters();
+
+      updateStats();
+
+    }
+
+
+    function populateStudentDropdown() {
+
+      const currentValue =
+        studentIdInput.value;
+
+
+      const options =
+        students
+          .filter(
+            student =>
+              student.status ===
+                'active' ||
+              student.id ===
+                currentValue
+          )
+          .map(
+            student => `
+              <option value="${escapeHtml(student.id)}">
+                ${escapeHtml(student.name)}
+                ${
+                  student.student_code
+                    ? `(${escapeHtml(student.student_code)})`
+                    : ''
+                }
+              </option>
+            `
+          )
+          .join('');
+
+
+      studentIdInput.innerHTML = `
+        <option value="">Select student</option>
+        ${options}
+      `;
+
+
+      studentIdInput.value =
+        currentValue;
+
+    }
+
+
+    function getEffectiveStatus(
+      item: StudentPackage
+    ): PackageStatus {
+
+      if (
+        item.status ===
+        'cancelled'
+      ) {
+
+        return 'cancelled';
+
+      }
+
+
+      if (
+        item.remaining_sessions <=
+        0
+      ) {
+
+        return 'completed';
+
+      }
+
+
+      const today =
+        getLocalDateString(
+          new Date()
+        );
+
+
+      if (
+        item.expiry_date &&
+        item.expiry_date < today
+      ) {
+
+        return 'expired';
+
+      }
+
+
+      return item.status;
+
+    }
+
+
+    function applyFilters() {
+
+      const search =
+        searchInput.value
+          .toLowerCase()
+          .trim();
+
+
+      const status =
+        statusFilter.value;
+
+
+      const payment =
+        paymentFilter.value;
+
+
+      const filtered =
+        packages.filter(
+          item => {
+
+            const student =
+              getStudent(
+                item.student_id
+              );
+
+
+            const effectiveStatus =
+              getEffectiveStatus(
+                item
+              );
+
+
+            const combined = `
+              ${student?.name || ''}
+              ${student?.student_code || ''}
+              ${item.package_code || ''}
+              ${item.package_name || ''}
+              ${item.notes || ''}
+            `
+              .toLowerCase();
+
+
+            const matchesSearch =
+              combined.includes(
+                search
+              );
+
+
+            const matchesStatus =
+              status === 'all' ||
+              effectiveStatus ===
+                status;
+
+
+            const matchesPayment =
+              payment === 'all' ||
+              item.payment_status ===
+                payment;
+
+
+            return (
+              matchesSearch &&
+              matchesStatus &&
+              matchesPayment
+            );
+
+          }
+        );
+
+
+      const sorted =
+        [...filtered]
+          .sort(
+            (
+              a: StudentPackage,
+              b: StudentPackage
+            ) => {
+
+              const sort =
+                sortFilter.value;
+
+
+              const studentA =
+                getStudent(
+                  a.student_id
+                );
+
+
+              const studentB =
+                getStudent(
+                  b.student_id
+                );
+
+
+              const nameA =
+                (
+                  studentA?.name ||
+                  ''
+                )
+                  .toLocaleLowerCase();
+
+
+              const nameB =
+                (
+                  studentB?.name ||
+                  ''
+                )
+                  .toLocaleLowerCase();
+
+
+              if (
+                sort ===
+                'name-desc'
+              ) {
+
+                return (
+                  nameB.localeCompare(
+                    nameA
+                  )
+                );
+
+              }
+
+
+              if (
+                sort ===
+                'remaining-asc'
+              ) {
+
+                const remainingDifference =
+                  a.remaining_sessions -
+                  b.remaining_sessions;
+
+
+                if (
+                  remainingDifference !==
+                  0
+                ) {
+
+                  return (
+                    remainingDifference
+                  );
+
+                }
+
+
+                return (
+                  nameA.localeCompare(
+                    nameB
+                  )
+                );
+
+              }
+
+
+              if (
+                sort ===
+                'remaining-desc'
+              ) {
+
+                const remainingDifference =
+                  b.remaining_sessions -
+                  a.remaining_sessions;
+
+
+                if (
+                  remainingDifference !==
+                  0
+                ) {
+
+                  return (
+                    remainingDifference
+                  );
+
+                }
+
+
+                return (
+                  nameA.localeCompare(
+                    nameB
+                  )
+                );
+
+              }
+
+
+              if (
+                sort ===
+                'newest'
+              ) {
+
+                return (
+                  new Date(
+                    b.created_at
+                  ).getTime() -
+                  new Date(
+                    a.created_at
+                  ).getTime()
+                );
+
+              }
+
+
+              return (
+                nameA.localeCompare(
+                  nameB
+                )
+              );
+
+            }
+          );
+
+
+      renderPackages(
+        sorted
+      );
+
+    }
+
+
+    function renderPackages(
+      list: StudentPackage[]
+    ) {
+
+      if (
+        list.length === 0
+      ) {
+
+        packageTableBody.innerHTML = `
+          <tr>
+            <td colspan="7" class="empty-row">
+
+              <div class="empty-state">
+                <div class="empty-icon">🎟</div>
+
+                <strong>
+                  No packages found
+                </strong>
+
+                <p>
+                  Add a package or change your filters.
+                </p>
+              </div>
+
+            </td>
+          </tr>
+        `;
+
+        return;
+
+      }
+
+
+      packageTableBody.innerHTML =
+        list
+          .map(
+            item =>
+              renderPackageRow(
+                item
+              )
+          )
+          .join('');
+
+    }
+
+
+    function renderPackageRow(
+      item: StudentPackage
+    ): string {
+
+      const student =
+        getStudent(
+          item.student_id
+        );
+
+
+      const effectiveStatus =
+        getEffectiveStatus(
+          item
+        );
+
+
+      const lowCredit =
+        effectiveStatus ===
+          'active' &&
+        item.remaining_sessions <=
+          1;
+
+
+      const percent =
+        item.total_sessions > 0
+          ? Math.max(
+              0,
+              Math.min(
+                100,
+                Math.round(
+                  (
+                    item.remaining_sessions /
+                    item.total_sessions
+                  ) *
+                  100
+                )
+              )
+            )
+          : 0;
+
+
+      return `
+        <tr class="${lowCredit ? 'low-credit-row' : ''}">
+
+          <td>
+            <div class="student-cell">
+
+              <div class="avatar">
+                ${escapeHtml(
+                  getInitials(
+                    student?.name ||
+                    '?'
+                  )
+                )}
+              </div>
+
+              <div>
+                <div class="student-name">
+                  ${escapeHtml(
+                    student?.name ||
+                    'Unknown student'
+                  )}
+                </div>
+
+                <div class="student-code">
+                  ${escapeHtml(
+                    student?.student_code ||
+                    'No student code'
+                  )}
+                </div>
+              </div>
+
+            </div>
+          </td>
+
+          <td>
+            <div class="package-name">
+              ${escapeHtml(item.package_name)}
+            </div>
+
+            <div class="package-code">
+              ${escapeHtml(
+                item.package_code ||
+                'No package code'
+              )}
+            </div>
+          </td>
+
+          <td>
+            <div class="credit-line">
+
+              <strong class="${lowCredit ? 'credit-warning' : ''}">
+                ${item.remaining_sessions}
+              </strong>
+
+              <span>
+                / ${item.total_sessions}
+              </span>
+
+              ${
+                lowCredit
+                  ? `
+                    <span class="renewal-badge">
+                      RENEW SOON
+                    </span>
+                  `
+                  : ''
+              }
+
+            </div>
+
+            <div class="progress-track">
+              <div
+                class="progress-fill ${lowCredit ? 'warning' : ''}"
+                style="width:${percent}%"
+              ></div>
+            </div>
+          </td>
+
+          <td>
+            <div class="period-text">
+
+              <span>
+                Start:
+                ${
+                  item.start_date
+                    ? escapeHtml(
+                        formatDate(
+                          item.start_date
+                        )
+                      )
+                    : '—'
+                }
+              </span>
+
+              <span>
+                Exp:
+                ${
+                  item.expiry_date
+                    ? escapeHtml(
+                        formatDate(
+                          item.expiry_date
+                        )
+                      )
+                    : '—'
+                }
+              </span>
+
+            </div>
+          </td>
+
+          <td>
+            <div class="payment-cell">
+
+              <span
+                class="
+                  payment-badge
+                  ${item.payment_status}
+                "
+              >
+                ${capitalize(item.payment_status)}
+              </span>
+
+              ${
+                item.price !== null
+                  ? `
+                    <small>
+                      ${escapeHtml(
+                        formatCurrency(
+                          item.price
+                        )
+                      )}
+                    </small>
+                  `
+                  : ''
+              }
+
+            </div>
+          </td>
+
+          <td>
+            <span
+              class="
+                status-badge
+                ${effectiveStatus}
+              "
+            >
+              <span class="status-dot"></span>
+              ${capitalize(effectiveStatus)}
+            </span>
+          </td>
+
+          <td class="action-cell">
+            <button
+              class="edit-button edit-package-button"
+              data-id="${escapeHtml(item.id)}"
+              type="button"
+            >
+              Edit
+            </button>
+          </td>
+
+        </tr>
+      `;
+
+    }
+
+
+    function updateStats() {
+
+      const active =
+        packages.filter(
+          item =>
+            getEffectiveStatus(item) ===
+            'active'
+        );
+
+
+      const remaining =
+        active.reduce(
+          (
+            total,
+            item
+          ) =>
+            total +
+            item.remaining_sessions,
+          0
+        );
+
+
+      const renewal =
+        active.filter(
+          item =>
+            item.remaining_sessions <=
+            1
+        ).length;
+
+
+      const pending =
+        packages.filter(
+          item =>
+            item.payment_status ===
+              'unpaid' ||
+            item.payment_status ===
+              'partial'
+        ).length;
+
+
+      setText(
+        '#activePackages',
+        active.length
+      );
+
+
+      setText(
+        '#remainingSessions',
+        remaining
+      );
+
+
+      setText(
+        '#renewalNeeded',
+        renewal
+      );
+
+
+      setText(
+        '#paymentPending',
+        pending
+      );
+
+    }
+
+
+    function showModal() {
+
+      editingPackageId =
+        null;
+
+
+      packageForm.reset();
+
+
+      clearFormMessage();
+
+
+      populateStudentDropdown();
+
+
+      const today =
+        getLocalDateString(
+          new Date()
+        );
+
+
+      purchaseDateInput.value =
+        today;
+
+
+      startDateInput.value =
+        today;
+
+
+      paymentStatusInput.value =
+        'unpaid';
+
+
+      packageStatusInput.value =
+        'active';
+
+
+      setText(
+        '#modalEyebrow',
+        'NEW PACKAGE'
+      );
+
+
+      setText(
+        '#modalTitle',
+        'Add Package'
+      );
+
+
+      setText(
+        '#modalDescription',
+        'Assign a session package to a student.'
+      );
+
+
+      saveButton.textContent =
+        'Add Package';
+
+
+      cancelPackageButton.hidden =
+        true;
+
+
+      packageModal.hidden =
+        false;
+
+
+      document.body.classList.add(
+        'modal-open'
+      );
+
+
+      setTimeout(
+        () =>
+          studentIdInput.focus(),
+        0
+      );
+
+    }
+
+
+    function openEditModal(
+      packageId: string
+    ) {
+
+      const item =
+        packages.find(
+          record =>
+            record.id ===
+            packageId
+        );
+
+
+      if (!item) return;
+
+
+      editingPackageId =
+        item.id;
+
+
+      clearFormMessage();
+
+
+      studentIdInput.value =
+        item.student_id;
+
+
+      populateStudentDropdown();
+
+
+      studentIdInput.value =
+        item.student_id;
+
+
+      packageCodeInput.value =
+        item.package_code || '';
+
+
+      packageNameInput.value =
+        item.package_name;
+
+
+      totalSessionsInput.value =
+        String(
+          item.total_sessions
+        );
+
+
+      remainingInput.value =
+        String(
+          item.remaining_sessions
+        );
+
+
+      priceInput.value =
+        item.price !== null
+          ? String(item.price)
+          : '';
+
+
+      paymentStatusInput.value =
+        item.payment_status;
+
+
+      purchaseDateInput.value =
+        item.purchase_date || '';
+
+
+      startDateInput.value =
+        item.start_date || '';
+
+
+      expiryDateInput.value =
+        item.expiry_date || '';
+
+
+      packageStatusInput.value =
+        getEffectiveStatus(
+          item
+        );
+
+
+      notesInput.value =
+        item.notes || '';
+
+
+      setText(
+        '#modalEyebrow',
+        'PACKAGE DETAILS'
+      );
+
+
+      setText(
+        '#modalTitle',
+        'Edit Package'
+      );
+
+
+      setText(
+        '#modalDescription',
+        'Update this package and remaining session balance.'
+      );
+
+
+      saveButton.textContent =
+        'Save Changes';
+
+
+      cancelPackageButton.hidden =
+        item.status ===
+        'cancelled';
+
+
+      packageModal.hidden =
+        false;
+
+
+      document.body.classList.add(
+        'modal-open'
+      );
+
+    }
+
+
+    function hideModal() {
+
+      packageModal.hidden =
+        true;
+
+
+      document.body.classList.remove(
+        'modal-open'
+      );
+
+
+      clearFormMessage();
+
+    }
+
+
+    function clearFormMessage() {
+
+      formMessage.textContent =
+        '';
+
+
+      formMessage.className =
+        'form-message';
+
+    }
+
+
+    function showFormError(
+      message: string
+    ) {
+
+      formMessage.textContent =
+        message;
+
+
+      formMessage.className =
+        'form-message error';
+
+    }
+
+
+    packageForm
+      .addEventListener(
+        'submit',
+        async event => {
+
+          event.preventDefault();
+
+
+          const studentId =
+            studentIdInput.value;
+
+
+          const packageName =
+            packageNameInput.value
+              .trim();
+
+
+          const totalSessions =
+            Number(
+              totalSessionsInput.value
+            );
+
+
+          const remainingSessions =
+            Number(
+              remainingInput.value
+            );
+
+
+          const paymentStatus =
+            paymentStatusInput.value as PaymentStatus;
+
+
+          let packageStatus =
+            packageStatusInput.value as PackageStatus;
+
+
+          if (
+            !studentId ||
+            !packageName
+          ) {
+
+            showFormError(
+              'Student and package name are required.'
+            );
+
+            return;
+
+          }
+
+
+          if (
+            !Number.isInteger(
+              totalSessions
+            ) ||
+            totalSessions < 1
+          ) {
+
+            showFormError(
+              'Total sessions must be at least 1.'
+            );
+
+            return;
+
+          }
+
+
+          if (
+            !Number.isInteger(
+              remainingSessions
+            ) ||
+            remainingSessions < 0 ||
+            remainingSessions >
+              totalSessions
+          ) {
+
+            showFormError(
+              'Remaining sessions must be between 0 and total sessions.'
+            );
+
+            return;
+
+          }
+
+
+          if (
+            remainingSessions === 0 &&
+            packageStatus ===
+              'active'
+          ) {
+
+            packageStatus =
+              'completed';
+
+          }
+
+
+          if (
+            expiryDateInput.value &&
+            startDateInput.value &&
+            expiryDateInput.value <
+              startDateInput.value
+          ) {
+
+            showFormError(
+              'Expiry date cannot be earlier than start date.'
+            );
+
+            return;
+
+          }
+
+
+          const rawPrice =
+            priceInput.value
+              .trim();
+
+
+          const price =
+            rawPrice
+              ? Number(rawPrice)
+              : null;
+
+
+          if (
+            price !== null &&
+            (
+              !Number.isFinite(price) ||
+              price < 0
+            )
+          ) {
+
+            showFormError(
+              'Price must be zero or greater.'
+            );
+
+            return;
+
+          }
+
+
+          const packageData = {
+
+            student_id:
+              studentId,
+
+            package_code:
+              packageCodeInput.value
+                .trim() ||
+              null,
+
+            package_name:
+              packageName,
+
+            total_sessions:
+              totalSessions,
+
+            remaining_sessions:
+              remainingSessions,
+
+            price,
+
+            payment_status:
+              paymentStatus,
+
+            purchase_date:
+              purchaseDateInput.value ||
+              null,
+
+            start_date:
+              startDateInput.value ||
+              null,
+
+            expiry_date:
+              expiryDateInput.value ||
+              null,
+
+            status:
+              packageStatus,
+
+            notes:
+              notesInput.value
+                .trim() ||
+              null,
+
+            updated_at:
+              new Date()
+                .toISOString()
+
+          };
+
+
+          saveButton.disabled =
+            true;
+
+
+          saveButton.textContent =
+            editingPackageId
+              ? 'Saving Changes...'
+              : 'Saving...';
+
+
+          let errorMessage:
+            string | null = null;
+
+
+          if (
+            editingPackageId
+          ) {
+
+            const {
+              error
+            } =
+              await supabase
+                .from(
+                  'student_packages'
+                )
+                .update(
+                  packageData
+                )
+                .eq(
+                  'id',
+                  editingPackageId
+                );
+
+
+            errorMessage =
+              error?.message ||
+              null;
+
+          } else {
+
+            const {
+              error
+            } =
+              await supabase
+                .from(
+                  'student_packages'
+                )
+                .insert(
+                  packageData
+                );
+
+
+            errorMessage =
+              error?.message ||
+              null;
+
+          }
+
+
+          if (
+            errorMessage
+          ) {
+
+            console.error(
+              'Save package error:',
+              errorMessage
+            );
+
+
+            showFormError(
+              errorMessage
+            );
+
+
+            saveButton.disabled =
+              false;
+
+
+            saveButton.textContent =
+              editingPackageId
+                ? 'Save Changes'
+                : 'Add Package';
+
+
+            return;
+
+          }
+
+
+          await loadAllData();
+
+
+          hideModal();
+
+
+          saveButton.disabled =
+            false;
+
+
+          saveButton.textContent =
+            'Add Package';
+
+
+          editingPackageId =
+            null;
+
+        }
+      );
+
+
+    cancelPackageButton
+      .addEventListener(
+        'click',
+        async () => {
+
+          if (
+            !editingPackageId
+          ) {
+
+            return;
+
+          }
+
+
+          const item =
+            packages.find(
+              record =>
+                record.id ===
+                editingPackageId
+            );
+
+
+          if (!item) return;
+
+
+          const confirmed =
+            window.confirm(
+              `Cancel package "${item.package_name}"?`
+            );
+
+
+          if (!confirmed) return;
+
+
+          cancelPackageButton.disabled =
+            true;
+
+
+          cancelPackageButton.textContent =
+            'Cancelling...';
+
+
+          const {
+            error
+          } =
+            await supabase
+              .from(
+                'student_packages'
+              )
+              .update({
+
+                status:
+                  'cancelled',
+
+                updated_at:
+                  new Date()
+                    .toISOString()
+
+              })
+              .eq(
+                'id',
+                editingPackageId
+              );
+
+
+          if (error) {
+
+            window.alert(
+              error.message
+            );
+
+
+            cancelPackageButton.disabled =
+              false;
+
+
+            cancelPackageButton.textContent =
+              'Cancel Package';
+
+
+            return;
+
+          }
+
+
+          await loadAllData();
+
+
+          cancelPackageButton.disabled =
+            false;
+
+
+          cancelPackageButton.textContent =
+            'Cancel Package';
+
+
+          hideModal();
+
+
+          editingPackageId =
+            null;
+
+        }
+      );
+
+
+    totalSessionsInput
+      .addEventListener(
+        'input',
+        () => {
+
+          if (
+            editingPackageId
+          ) {
+
+            return;
+
+          }
+
+
+          remainingInput.value =
+            totalSessionsInput.value;
+
+        }
+      );
+
+
+    searchInput
+      .addEventListener(
+        'input',
+        applyFilters
+      );
+
+
+    statusFilter
+      .addEventListener(
+        'change',
+        applyFilters
+      );
+
+
+    paymentFilter
+      .addEventListener(
+        'change',
+        applyFilters
+      );
+
+
+    sortFilter
+      .addEventListener(
+        'change',
+        applyFilters
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#showFormButton'
+    )
+      .addEventListener(
+        'click',
+        showModal
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#closeFormButton'
+    )
+      .addEventListener(
+        'click',
+        hideModal
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#cancelButton'
+    )
+      .addEventListener(
+        'click',
+        hideModal
+      );
+
+
+    packageTableBody
+      .addEventListener(
+        'click',
+        event => {
+
+          const target =
+            event.target;
+
+
+          if (
+            !(target instanceof Element)
+          ) {
+
+            return;
+
+          }
+
+
+          const button =
+            target.closest<HTMLButtonElement>(
+              '.edit-package-button'
+            );
+
+
+          if (!button) return;
+
+
+          const packageId =
+            button.dataset.id;
+
+
+          if (packageId) {
+
+            openEditModal(
+              packageId
+            );
+
+          }
+
+        }
+      );
+
+
+    packageModal
+      .addEventListener(
+        'click',
+        event => {
+
+          if (
+            event.target ===
+            packageModal
+          ) {
+
+            hideModal();
+
+          }
+
+        }
+      );
+
+
+    document
+      .addEventListener(
+        'keydown',
+        event => {
+
+          if (
+            event.key ===
+              'Escape' &&
+            !packageModal.hidden
+          ) {
+
+            hideModal();
+
+          }
+
+        }
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#logoutButton'
+    )
+      .addEventListener(
+        'click',
+        async () => {
+
+          await supabase.auth
+            .signOut();
+
+
+          window.location.href =
+            '/portal/';
+
+        }
+      );
+
+
+    function getStudent(
+      studentId: string
+    ): Student | undefined {
+
+      return students.find(
+        student =>
+          student.id ===
+          studentId
+      );
+
+    }
+
+
+    function setText(
+      selector: string,
+      value: string | number
+    ) {
+
+      getEl<HTMLElement>(
+        selector
+      ).textContent =
+        String(value);
+
+    }
+
+
+    function getInitials(
+      name: string
+    ): string {
+
+      return (
+        name || '?'
+      )
+        .split(' ')
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(
+          part =>
+            part
+              .charAt(0)
+              .toUpperCase()
+        )
+        .join('');
+
+    }
+
+
+    function capitalize(
+      value: string
+    ): string {
+
+      if (!value) return '';
+
+
+      return (
+        value.charAt(0)
+          .toUpperCase() +
+        value.slice(1)
+      );
+
+    }
+
+
+    function formatCurrency(
+      value: number
+    ): string {
+
+      return new Intl
+        .NumberFormat(
+          'id-ID',
+          {
+            style:
+              'currency',
+            currency:
+              'IDR',
+            maximumFractionDigits:
+              0
+          }
+        )
+        .format(value);
+
+    }
+
+
+    function formatDate(
+      value: string
+    ): string {
+
+      const [
+        year,
+        month,
+        day
+      ] =
+        value
+          .split('-')
+          .map(Number);
+
+
+      const date =
+        new Date(
+          year,
+          month - 1,
+          day
+        );
+
+
+      return new Intl
+        .DateTimeFormat(
+          'en-GB',
+          {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+          }
+        )
+        .format(date);
+
+    }
+
+
+    function getLocalDateString(
+      date: Date
+    ): string {
+
+      const year =
+        date.getFullYear();
+
+
+      const month =
+        String(
+          date.getMonth() + 1
+        )
+          .padStart(
+            2,
+            '0'
+          );
+
+
+      const day =
+        String(
+          date.getDate()
+        )
+          .padStart(
+            2,
+            '0'
+          );
+
+
+      return `${year}-${month}-${day}`;
+
+    }
+
+
+    function escapeHtml(
+      value: string
+    ): string {
+
+      const div =
+        document.createElement(
+          'div'
+        );
+
+
+      div.textContent =
+        value ?? '';
+
+
+      return div.innerHTML;
+
+    }
+
+
+    initPage()
+      .catch(
+        error => {
+
+          console.error(
+            'Packages page error:',
+            error
+          );
+
+
+          loadingScreen.innerHTML = `
+            <p class="error-text">
+              Unable to load Packages.
+            </p>
+          `;
+
+        }
+      );
+
+  </script>
+
+  <style is:global>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #f5f7fb;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .loading-screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #78869a;
+    }
+
+    .loader {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 3px solid #e2e7ed;
+      border-top-color: #f28b2d;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns:
+        240px minmax(0, 1fr);
+    }
+
+    .sidebar {
+      min-height: 100vh;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      padding: 24px 15px;
+      background:
+        linear-gradient(
+          180deg,
+          #17375e 0%,
+          #102a4b 100%
+        );
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand {
+      padding: 4px 10px 27px;
+    }
+
+    .brand a {
+      text-decoration: none;
+    }
+
+    .logo-box {
+      width: 172px;
+      background: white;
+      border-radius: 12px;
+      padding: 8px 12px;
+    }
+
+    .brand img {
+      width: 100%;
+      display: block;
+    }
+
+    .portal-label {
+      display: block;
+      margin-top: 12px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .17em;
+      opacity: .48;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-item,
+    .nav-item:visited,
+    .nav-item:hover,
+    .nav-item:active {
+      text-decoration: none;
+    }
+
+    .nav-item {
+      color:
+        rgba(255, 255, 255, .72);
+      padding: 11px 12px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 13px;
+      transition: .15s ease;
+    }
+
+    .nav-item:hover {
+      color: white;
+      background:
+        rgba(255, 255, 255, .07);
+    }
+
+    .nav-item.active {
+      color: white;
+      background:
+        rgba(255, 255, 255, .13);
+      font-weight: 750;
+      box-shadow:
+        inset 3px 0 #f28b2d;
+    }
+
+    .nav-icon {
+      width: 22px;
+      text-align: center;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+    }
+
+    .logout-button {
+      width: 100%;
+      border:
+        1px solid
+        rgba(255, 255, 255, .12);
+      background:
+        rgba(255, 255, 255, .06);
+      color: white;
+      border-radius: 10px;
+      padding: 11px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .main {
+      width: 100%;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 36px 38px 60px;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content:
+        space-between;
+      align-items:
+        flex-end;
+      gap: 25px;
+      margin-bottom: 28px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      margin-bottom: 18px;
+      color: #77859a;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .back-link:hover {
+      color: #17375e;
+    }
+
+    .eyebrow,
+    .section-label {
+      color: #f28b2d;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .14em;
+      margin: 0 0 6px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #17375e;
+      font-size: 36px;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+
+    h2 {
+      margin: 0;
+      color: #17375e;
+      font-size: 20px;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: #8591a3;
+      font-size: 14px;
+    }
+
+    .add-button {
+      border: none;
+      background:
+        linear-gradient(
+          135deg,
+          #17375e,
+          #234d7b
+        );
+      color: white;
+      border-radius: 11px;
+      padding: 12px 18px;
+      font-weight: 750;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow:
+        0 8px 20px
+        rgba(23, 55, 94, .14);
+    }
+
+    .plus {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .stat-card {
+      min-height: 110px;
+      background: white;
+      border: 1px solid #e5eaf0;
+      border-radius: 16px;
+      padding: 19px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow:
+        0 4px 18px
+        rgba(28, 45, 70, .035);
+    }
+
+    .stat-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 19px;
+    }
+
+    .total-icon {
+      background: #eef4fb;
+    }
+
+    .credit-icon {
+      background: #eaf8f0;
+      color: #238455;
+    }
+
+    .warning-icon {
+      background: #fff3e8;
+      color: #d9721b;
+    }
+
+    .payment-icon {
+      background: #f0ecff;
+      color: #6e57bf;
+    }
+
+    .warning-stat {
+      border-color: #f1dcc7;
+    }
+
+    .stat-label {
+      display: block;
+      color: #7d899b;
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .stat-card strong {
+      display: block;
+      color: #17375e;
+      font-size: 29px;
+      line-height: 1;
+      margin: 6px 0;
+    }
+
+    .stat-note {
+      display: block;
+      color: #a0a8b4;
+      font-size: 10px;
+    }
+
+    .package-panel {
+      background: white;
+      border: 1px solid #e3e8ef;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow:
+        0 5px 20px
+        rgba(20, 40, 65, .035);
+    }
+
+    .panel-top {
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content:
+        space-between;
+      gap: 20px;
+      border-bottom:
+        1px solid #edf0f4;
+    }
+
+    .panel-description {
+      margin: 5px 0 0;
+      color: #909aaa;
+      font-size: 12px;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      width: 250px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f8fafc;
+      border: 1px solid #dfe5ed;
+      border-radius: 10px;
+      padding: 0 11px;
+    }
+
+    #sortFilter {
+      min-width: 190px;
+    }
+
+
+    .search-box input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #27364c;
+      font-size: 13px;
+    }
+
+    .toolbar select {
+      height: 40px;
+      border: 1px solid #dfe5ed;
+      border-radius: 10px;
+      padding: 0 12px;
+      background: white;
+      color: #59677b;
+      outline: none;
+      font-size: 12px;
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1080px;
+    }
+
+    th {
+      padding: 11px 24px;
+      background: #fafbfd;
+      border-bottom:
+        1px solid #e8edf2;
+      text-align: left;
+      color: #8793a4;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 15px 24px;
+      border-bottom:
+        1px solid #edf0f4;
+      color: #536176;
+      font-size: 13px;
+      vertical-align: middle;
+    }
+
+    tbody tr:hover {
+      background: #fbfcfe;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .low-credit-row {
+      background: #fffdfa;
+    }
+
+    .low-credit-row:hover {
+      background: #fff9f1;
+    }
+
+    .student-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background:
+        linear-gradient(
+          135deg,
+          #e8f1fb,
+          #f4f8fc
+        );
+      color: #17375e;
+      border: 1px solid #dce6f1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 850;
+      flex-shrink: 0;
+    }
+
+    .student-name,
+    .package-name {
+      color: #20324b;
+      font-weight: 750;
+      margin-bottom: 3px;
+    }
+
+    .student-code,
+    .package-code {
+      color: #98a2b0;
+      font-size: 10px;
+    }
+
+    .credit-line {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .credit-line strong {
+      color: #17375e;
+      font-size: 18px;
+    }
+
+    .credit-line span {
+      color: #8792a1;
+      font-size: 10px;
+    }
+
+    .credit-warning {
+      color: #d46f18 !important;
+    }
+
+    .renewal-badge {
+      margin-left: 5px;
+      padding: 3px 6px;
+      border-radius: 999px;
+      background: #fff0df;
+      color: #c96613 !important;
+      font-size: 8px !important;
+      font-weight: 850;
+      letter-spacing: .04em;
+    }
+
+    .progress-track {
+      margin-top: 7px;
+      width: 115px;
+      height: 5px;
+      background: #edf1f5;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #5f91c6;
+      border-radius: inherit;
+    }
+
+    .progress-fill.warning {
+      background: #e28a3c;
+    }
+
+    .period-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: #7d8998;
+      font-size: 10px;
+    }
+
+    .payment-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    .payment-cell small {
+      color: #8b96a6;
+      font-size: 9px;
+    }
+
+    .payment-badge,
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .payment-badge.paid {
+      background: #eaf8ef;
+      color: #26844f;
+    }
+
+    .payment-badge.partial {
+      background: #fff5e8;
+      color: #b96b22;
+    }
+
+    .payment-badge.unpaid {
+      background: #fff0f0;
+      color: #b94141;
+    }
+
+    .status-badge.active {
+      background: #eaf8ef;
+      color: #26844f;
+    }
+
+    .status-badge.completed {
+      background: #eef4fb;
+      color: #3b6eaa;
+    }
+
+    .status-badge.expired {
+      background: #f3f3f5;
+      color: #737c88;
+    }
+
+    .status-badge.cancelled {
+      background: #fff0f0;
+      color: #b94141;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .action-heading,
+    .action-cell {
+      text-align: right;
+    }
+
+    .edit-button {
+      border: 1px solid #dce4ed;
+      background: white;
+      color: #42536b;
+      border-radius: 8px;
+      padding: 7px 11px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .edit-button:hover {
+      background: #f7f9fc;
+      color: #17375e;
+    }
+
+    .empty-row {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #8f9aa9;
+    }
+
+    .empty-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #f4f6f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .empty-state strong {
+      color: #536178;
+    }
+
+    .empty-state p {
+      margin: 5px 0 0;
+      font-size: 12px;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background:
+        rgba(15, 29, 47, .52);
+      backdrop-filter:
+        blur(3px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop[hidden] {
+      display: none;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 760px;
+      max-height: 92vh;
+      overflow-y: auto;
+      background: white;
+      border-radius: 19px;
+      box-shadow:
+        0 25px 70px
+        rgba(12, 27, 45, .28);
+    }
+
+    .modal-header {
+      padding: 24px 25px 19px;
+      display: flex;
+      justify-content:
+        space-between;
+      gap: 20px;
+      border-bottom:
+        1px solid #edf0f4;
+    }
+
+    .modal-header p:last-child {
+      color: #8c97a7;
+      font-size: 12px;
+      margin: 5px 0 0;
+    }
+
+    .modal-close {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: none;
+      background: #f3f5f7;
+      color: #667389;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    form {
+      padding: 22px 25px 25px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    label span {
+      display: block;
+      color: #536178;
+      font-size: 11px;
+      font-weight: 750;
+      margin-bottom: 6px;
+    }
+
+    label input,
+    label select,
+    label textarea {
+      width: 100%;
+      border: 1px solid #dce3eb;
+      border-radius: 9px;
+      background: white;
+      padding: 10px 11px;
+      color: #27364b;
+      outline: none;
+      font-size: 13px;
+    }
+
+    label input,
+    label select {
+      height: 42px;
+    }
+
+    label textarea {
+      resize: vertical;
+      min-height: 96px;
+    }
+
+    label input:focus,
+    label select:focus,
+    label textarea:focus {
+      border-color: #769dcc;
+      box-shadow:
+        0 0 0 3px
+        rgba(73, 126, 188, .1);
+    }
+
+    .form-message {
+      margin-top: 15px;
+      min-height: 18px;
+      font-size: 12px;
+    }
+
+    .form-message.error {
+      color: #c44242;
+    }
+
+    .form-actions {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top:
+        1px solid #edf0f4;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .form-spacer {
+      flex: 1;
+    }
+
+    .cancel-button,
+    .save-button,
+    .danger-button {
+      border-radius: 9px;
+      padding: 10px 15px;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .cancel-button {
+      border: 1px solid #dce3eb;
+      background: white;
+      color: #536178;
+    }
+
+    .save-button {
+      border: none;
+      background: #17375e;
+      color: white;
+    }
+
+    .danger-button {
+      border: 1px solid #f0caca;
+      background: #fff6f6;
+      color: #bf3d3d;
+    }
+
+    .save-button:disabled,
+    .danger-button:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    .error-text {
+      color: #c44242;
+    }
+
+    @media (max-width: 1150px) {
+
+      .stats-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .panel-top {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+    }
+
+    @media (max-width: 1000px) {
+
+      .app {
+        grid-template-columns:
+          80px minmax(0, 1fr);
+      }
+
+      .sidebar {
+        width: 80px;
+      }
+
+      .logo-box {
+        width: 50px;
+        padding: 6px;
+      }
+
+      .portal-label {
+        display: none;
+      }
+
+      .nav-item {
+        justify-content: center;
+      }
+
+      .nav-item span:not(.nav-icon) {
+        display: none;
+      }
+
+      .logout-button span {
+        display: none;
+      }
+
+      .main {
+        padding: 28px 22px 50px;
+      }
+
+    }
+
+    @media (max-width: 720px) {
+
+      .app {
+        display: block;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        padding: 24px 15px 45px;
+      }
+
+      .page-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .add-button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .search-box,
+      .toolbar select {
+        width: 100%;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full-width {
+        grid-column: auto;
+      }
+
+      .form-actions {
+        flex-wrap: wrap;
+      }
+
+      .form-spacer {
+        display: none;
+      }
+
+      .danger-button {
+        width: 100%;
+      }
+
+      .cancel-button,
+      .save-button {
+        flex: 1;
+      }
+
+    }
+
+  </style>
+
+</body>
+</html>

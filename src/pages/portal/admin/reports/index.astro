@@ -1,0 +1,3060 @@
+---
+import logoSrc from '../../../../assets/logo.svg';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <title>Learning Reports | Santutor Admin</title>
+</head>
+
+<body>
+
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loader"></div>
+    <p>Loading Santutor...</p>
+  </div>
+
+  <div id="app" class="app" hidden>
+
+    <aside class="sidebar">
+
+      <div class="brand">
+        <a href="/portal/admin/">
+          <div class="logo-box">
+            <img src={logoSrc.src} alt="Santutor Learning Studio" />
+          </div>
+        </a>
+        <span class="portal-label">ADMIN PORTAL</span>
+      </div>
+
+      <nav>
+        <a class="nav-item" href="/portal/admin/">
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/students/">
+          <span class="nav-icon">👨‍🎓</span>
+          <span>Students</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/schedule/">
+          <span class="nav-icon">📅</span>
+          <span>Schedule</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/attendance/">
+          <span class="nav-icon">✓</span>
+          <span>Attendance</span>
+        </a>
+
+        <a class="nav-item active" href="/portal/admin/reports/">
+          <span class="nav-icon">📚</span>
+          <span>Learning Reports</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/packages/">
+          <span class="nav-icon">🎟</span>
+          <span>Packages</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/payments/">
+          <span class="nav-icon">💳</span>
+          <span>Payments</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/parents/">
+          <span class="nav-icon">👪</span>
+          <span>Parents</span>
+        </a>
+
+        <a class="nav-item" href="/portal/admin/tutors/">
+          <span class="nav-icon">👩‍🏫</span>
+          <span>Tutors</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button id="logoutButton" class="logout-button" type="button">
+          ↪ <span>Sign Out</span>
+        </button>
+      </div>
+
+    </aside>
+
+    <main class="main">
+
+      <header class="page-header">
+
+        <div>
+          <a class="back-link" href="/portal/admin/">
+            ← Back to Dashboard
+          </a>
+
+          <p class="eyebrow">STUDENT PROGRESS</p>
+          <h1>Learning Reports</h1>
+          <p class="subtitle">
+            Record learning progress, tutor feedback, homework, and next focus.
+          </p>
+        </div>
+
+        <button id="showFormButton" class="add-button" type="button">
+          <span class="plus">+</span>
+          Add Report
+        </button>
+
+      </header>
+
+      <section class="stats-grid">
+
+        <article class="stat-card">
+          <div class="stat-icon total-icon">📚</div>
+          <div>
+            <span class="stat-label">Total Reports</span>
+            <strong id="totalReports">—</strong>
+            <span class="stat-note">All learning reports</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon published-icon">✓</div>
+          <div>
+            <span class="stat-label">Published</span>
+            <strong id="publishedReports">—</strong>
+            <span class="stat-note">Ready for parents</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon draft-icon">✎</div>
+          <div>
+            <span class="stat-label">Draft</span>
+            <strong id="draftReports">—</strong>
+            <span class="stat-note">Still being prepared</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon visible-icon">👪</div>
+          <div>
+            <span class="stat-label">Parent Visible</span>
+            <strong id="parentVisibleReports">—</strong>
+            <span class="stat-note">Visible in parent portal</span>
+          </div>
+        </article>
+
+      </section>
+
+      <section class="report-panel">
+
+        <div class="panel-top">
+
+          <div>
+            <p class="section-label">REPORT DATABASE</p>
+            <h2>All Learning Reports</h2>
+            <p class="panel-description">
+              Drafts stay internal until you publish and allow parent visibility.
+            </p>
+          </div>
+
+          <div class="toolbar">
+
+            <div class="search-box">
+              <span class="search-icon">⌕</span>
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="Search student, tutor, topic..."
+              />
+            </div>
+
+            <select id="statusFilter">
+              <option value="all">All Status</option>
+              <option value="published">Published</option>
+              <option value="draft">Draft</option>
+            </select>
+
+            <select id="visibilityFilter">
+              <option value="all">All Visibility</option>
+              <option value="visible">Parent Visible</option>
+              <option value="hidden">Hidden</option>
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Student</th>
+                <th>Tutor</th>
+                <th>Subject / Topic</th>
+                <th>Ratings</th>
+                <th>Visibility</th>
+                <th>Status</th>
+                <th class="action-heading">Action</th>
+              </tr>
+            </thead>
+
+            <tbody id="reportTableBody">
+              <tr>
+                <td colspan="8" class="empty-row">
+                  Loading reports...
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <div id="reportModal" class="modal-backdrop" hidden>
+
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+
+      <div class="modal-header">
+
+        <div>
+          <p id="modalEyebrow" class="section-label">NEW REPORT</p>
+          <h2 id="modalTitle">Add Learning Report</h2>
+          <p id="modalDescription">
+            Record the student's learning progress.
+          </p>
+        </div>
+
+        <button
+          id="closeFormButton"
+          class="modal-close"
+          type="button"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <form id="reportForm">
+
+        <div class="form-grid">
+
+          <label>
+            <span>Student *</span>
+            <select id="studentId" required>
+              <option value="">Select student</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Tutor *</span>
+            <select id="tutorId" required>
+              <option value="">Select tutor</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Report Date *</span>
+            <input id="reportDate" type="date" required />
+          </label>
+
+          <label>
+            <span>Status</span>
+            <select id="reportStatus">
+              <option value="draft">Draft</option>
+              <option value="published">Published</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Subject</span>
+            <input
+              id="subject"
+              type="text"
+              autocomplete="off"
+              placeholder="e.g. Mathematics"
+            />
+          </label>
+
+          <label>
+            <span>Topic</span>
+            <input
+              id="topic"
+              type="text"
+              autocomplete="off"
+              placeholder="e.g. Linear Equations"
+            />
+          </label>
+
+          <label>
+            <span>Engagement Rating</span>
+            <select id="engagementRating">
+              <option value="">Not rated</option>
+              <option value="1">1 - Needs Support</option>
+              <option value="2">2 - Developing</option>
+              <option value="3">3 - Good</option>
+              <option value="4">4 - Very Good</option>
+              <option value="5">5 - Excellent</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Understanding Rating</span>
+            <select id="understandingRating">
+              <option value="">Not rated</option>
+              <option value="1">1 - Needs Support</option>
+              <option value="2">2 - Developing</option>
+              <option value="3">3 - Good</option>
+              <option value="4">4 - Very Good</option>
+              <option value="5">5 - Excellent</option>
+            </select>
+          </label>
+
+          <label class="full-width">
+            <span>Session Summary</span>
+            <textarea
+              id="summary"
+              rows="4"
+              placeholder="What was covered during the session?"
+            ></textarea>
+          </label>
+
+          <label class="full-width">
+            <span>Strengths</span>
+            <textarea
+              id="strengths"
+              rows="3"
+              placeholder="What did the student do well?"
+            ></textarea>
+          </label>
+
+          <label class="full-width">
+            <span>Areas for Improvement</span>
+            <textarea
+              id="areasForImprovement"
+              rows="3"
+              placeholder="What should the student improve?"
+            ></textarea>
+          </label>
+
+          <label class="full-width">
+            <span>Homework</span>
+            <textarea
+              id="homework"
+              rows="3"
+              placeholder="Homework or practice assigned..."
+            ></textarea>
+          </label>
+
+          <label class="full-width">
+            <span>Next Focus</span>
+            <textarea
+              id="nextFocus"
+              rows="3"
+              placeholder="Focus for the next lesson..."
+            ></textarea>
+          </label>
+
+          <label class="visibility-toggle full-width">
+            <input id="parentVisible" type="checkbox" />
+            <span>
+              Visible to parent when published
+            </span>
+          </label>
+
+        </div>
+
+        <div id="formMessage" class="form-message"></div>
+
+        <div class="form-actions">
+
+          <button
+            id="deleteReportButton"
+            type="button"
+            class="danger-button"
+            hidden
+          >
+            Delete Report
+          </button>
+
+          <div class="form-spacer"></div>
+
+          <button id="cancelButton" type="button" class="cancel-button">
+            Close
+          </button>
+
+          <button id="saveButton" type="submit" class="save-button">
+            Add Report
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    import { supabase }
+      from '../../../../lib/supabase';
+
+
+    type ActiveStatus =
+      'active' |
+      'inactive';
+
+
+    type ReportStatus =
+      'draft' |
+      'published';
+
+
+    type Student = {
+      id: string;
+      student_code: string | null;
+      name: string;
+      status: ActiveStatus;
+    };
+
+
+    type Tutor = {
+      id: string;
+      tutor_code: string | null;
+      name: string;
+      status: ActiveStatus;
+    };
+
+
+    type LearningReport = {
+      id: string;
+      student_id: string;
+      tutor_id: string;
+      attendance_id: string | null;
+      report_date: string;
+      subject: string | null;
+      topic: string | null;
+      summary: string | null;
+      strengths: string | null;
+      areas_for_improvement: string | null;
+      homework: string | null;
+      next_focus: string | null;
+      engagement_rating: number | null;
+      understanding_rating: number | null;
+      status: ReportStatus;
+      parent_visible: boolean;
+      created_at: string;
+      updated_at: string | null;
+    };
+
+
+    let students: Student[] = [];
+    let tutors: Tutor[] = [];
+    let reports: LearningReport[] = [];
+    let editingReportId: string | null = null;
+
+
+    function getEl<T extends Element>(
+      selector: string
+    ): T {
+
+      const element =
+        document.querySelector<T>(
+          selector
+        );
+
+
+      if (!element) {
+
+        throw new Error(
+          `Element not found: ${selector}`
+        );
+
+      }
+
+
+      return element;
+
+    }
+
+
+    const loadingScreen =
+      getEl<HTMLDivElement>(
+        '#loadingScreen'
+      );
+
+
+    const app =
+      getEl<HTMLDivElement>(
+        '#app'
+      );
+
+
+    const reportTableBody =
+      getEl<HTMLTableSectionElement>(
+        '#reportTableBody'
+      );
+
+
+    const searchInput =
+      getEl<HTMLInputElement>(
+        '#searchInput'
+      );
+
+
+    const statusFilter =
+      getEl<HTMLSelectElement>(
+        '#statusFilter'
+      );
+
+
+    const visibilityFilter =
+      getEl<HTMLSelectElement>(
+        '#visibilityFilter'
+      );
+
+
+    const reportModal =
+      getEl<HTMLDivElement>(
+        '#reportModal'
+      );
+
+
+    const reportForm =
+      getEl<HTMLFormElement>(
+        '#reportForm'
+      );
+
+
+    const studentIdInput =
+      getEl<HTMLSelectElement>(
+        '#studentId'
+      );
+
+
+    const tutorIdInput =
+      getEl<HTMLSelectElement>(
+        '#tutorId'
+      );
+
+
+    const reportDateInput =
+      getEl<HTMLInputElement>(
+        '#reportDate'
+      );
+
+
+    const reportStatusInput =
+      getEl<HTMLSelectElement>(
+        '#reportStatus'
+      );
+
+
+    const subjectInput =
+      getEl<HTMLInputElement>(
+        '#subject'
+      );
+
+
+    const topicInput =
+      getEl<HTMLInputElement>(
+        '#topic'
+      );
+
+
+    const engagementRatingInput =
+      getEl<HTMLSelectElement>(
+        '#engagementRating'
+      );
+
+
+    const understandingRatingInput =
+      getEl<HTMLSelectElement>(
+        '#understandingRating'
+      );
+
+
+    const summaryInput =
+      getEl<HTMLTextAreaElement>(
+        '#summary'
+      );
+
+
+    const strengthsInput =
+      getEl<HTMLTextAreaElement>(
+        '#strengths'
+      );
+
+
+    const areasForImprovementInput =
+      getEl<HTMLTextAreaElement>(
+        '#areasForImprovement'
+      );
+
+
+    const homeworkInput =
+      getEl<HTMLTextAreaElement>(
+        '#homework'
+      );
+
+
+    const nextFocusInput =
+      getEl<HTMLTextAreaElement>(
+        '#nextFocus'
+      );
+
+
+    const parentVisibleInput =
+      getEl<HTMLInputElement>(
+        '#parentVisible'
+      );
+
+
+    const formMessage =
+      getEl<HTMLDivElement>(
+        '#formMessage'
+      );
+
+
+    const saveButton =
+      getEl<HTMLButtonElement>(
+        '#saveButton'
+      );
+
+
+    const deleteReportButton =
+      getEl<HTMLButtonElement>(
+        '#deleteReportButton'
+      );
+
+
+    async function initPage() {
+
+      const {
+        data: { user }
+      } =
+        await supabase.auth.getUser();
+
+
+      if (!user) {
+
+        window.location.href =
+          '/portal/';
+
+        return;
+
+      }
+
+
+      const {
+        data: profile,
+        error
+      } =
+        await supabase
+          .from('profiles')
+          .select('role, active')
+          .eq('id', user.id)
+          .single();
+
+
+      if (
+        error ||
+        !profile ||
+        profile.role !== 'admin' ||
+        profile.active !== true
+      ) {
+
+        await supabase.auth.signOut();
+
+        window.location.href =
+          '/portal/';
+
+        return;
+
+      }
+
+
+      loadingScreen.style.display =
+        'none';
+
+
+      app.hidden =
+        false;
+
+
+      await loadAllData();
+
+    }
+
+
+    async function loadAllData() {
+
+      const [
+        studentsResult,
+        tutorsResult,
+        reportsResult
+      ] =
+        await Promise.all([
+
+          supabase
+            .from('students')
+            .select(`
+              id,
+              student_code,
+              name,
+              status
+            `)
+            .order(
+              'name',
+              {
+                ascending: true
+              }
+            ),
+
+          supabase
+            .from('tutors')
+            .select(`
+              id,
+              tutor_code,
+              name,
+              status
+            `)
+            .order(
+              'name',
+              {
+                ascending: true
+              }
+            ),
+
+          supabase
+            .from('learning_reports')
+            .select(`
+              id,
+              student_id,
+              tutor_id,
+              attendance_id,
+              report_date,
+              subject,
+              topic,
+              summary,
+              strengths,
+              areas_for_improvement,
+              homework,
+              next_focus,
+              engagement_rating,
+              understanding_rating,
+              status,
+              parent_visible,
+              created_at,
+              updated_at
+            `)
+            .order(
+              'report_date',
+              {
+                ascending: false
+              }
+            )
+            .order(
+              'created_at',
+              {
+                ascending: false
+              }
+            )
+
+        ]);
+
+
+      if (
+        studentsResult.error
+      ) {
+
+        throw new Error(
+          studentsResult.error.message
+        );
+
+      }
+
+
+      if (
+        tutorsResult.error
+      ) {
+
+        throw new Error(
+          tutorsResult.error.message
+        );
+
+      }
+
+
+      if (
+        reportsResult.error
+      ) {
+
+        throw new Error(
+          reportsResult.error.message
+        );
+
+      }
+
+
+      students =
+        (studentsResult.data || []) as Student[];
+
+
+      tutors =
+        (tutorsResult.data || []) as Tutor[];
+
+
+      reports =
+        (reportsResult.data || []) as LearningReport[];
+
+
+      populateDropdowns();
+
+      applyFilters();
+
+      updateStats();
+
+    }
+
+
+    function populateDropdowns() {
+
+      const currentStudent =
+        studentIdInput.value;
+
+
+      const currentTutor =
+        tutorIdInput.value;
+
+
+      studentIdInput.innerHTML = `
+        <option value="">Select student</option>
+        ${
+          students
+            .filter(
+              student =>
+                student.status ===
+                  'active' ||
+                student.id ===
+                  currentStudent
+            )
+            .map(
+              student => `
+                <option value="${escapeHtml(student.id)}">
+                  ${escapeHtml(student.name)}
+                  ${
+                    student.student_code
+                      ? `(${escapeHtml(student.student_code)})`
+                      : ''
+                  }
+                </option>
+              `
+            )
+            .join('')
+        }
+      `;
+
+
+      tutorIdInput.innerHTML = `
+        <option value="">Select tutor</option>
+        ${
+          tutors
+            .filter(
+              tutor =>
+                tutor.status ===
+                  'active' ||
+                tutor.id ===
+                  currentTutor
+            )
+            .map(
+              tutor => `
+                <option value="${escapeHtml(tutor.id)}">
+                  ${escapeHtml(tutor.name)}
+                  ${
+                    tutor.tutor_code
+                      ? `(${escapeHtml(tutor.tutor_code)})`
+                      : ''
+                  }
+                </option>
+              `
+            )
+            .join('')
+        }
+      `;
+
+
+      studentIdInput.value =
+        currentStudent;
+
+
+      tutorIdInput.value =
+        currentTutor;
+
+    }
+
+
+    function applyFilters() {
+
+      const search =
+        searchInput.value
+          .toLowerCase()
+          .trim();
+
+
+      const status =
+        statusFilter.value;
+
+
+      const visibility =
+        visibilityFilter.value;
+
+
+      const filtered =
+        reports.filter(
+          report => {
+
+            const student =
+              getStudent(
+                report.student_id
+              );
+
+
+            const tutor =
+              getTutor(
+                report.tutor_id
+              );
+
+
+            const combined = `
+              ${student?.name || ''}
+              ${student?.student_code || ''}
+              ${tutor?.name || ''}
+              ${tutor?.tutor_code || ''}
+              ${report.subject || ''}
+              ${report.topic || ''}
+              ${report.summary || ''}
+              ${report.strengths || ''}
+              ${report.areas_for_improvement || ''}
+            `
+              .toLowerCase();
+
+
+            const matchesSearch =
+              combined.includes(
+                search
+              );
+
+
+            const matchesStatus =
+              status === 'all' ||
+              report.status ===
+                status;
+
+
+            const matchesVisibility =
+              visibility === 'all' ||
+              (
+                visibility ===
+                  'visible' &&
+                report.parent_visible
+              ) ||
+              (
+                visibility ===
+                  'hidden' &&
+                !report.parent_visible
+              );
+
+
+            return (
+              matchesSearch &&
+              matchesStatus &&
+              matchesVisibility
+            );
+
+          }
+        );
+
+
+      renderReports(
+        filtered
+      );
+
+    }
+
+
+    function renderReports(
+      list: LearningReport[]
+    ) {
+
+      if (
+        list.length === 0
+      ) {
+
+        reportTableBody.innerHTML = `
+          <tr>
+            <td colspan="8" class="empty-row">
+
+              <div class="empty-state">
+                <div class="empty-icon">📚</div>
+                <strong>No reports found</strong>
+                <p>Add a report or change your filters.</p>
+              </div>
+
+            </td>
+          </tr>
+        `;
+
+        return;
+
+      }
+
+
+      reportTableBody.innerHTML =
+        list
+          .map(
+            report =>
+              renderReportRow(
+                report
+              )
+          )
+          .join('');
+
+    }
+
+
+    function renderReportRow(
+      report: LearningReport
+    ): string {
+
+      const student =
+        getStudent(
+          report.student_id
+        );
+
+
+      const tutor =
+        getTutor(
+          report.tutor_id
+        );
+
+
+      return `
+        <tr>
+
+          <td>
+            <div class="date-cell">
+              <strong>
+                ${escapeHtml(
+                  formatDate(
+                    report.report_date
+                  )
+                )}
+              </strong>
+            </div>
+          </td>
+
+          <td>
+            <div class="student-cell">
+
+              <div class="avatar">
+                ${escapeHtml(
+                  getInitials(
+                    student?.name ||
+                    '?'
+                  )
+                )}
+              </div>
+
+              <div>
+                <div class="student-name">
+                  ${escapeHtml(
+                    student?.name ||
+                    'Unknown student'
+                  )}
+                </div>
+
+                <div class="student-code">
+                  ${escapeHtml(
+                    student?.student_code ||
+                    'No student code'
+                  )}
+                </div>
+              </div>
+
+            </div>
+          </td>
+
+          <td>
+            <div class="tutor-name">
+              ${escapeHtml(
+                tutor?.name ||
+                'Unknown tutor'
+              )}
+            </div>
+          </td>
+
+          <td>
+            <div class="topic-cell">
+              <strong>
+                ${escapeHtml(
+                  report.subject ||
+                  'General'
+                )}
+              </strong>
+
+              <span>
+                ${escapeHtml(
+                  report.topic ||
+                  'No topic'
+                )}
+              </span>
+            </div>
+          </td>
+
+          <td>
+            <div class="ratings-cell">
+
+              <span>
+                Engagement:
+                <strong>
+                  ${report.engagement_rating ?? '—'}
+                </strong>
+              </span>
+
+              <span>
+                Understanding:
+                <strong>
+                  ${report.understanding_rating ?? '—'}
+                </strong>
+              </span>
+
+            </div>
+          </td>
+
+          <td>
+            <span
+              class="
+                visibility-badge
+                ${report.parent_visible ? 'visible' : 'hidden'}
+              "
+            >
+              ${
+                report.parent_visible
+                  ? 'Parent Visible'
+                  : 'Hidden'
+              }
+            </span>
+          </td>
+
+          <td>
+            <span
+              class="
+                status-badge
+                ${report.status}
+              "
+            >
+              <span class="status-dot"></span>
+              ${capitalize(report.status)}
+            </span>
+          </td>
+
+          <td class="action-cell">
+            <button
+              class="edit-button edit-report-button"
+              data-id="${escapeHtml(report.id)}"
+              type="button"
+            >
+              Edit
+            </button>
+          </td>
+
+        </tr>
+      `;
+
+    }
+
+
+    function updateStats() {
+
+      const published =
+        reports.filter(
+          report =>
+            report.status ===
+            'published'
+        ).length;
+
+
+      const draft =
+        reports.filter(
+          report =>
+            report.status ===
+            'draft'
+        ).length;
+
+
+      const visible =
+        reports.filter(
+          report =>
+            report.parent_visible &&
+            report.status ===
+              'published'
+        ).length;
+
+
+      setText(
+        '#totalReports',
+        reports.length
+      );
+
+
+      setText(
+        '#publishedReports',
+        published
+      );
+
+
+      setText(
+        '#draftReports',
+        draft
+      );
+
+
+      setText(
+        '#parentVisibleReports',
+        visible
+      );
+
+    }
+
+
+    function showModal() {
+
+      editingReportId =
+        null;
+
+
+      reportForm.reset();
+
+
+      clearFormMessage();
+
+
+      populateDropdowns();
+
+
+      reportDateInput.value =
+        getLocalDateString(
+          new Date()
+        );
+
+
+      reportStatusInput.value =
+        'draft';
+
+
+      parentVisibleInput.checked =
+        false;
+
+
+      setText(
+        '#modalEyebrow',
+        'NEW REPORT'
+      );
+
+
+      setText(
+        '#modalTitle',
+        'Add Learning Report'
+      );
+
+
+      setText(
+        '#modalDescription',
+        'Record the student\'s learning progress.'
+      );
+
+
+      saveButton.textContent =
+        'Add Report';
+
+
+      deleteReportButton.hidden =
+        true;
+
+
+      reportModal.hidden =
+        false;
+
+
+      document.body.classList.add(
+        'modal-open'
+      );
+
+
+      setTimeout(
+        () =>
+          studentIdInput.focus(),
+        0
+      );
+
+    }
+
+
+    function openEditModal(
+      reportId: string
+    ) {
+
+      const report =
+        reports.find(
+          item =>
+            item.id ===
+            reportId
+        );
+
+
+      if (!report) return;
+
+
+      editingReportId =
+        report.id;
+
+
+      clearFormMessage();
+
+
+      studentIdInput.value =
+        report.student_id;
+
+
+      tutorIdInput.value =
+        report.tutor_id;
+
+
+      populateDropdowns();
+
+
+      studentIdInput.value =
+        report.student_id;
+
+
+      tutorIdInput.value =
+        report.tutor_id;
+
+
+      reportDateInput.value =
+        report.report_date;
+
+
+      reportStatusInput.value =
+        report.status;
+
+
+      subjectInput.value =
+        report.subject ||
+        '';
+
+
+      topicInput.value =
+        report.topic ||
+        '';
+
+
+      engagementRatingInput.value =
+        report.engagement_rating !==
+          null
+          ? String(
+              report.engagement_rating
+            )
+          : '';
+
+
+      understandingRatingInput.value =
+        report.understanding_rating !==
+          null
+          ? String(
+              report.understanding_rating
+            )
+          : '';
+
+
+      summaryInput.value =
+        report.summary ||
+        '';
+
+
+      strengthsInput.value =
+        report.strengths ||
+        '';
+
+
+      areasForImprovementInput.value =
+        report.areas_for_improvement ||
+        '';
+
+
+      homeworkInput.value =
+        report.homework ||
+        '';
+
+
+      nextFocusInput.value =
+        report.next_focus ||
+        '';
+
+
+      parentVisibleInput.checked =
+        report.parent_visible;
+
+
+      setText(
+        '#modalEyebrow',
+        'REPORT DETAILS'
+      );
+
+
+      setText(
+        '#modalTitle',
+        'Edit Learning Report'
+      );
+
+
+      setText(
+        '#modalDescription',
+        'Update this student progress report.'
+      );
+
+
+      saveButton.textContent =
+        'Save Changes';
+
+
+      deleteReportButton.hidden =
+        false;
+
+
+      reportModal.hidden =
+        false;
+
+
+      document.body.classList.add(
+        'modal-open'
+      );
+
+    }
+
+
+    function hideModal() {
+
+      reportModal.hidden =
+        true;
+
+
+      document.body.classList.remove(
+        'modal-open'
+      );
+
+
+      clearFormMessage();
+
+    }
+
+
+    function clearFormMessage() {
+
+      formMessage.textContent =
+        '';
+
+
+      formMessage.className =
+        'form-message';
+
+    }
+
+
+    function showFormError(
+      message: string
+    ) {
+
+      formMessage.textContent =
+        message;
+
+
+      formMessage.className =
+        'form-message error';
+
+    }
+
+
+    reportForm
+      .addEventListener(
+        'submit',
+        async event => {
+
+          event.preventDefault();
+
+
+          const studentId =
+            studentIdInput.value;
+
+
+          const tutorId =
+            tutorIdInput.value;
+
+
+          const reportDate =
+            reportDateInput.value;
+
+
+          if (
+            !studentId ||
+            !tutorId ||
+            !reportDate
+          ) {
+
+            showFormError(
+              'Student, tutor, and report date are required.'
+            );
+
+            return;
+
+          }
+
+
+          const reportStatus =
+            reportStatusInput.value as ReportStatus;
+
+
+          const engagementRating =
+            engagementRatingInput.value
+              ? Number(
+                  engagementRatingInput.value
+                )
+              : null;
+
+
+          const understandingRating =
+            understandingRatingInput.value
+              ? Number(
+                  understandingRatingInput.value
+                )
+              : null;
+
+
+          const reportData = {
+
+            student_id:
+              studentId,
+
+            tutor_id:
+              tutorId,
+
+            report_date:
+              reportDate,
+
+            subject:
+              subjectInput.value
+                .trim() ||
+              null,
+
+            topic:
+              topicInput.value
+                .trim() ||
+              null,
+
+            summary:
+              summaryInput.value
+                .trim() ||
+              null,
+
+            strengths:
+              strengthsInput.value
+                .trim() ||
+              null,
+
+            areas_for_improvement:
+              areasForImprovementInput.value
+                .trim() ||
+              null,
+
+            homework:
+              homeworkInput.value
+                .trim() ||
+              null,
+
+            next_focus:
+              nextFocusInput.value
+                .trim() ||
+              null,
+
+            engagement_rating:
+              engagementRating,
+
+            understanding_rating:
+              understandingRating,
+
+            status:
+              reportStatus,
+
+            parent_visible:
+              parentVisibleInput.checked
+
+          };
+
+
+          saveButton.disabled =
+            true;
+
+
+          saveButton.textContent =
+            editingReportId
+              ? 'Saving Changes...'
+              : 'Saving...';
+
+
+          let errorMessage:
+            string | null = null;
+
+
+          if (
+            editingReportId
+          ) {
+
+            const {
+              error
+            } =
+              await supabase
+                .from(
+                  'learning_reports'
+                )
+                .update(
+                  reportData
+                )
+                .eq(
+                  'id',
+                  editingReportId
+                );
+
+
+            errorMessage =
+              error?.message ||
+              null;
+
+          } else {
+
+            const {
+              error
+            } =
+              await supabase
+                .from(
+                  'learning_reports'
+                )
+                .insert(
+                  reportData
+                );
+
+
+            errorMessage =
+              error?.message ||
+              null;
+
+          }
+
+
+          if (
+            errorMessage
+          ) {
+
+            showFormError(
+              errorMessage
+            );
+
+
+            saveButton.disabled =
+              false;
+
+
+            saveButton.textContent =
+              editingReportId
+                ? 'Save Changes'
+                : 'Add Report';
+
+
+            return;
+
+          }
+
+
+          await loadAllData();
+
+
+          hideModal();
+
+
+          saveButton.disabled =
+            false;
+
+
+          saveButton.textContent =
+            'Add Report';
+
+
+          editingReportId =
+            null;
+
+        }
+      );
+
+
+    deleteReportButton
+      .addEventListener(
+        'click',
+        async () => {
+
+          if (
+            !editingReportId
+          ) {
+
+            return;
+
+          }
+
+
+          const confirmed =
+            window.confirm(
+              'Delete this learning report permanently?'
+            );
+
+
+          if (!confirmed) return;
+
+
+          deleteReportButton.disabled =
+            true;
+
+
+          deleteReportButton.textContent =
+            'Deleting...';
+
+
+          const {
+            error
+          } =
+            await supabase
+              .from(
+                'learning_reports'
+              )
+              .delete()
+              .eq(
+                'id',
+                editingReportId
+              );
+
+
+          if (error) {
+
+            window.alert(
+              error.message
+            );
+
+
+            deleteReportButton.disabled =
+              false;
+
+
+            deleteReportButton.textContent =
+              'Delete Report';
+
+
+            return;
+
+          }
+
+
+          await loadAllData();
+
+
+          deleteReportButton.disabled =
+            false;
+
+
+          deleteReportButton.textContent =
+            'Delete Report';
+
+
+          hideModal();
+
+
+          editingReportId =
+            null;
+
+        }
+      );
+
+
+    searchInput
+      .addEventListener(
+        'input',
+        applyFilters
+      );
+
+
+    statusFilter
+      .addEventListener(
+        'change',
+        applyFilters
+      );
+
+
+    visibilityFilter
+      .addEventListener(
+        'change',
+        applyFilters
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#showFormButton'
+    )
+      .addEventListener(
+        'click',
+        showModal
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#closeFormButton'
+    )
+      .addEventListener(
+        'click',
+        hideModal
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#cancelButton'
+    )
+      .addEventListener(
+        'click',
+        hideModal
+      );
+
+
+    reportTableBody
+      .addEventListener(
+        'click',
+        event => {
+
+          const target =
+            event.target;
+
+
+          if (
+            !(target instanceof Element)
+          ) {
+
+            return;
+
+          }
+
+
+          const button =
+            target.closest<HTMLButtonElement>(
+              '.edit-report-button'
+            );
+
+
+          if (!button) return;
+
+
+          const reportId =
+            button.dataset.id;
+
+
+          if (reportId) {
+
+            openEditModal(
+              reportId
+            );
+
+          }
+
+        }
+      );
+
+
+    reportModal
+      .addEventListener(
+        'click',
+        event => {
+
+          if (
+            event.target ===
+            reportModal
+          ) {
+
+            hideModal();
+
+          }
+
+        }
+      );
+
+
+    document
+      .addEventListener(
+        'keydown',
+        event => {
+
+          if (
+            event.key ===
+              'Escape' &&
+            !reportModal.hidden
+          ) {
+
+            hideModal();
+
+          }
+
+        }
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#logoutButton'
+    )
+      .addEventListener(
+        'click',
+        async () => {
+
+          await supabase.auth
+            .signOut();
+
+
+          window.location.href =
+            '/portal/';
+
+        }
+      );
+
+
+    function getStudent(
+      studentId: string
+    ): Student | undefined {
+
+      return students.find(
+        student =>
+          student.id ===
+          studentId
+      );
+
+    }
+
+
+    function getTutor(
+      tutorId: string
+    ): Tutor | undefined {
+
+      return tutors.find(
+        tutor =>
+          tutor.id ===
+          tutorId
+      );
+
+    }
+
+
+    function setText(
+      selector: string,
+      value: string | number
+    ) {
+
+      getEl<HTMLElement>(
+        selector
+      ).textContent =
+        String(value);
+
+    }
+
+
+    function capitalize(
+      value: string
+    ): string {
+
+      if (!value) return '';
+
+
+      return (
+        value.charAt(0)
+          .toUpperCase() +
+        value.slice(1)
+      );
+
+    }
+
+
+    function getInitials(
+      name: string
+    ): string {
+
+      return (
+        name || '?'
+      )
+        .split(' ')
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(
+          part =>
+            part
+              .charAt(0)
+              .toUpperCase()
+        )
+        .join('');
+
+    }
+
+
+    function formatDate(
+      value: string
+    ): string {
+
+      const [
+        year,
+        month,
+        day
+      ] =
+        value
+          .split('-')
+          .map(Number);
+
+
+      const date =
+        new Date(
+          year,
+          month - 1,
+          day
+        );
+
+
+      return new Intl
+        .DateTimeFormat(
+          'en-GB',
+          {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+          }
+        )
+        .format(date);
+
+    }
+
+
+    function getLocalDateString(
+      date: Date
+    ): string {
+
+      const year =
+        date.getFullYear();
+
+
+      const month =
+        String(
+          date.getMonth() + 1
+        )
+          .padStart(
+            2,
+            '0'
+          );
+
+
+      const day =
+        String(
+          date.getDate()
+        )
+          .padStart(
+            2,
+            '0'
+          );
+
+
+      return `${year}-${month}-${day}`;
+
+    }
+
+
+    function escapeHtml(
+      value: string
+    ): string {
+
+      const div =
+        document.createElement(
+          'div'
+        );
+
+
+      div.textContent =
+        value ?? '';
+
+
+      return div.innerHTML;
+
+    }
+
+
+    initPage()
+      .catch(
+        error => {
+
+          console.error(
+            'Learning Reports page error:',
+            error
+          );
+
+
+          loadingScreen.innerHTML = `
+            <p class="error-text">
+              Unable to load Learning Reports.
+            </p>
+          `;
+
+        }
+      );
+
+  </script>
+
+  <style is:global>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #f5f7fb;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .loading-screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #78869a;
+    }
+
+    .loader {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 3px solid #e2e7ed;
+      border-top-color: #f28b2d;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns:
+        240px minmax(0, 1fr);
+    }
+
+    .sidebar {
+      min-height: 100vh;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      padding: 24px 15px;
+      background:
+        linear-gradient(
+          180deg,
+          #17375e 0%,
+          #102a4b 100%
+        );
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand {
+      padding: 4px 10px 27px;
+    }
+
+    .brand a {
+      text-decoration: none;
+    }
+
+    .logo-box {
+      width: 172px;
+      background: white;
+      border-radius: 12px;
+      padding: 8px 12px;
+    }
+
+    .brand img {
+      width: 100%;
+      display: block;
+    }
+
+    .portal-label {
+      display: block;
+      margin-top: 12px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .17em;
+      opacity: .48;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-item,
+    .nav-item:visited,
+    .nav-item:hover,
+    .nav-item:active {
+      text-decoration: none;
+    }
+
+    .nav-item {
+      color:
+        rgba(255, 255, 255, .72);
+      padding: 11px 12px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 13px;
+    }
+
+    .nav-item:hover {
+      color: white;
+      background:
+        rgba(255, 255, 255, .07);
+    }
+
+    .nav-item.active {
+      color: white;
+      background:
+        rgba(255, 255, 255, .13);
+      font-weight: 750;
+      box-shadow:
+        inset 3px 0 #f28b2d;
+    }
+
+    .nav-icon {
+      width: 22px;
+      text-align: center;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+    }
+
+    .logout-button {
+      width: 100%;
+      border:
+        1px solid
+        rgba(255, 255, 255, .12);
+      background:
+        rgba(255, 255, 255, .06);
+      color: white;
+      border-radius: 10px;
+      padding: 11px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .main {
+      width: 100%;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 36px 38px 60px;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content:
+        space-between;
+      align-items:
+        flex-end;
+      gap: 25px;
+      margin-bottom: 28px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      margin-bottom: 18px;
+      color: #77859a;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .eyebrow,
+    .section-label {
+      color: #f28b2d;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .14em;
+      margin: 0 0 6px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #17375e;
+      font-size: 36px;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+
+    h2 {
+      margin: 0;
+      color: #17375e;
+      font-size: 20px;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: #8591a3;
+      font-size: 14px;
+    }
+
+    .add-button {
+      border: none;
+      background:
+        linear-gradient(
+          135deg,
+          #17375e,
+          #234d7b
+        );
+      color: white;
+      border-radius: 11px;
+      padding: 12px 18px;
+      font-weight: 750;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow:
+        0 8px 20px
+        rgba(23, 55, 94, .14);
+    }
+
+    .plus {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .stat-card {
+      min-height: 110px;
+      background: white;
+      border: 1px solid #e5eaf0;
+      border-radius: 16px;
+      padding: 19px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow:
+        0 4px 18px
+        rgba(28, 45, 70, .035);
+    }
+
+    .stat-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .total-icon {
+      background: #eef4fb;
+    }
+
+    .published-icon {
+      background: #eaf8ef;
+      color: #25814e;
+    }
+
+    .draft-icon {
+      background: #fff5e8;
+      color: #c57425;
+    }
+
+    .visible-icon {
+      background: #f0ecff;
+      color: #6b55bd;
+    }
+
+    .stat-label {
+      display: block;
+      color: #7d899b;
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .stat-card strong {
+      display: block;
+      color: #17375e;
+      font-size: 29px;
+      line-height: 1;
+      margin: 6px 0;
+    }
+
+    .stat-note {
+      display: block;
+      color: #a0a8b4;
+      font-size: 10px;
+    }
+
+    .report-panel {
+      background: white;
+      border: 1px solid #e3e8ef;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow:
+        0 5px 20px
+        rgba(20, 40, 65, .035);
+    }
+
+    .panel-top {
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content:
+        space-between;
+      gap: 20px;
+      border-bottom:
+        1px solid #edf0f4;
+    }
+
+    .panel-description {
+      margin: 5px 0 0;
+      color: #909aaa;
+      font-size: 12px;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      width: 250px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f8fafc;
+      border: 1px solid #dfe5ed;
+      border-radius: 10px;
+      padding: 0 11px;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #27364c;
+      font-size: 13px;
+    }
+
+    .toolbar select {
+      height: 40px;
+      border: 1px solid #dfe5ed;
+      border-radius: 10px;
+      padding: 0 12px;
+      background: white;
+      color: #59677b;
+      outline: none;
+      font-size: 12px;
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1130px;
+    }
+
+    th {
+      padding: 11px 20px;
+      background: #fafbfd;
+      border-bottom:
+        1px solid #e8edf2;
+      text-align: left;
+      color: #8793a4;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 15px 20px;
+      border-bottom:
+        1px solid #edf0f4;
+      color: #536176;
+      font-size: 13px;
+      vertical-align: middle;
+    }
+
+    tbody tr:hover {
+      background: #fbfcfe;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .date-cell strong {
+      color: #20324b;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .student-cell {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background:
+        linear-gradient(
+          135deg,
+          #e8f1fb,
+          #f4f8fc
+        );
+      color: #17375e;
+      border: 1px solid #dce6f1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 850;
+      flex-shrink: 0;
+    }
+
+    .student-name,
+    .tutor-name {
+      color: #20324b;
+      font-weight: 750;
+    }
+
+    .student-code {
+      margin-top: 3px;
+      color: #98a2b0;
+      font-size: 9px;
+    }
+
+    .topic-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .topic-cell strong {
+      color: #20324b;
+      font-size: 11px;
+    }
+
+    .topic-cell span {
+      color: #8793a4;
+      font-size: 10px;
+    }
+
+    .ratings-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: #7c8797;
+      font-size: 9px;
+    }
+
+    .ratings-cell strong {
+      color: #17375e;
+    }
+
+    .visibility-badge,
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 9px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .visibility-badge.visible {
+      background: #efebff;
+      color: #6650b8;
+    }
+
+    .visibility-badge.hidden {
+      background: #f3f3f5;
+      color: #747d89;
+    }
+
+    .status-badge.published {
+      background: #eaf8ef;
+      color: #26844f;
+    }
+
+    .status-badge.draft {
+      background: #fff5e8;
+      color: #b96b22;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .action-heading,
+    .action-cell {
+      text-align: right;
+    }
+
+    .edit-button {
+      border: 1px solid #dce4ed;
+      background: white;
+      color: #42536b;
+      border-radius: 8px;
+      padding: 7px 11px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .edit-button:hover {
+      background: #f7f9fc;
+      color: #17375e;
+    }
+
+    .empty-row {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #8f9aa9;
+    }
+
+    .empty-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #f4f6f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .empty-state strong {
+      color: #536178;
+    }
+
+    .empty-state p {
+      margin: 5px 0 0;
+      font-size: 12px;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background:
+        rgba(15, 29, 47, .52);
+      backdrop-filter:
+        blur(3px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop[hidden] {
+      display: none;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 780px;
+      max-height: 92vh;
+      overflow-y: auto;
+      background: white;
+      border-radius: 19px;
+      box-shadow:
+        0 25px 70px
+        rgba(12, 27, 45, .28);
+    }
+
+    .modal-header {
+      padding: 24px 25px 19px;
+      display: flex;
+      justify-content:
+        space-between;
+      gap: 20px;
+      border-bottom:
+        1px solid #edf0f4;
+    }
+
+    .modal-header p:last-child {
+      color: #8c97a7;
+      font-size: 12px;
+      margin: 5px 0 0;
+    }
+
+    .modal-close {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: none;
+      background: #f3f5f7;
+      color: #667389;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    form {
+      padding: 22px 25px 25px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    label span {
+      display: block;
+      color: #536178;
+      font-size: 11px;
+      font-weight: 750;
+      margin-bottom: 6px;
+    }
+
+    label input,
+    label select,
+    label textarea {
+      width: 100%;
+      border: 1px solid #dce3eb;
+      border-radius: 9px;
+      background: white;
+      padding: 10px 11px;
+      color: #27364b;
+      outline: none;
+      font-size: 13px;
+    }
+
+    label input,
+    label select {
+      height: 42px;
+    }
+
+    label textarea {
+      resize: vertical;
+      min-height: 84px;
+    }
+
+    label input:focus,
+    label select:focus,
+    label textarea:focus {
+      border-color: #769dcc;
+      box-shadow:
+        0 0 0 3px
+        rgba(73, 126, 188, .1);
+    }
+
+    .visibility-toggle {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 13px;
+      background: #f8fafc;
+      border: 1px solid #e4e9ef;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .visibility-toggle input {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+    }
+
+    .visibility-toggle span {
+      margin: 0;
+    }
+
+    .form-message {
+      margin-top: 15px;
+      min-height: 18px;
+      font-size: 12px;
+    }
+
+    .form-message.error {
+      color: #c44242;
+    }
+
+    .form-actions {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top:
+        1px solid #edf0f4;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .form-spacer {
+      flex: 1;
+    }
+
+    .cancel-button,
+    .save-button,
+    .danger-button {
+      border-radius: 9px;
+      padding: 10px 15px;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .cancel-button {
+      border: 1px solid #dce3eb;
+      background: white;
+      color: #536178;
+    }
+
+    .save-button {
+      border: none;
+      background: #17375e;
+      color: white;
+    }
+
+    .danger-button {
+      border: 1px solid #f0caca;
+      background: #fff6f6;
+      color: #bf3d3d;
+    }
+
+    .save-button:disabled,
+    .danger-button:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    .error-text {
+      color: #c44242;
+    }
+
+    @media (max-width: 1150px) {
+
+      .stats-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .panel-top {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+    }
+
+    @media (max-width: 1000px) {
+
+      .app {
+        grid-template-columns:
+          80px minmax(0, 1fr);
+      }
+
+      .sidebar {
+        width: 80px;
+      }
+
+      .logo-box {
+        width: 50px;
+        padding: 6px;
+      }
+
+      .portal-label {
+        display: none;
+      }
+
+      .nav-item {
+        justify-content: center;
+      }
+
+      .nav-item span:not(.nav-icon) {
+        display: none;
+      }
+
+      .logout-button span {
+        display: none;
+      }
+
+      .main {
+        padding: 28px 22px 50px;
+      }
+
+    }
+
+    @media (max-width: 720px) {
+
+      .app {
+        display: block;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        padding: 24px 15px 45px;
+      }
+
+      .page-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .add-button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .search-box,
+      .toolbar select {
+        width: 100%;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full-width {
+        grid-column: auto;
+      }
+
+      .form-actions {
+        flex-wrap: wrap;
+      }
+
+      .form-spacer {
+        display: none;
+      }
+
+      .danger-button {
+        width: 100%;
+      }
+
+      .cancel-button,
+      .save-button {
+        flex: 1;
+      }
+
+    }
+
+  </style>
+
+</body>
+</html>

@@ -1,0 +1,3537 @@
+---
+import logoSrc from '../../../../assets/logo.svg';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
+  <meta
+    name="robots"
+    content="noindex,nofollow,noarchive"
+  />
+
+  <title>Students | Santutor Admin</title>
+</head>
+
+<body>
+
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loader"></div>
+    <p>Loading Santutor...</p>
+  </div>
+
+
+  <div id="app" class="app" hidden>
+
+    <!-- ============================= -->
+    <!-- SIDEBAR -->
+    <!-- ============================= -->
+
+    <aside class="sidebar">
+
+      <div class="brand">
+
+        <a href="/portal/admin/">
+          <div class="logo-box">
+            <img
+              src={logoSrc.src}
+              alt="Santutor Learning Studio"
+            />
+          </div>
+        </a>
+
+        <span class="portal-label">
+          ADMIN PORTAL
+        </span>
+
+      </div>
+
+
+      <nav>
+
+        <a
+          class="nav-item"
+          href="/portal/admin/"
+        >
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </a>
+
+
+        <a
+          class="nav-item active"
+          href="/portal/admin/students/"
+        >
+          <span class="nav-icon">👨‍🎓</span>
+          <span>Students</span>
+        </a>
+
+
+        <a class="nav-item" href="/portal/admin/schedule/">
+          <span class="nav-icon">📅</span>
+          <span>Schedule</span>
+        </a>
+
+
+        <a class="nav-item" href="/portal/admin/attendance/">
+          <span class="nav-icon">✓</span>
+          <span>Attendance</span>
+        </a>
+
+
+        <a class="nav-item" href="/portal/admin/reports/">
+          <span class="nav-icon">📚</span>
+          <span>Learning Reports</span>
+        </a>
+
+
+        <a class="nav-item" href="/portal/admin/packages/">
+          <span class="nav-icon">🎟</span>
+          <span>Packages</span>
+        </a>
+
+
+        <a class="nav-item" href="/portal/admin/payments/">
+          <span class="nav-icon">💳</span>
+          <span>Payments</span>
+        </a>
+
+
+        <a class="nav-item" href="/portal/admin/parents/">
+          <span class="nav-icon">👪</span>
+          <span>Parents</span>
+        </a>
+
+
+        <a class="nav-item" href="/portal/admin/tutors/">
+          <span class="nav-icon">👩‍🏫</span>
+          <span>Tutors</span>
+        </a>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <button
+          id="logoutButton"
+          class="logout-button"
+        >
+          ↪
+          <span>Sign Out</span>
+        </button>
+
+      </div>
+
+    </aside>
+
+
+
+    <!-- ============================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================= -->
+
+    <main class="main">
+
+      <!-- HEADER -->
+
+      <header class="page-header">
+
+        <div>
+
+          <a
+            class="back-link"
+            href="/portal/admin/"
+          >
+            ← Back to Dashboard
+          </a>
+
+          <div class="title-row">
+
+            <div>
+
+              <p class="eyebrow">
+                STUDENT MANAGEMENT
+              </p>
+
+              <h1>Students</h1>
+
+              <p class="subtitle">
+                Manage student information and enrolment.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <button
+          id="showFormButton"
+          class="add-button"
+        >
+          <span class="plus">
+            +
+          </span>
+
+          Add Student
+        </button>
+
+      </header>
+
+
+
+      <!-- STATS -->
+
+      <section class="stats-grid">
+
+        <article class="stat-card">
+
+          <div class="stat-icon total-icon">
+            👨‍🎓
+          </div>
+
+          <div>
+
+            <span class="stat-label">
+              Total Students
+            </span>
+
+            <strong id="totalStudents">
+              —
+            </strong>
+
+            <span class="stat-note">
+              Registered students
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-icon active-icon">
+            ✓
+          </div>
+
+          <div>
+
+            <span class="stat-label">
+              Active Students
+            </span>
+
+            <strong id="activeStudents">
+              —
+            </strong>
+
+            <span class="stat-note">
+              Currently learning
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-icon inactive-icon">
+            ⏸
+          </div>
+
+          <div>
+
+            <span class="stat-label">
+              Inactive
+            </span>
+
+            <strong id="inactiveStudents">
+              —
+            </strong>
+
+            <span class="stat-note">
+              Not currently active
+            </span>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+
+      <!-- STUDENT LIST -->
+
+      <section class="student-panel">
+
+
+        <div class="panel-top">
+
+          <div>
+
+            <p class="section-label">
+              STUDENT DATABASE
+            </p>
+
+            <h2>All Students</h2>
+
+            <p class="panel-description">
+              Student profiles registered in Santutor.
+            </p>
+
+          </div>
+
+
+          <div class="toolbar">
+
+            <div class="search-box">
+
+              <span>
+                ⌕
+              </span>
+
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="Search students..."
+              />
+
+            </div>
+
+
+            <select id="statusFilter">
+
+              <option value="all">
+                All Status
+              </option>
+
+              <option value="active">
+                Active
+              </option>
+
+              <option value="inactive">
+                Inactive
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  Student
+                </th>
+
+                <th>
+                  School
+                </th>
+
+                <th>
+                  Grade
+                </th>
+
+                <th>
+                  Curriculum
+                </th>
+
+                <th>
+                  Status
+                </th>
+
+                <th></th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody id="studentTableBody">
+
+              <tr>
+
+                <td
+                  colspan="6"
+                  class="empty-row"
+                >
+                  Loading students...
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+
+  <!-- ============================= -->
+  <!-- ADD STUDENT MODAL -->
+  <!-- ============================= -->
+
+  <div
+    id="studentModal"
+    class="modal-backdrop"
+    hidden
+  >
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+
+          <p class="section-label">
+            NEW STUDENT
+          </p>
+
+          <h2 id="modalTitle">
+            Add Student
+            </h2>
+
+            <p id="modalDescription">
+            Add a new student to Santutor.
+            </p>
+
+        </div>
+
+
+        <button
+          id="closeFormButton"
+          class="modal-close"
+          type="button"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+
+      <form id="studentForm">
+
+        <div class="form-grid">
+
+
+          <label class="full-width">
+
+            <span>
+              Student Name *
+            </span>
+
+            <input
+              id="name"
+              type="text"
+              required
+              placeholder="Full student name"
+            />
+
+          </label>
+
+
+
+          <label>
+
+            <span>
+              Nickname
+            </span>
+
+            <input
+              id="nickname"
+              type="text"
+              placeholder="Preferred name"
+            />
+
+          </label>
+
+
+
+          <label>
+
+            <span>
+              Student Code
+            </span>
+
+            <input
+              id="studentCode"
+              type="text"
+              placeholder="e.g. ST002"
+            />
+
+          </label>
+
+
+
+          <label class="full-width">
+
+            <span>
+              School
+            </span>
+
+            <input
+              id="school"
+              type="text"
+              placeholder="Student's school"
+            />
+
+          </label>
+
+
+
+          <label>
+
+            <span>
+              Grade / Level
+            </span>
+
+            <input
+              id="grade"
+              type="text"
+              placeholder="e.g. Grade 5"
+            />
+
+          </label>
+
+
+
+          <label>
+
+            <span>
+              Curriculum
+            </span>
+
+            <select id="curriculum">
+
+              <option value="">
+                Select curriculum
+              </option>
+
+              <option value="Cambridge">
+                Cambridge
+              </option>
+
+              <option value="IB">
+                IB
+              </option>
+
+              <option value="National">
+                National
+              </option>
+
+              <option value="International">
+                International
+              </option>
+
+              <option value="Other">
+                Other
+              </option>
+
+            </select>
+
+          </label>
+
+
+
+          <label>
+
+            <span>
+              Start Date
+            </span>
+
+            <input
+              id="startDate"
+              type="date"
+            />
+
+          </label>
+
+
+
+          <label>
+
+            <span>
+              Status
+            </span>
+
+            <select id="status">
+
+              <option value="active">
+                Active
+              </option>
+
+              <option value="inactive">
+                Inactive
+              </option>
+
+            </select>
+
+          </label>
+
+        </div>
+
+
+
+        <div
+          id="formMessage"
+          class="form-message"
+        >
+        </div>
+
+
+
+        <div class="form-actions">
+
+            <button
+                id="deactivateButton"
+                type="button"
+                class="danger-button"
+                hidden
+            >
+                Deactivate
+            </button>
+
+            <div class="form-spacer"></div>
+
+            <button
+                id="cancelButton"
+                type="button"
+                class="cancel-button"
+            >
+                Cancel
+            </button>
+
+            <button
+                id="saveButton"
+                type="submit"
+                class="save-button"
+            >
+                Add Student
+            </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+
+  <script>
+
+    import { supabase }
+      from '../../../../lib/supabase';
+
+
+    type Student = {
+      id: string;
+      student_code: string | null;
+      name: string;
+      nickname: string | null;
+      school: string | null;
+      grade: string | null;
+      curriculum: string | null;
+      start_date: string | null;
+      status: 'active' | 'inactive';
+      created_at: string;
+      updated_at?: string | null;
+    };
+
+
+    let students: Student[] = [];
+
+    let editingStudentId: string | null = null;
+
+
+    // ==============================
+    // AUTH
+    // ==============================
+
+    async function initPage() {
+
+      const {
+        data: { user }
+      } =
+        await supabase.auth.getUser();
+
+
+      if (!user) {
+
+        window.location.href =
+          '/portal/';
+
+        return;
+
+      }
+
+
+      const {
+        data: profile,
+        error
+      } =
+        await supabase
+          .from('profiles')
+          .select(
+            'role, active'
+          )
+          .eq(
+            'id',
+            user.id
+          )
+          .single();
+
+
+      if (
+        error ||
+        !profile ||
+        profile.role !== 'admin' ||
+        profile.active !== true
+      ) {
+
+        await supabase.auth.signOut();
+
+        window.location.href =
+          '/portal/';
+
+        return;
+
+      }
+
+
+      document
+        .querySelector(
+          '#loadingScreen'
+        )
+        ?.setAttribute(
+          'style',
+          'display:none'
+        );
+
+
+      document
+        .querySelector('#app')
+        ?.removeAttribute('hidden');
+
+
+      await loadStudents();
+
+    }
+
+
+
+    // ==============================
+    // LOAD STUDENTS
+    // ==============================
+
+    async function loadStudents() {
+
+      const {
+        data,
+        error
+      } =
+        await supabase
+          .from('students')
+          .select(`
+            id,
+            student_code,
+            name,
+            nickname,
+            school,
+            grade,
+            curriculum,
+            start_date,
+            status,
+            created_at
+          `)
+          .order(
+            'name',
+            {
+              ascending: true
+            }
+          );
+
+
+      if (error) {
+
+        console.error(
+          'Load students error:',
+          error
+        );
+
+        return;
+
+      }
+
+
+      students =
+        (data || []) as Student[];
+
+
+      applyFilters();
+
+      updateStats();
+
+    }
+
+
+
+    // ==============================
+    // TABLE
+    // ==============================
+
+    function renderStudents(
+      list: Student[]
+    ) {
+
+      const tbody =
+        document.querySelector(
+          '#studentTableBody'
+        );
+
+
+      if (!tbody) return;
+
+
+      if (
+        list.length === 0
+      ) {
+
+        tbody.innerHTML = `
+
+          <tr>
+
+            <td
+              colspan="6"
+              class="empty-row"
+            >
+
+              <div class="empty-state">
+
+                <div class="empty-icon">
+                  👨‍🎓
+                </div>
+
+                <strong>
+                  No students found
+                </strong>
+
+                <p>
+                  Add your first student or
+                  change your search filters.
+                </p>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        `;
+
+        return;
+
+      }
+
+
+      tbody.innerHTML =
+        list
+          .map(student => {
+
+            const initials =
+              getInitials(
+                student.name
+              );
+
+
+            return `
+
+              <tr>
+
+                <td>
+
+                  <div class="student-cell">
+
+                    <div class="avatar">
+
+                      ${escapeHtml(
+                        initials
+                      )}
+
+                    </div>
+
+
+                    <div>
+
+                      <div class="student-name">
+
+                        ${escapeHtml(
+                          student.name
+                        )}
+
+                      </div>
+
+
+                      <div class="student-code">
+
+                        ${
+                          escapeHtml(
+                            student.student_code ||
+                            student.nickname ||
+                            'No student code'
+                          )
+                        }
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </td>
+
+
+                <td>
+
+                  ${
+                    escapeHtml(
+                      student.school ||
+                      '—'
+                    )
+                  }
+
+                </td>
+
+
+                <td>
+
+                  ${
+                    escapeHtml(
+                      student.grade ||
+                      '—'
+                    )
+                  }
+
+                </td>
+
+
+                <td>
+
+                  ${
+                    escapeHtml(
+                      student.curriculum ||
+                      '—'
+                    )
+                  }
+
+                </td>
+
+
+                <td>
+
+                  <span
+                    class="
+                      status-badge
+                      ${
+                        student.status
+                        === 'active'
+                          ? 'active'
+                          : 'inactive'
+                      }
+                    "
+                  >
+
+                    <span
+                      class="status-dot"
+                    ></span>
+
+                    ${
+                      student.status
+                      === 'active'
+                        ? 'Active'
+                        : 'Inactive'
+                    }
+
+                  </span>
+
+                </td>
+
+
+                <td>
+
+                  <button
+                    class="more-button edit-student-button"
+                    data-id="${student.id}"
+                    title="Edit student"
+                    >
+                    •••
+                    </button>
+
+                </td>
+
+              </tr>
+
+            `;
+
+          })
+          .join('');
+
+    }
+
+
+
+    // ==============================
+    // STATS
+    // ==============================
+
+    function updateStats() {
+
+      const active =
+        students.filter(
+          student =>
+            student.status ===
+            'active'
+        ).length;
+
+
+      const inactive =
+        students.filter(
+          student =>
+            student.status ===
+            'inactive'
+        ).length;
+
+
+      setText(
+        '#totalStudents',
+        students.length
+      );
+
+
+      setText(
+        '#activeStudents',
+        active
+      );
+
+
+      setText(
+        '#inactiveStudents',
+        inactive
+      );
+
+    }
+
+
+
+    function setText(
+      selector: string,
+      value: string | number
+    ) {
+
+      const element =
+        document.querySelector(
+          selector
+        );
+
+
+      if (element) {
+
+        element.textContent =
+          String(value);
+
+      }
+
+    }
+
+
+
+    // ==============================
+    // FILTERS
+    // ==============================
+
+    function applyFilters() {
+
+      const search =
+        (
+          document.querySelector(
+            '#searchInput'
+          ) as HTMLInputElement
+        )?.value
+          .toLowerCase()
+          .trim() || '';
+
+
+      const status =
+        (
+          document.querySelector(
+            '#statusFilter'
+          ) as HTMLSelectElement
+        )?.value || 'all';
+
+
+      const filtered =
+        students.filter(
+          student => {
+
+            const combined = `
+              ${student.name || ''}
+              ${student.nickname || ''}
+              ${student.student_code || ''}
+              ${student.school || ''}
+              ${student.grade || ''}
+              ${student.curriculum || ''}
+            `
+              .toLowerCase();
+
+
+            const matchesSearch =
+              combined.includes(
+                search
+              );
+
+
+            const matchesStatus =
+              status === 'all' ||
+              student.status === status;
+
+
+            return (
+              matchesSearch &&
+              matchesStatus
+            );
+
+          }
+        );
+
+
+      renderStudents(
+        filtered
+      );
+
+    }
+
+
+
+    document
+      .querySelector(
+        '#searchInput'
+      )
+      ?.addEventListener(
+        'input',
+        applyFilters
+      );
+
+
+    document
+      .querySelector(
+        '#statusFilter'
+      )
+      ?.addEventListener(
+        'change',
+        applyFilters
+      );
+
+
+
+    // ==============================
+    // ADD / EDIT STUDENT
+    // ==============================
+
+    document
+      .querySelector(
+        '#studentForm'
+      )
+      ?.addEventListener(
+        'submit',
+        async event => {
+
+          event.preventDefault();
+
+
+          const nameInput =
+            document.querySelector(
+              '#name'
+            ) as HTMLInputElement;
+
+
+          const nicknameInput =
+            document.querySelector(
+              '#nickname'
+            ) as HTMLInputElement;
+
+
+          const codeInput =
+            document.querySelector(
+              '#studentCode'
+            ) as HTMLInputElement;
+
+
+          const schoolInput =
+            document.querySelector(
+              '#school'
+            ) as HTMLInputElement;
+
+
+          const gradeInput =
+            document.querySelector(
+              '#grade'
+            ) as HTMLInputElement;
+
+
+          const curriculumInput =
+            document.querySelector(
+              '#curriculum'
+            ) as HTMLSelectElement;
+
+
+          const dateInput =
+            document.querySelector(
+              '#startDate'
+            ) as HTMLInputElement;
+
+
+          const statusInput =
+            document.querySelector(
+              '#status'
+            ) as HTMLSelectElement;
+
+
+          const saveButton =
+            document.querySelector(
+              '#saveButton'
+            ) as HTMLButtonElement;
+
+
+          const message =
+            document.querySelector(
+              '#formMessage'
+            );
+
+
+          const studentName =
+            nameInput.value.trim();
+
+
+          if (!studentName) {
+
+            if (message) {
+
+              message.textContent =
+                'Student name is required.';
+
+              message.className =
+                'form-message error';
+
+            }
+
+            return;
+
+          }
+
+
+          saveButton.disabled =
+            true;
+
+
+          saveButton.textContent =
+            editingStudentId
+              ? 'Saving Changes...'
+              : 'Saving...';
+
+
+          if (message) {
+
+            message.textContent =
+              '';
+
+            message.className =
+              'form-message';
+
+          }
+
+
+          const studentData = {
+
+            name:
+              studentName,
+
+            nickname:
+              nicknameInput.value
+                .trim() ||
+              null,
+
+            student_code:
+              codeInput.value
+                .trim() ||
+              null,
+
+            school:
+              schoolInput.value
+                .trim() ||
+              null,
+
+            grade:
+              gradeInput.value
+                .trim() ||
+              null,
+
+            curriculum:
+              curriculumInput.value ||
+              null,
+
+            start_date:
+              dateInput.value ||
+              null,
+
+            status:
+              statusInput.value,
+
+            updated_at:
+              new Date()
+                .toISOString()
+
+          };
+
+
+          let operationError = null;
+
+
+          if (editingStudentId) {
+
+            const {
+              error
+            } =
+              await supabase
+                .from('students')
+                .update(
+                  studentData
+                )
+                .eq(
+                  'id',
+                  editingStudentId
+                );
+
+
+            operationError =
+              error;
+
+          } else {
+
+            const {
+              error
+            } =
+              await supabase
+                .from('students')
+                .insert(
+                  studentData
+                );
+
+
+            operationError =
+              error;
+
+          }
+
+
+          if (operationError) {
+
+            console.error(
+              'Save student error:',
+              operationError
+            );
+
+
+            if (message) {
+
+              message.textContent =
+                operationError.message;
+
+              message.className =
+                'form-message error';
+
+            }
+
+
+            saveButton.disabled =
+              false;
+
+
+            saveButton.textContent =
+              editingStudentId
+                ? 'Save Changes'
+                : 'Add Student';
+
+
+            return;
+
+          }
+
+
+          (
+            document.querySelector(
+              '#studentForm'
+            ) as HTMLFormElement
+          ).reset();
+
+
+          await loadStudents();
+
+
+          hideModal();
+
+
+          saveButton.disabled =
+            false;
+
+
+          saveButton.textContent =
+            'Add Student';
+
+        }
+      );
+
+
+
+    // ==============================
+    // MODAL
+    // ==============================
+
+    function showModal() {
+
+        editingStudentId = null;
+
+        const form =
+            document.querySelector(
+            '#studentForm'
+            ) as HTMLFormElement;
+
+        form?.reset();
+
+
+        setText(
+            '#modalTitle',
+            'Add Student'
+        );
+
+        setText(
+            '#modalDescription',
+            'Add a new student to Santutor.'
+        );
+
+        setText(
+            '#saveButton',
+            'Add Student'
+        );
+
+
+        const deactivateButton =
+            document.querySelector(
+            '#deactivateButton'
+            ) as HTMLButtonElement;
+
+
+        if (deactivateButton) {
+            deactivateButton.hidden = true;
+        }
+
+
+        document
+            .querySelector('#studentModal')
+            ?.removeAttribute('hidden');
+
+
+        document.body.classList.add(
+            'modal-open'
+        );
+
+    }
+
+    
+    function openEditModal(
+        studentId: string
+        ) {
+
+        const student =
+            students.find(
+            item =>
+                item.id === studentId
+            );
+
+
+        if (!student) return;
+
+
+        editingStudentId =
+            student.id;
+
+
+        (
+            document.querySelector(
+            '#name'
+            ) as HTMLInputElement
+        ).value =
+            student.name || '';
+
+
+        (
+            document.querySelector(
+            '#nickname'
+            ) as HTMLInputElement
+        ).value =
+            student.nickname || '';
+
+
+        (
+            document.querySelector(
+            '#studentCode'
+            ) as HTMLInputElement
+        ).value =
+            student.student_code || '';
+
+
+        (
+            document.querySelector(
+            '#school'
+            ) as HTMLInputElement
+        ).value =
+            student.school || '';
+
+
+        (
+            document.querySelector(
+            '#grade'
+            ) as HTMLInputElement
+        ).value =
+            student.grade || '';
+
+
+        (
+            document.querySelector(
+            '#curriculum'
+            ) as HTMLSelectElement
+        ).value =
+            student.curriculum || '';
+
+
+        (
+            document.querySelector(
+            '#startDate'
+            ) as HTMLInputElement
+        ).value =
+            student.start_date || '';
+
+
+        (
+            document.querySelector(
+            '#status'
+            ) as HTMLSelectElement
+        ).value =
+            student.status;
+
+
+        setText(
+            '#modalTitle',
+            'Edit Student'
+        );
+
+
+        setText(
+            '#modalDescription',
+            `Update ${student.name}'s student information.`
+        );
+
+
+        setText(
+            '#saveButton',
+            'Save Changes'
+        );
+
+
+        const deactivateButton =
+            document.querySelector(
+            '#deactivateButton'
+            ) as HTMLButtonElement;
+
+
+        if (deactivateButton) {
+
+            deactivateButton.hidden =
+            false;
+
+            deactivateButton.textContent =
+            student.status === 'active'
+                ? 'Deactivate'
+                : 'Reactivate';
+
+        }
+
+
+        document
+            .querySelector(
+            '#studentModal'
+            )
+            ?.removeAttribute(
+            'hidden'
+            );
+
+
+        document.body.classList.add(
+            'modal-open'
+        );
+
+        }
+
+    function hideModal() {
+
+      document
+        .querySelector(
+          '#studentModal'
+        )
+        ?.setAttribute(
+          'hidden',
+          ''
+        );
+
+
+      document.body
+        .classList
+        .remove(
+          'modal-open'
+        );
+
+
+      editingStudentId =
+        null;
+
+
+      const message =
+        document.querySelector(
+          '#formMessage'
+        );
+
+
+      if (message) {
+
+        message.textContent =
+          '';
+
+        message.className =
+          'form-message';
+
+      }
+
+    }
+
+
+
+    document
+      .querySelector(
+        '#showFormButton'
+      )
+      ?.addEventListener(
+        'click',
+        showModal
+      );
+
+
+    document
+      .querySelector(
+        '#closeFormButton'
+      )
+      ?.addEventListener(
+        'click',
+        hideModal
+      );
+
+
+    document
+      .querySelector(
+        '#cancelButton'
+      )
+      ?.addEventListener(
+        'click',
+        hideModal
+      );
+
+
+
+    document
+      .querySelector(
+        '#studentModal'
+      )
+      ?.addEventListener(
+        'click',
+        event => {
+
+          if (
+            event.target ===
+            event.currentTarget
+          ) {
+
+            hideModal();
+
+          }
+
+        }
+      );
+
+
+    document
+      .addEventListener(
+        'keydown',
+        event => {
+
+          if (
+            event.key ===
+            'Escape'
+          ) {
+
+            hideModal();
+
+          }
+
+        }
+      );
+
+
+
+    // ==============================
+    // EDIT STUDENT BUTTON
+    // ==============================
+
+    document
+      .querySelector(
+        '#studentTableBody'
+      )
+      ?.addEventListener(
+        'click',
+        event => {
+
+          const target =
+            event.target as HTMLElement;
+
+
+          const button =
+            target.closest(
+              '.edit-student-button'
+            ) as HTMLButtonElement | null;
+
+
+          if (!button) return;
+
+
+          const studentId =
+            button.dataset.id;
+
+
+          if (studentId) {
+
+            openEditModal(
+              studentId
+            );
+
+          }
+
+        }
+      );
+
+
+
+    // ==============================
+    // DEACTIVATE / REACTIVATE
+    // ==============================
+
+    document
+      .querySelector(
+        '#deactivateButton'
+      )
+      ?.addEventListener(
+        'click',
+        async () => {
+
+          if (!editingStudentId) {
+            return;
+          }
+
+
+          const student =
+            students.find(
+              item =>
+                item.id ===
+                editingStudentId
+            );
+
+
+          if (!student) return;
+
+
+          const newStatus =
+            student.status === 'active'
+              ? 'inactive'
+              : 'active';
+
+
+          const actionText =
+            newStatus === 'inactive'
+              ? 'deactivate'
+              : 'reactivate';
+
+
+          const confirmed =
+            window.confirm(
+              `Are you sure you want to ${actionText} ${student.name}?`
+            );
+
+
+          if (!confirmed) {
+            return;
+          }
+
+
+          const button =
+            document.querySelector(
+              '#deactivateButton'
+            ) as HTMLButtonElement;
+
+
+          button.disabled =
+            true;
+
+
+          button.textContent =
+            newStatus === 'inactive'
+              ? 'Deactivating...'
+              : 'Reactivating...';
+
+
+          const {
+            error
+          } =
+            await supabase
+              .from('students')
+              .update({
+
+                status:
+                  newStatus,
+
+                updated_at:
+                  new Date()
+                    .toISOString()
+
+              })
+              .eq(
+                'id',
+                editingStudentId
+              );
+
+
+          if (error) {
+
+            console.error(
+              'Update status error:',
+              error
+            );
+
+
+            window.alert(
+              error.message
+            );
+
+
+            button.disabled =
+              false;
+
+
+            button.textContent =
+              student.status === 'active'
+                ? 'Deactivate'
+                : 'Reactivate';
+
+
+            return;
+
+          }
+
+
+          await loadStudents();
+
+
+          button.disabled =
+            false;
+
+
+          hideModal();
+
+        }
+      );
+
+
+
+    // ==============================
+    // LOGOUT
+    // ==============================
+
+    document
+      .querySelector(
+        '#logoutButton'
+      )
+      ?.addEventListener(
+        'click',
+        async () => {
+
+          await supabase.auth
+            .signOut();
+
+
+          window.location.href =
+            '/portal/';
+
+        }
+      );
+
+
+
+    // ==============================
+    // HELPERS
+    // ==============================
+
+    function getInitials(
+      name: string
+    ) {
+
+      return (
+        name || '?'
+      )
+        .split(' ')
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(
+          part =>
+            part.charAt(0)
+              .toUpperCase()
+        )
+        .join('');
+
+    }
+
+
+
+    function escapeHtml(
+      value: string
+    ) {
+
+      const div =
+        document.createElement(
+          'div'
+        );
+
+
+      div.textContent =
+        value ?? '';
+
+
+      return div.innerHTML;
+
+    }
+
+
+
+    initPage();
+
+  </script>
+
+
+
+ <style is:global>
+
+        * {
+        box-sizing: border-box;
+        }
+
+        body {
+        margin: 0;
+
+        font-family:
+            Inter,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+
+        background: #f5f7fb;
+        color: #172033;
+        }
+
+        body.modal-open {
+        overflow: hidden;
+        }
+
+
+    /* LOADING */
+
+    .loading-screen {
+
+      min-height: 100vh;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      color: #78869a;
+
+    }
+
+
+    .loader {
+
+      width: 30px;
+      height: 30px;
+
+      border-radius: 50%;
+
+      border:
+        3px solid #e2e7ed;
+
+      border-top-color:
+        #f28b2d;
+
+      animation:
+        spin .8s linear infinite;
+
+    }
+
+
+    @keyframes spin {
+
+      to {
+        transform:
+          rotate(360deg);
+      }
+
+    }
+
+
+
+    /* LAYOUT */
+
+    .app {
+
+      min-height: 100vh;
+
+      display: grid;
+
+      grid-template-columns:
+        240px minmax(0, 1fr);
+
+    }
+
+
+
+    /* SIDEBAR */
+
+    .sidebar {
+
+      background:
+        linear-gradient(
+          180deg,
+          #17375e 0%,
+          #102a4b 100%
+        );
+
+      color: white;
+
+      min-height: 100vh;
+
+      height: 100vh;
+
+      position: sticky;
+
+      top: 0;
+
+      padding:
+        24px 15px;
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+    .brand {
+
+      padding:
+        4px 10px 27px;
+
+    }
+
+
+    .brand a {
+
+      text-decoration: none;
+
+    }
+
+
+    .logo-box {
+
+      background: white;
+
+      border-radius: 12px;
+
+      padding:
+        8px 12px;
+
+      width: 172px;
+
+    }
+
+
+    .brand img {
+
+      width: 100%;
+
+      display: block;
+
+    }
+
+
+    .portal-label {
+
+      display: block;
+
+      margin-top: 12px;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      letter-spacing: .17em;
+
+      opacity: .48;
+
+    }
+
+
+    nav {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 4px;
+
+    }
+
+
+    .nav-item,
+    .nav-item:visited,
+    .nav-item:hover,
+    .nav-item:active {
+
+      text-decoration: none;
+
+    }
+
+
+    .nav-item {
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          .72
+        );
+
+      padding:
+        11px 12px;
+
+      border-radius: 10px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+      font-size: 13px;
+
+      transition:
+        .15s ease;
+
+    }
+
+
+    .nav-item:hover {
+
+      color: white;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .07
+        );
+
+    }
+
+
+    .nav-item.active {
+
+      color: white;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .13
+        );
+
+      font-weight: 750;
+
+      box-shadow:
+        inset 3px 0
+        #f28b2d;
+
+    }
+
+
+    .nav-icon {
+
+      width: 22px;
+
+      text-align: center;
+
+    }
+
+
+    .sidebar-bottom {
+
+      margin-top: auto;
+
+    }
+
+
+    .logout-button {
+
+      width: 100%;
+
+      border:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          .12
+        );
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .06
+        );
+
+      color: white;
+
+      border-radius: 10px;
+
+      padding: 11px;
+
+      cursor: pointer;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+    }
+
+
+
+    /* MAIN */
+
+    .main {
+
+      width: 100%;
+
+      max-width: 1500px;
+
+      margin: 0 auto;
+
+      padding:
+        36px 38px 60px;
+
+    }
+
+
+
+    /* PAGE HEADER */
+
+    .page-header {
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        flex-end;
+
+      gap: 25px;
+
+      margin-bottom: 28px;
+
+    }
+
+
+    .back-link {
+
+      display:
+        inline-flex;
+
+      margin-bottom: 18px;
+
+      color: #77859a;
+
+      text-decoration: none;
+
+      font-size: 13px;
+
+      font-weight: 650;
+
+    }
+
+
+    .back-link:hover {
+
+      color: #17375e;
+
+    }
+
+
+    .eyebrow,
+    .section-label {
+
+      color: #f28b2d;
+
+      font-size: 10px;
+
+      font-weight: 850;
+
+      letter-spacing: .14em;
+
+      margin:
+        0 0 6px;
+
+    }
+
+
+    h1 {
+
+      margin: 0;
+
+      color: #17375e;
+
+      font-size: 36px;
+
+      line-height: 1.1;
+
+      letter-spacing:
+        -.02em;
+
+    }
+
+
+    h2 {
+
+      margin: 0;
+
+      color: #17375e;
+
+      font-size: 20px;
+
+    }
+
+
+    .subtitle {
+
+      margin:
+        8px 0 0;
+
+      color: #8591a3;
+
+      font-size: 14px;
+
+    }
+
+
+    .add-button {
+
+      border: none;
+
+      background: #17375e;
+
+      color: white;
+
+      border-radius: 11px;
+
+      padding:
+        12px 18px;
+
+      font-weight: 750;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 20px
+        rgba(
+          23,
+          55,
+          94,
+          .14
+        );
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+
+    }
+
+
+    .add-button:hover {
+
+      transform:
+        translateY(-1px);
+
+      box-shadow:
+        0 10px 25px
+        rgba(
+          23,
+          55,
+          94,
+          .20
+        );
+
+    }
+
+
+    .plus {
+
+      font-size: 18px;
+
+      line-height: 1;
+
+    }
+
+
+
+    /* STATS */
+
+    .stats-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          3,
+          minmax(0,1fr)
+        );
+
+      gap: 16px;
+
+      margin-bottom: 22px;
+
+    }
+
+
+    .stat-card {
+
+      background: white;
+
+      border:
+        1px solid #e5eaf0;
+
+      border-radius: 16px;
+
+      padding: 19px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 16px;
+
+      box-shadow:
+        0 3px 12px
+        rgba(
+          28,
+          45,
+          70,
+          .03
+        );
+
+    }
+
+
+    .stat-icon {
+
+      width: 48px;
+
+      height: 48px;
+
+      border-radius: 13px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      font-size: 19px;
+
+    }
+
+
+    .total-icon {
+
+      background: #eef4fb;
+
+    }
+
+
+    .active-icon {
+
+      background: #eaf8f0;
+
+      color: #238455;
+
+    }
+
+
+    .inactive-icon {
+
+      background: #f3f3f5;
+
+      color: #747d89;
+
+    }
+
+
+    .stat-label {
+
+      display: block;
+
+      color: #7d899b;
+
+      font-size: 11px;
+
+      font-weight: 750;
+
+    }
+
+
+    .stat-card strong {
+
+      display: block;
+
+      color: #17375e;
+
+      font-size: 27px;
+
+      line-height: 1;
+
+      margin:
+        6px 0;
+
+    }
+
+
+    .stat-note {
+
+      display: block;
+
+      color: #a0a8b4;
+
+      font-size: 10px;
+
+    }
+
+
+
+    /* PANEL */
+
+    .student-panel {
+
+      background: white;
+
+      border:
+        1px solid #e3e8ef;
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 5px 20px
+        rgba(
+          20,
+          40,
+          65,
+          .035
+        );
+
+    }
+
+
+    .panel-top {
+
+      padding:
+        22px 24px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content:
+        space-between;
+
+      gap: 20px;
+
+      border-bottom:
+        1px solid #edf0f4;
+
+    }
+
+
+    .panel-description {
+
+      margin:
+        5px 0 0;
+
+      color: #909aaa;
+
+      font-size: 12px;
+
+    }
+
+
+    .toolbar {
+
+      display: flex;
+
+      gap: 10px;
+
+      align-items: center;
+
+    }
+
+
+    .search-box {
+
+      width: 260px;
+
+      height: 40px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      background: #f8fafc;
+
+      border:
+        1px solid #dfe5ed;
+
+      border-radius: 10px;
+
+      padding:
+        0 11px;
+
+      color: #9ba6b5;
+
+    }
+
+
+    .search-box input {
+
+      border: none;
+
+      outline: none;
+
+      background: transparent;
+
+      width: 100%;
+
+      color: #27364c;
+
+      font-size: 13px;
+
+    }
+
+
+    #statusFilter {
+
+      height: 40px;
+
+      border:
+        1px solid #dfe5ed;
+
+      border-radius: 10px;
+
+      padding:
+        0 12px;
+
+      background: white;
+
+      color: #59677b;
+
+      outline: none;
+
+      font-size: 12px;
+
+    }
+
+
+
+    /* TABLE */
+
+    .table-wrapper {
+
+      width: 100%;
+
+      overflow-x: auto;
+
+    }
+
+
+    table {
+
+      width: 100%;
+
+      border-collapse: collapse;
+
+      min-width: 760px;
+
+    }
+
+
+    th {
+
+      padding:
+        11px 24px;
+
+      background: #fafbfd;
+
+      border-bottom:
+        1px solid #e8edf2;
+
+      text-align: left;
+
+      color: #8793a4;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      letter-spacing: .07em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    td {
+
+      padding:
+        15px 24px;
+
+      border-bottom:
+        1px solid #edf0f4;
+
+      color: #536176;
+
+      font-size: 13px;
+
+      vertical-align: middle;
+
+    }
+
+
+    tbody tr {
+
+      transition:
+        background .12s ease;
+
+    }
+
+
+    tbody tr:hover {
+
+      background: #fbfcfe;
+
+    }
+
+
+    tbody tr:last-child td {
+
+      border-bottom: none;
+
+    }
+
+
+    .student-cell {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+    }
+
+
+    .avatar {
+
+      width: 38px;
+
+      height: 38px;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          #eaf2fb,
+          #f5f8fc
+        );
+
+      color: #17375e;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 11px;
+
+      font-weight: 850;
+
+      border:
+        1px solid #dce6f1;
+
+      flex-shrink: 0;
+
+    }
+
+
+    .student-name {
+
+      color: #20324b;
+
+      font-weight: 750;
+
+      margin-bottom: 2px;
+
+    }
+
+
+    .student-code {
+
+      color: #98a2b0;
+
+      font-size: 10px;
+
+    }
+
+
+    .status-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      padding:
+        5px 9px;
+
+      border-radius:
+        999px;
+
+      font-size: 10px;
+
+      font-weight: 750;
+
+    }
+
+
+    .status-badge.active {
+
+      background: #eaf8ef;
+
+      color: #26844f;
+
+    }
+
+
+    .status-badge.inactive {
+
+      background: #f1f2f4;
+
+      color: #737c88;
+
+    }
+
+
+    .status-dot {
+
+      width: 6px;
+
+      height: 6px;
+
+      border-radius: 50%;
+
+      background:
+        currentColor;
+
+    }
+
+
+    .more-button {
+
+      border: none;
+
+      background: transparent;
+
+      color: #96a0af;
+
+      cursor: pointer;
+
+      padding: 6px;
+
+      border-radius: 6px;
+
+    }
+
+
+    .more-button:hover {
+
+      background: #f1f4f7;
+
+      color: #17375e;
+
+    }
+
+
+    .empty-row {
+
+      padding:
+        60px 20px;
+
+      text-align: center;
+
+    }
+
+
+    .empty-state {
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      color: #8f9aa9;
+
+    }
+
+
+    .empty-icon {
+
+      width: 50px;
+
+      height: 50px;
+
+      border-radius: 50%;
+
+      background: #f4f6f9;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      margin-bottom: 12px;
+
+    }
+
+
+    .empty-state strong {
+
+      color: #536178;
+
+    }
+
+
+    .empty-state p {
+
+      margin:
+        5px 0 0;
+
+      font-size: 12px;
+
+    }
+
+
+
+    /* MODAL */
+
+    .modal-backdrop {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 100;
+
+      background:
+        rgba(
+          15,
+          29,
+          47,
+          .52
+        );
+
+      backdrop-filter:
+        blur(3px);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+
+    }
+
+
+    .modal-backdrop[hidden] {
+
+      display: none;
+
+    }
+
+
+    .modal {
+
+      width: 100%;
+
+      max-width: 620px;
+
+      max-height: 90vh;
+
+      overflow-y: auto;
+
+      background: white;
+
+      border-radius: 19px;
+
+      box-shadow:
+        0 25px 70px
+        rgba(
+          12,
+          27,
+          45,
+          .28
+        );
+
+    }
+
+
+    .modal-header {
+
+      padding:
+        24px 25px 19px;
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      gap: 20px;
+
+      border-bottom:
+        1px solid #edf0f4;
+
+    }
+
+
+    .modal-header p:last-child {
+
+      color: #8c97a7;
+
+      font-size: 12px;
+
+      margin:
+        5px 0 0;
+
+    }
+
+
+    .modal-close {
+
+      width: 34px;
+
+      height: 34px;
+
+      border-radius: 50%;
+
+      border: none;
+
+      background: #f3f5f7;
+
+      color: #667389;
+
+      cursor: pointer;
+
+      font-size: 20px;
+
+    }
+
+
+    form {
+
+      padding:
+        22px 25px 25px;
+
+    }
+
+
+    .form-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap: 16px;
+
+    }
+
+
+    .full-width {
+
+      grid-column:
+        1 / -1;
+
+    }
+
+
+    label span {
+
+      display: block;
+
+      color: #536178;
+
+      font-size: 11px;
+
+      font-weight: 750;
+
+      margin-bottom: 6px;
+
+    }
+
+
+    label input,
+    label select {
+
+      width: 100%;
+
+      height: 42px;
+
+      border:
+        1px solid #dce3eb;
+
+      border-radius: 9px;
+
+      background: #fff;
+
+      padding:
+        0 11px;
+
+      color: #27364b;
+
+      outline: none;
+
+      font-size: 13px;
+
+    }
+
+
+    label input:focus,
+    label select:focus {
+
+      border-color: #769dcc;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(
+          73,
+          126,
+          188,
+          .1
+        );
+
+    }
+
+
+    .form-message {
+
+      margin-top: 15px;
+
+      min-height: 18px;
+
+      font-size: 12px;
+
+    }
+
+
+    .form-message.error {
+
+      color: #c44242;
+
+    }
+
+
+    .form-actions {
+
+      margin-top: 18px;
+
+      padding-top: 18px;
+
+      border-top:
+        1px solid #edf0f4;
+
+      display: flex;
+
+      justify-content:
+        flex-end;
+
+      gap: 9px;
+
+    }
+
+
+    .cancel-button,
+    .save-button {
+
+      border-radius: 9px;
+
+      padding:
+        10px 15px;
+
+      font-weight: 750;
+
+      cursor: pointer;
+
+    }
+
+
+    .cancel-button {
+
+      border:
+        1px solid #dce3eb;
+
+      background: white;
+
+      color: #536178;
+
+    }
+
+
+    .save-button {
+
+      border: none;
+
+      background: #17375e;
+
+      color: white;
+
+    }
+
+
+    .save-button:disabled {
+
+      opacity: .5;
+
+    }
+
+
+
+    .danger-button {
+
+      border:
+        1px solid #f0caca;
+
+      background: #fff6f6;
+
+      color: #bf3d3d;
+
+      border-radius: 9px;
+
+      padding:
+        10px 15px;
+
+      font-weight: 750;
+
+      cursor: pointer;
+
+    }
+
+
+    .danger-button:hover {
+
+      background: #ffecec;
+
+    }
+
+
+    .danger-button:disabled {
+
+      opacity: .55;
+
+      cursor: not-allowed;
+
+    }
+
+
+    .form-spacer {
+
+      flex: 1;
+
+    }
+
+
+
+    /* RESPONSIVE */
+
+    @media
+    (max-width: 1000px) {
+
+      .app {
+
+        grid-template-columns:
+          80px minmax(0,1fr);
+
+      }
+
+
+      .logo-box {
+
+        width: 50px;
+
+        padding: 6px;
+
+      }
+
+
+      .portal-label {
+
+        display: none;
+
+      }
+
+
+      .nav-item {
+
+        justify-content: center;
+
+      }
+
+
+      .nav-item span:not(
+        .nav-icon
+      ) {
+
+        display: none;
+
+      }
+
+
+      .nav-icon {
+
+        font-size: 18px;
+
+      }
+
+
+      .logout-button span {
+
+        display: none;
+
+      }
+
+
+      .main {
+
+        padding:
+          28px 22px 50px;
+
+      }
+
+    }
+
+
+
+    @media
+    (max-width: 720px) {
+
+      .app {
+
+        display: block;
+
+      }
+
+
+      .sidebar {
+
+        display: none;
+
+      }
+
+
+      .main {
+
+        padding:
+          24px 15px 45px;
+
+      }
+
+
+      .page-header {
+
+        align-items:
+          stretch;
+
+        flex-direction:
+          column;
+
+      }
+
+
+      .add-button {
+
+        justify-content: center;
+
+      }
+
+
+      .stats-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .panel-top {
+
+        align-items:
+          stretch;
+
+        flex-direction:
+          column;
+
+      }
+
+
+      .toolbar {
+
+        width: 100%;
+
+      }
+
+
+      .search-box {
+
+        flex: 1;
+
+        width: auto;
+
+      }
+
+
+      .form-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .full-width {
+
+        grid-column: auto;
+
+      }
+
+    }
+
+  </style>
+
+</body>
+</html>
