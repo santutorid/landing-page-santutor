@@ -27,6 +27,68 @@ import logoSrc from '../../../assets/logo.svg';
 
   <div id="app" class="app" hidden>
 
+    <header class="mobile-topbar">
+      <a class="mobile-brand" href="/portal/admin/">
+        <img src={logoSrc.src} alt="Santutor Learning Studio" />
+      </a>
+
+      <button
+        id="mobileMenuButton"
+        class="mobile-menu-button"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobileDrawer"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <div id="mobileBackdrop" class="mobile-backdrop" hidden></div>
+
+    <aside
+      id="mobileDrawer"
+      class="mobile-drawer"
+      aria-hidden="true"
+    >
+      <div class="mobile-drawer-header">
+        <div class="mobile-drawer-brand">
+          <img src={logoSrc.src} alt="Santutor Learning Studio" />
+        </div>
+
+        <button
+          id="mobileCloseButton"
+          class="mobile-close-button"
+          type="button"
+          aria-label="Close menu"
+        >
+          ×
+        </button>
+      </div>
+
+      <nav class="mobile-nav">
+        <a class="mobile-nav-item active" href="/portal/admin/"><span>⌂</span>Dashboard</a>
+        <a class="mobile-nav-item" href="/portal/admin/students/"><span>👨‍🎓</span>Students</a>
+        <a class="mobile-nav-item" href="/portal/admin/schedule/"><span>📅</span>Schedule</a>
+        <a class="mobile-nav-item" href="/portal/admin/attendance/"><span>✓</span>Attendance</a>
+        <a class="mobile-nav-item" href="/portal/admin/reports/"><span>📚</span>Learning Reports</a>
+        <a class="mobile-nav-item" href="/portal/admin/packages/"><span>🎟</span>Packages</a>
+        <a class="mobile-nav-item" href="/portal/admin/payments/"><span>💳</span>Payments</a>
+        <a class="mobile-nav-item" href="/portal/admin/parents/"><span>👪</span>Parents</a>
+        <a class="mobile-nav-item" href="/portal/admin/tutors/"><span>👩‍🏫</span>Tutors</a>
+      </nav>
+
+      <div class="mobile-drawer-footer">
+        <button
+          id="mobileLogoutButton"
+          class="mobile-logout-button"
+          type="button"
+        >
+          ↪ <span>Sign Out</span>
+        </button>
+      </div>
+    </aside>
+
     <!-- ============================= -->
     <!-- SIDEBAR -->
     <!-- ============================= -->
@@ -1196,6 +1258,54 @@ import logoSrc from '../../../assets/logo.svg';
       }
     }
 
+    const mobileDrawer =
+      getEl<HTMLElement>('#mobileDrawer');
+
+    const mobileBackdrop =
+      getEl<HTMLElement>('#mobileBackdrop');
+
+    const mobileMenuButton =
+      getEl<HTMLButtonElement>('#mobileMenuButton');
+
+    const mobileCloseButton =
+      getEl<HTMLButtonElement>('#mobileCloseButton');
+
+    function openMobileMenu(): void {
+      mobileDrawer.classList.add('open');
+      mobileDrawer.setAttribute('aria-hidden', 'false');
+      mobileBackdrop.hidden = false;
+
+      requestAnimationFrame(() => {
+        mobileBackdrop.classList.add('visible');
+      });
+
+      mobileMenuButton.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('mobile-menu-open');
+    }
+
+    function closeMobileMenu(): void {
+      mobileDrawer.classList.remove('open');
+      mobileDrawer.setAttribute('aria-hidden', 'true');
+      mobileBackdrop.classList.remove('visible');
+
+      window.setTimeout(() => {
+        mobileBackdrop.hidden = true;
+      }, 180);
+
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('mobile-menu-open');
+    }
+
+    mobileMenuButton.addEventListener('click', openMobileMenu);
+    mobileCloseButton.addEventListener('click', closeMobileMenu);
+    mobileBackdrop.addEventListener('click', closeMobileMenu);
+
+    document
+      .querySelectorAll<HTMLAnchorElement>('.mobile-nav-item')
+      .forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
     getEl<HTMLButtonElement>('#logoutButton')
       .addEventListener(
         'click',
@@ -1204,6 +1314,27 @@ import logoSrc from '../../../assets/logo.svg';
           window.location.href = '/portal/';
         }
       );
+
+    getEl<HTMLButtonElement>('#mobileLogoutButton')
+      .addEventListener(
+        'click',
+        async () => {
+          await supabase.auth.signOut();
+          window.location.href = '/portal/';
+        }
+      );
+
+    window.addEventListener(
+      'keydown',
+      event => {
+        if (
+          event.key === 'Escape' &&
+          mobileDrawer.classList.contains('open')
+        ) {
+          closeMobileMenu();
+        }
+      }
+    );
 
     void initPage();
   
@@ -2292,6 +2423,293 @@ import logoSrc from '../../../assets/logo.svg';
     .error-panel p {
       margin:
         5px 0 0;
+    }
+
+
+
+    /* MOBILE NAVIGATION */
+
+    .mobile-topbar,
+    .mobile-drawer,
+    .mobile-backdrop {
+      display: none;
+    }
+
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+
+    @media
+    (max-width: 720px) {
+
+      .mobile-topbar {
+        height: 64px;
+        padding: 8px 16px;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        border-bottom: 1px solid #1f2937;
+        box-shadow: none;
+      }
+
+      .mobile-brand {
+        width: 142px;
+        padding: 0;
+        background: transparent;
+        border-radius: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .mobile-brand img {
+        width: 100%;
+        display: block;
+      }
+
+      .mobile-menu-button {
+        width: 42px;
+        height: 42px;
+        border: none;
+        border-radius: 8px;
+        background: transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+      }
+
+      .mobile-menu-button span {
+        width: 22px;
+        height: 2px;
+        background: #111827;
+        border-radius: 99px;
+      }
+
+      .mobile-menu-button:active {
+        background: #f3f4f6;
+      }
+
+      .mobile-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 70;
+        background:
+          rgba(9, 24, 42, .52);
+        opacity: 0;
+        transition: opacity .18s ease;
+      }
+
+      .mobile-backdrop.visible {
+        opacity: 1;
+      }
+
+      .mobile-drawer {
+        display: flex;
+        width: min(84vw, 320px);
+        height: 100dvh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 80;
+        transform: translateX(-102%);
+        transition: transform .2s ease;
+        background:
+          linear-gradient(
+            180deg,
+            #17375e 0%,
+            #102a4b 100%
+          );
+        color: white;
+        flex-direction: column;
+        box-shadow:
+          18px 0 44px
+          rgba(8, 29, 51, .28);
+      }
+
+      .mobile-drawer.open {
+        transform: translateX(0);
+      }
+
+      .mobile-drawer-header {
+        min-height: 80px;
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom:
+          1px solid
+          rgba(255, 255, 255, .08);
+      }
+
+      .mobile-drawer-brand {
+        width: 150px;
+        padding: 6px 10px;
+        background: white;
+        border-radius: 10px;
+      }
+
+      .mobile-drawer-brand img {
+        width: 100%;
+        display: block;
+      }
+
+      .mobile-close-button {
+        width: 40px;
+        height: 40px;
+        border: none;
+        background:
+          rgba(255, 255, 255, .08);
+        color: white;
+        border-radius: 10px;
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 16px 12px;
+        overflow-y: auto;
+      }
+
+      .mobile-nav-item {
+        min-height: 46px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color:
+          rgba(255, 255, 255, .78);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .mobile-nav-item span {
+        width: 24px;
+        text-align: center;
+      }
+
+      .mobile-nav-item.active {
+        background:
+          rgba(255, 255, 255, .14);
+        color: white;
+        font-weight: 800;
+        box-shadow:
+          inset 3px 0
+          #f28b2d;
+      }
+
+      .mobile-drawer-footer {
+        margin-top: auto;
+        padding: 14px 12px 20px;
+        border-top:
+          1px solid
+          rgba(255, 255, 255, .08);
+      }
+
+      .mobile-logout-button {
+        width: 100%;
+        min-height: 46px;
+        border:
+          1px solid
+          rgba(255, 255, 255, .14);
+        background:
+          rgba(255, 255, 255, .08);
+        color: white;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .weekly-grid {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns:
+          minmax(185px, 72vw);
+        grid-template-columns: none;
+        gap: 10px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scroll-snap-type: x proximity;
+      }
+
+      .day-column {
+        scroll-snap-align: start;
+      }
+
+      .dashboard-panel {
+        padding: 20px 16px;
+      }
+
+      .stat-card {
+        padding: 16px;
+      }
+
+      .page-header {
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .subtitle {
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .header-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .add-button,
+      .secondary-action {
+        min-height: 46px;
+        padding: 10px 12px;
+        font-size: 12px;
+      }
+
+      .bottom-grid {
+        gap: 16px;
+      }
+
+      .today-row {
+        grid-template-columns:
+          62px minmax(0,1fr);
+        gap: 11px;
+        padding: 12px 0;
+      }
+
+      .today-status {
+        grid-column: 2;
+      }
+
+      .time-box {
+        padding: 7px 6px;
+      }
+
+      .renewal-row {
+        align-items: flex-start;
+      }
+
     }
 
 
