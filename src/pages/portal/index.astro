@@ -4,551 +4,915 @@ import logoSrc from '../../assets/logo.svg';
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+  <meta
+    name="robots"
+    content="noindex,nofollow,noarchive"
+  />
+  <title>Santutor Portal</title>
+</head>
 
-    <meta
-      name="robots"
-      content="noindex,nofollow,noarchive"
-    />
+<body>
 
-    <title>Santutor Portal</title>
-  </head>
+  <main class="login-page">
 
-  <body>
-    <main class="page">
-      <section class="login-card">
+    <section class="login-card">
 
-        <div class="brand">
-            <p class="private-label">PRIVATE ACCESS</p>
+      <div class="brand">
+        <img
+          src={logoSrc.src}
+          alt="Santutor Learning Studio"
+        />
+        <p>Private Portal</p>
+      </div>
 
-            <img
-                src={logoSrc.src}
-                alt="Santutor Learning Studio"
-                class="logo"
-            />
-        </div>
+
+      <div id="loginView">
 
         <div class="heading">
-          <h2>Welcome back</h2>
-
+          <p class="eyebrow">WELCOME BACK</p>
+          <h1>Sign in to Santutor</h1>
           <p>
-            Sign in to access your Santutor account.
+            Access your Santutor portal securely.
           </p>
         </div>
+
 
         <form id="loginForm">
 
           <label>
             Email
-
             <input
-              id="email"
+              id="emailInput"
               type="email"
-              placeholder="parent@email.com"
               autocomplete="email"
+              placeholder="name@example.com"
               required
             />
           </label>
 
+
           <label>
             Password
-
-            <div class="password-field">
-
-              <input
-                id="password"
-                type="password"
-                placeholder="Enter your password"
-                autocomplete="current-password"
-                required
-              />
-
-              <button
-                id="showPassword"
-                type="button"
-              >
-                Show
-              </button>
-
-            </div>
+            <input
+              id="passwordInput"
+              type="password"
+              autocomplete="current-password"
+              placeholder="Enter your password"
+              required
+            />
           </label>
+
+
+          <div class="password-actions">
+            <button
+              id="forgotButton"
+              class="link-button"
+              type="button"
+            >
+              Forgot password?
+            </button>
+          </div>
+
 
           <button
             id="loginButton"
-            class="login-button"
+            class="primary-button"
             type="submit"
           >
-            Sign in
+            Sign In
           </button>
 
-          <p
-            id="message"
+
+          <div
+            id="loginMessage"
             class="message"
-          ></p>
+            hidden
+          ></div>
 
         </form>
 
-        <div class="footer-note">
-          <strong>Private Santutor Portal</strong>
+      </div>
 
+
+      <div
+        id="forgotView"
+        hidden
+      >
+
+        <button
+          id="backToLogin"
+          class="back-button"
+          type="button"
+        >
+          ← Back to sign in
+        </button>
+
+
+        <div class="heading">
+          <p class="eyebrow">PASSWORD RESET</p>
+          <h1>Forgot your password?</h1>
           <p>
-            Accounts are provided directly by Santutor.
-            Public registration is not available.
+            Enter your login email and we will send
+            you a secure password reset link.
           </p>
         </div>
 
-      </section>
-    </main>
+
+        <form id="forgotForm">
+
+          <label>
+            Email
+            <input
+              id="resetEmailInput"
+              type="email"
+              autocomplete="email"
+              placeholder="name@example.com"
+              required
+            />
+          </label>
 
 
-    <script>
-      import { supabase } from '../../lib/supabase';
-
-      const form =
-        document.querySelector('#loginForm') as HTMLFormElement;
-
-      const emailInput =
-        document.querySelector('#email') as HTMLInputElement;
-
-      const passwordInput =
-        document.querySelector('#password') as HTMLInputElement;
-
-      const loginButton =
-        document.querySelector('#loginButton') as HTMLButtonElement;
-
-      const message =
-        document.querySelector('#message') as HTMLParagraphElement;
-
-      const showPassword =
-        document.querySelector('#showPassword') as HTMLButtonElement;
+          <button
+            id="sendResetButton"
+            class="primary-button"
+            type="submit"
+          >
+            Send Reset Link
+          </button>
 
 
-      // Show / hide password
-      showPassword?.addEventListener('click', () => {
+          <div
+            id="forgotMessage"
+            class="message"
+            hidden
+          ></div>
 
-        const showing =
-          passwordInput.type === 'text';
+        </form>
 
-        passwordInput.type =
-          showing ? 'password' : 'text';
+      </div>
 
-        showPassword.textContent =
-          showing ? 'Show' : 'Hide';
+    </section>
 
-      });
+  </main>
 
 
-      // If already logged in
-      const {
-        data: { session }
-      } = await supabase.auth.getSession();
+  <script>
 
-      if (session) {
-        window.location.href = '/portal/dashboard';
+    import {
+      supabase
+    } from '../../lib/supabase';
+
+
+    function getEl<T extends Element>(
+      selector: string
+    ): T {
+
+      const element =
+        document.querySelector<T>(
+          selector
+        );
+
+
+      if (!element) {
+        throw new Error(
+          `Element not found: ${selector}`
+        );
       }
 
 
-      form?.addEventListener(
+      return element;
+
+    }
+
+
+    function showMessage(
+      selector: string,
+      message: string,
+      type:
+        'success' |
+        'error'
+    ): void {
+
+      const element =
+        getEl<HTMLElement>(
+          selector
+        );
+
+
+      element.hidden =
+        false;
+
+
+      element.textContent =
+        message;
+
+
+      element.className =
+        `message ${type}`;
+
+    }
+
+
+    function hideMessage(
+      selector: string
+    ): void {
+
+      const element =
+        getEl<HTMLElement>(
+          selector
+        );
+
+
+      element.hidden =
+        true;
+
+      element.textContent =
+        '';
+
+      element.className =
+        'message';
+
+    }
+
+
+    async function routeUser():
+      Promise<void> {
+
+      const {
+        data: {
+          user
+        }
+      } =
+        await supabase.auth
+          .getUser();
+
+
+      if (!user) {
+        return;
+      }
+
+
+      const {
+        data: profile,
+        error
+      } =
+        await supabase
+          .from('profiles')
+          .select(
+            'role, active'
+          )
+          .eq(
+            'id',
+            user.id
+          )
+          .single();
+
+
+      if (
+        error ||
+        !profile ||
+        profile.active !== true
+      ) {
+
+        await supabase.auth
+          .signOut();
+
+
+        showMessage(
+          '#loginMessage',
+          'This account is not active. Please contact Santutor.',
+          'error'
+        );
+
+        return;
+
+      }
+
+
+      if (
+        profile.role ===
+        'admin'
+      ) {
+
+        window.location.href =
+          '/portal/admin/';
+
+        return;
+
+      }
+
+
+      if (
+        profile.role ===
+        'parent'
+      ) {
+
+        window.location.href =
+          '/portal/parent/';
+
+        return;
+
+      }
+
+
+      if (
+        profile.role ===
+        'tutor'
+      ) {
+
+        window.location.href =
+          '/portal/tutor/';
+
+        return;
+
+      }
+
+
+      await supabase.auth
+        .signOut();
+
+
+      showMessage(
+        '#loginMessage',
+        'No portal role is assigned to this account.',
+        'error'
+      );
+
+    }
+
+
+    getEl<HTMLFormElement>(
+      '#loginForm'
+    )
+      .addEventListener(
         'submit',
-        async (event) => {
+        async event => {
 
           event.preventDefault();
 
-          message.textContent = '';
-
-          loginButton.disabled = true;
-          loginButton.textContent = 'Signing in...';
+          hideMessage(
+            '#loginMessage'
+          );
 
 
           const email =
-            emailInput.value.trim();
+            getEl<HTMLInputElement>(
+              '#emailInput'
+            )
+              .value
+              .trim();
+
 
           const password =
-            passwordInput.value;
+            getEl<HTMLInputElement>(
+              '#passwordInput'
+            )
+              .value;
 
 
-          const {
-            data,
-            error
-          } =
-            await supabase.auth.signInWithPassword({
-              email,
-              password,
-            });
+          const button =
+            getEl<HTMLButtonElement>(
+              '#loginButton'
+            );
 
 
-          if (error) {
-            console.error('Supabase login error:', error);
+          button.disabled =
+            true;
 
-            message.textContent = error.message;
+          button.textContent =
+            'Signing in...';
 
-            message.className = 'message error';
 
-            loginButton.disabled = false;
-            loginButton.textContent = 'Sign in';
+          try {
 
-            return;
+            const {
+              error
+            } =
+              await supabase.auth
+                .signInWithPassword({
+                  email,
+                  password
+                });
+
+
+            if (error) {
+              throw error;
             }
 
 
-          if (data.user) {
+            await routeUser();
 
-            message.textContent =
-              'Signed in successfully.';
+          } catch (error) {
 
-            message.className =
-              'message success';
+            showMessage(
+              '#loginMessage',
+              error instanceof Error
+                ? error.message
+                : 'Unable to sign in.',
+              'error'
+            );
 
-            window.location.href =
-              '/portal/dashboard';
+          } finally {
+
+            button.disabled =
+              false;
+
+            button.textContent =
+              'Sign In';
 
           }
 
         }
       );
-    </script>
 
 
-    <style>
+    getEl<HTMLButtonElement>(
+      '#forgotButton'
+    )
+      .addEventListener(
+        'click',
+        () => {
 
-      :global(*) {
-        box-sizing: border-box;
-      }
+          const email =
+            getEl<HTMLInputElement>(
+              '#emailInput'
+            )
+              .value
+              .trim();
 
 
-      body {
-        margin: 0;
+          getEl<HTMLInputElement>(
+            '#resetEmailInput'
+          ).value =
+            email;
 
-        font-family:
-          Inter,
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          sans-serif;
 
-        background:
-          radial-gradient(
-            circle at top left,
-            rgba(56, 183, 232, 0.14),
-            transparent 32%
+          getEl<HTMLElement>(
+            '#loginView'
+          ).hidden =
+            true;
+
+
+          getEl<HTMLElement>(
+            '#forgotView'
+          ).hidden =
+            false;
+
+
+          hideMessage(
+            '#forgotMessage'
+          );
+
+        }
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#backToLogin'
+    )
+      .addEventListener(
+        'click',
+        () => {
+
+          getEl<HTMLElement>(
+            '#forgotView'
+          ).hidden =
+            true;
+
+
+          getEl<HTMLElement>(
+            '#loginView'
+          ).hidden =
+            false;
+
+        }
+      );
+
+
+    getEl<HTMLFormElement>(
+      '#forgotForm'
+    )
+      .addEventListener(
+        'submit',
+        async event => {
+
+          event.preventDefault();
+
+          hideMessage(
+            '#forgotMessage'
+          );
+
+
+          const email =
+            getEl<HTMLInputElement>(
+              '#resetEmailInput'
+            )
+              .value
+              .trim();
+
+
+          const button =
+            getEl<HTMLButtonElement>(
+              '#sendResetButton'
+            );
+
+
+          button.disabled =
+            true;
+
+          button.textContent =
+            'Sending...';
+
+
+          try {
+
+            const redirectTo =
+              `${window.location.origin}/portal/reset-password/`;
+
+
+            const {
+              error
+            } =
+              await supabase.auth
+                .resetPasswordForEmail(
+                  email,
+                  {
+                    redirectTo
+                  }
+                );
+
+
+            if (error) {
+              throw error;
+            }
+
+
+            showMessage(
+              '#forgotMessage',
+              'Reset link sent. Please check your email inbox.',
+              'success'
+            );
+
+          } catch (error) {
+
+            showMessage(
+              '#forgotMessage',
+              error instanceof Error
+                ? error.message
+                : 'Unable to send reset email.',
+              'error'
+            );
+
+          } finally {
+
+            button.disabled =
+              false;
+
+            button.textContent =
+              'Send Reset Link';
+
+          }
+
+        }
+      );
+
+
+    void routeUser();
+
+  </script>
+
+
+  <style is:global>
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+      margin: 0;
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:
+        #f5f7fb;
+
+      color: #20324b;
+    }
+
+
+    .login-page {
+      min-height: 100vh;
+
+      padding: 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(
+            242,
+            139,
+            45,
+            .08
           ),
-          radial-gradient(
-            circle at bottom right,
-            rgba(255, 116, 24, 0.12),
-            transparent 30%
-          ),
-          #f5f8fc;
-
-        min-height: 100vh;
-      }
+          transparent 30%
+        ),
+        #f5f7fb;
+    }
 
 
-      .page {
-        min-height: 100vh;
+    .login-card {
+      width:
+        min(
+          100%,
+          430px
+        );
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      padding:
+        34px;
 
-        padding: 24px;
+      border:
+        1px solid #e1e7ee;
+
+      border-radius: 20px;
+
+      background: white;
+
+      box-shadow:
+        0 16px 50px
+        rgba(
+          23,
+          55,
+          94,
+          .08
+        );
+    }
+
+
+    .brand {
+      margin-bottom: 30px;
+    }
+
+
+    .brand img {
+      width: 180px;
+      display: block;
+    }
+
+
+    .brand p {
+      margin:
+        8px 0 0;
+
+      color: #8b97a8;
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .14em;
+
+      text-transform: uppercase;
+    }
+
+
+    .heading {
+      margin-bottom: 23px;
+    }
+
+
+    .eyebrow {
+      margin:
+        0 0 6px;
+
+      color: #f28b2d;
+
+      font-size: 10px;
+      font-weight: 850;
+
+      letter-spacing: .14em;
+    }
+
+
+    h1 {
+      margin: 0;
+
+      color: #17375e;
+
+      font-size: 27px;
+      line-height: 1.15;
+    }
+
+
+    .heading > p:last-child {
+      margin:
+        8px 0 0;
+
+      color: #8794a6;
+
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+
+    label {
+      color: #56677d;
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+
+    input {
+      width: 100%;
+      min-height: 46px;
+
+      margin-top: 7px;
+
+      padding:
+        0 13px;
+
+      border:
+        1px solid #d9e1ea;
+
+      border-radius: 10px;
+
+      outline: none;
+
+      background: white;
+
+      color: #20324b;
+
+      font: inherit;
+      font-size: 13px;
+    }
+
+
+    input:focus {
+      border-color: #8aa5c4;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(
+          23,
+          55,
+          94,
+          .07
+        );
+    }
+
+
+    .password-actions {
+      margin-top: -6px;
+
+      display: flex;
+      justify-content: flex-end;
+    }
+
+
+    .link-button,
+    .back-button {
+      border: none;
+      background: transparent;
+
+      color: #17375e;
+
+      font: inherit;
+      font-size: 11px;
+      font-weight: 750;
+
+      cursor: pointer;
+
+      padding: 0;
+    }
+
+
+    .link-button:hover,
+    .back-button:hover {
+      color: #f28b2d;
+    }
+
+
+    .back-button {
+      margin-bottom: 22px;
+    }
+
+
+    .primary-button {
+      min-height: 48px;
+
+      border: none;
+
+      border-radius: 11px;
+
+      background: #17375e;
+
+      color: white;
+
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+
+      cursor: pointer;
+    }
+
+
+    .primary-button:hover {
+      background: #102a4b;
+    }
+
+
+    .primary-button:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
+
+
+    .message {
+      padding:
+        11px 12px;
+
+      border-radius: 9px;
+
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+
+    .message.error {
+      border:
+        1px solid #efc0c0;
+
+      background: #fff1f1;
+
+      color: #a43f3f;
+    }
+
+
+    .message.success {
+      border:
+        1px solid #bde1cc;
+
+      background: #edf9f2;
+
+      color: #28754d;
+    }
+
+
+    [hidden] {
+      display: none !important;
+    }
+
+
+    @media
+    (max-width: 520px) {
+
+      .login-page {
+        padding: 14px;
       }
 
 
       .login-card {
-        width: 100%;
-        max-width: 430px;
+        padding:
+          27px 21px;
 
-        background: white;
-
-        border:
-          1px solid #e4eaf1;
-
-        border-radius: 26px;
-
-        padding: 34px;
-
-        box-shadow:
-          0 20px 55px
-          rgba(21, 55, 95, 0.12);
+        border-radius: 16px;
       }
 
-    .brand {
-    text-align: center;
-    margin-bottom: 30px;
+
+      .brand img {
+        width: 160px;
+      }
+
+
+      h1 {
+        font-size: 24px;
+      }
+
     }
 
-    .logo {
-    width: 220px;
-    max-width: 80%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-    }
+  </style>
 
-    .private-label {
-    margin: 0 0 16px;
-
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-
-    color: #ff7418;
-    }
-
-
-      .private-label {
-        margin: 0 0 12px;
-
-        font-size: 11px;
-        font-weight: 800;
-
-        letter-spacing: .16em;
-
-        color: #ff7418;
-      }
-
-
-      .brand h1 {
-        margin: 0;
-
-        font-size: 40px;
-        font-weight: 800;
-
-        line-height: 1;
-      }
-
-
-      .san {
-        color: #ff7418;
-      }
-
-
-      .tutor {
-        color: #38b7e8;
-      }
-
-
-      .subtitle {
-        margin-top: 7px;
-
-        font-size: 12px;
-
-        letter-spacing: .15em;
-
-        color: #718096;
-      }
-
-
-      .heading {
-        margin-bottom: 25px;
-      }
-
-
-      .heading h2 {
-        margin: 0 0 8px;
-
-        font-size: 26px;
-
-        color: #17375e;
-      }
-
-
-      .heading p {
-        margin: 0;
-
-        color: #758198;
-
-        line-height: 1.5;
-
-        font-size: 14px;
-      }
-
-
-      label {
-        display: block;
-
-        margin-bottom: 18px;
-
-        font-size: 14px;
-        font-weight: 700;
-
-        color: #243550;
-      }
-
-
-      input {
-        width: 100%;
-
-        margin-top: 8px;
-
-        padding: 14px 15px;
-
-        border:
-          1px solid #ced7e4;
-
-        border-radius: 12px;
-
-        outline: none;
-
-        font: inherit;
-
-        transition: .2s;
-      }
-
-
-      input:focus {
-        border-color: #38b7e8;
-
-        box-shadow:
-          0 0 0 4px
-          rgba(56, 183, 232, .12);
-      }
-
-
-      .password-field {
-        position: relative;
-      }
-
-
-      .password-field input {
-        padding-right: 70px;
-      }
-
-
-      .password-field button {
-        position: absolute;
-
-        right: 8px;
-        top: 50%;
-
-        transform: translateY(-38%);
-
-        border: none;
-
-        background: transparent;
-
-        color: #17375e;
-
-        font-weight: 700;
-
-        cursor: pointer;
-      }
-
-
-      .login-button {
-        width: 100%;
-
-        border: none;
-
-        border-radius: 12px;
-
-        padding: 14px 18px;
-
-        background: #17375e;
-
-        color: white;
-
-        font: inherit;
-        font-weight: 800;
-
-        cursor: pointer;
-
-        transition: .2s;
-      }
-
-
-      .login-button:hover {
-        background: #102944;
-      }
-
-
-      .login-button:disabled {
-        opacity: .65;
-
-        cursor: wait;
-      }
-
-
-      .message {
-        min-height: 20px;
-
-        margin: 12px 0 0;
-
-        font-size: 13px;
-
-        text-align: center;
-      }
-
-
-      .message.error {
-        color: #b42318;
-      }
-
-
-      .message.success {
-        color: #067647;
-      }
-
-
-      .footer-note {
-        margin-top: 25px;
-
-        padding-top: 20px;
-
-        border-top:
-          1px solid #e6ebf2;
-
-        color: #7b8798;
-
-        font-size: 12px;
-
-        line-height: 1.5;
-
-        text-align: center;
-      }
-
-
-      .footer-note strong {
-        color: #17375e;
-      }
-
-
-      .footer-note p {
-        margin-bottom: 0;
-      }
-
-
-      @media (max-width: 520px) {
-
-        .page {
-          align-items: flex-start;
-
-          padding:
-            40px 16px 20px;
-        }
-
-
-        .login-card {
-          padding:
-            28px 21px;
-
-          border-radius: 21px;
-        }
-
-
-        .brand h1 {
-          font-size: 34px;
-        }
-
-      }
-
-    </style>
-
-  </body>
+</body>
 </html>

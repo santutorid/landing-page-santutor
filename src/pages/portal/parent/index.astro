@@ -1,0 +1,4829 @@
+---
+import logoSrc from '../../../assets/logo.svg';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+  <meta
+    name="robots"
+    content="noindex,nofollow,noarchive"
+  />
+  <title>Parent Dashboard | Santutor</title>
+</head>
+
+<body>
+
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loader"></div>
+    <p>Loading your Santutor dashboard...</p>
+  </div>
+
+
+  <div id="app" class="app" hidden>
+
+    <!-- MOBILE HEADER -->
+
+    <header class="mobile-topbar">
+
+      <a
+        class="mobile-brand"
+        href="/portal/parent/"
+      >
+        <img
+          src={logoSrc.src}
+          alt="Santutor Learning Studio"
+        />
+      </a>
+
+      <button
+        id="mobileMenuButton"
+        class="mobile-menu-button"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </header>
+
+
+    <div
+      id="mobileBackdrop"
+      class="mobile-backdrop"
+      hidden
+    ></div>
+
+
+    <aside
+      id="mobileDrawer"
+      class="mobile-drawer"
+      aria-hidden="true"
+    >
+
+      <div class="mobile-drawer-header">
+
+        <div class="drawer-logo">
+          <img
+            src={logoSrc.src}
+            alt="Santutor Learning Studio"
+          />
+        </div>
+
+        <button
+          id="mobileCloseButton"
+          class="mobile-close-button"
+          type="button"
+          aria-label="Close menu"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <nav class="mobile-nav">
+
+        <a
+          class="mobile-nav-item active"
+          href="#overview"
+        >
+          <span>⌂</span>
+          Overview
+        </a>
+
+        <a
+          class="mobile-nav-item"
+          href="#schedule"
+        >
+          <span>📅</span>
+          Schedule
+        </a>
+
+        <a
+          class="mobile-nav-item"
+          href="#attendance"
+        >
+          <span>✓</span>
+          Attendance
+        </a>
+
+        <a
+          class="mobile-nav-item"
+          href="#reports"
+        >
+          <span>📚</span>
+          Learning Reports
+        </a>
+
+        <a
+          class="mobile-nav-item"
+          href="#package"
+        >
+          <span>🎟</span>
+          Package & Payment
+        </a>
+
+        <a
+          class="mobile-nav-item"
+          href="#account"
+        >
+          <span>⚙</span>
+          Account
+        </a>
+
+      </nav>
+
+
+      <div class="mobile-drawer-footer">
+
+        <button
+          id="mobileLogoutButton"
+          class="mobile-logout-button"
+          type="button"
+        >
+          ↪
+          <span>Sign Out</span>
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- DESKTOP SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="brand">
+
+        <a href="/portal/parent/">
+
+          <div class="logo-box">
+            <img
+              src={logoSrc.src}
+              alt="Santutor Learning Studio"
+            />
+          </div>
+
+        </a>
+
+        <span class="portal-label">
+          PARENT PORTAL
+        </span>
+
+      </div>
+
+
+      <nav>
+
+        <a
+          class="nav-item active"
+          href="#overview"
+        >
+          <span class="nav-icon">⌂</span>
+          <span>Overview</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="#schedule"
+        >
+          <span class="nav-icon">📅</span>
+          <span>Schedule</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="#attendance"
+        >
+          <span class="nav-icon">✓</span>
+          <span>Attendance</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="#reports"
+        >
+          <span class="nav-icon">📚</span>
+          <span>Learning Reports</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="#package"
+        >
+          <span class="nav-icon">🎟</span>
+          <span>Package & Payment</span>
+        </a>
+
+        <a
+          class="nav-item"
+          href="#account"
+        >
+          <span class="nav-icon">⚙</span>
+          <span>Account</span>
+        </a>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <button
+          id="logoutButton"
+          class="logout-button"
+          type="button"
+        >
+          ↪
+          <span>Sign Out</span>
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+      <section id="overview">
+
+        <header class="page-header">
+
+          <div>
+
+            <p class="eyebrow">
+              SANTUTOR PARENT PORTAL
+            </p>
+
+            <h1>
+              Hello,
+              <span id="parentName">
+                Parent
+              </span>
+            </h1>
+
+            <p class="subtitle">
+              Your child's learning overview at Santutor.
+            </p>
+
+          </div>
+
+
+          <div
+            id="childSelectorWrap"
+            class="child-selector-wrap"
+          >
+
+            <label for="childSelector">
+              Viewing
+            </label>
+
+            <select id="childSelector"></select>
+
+          </div>
+
+        </header>
+
+
+        <section
+          id="studentHero"
+          class="student-hero"
+        >
+
+          <div class="student-avatar" id="studentAvatar">
+            S
+          </div>
+
+          <div class="student-main">
+
+            <div class="student-title-row">
+
+              <div>
+
+                <h2 id="studentName">
+                  Student
+                </h2>
+
+                <p id="studentMeta">
+                  —
+                </p>
+
+              </div>
+
+              <span
+                id="studentCode"
+                class="student-code"
+              >
+                —
+              </span>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <section class="stats-grid">
+
+          <article class="stat-card">
+
+            <div class="stat-icon package-icon">
+              🎟
+            </div>
+
+            <div>
+
+              <span class="stat-label">
+                Sessions Remaining
+              </span>
+
+              <strong id="remainingSessions">
+                —
+              </strong>
+
+              <span
+                id="packageName"
+                class="stat-note"
+              >
+                No active package
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <article class="stat-card">
+
+            <div class="stat-icon next-icon">
+              📅
+            </div>
+
+            <div>
+
+              <span class="stat-label">
+                Next Class
+              </span>
+
+              <strong
+                id="nextClassDate"
+                class="small-stat"
+              >
+                —
+              </strong>
+
+              <span
+                id="nextClassDetail"
+                class="stat-note"
+              >
+                No upcoming class
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <article class="stat-card">
+
+            <div class="stat-icon attendance-icon">
+              ✓
+            </div>
+
+            <div>
+
+              <span class="stat-label">
+                Attendance Rate
+              </span>
+
+              <strong id="attendanceRate">
+                —
+              </strong>
+
+              <span
+                id="attendanceCount"
+                class="stat-note"
+              >
+                No attendance yet
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <article class="stat-card">
+
+            <div class="stat-icon payment-icon">
+              💳
+            </div>
+
+            <div>
+
+              <span class="stat-label">
+                Payment Status
+              </span>
+
+              <strong
+                id="paymentStatus"
+                class="small-stat"
+              >
+                —
+              </strong>
+
+              <span
+                id="paymentAmount"
+                class="stat-note"
+              >
+                No package
+              </span>
+
+            </div>
+
+          </article>
+
+        </section>
+
+      </section>
+
+
+      <!-- SCHEDULE -->
+
+      <section
+        id="schedule"
+        class="dashboard-panel"
+      >
+
+        <div class="panel-top">
+
+          <div>
+
+            <p class="section-label">
+              WEEKLY SCHEDULE
+            </p>
+
+            <h2>
+              Regular Classes
+            </h2>
+
+            <p class="panel-description">
+              Your child's current weekly Santutor schedule.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="scheduleList"
+          class="schedule-list"
+        ></div>
+
+      </section>
+
+
+      <!-- ATTENDANCE -->
+
+      <section
+        id="attendance"
+        class="dashboard-panel"
+      >
+
+        <div class="panel-top">
+
+          <div>
+
+            <p class="section-label">
+              ATTENDANCE
+            </p>
+
+            <h2>
+              Recent Classes
+            </h2>
+
+            <p class="panel-description">
+              Latest attendance records for this student.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="attendanceList"
+          class="attendance-list"
+        ></div>
+
+      </section>
+
+
+      <!-- REPORTS -->
+
+      <section
+        id="reports"
+        class="dashboard-panel"
+      >
+
+        <div class="panel-top">
+
+          <div>
+
+            <p class="section-label">
+              LEARNING PROGRESS
+            </p>
+
+            <h2>
+              Learning Reports
+            </h2>
+
+            <p class="panel-description">
+              Reports published by your child's tutor.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="reportList"
+          class="report-list"
+        ></div>
+
+      </section>
+
+
+      <!-- PACKAGE -->
+
+      <section
+        id="package"
+        class="dashboard-panel"
+      >
+
+        <div class="panel-top">
+
+          <div>
+
+            <p class="section-label">
+              PACKAGE & PAYMENT
+            </p>
+
+            <h2>
+              Package Details
+            </h2>
+
+            <p class="panel-description">
+              Session balance and recorded payments.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="package-grid">
+
+          <div
+            id="packageDetail"
+            class="package-detail"
+          ></div>
+
+          <div>
+
+            <h3 class="subheading">
+              Recent Payments
+            </h3>
+
+            <div
+              id="paymentList"
+              class="payment-list"
+            ></div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+
+      <!-- ACCOUNT -->
+
+      <section
+        id="account"
+        class="dashboard-panel"
+      >
+
+        <div class="panel-top">
+
+          <div>
+
+            <p class="section-label">
+              ACCOUNT
+            </p>
+
+            <h2>
+              Account & Password
+            </h2>
+
+            <p class="panel-description">
+              Update the password used to sign in to Santutor.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="account-layout">
+
+          <div class="account-info">
+
+            <span class="account-label">
+              Login Email
+            </span>
+
+            <strong id="accountEmail">
+              —
+            </strong>
+
+            <p>
+              This email is used to access the Parent Portal.
+            </p>
+
+          </div>
+
+
+          <form
+            id="changePasswordForm"
+            class="password-form"
+          >
+
+            <label>
+              New Password
+
+              <input
+                id="accountNewPassword"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              />
+            </label>
+
+
+            <label>
+              Confirm New Password
+
+              <input
+                id="accountConfirmPassword"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              />
+            </label>
+
+
+            <button
+              id="changePasswordButton"
+              class="account-save-button"
+              type="submit"
+            >
+              Change Password
+            </button>
+
+
+            <div
+              id="accountMessage"
+              class="account-message"
+              hidden
+            ></div>
+
+          </form>
+
+        </div>
+
+      </section>
+
+
+      <section
+        id="errorPanel"
+        class="error-panel"
+        hidden
+      >
+        <strong>
+          We couldn't load this parent dashboard.
+        </strong>
+
+        <p id="errorText"></p>
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <script>
+
+    import {
+      supabase
+    } from '../../../lib/supabase';
+
+
+    type ParentInfo = {
+      id: string;
+      parent_code: string | null;
+      name: string;
+      email: string | null;
+      phone: string | null;
+    };
+
+
+    type ScheduleItem = {
+      id: string;
+      schedule_code: string | null;
+      subject: string | null;
+      day_of_week: string;
+      start_time: string;
+      end_time: string;
+      class_mode: string;
+      location: string | null;
+      tutor_name: string | null;
+    };
+
+
+    type AttendanceItem = {
+      id: string;
+      attendance_code: string | null;
+      class_date: string;
+      start_time: string | null;
+      end_time: string | null;
+      attendance_status: string;
+      is_makeup: boolean;
+      rescheduled_from_date: string | null;
+      subject: string | null;
+      class_mode: string | null;
+      tutor_name: string | null;
+    };
+
+
+    type PackageItem = {
+      id: string;
+      package_code: string | null;
+      package_name: string;
+      total_sessions: number;
+      remaining_sessions: number;
+      price: number | string | null;
+      payment_status: string;
+      purchase_date: string | null;
+      start_date: string | null;
+      expiry_date: string | null;
+      status: string;
+      created_at: string;
+    };
+
+
+    type PaymentItem = {
+      id: string;
+      payment_code: string | null;
+      package_id: string;
+      amount: number | string;
+      payment_date: string;
+      payment_method: string;
+      status: string;
+    };
+
+
+    type ReportItem = {
+      id: string;
+      report_code: string | null;
+      report_date: string;
+      subject: string | null;
+      topic: string | null;
+      summary: string | null;
+      strengths: string | null;
+      areas_for_improvement: string | null;
+      homework: string | null;
+      next_focus: string | null;
+      engagement_rating: number | null;
+      understanding_rating: number | null;
+      tutor_name: string | null;
+    };
+
+
+    type Child = {
+      id: string;
+      student_code: string | null;
+      name: string;
+      nickname: string | null;
+      school: string | null;
+      grade: string | null;
+      curriculum: string | null;
+      status: string;
+      relationship: string | null;
+      is_primary: boolean;
+      schedules: ScheduleItem[];
+      attendance: AttendanceItem[];
+      packages: PackageItem[];
+      payments: PaymentItem[];
+      reports: ReportItem[];
+    };
+
+
+    type ParentDashboard = {
+      parent: ParentInfo;
+      children: Child[];
+    };
+
+
+    let dashboard:
+      ParentDashboard | null =
+      null;
+
+
+    let selectedChildId:
+      string | null =
+      null;
+
+
+    function getEl<T extends Element>(
+      selector: string
+    ): T {
+
+      const element =
+        document.querySelector<T>(
+          selector
+        );
+
+
+      if (!element) {
+        throw new Error(
+          `Element not found: ${selector}`
+        );
+      }
+
+
+      return element;
+
+    }
+
+
+    function setText(
+      selector: string,
+      value: string | number
+    ): void {
+
+      getEl<HTMLElement>(
+        selector
+      ).textContent =
+        String(value);
+
+    }
+
+
+    function escapeHtml(
+      value:
+        string |
+        number |
+        null |
+        undefined
+    ): string {
+
+      const div =
+        document.createElement(
+          'div'
+        );
+
+
+      div.textContent =
+        value === null ||
+        value === undefined
+          ? ''
+          : String(value);
+
+
+      return div.innerHTML;
+
+    }
+
+
+    function formatTime(
+      value: string | null
+    ): string {
+
+      if (!value) return '—';
+
+      return value.slice(0, 5);
+
+    }
+
+
+    function formatDate(
+      value: string | null
+    ): string {
+
+      if (!value) return '—';
+
+
+      const date =
+        new Date(
+          `${value}T00:00:00`
+        );
+
+
+      return new Intl
+        .DateTimeFormat(
+          'en-GB',
+          {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+          }
+        )
+        .format(date);
+
+    }
+
+
+    function formatShortDate(
+      date: Date
+    ): string {
+
+      return new Intl
+        .DateTimeFormat(
+          'en-GB',
+          {
+            weekday: 'short',
+            day: 'numeric',
+            month: 'short'
+          }
+        )
+        .format(date);
+
+    }
+
+
+    function formatCurrency(
+      value:
+        number |
+        string |
+        null |
+        undefined
+    ): string {
+
+      const amount =
+        Number(value || 0);
+
+
+      return new Intl
+        .NumberFormat(
+          'id-ID',
+          {
+            style: 'currency',
+            currency: 'IDR',
+            maximumFractionDigits: 0
+          }
+        )
+        .format(amount);
+
+    }
+
+
+    function titleCase(
+      value: string
+    ): string {
+
+      return value
+        .replaceAll('_', ' ')
+        .replace(
+          /\b\w/g,
+          char =>
+            char.toUpperCase()
+        );
+
+    }
+
+
+    function initials(
+      name: string
+    ): string {
+
+      return name
+        .trim()
+        .split(/\s+/)
+        .slice(0, 2)
+        .map(part =>
+          part.charAt(0)
+        )
+        .join('')
+        .toUpperCase();
+
+    }
+
+
+    function currentChild():
+      Child | null {
+
+      if (
+        !dashboard ||
+        !selectedChildId
+      ) {
+        return null;
+      }
+
+
+      return (
+        dashboard.children.find(
+          child =>
+            child.id ===
+            selectedChildId
+        ) || null
+      );
+
+    }
+
+
+    function activePackage(
+      child: Child
+    ): PackageItem | null {
+
+      return (
+        child.packages.find(
+          item =>
+            item.status === 'active'
+        ) ||
+        child.packages[0] ||
+        null
+      );
+
+    }
+
+
+    function jakartaToday():
+      Date {
+
+      const parts =
+        new Intl.DateTimeFormat(
+          'en-CA',
+          {
+            timeZone: 'Asia/Jakarta',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+          }
+        )
+        .formatToParts(
+          new Date()
+        );
+
+
+      const map =
+        Object.fromEntries(
+          parts.map(
+            part => [
+              part.type,
+              part.value
+            ]
+          )
+        );
+
+
+      return new Date(
+        Number(map.year),
+        Number(map.month) - 1,
+        Number(map.day),
+        0,
+        0,
+        0,
+        0
+      );
+
+    }
+
+
+    function weekdayIndex(
+      day: string
+    ): number {
+
+      const map:
+        Record<string, number> = {
+          Sunday: 0,
+          Monday: 1,
+          Tuesday: 2,
+          Wednesday: 3,
+          Thursday: 4,
+          Friday: 5,
+          Saturday: 6
+        };
+
+
+      return map[day] ?? 7;
+
+    }
+
+
+    function nextRegularClass(
+      child: Child
+    ): {
+      date: Date;
+      schedule: ScheduleItem;
+    } | null {
+
+      if (
+        child.schedules.length === 0
+      ) {
+        return null;
+      }
+
+
+      const today =
+        jakartaToday();
+
+
+      const nowParts =
+        new Intl.DateTimeFormat(
+          'en-GB',
+          {
+            timeZone: 'Asia/Jakarta',
+            hour: '2-digit',
+            minute: '2-digit',
+            hourCycle: 'h23'
+          }
+        )
+        .formatToParts(
+          new Date()
+        );
+
+
+      const nowMap =
+        Object.fromEntries(
+          nowParts.map(
+            part => [
+              part.type,
+              part.value
+            ]
+          )
+        );
+
+
+      const nowMinutes =
+        (
+          Number(
+            nowMap.hour || 0
+          ) * 60
+        ) +
+        Number(
+          nowMap.minute || 0
+        );
+
+
+      const candidates =
+        child.schedules.map(
+          schedule => {
+
+            const target =
+              weekdayIndex(
+                schedule.day_of_week
+              );
+
+
+            let diff =
+              (
+                target -
+                today.getDay() +
+                7
+              ) % 7;
+
+
+            if (
+              diff === 0
+            ) {
+
+              const [
+                hour,
+                minute
+              ] =
+                schedule.start_time
+                  .slice(0, 5)
+                  .split(':')
+                  .map(Number);
+
+
+              const classMinutes =
+                (
+                  (hour || 0) *
+                  60
+                ) +
+                (minute || 0);
+
+
+              if (
+                classMinutes <
+                nowMinutes
+              ) {
+                diff = 7;
+              }
+
+            }
+
+
+            const candidate =
+              new Date(today);
+
+
+            candidate.setDate(
+              candidate.getDate() +
+              diff
+            );
+
+
+            return {
+              date: candidate,
+              schedule
+            };
+
+          }
+        );
+
+
+      candidates.sort(
+        (
+          a,
+          b
+        ) => {
+
+          const dateDiff =
+            a.date.getTime() -
+            b.date.getTime();
+
+
+          if (
+            dateDiff !== 0
+          ) {
+            return dateDiff;
+          }
+
+
+          return (
+            a.schedule.start_time
+              .localeCompare(
+                b.schedule.start_time
+              )
+          );
+
+        }
+      );
+
+
+      return candidates[0] || null;
+
+    }
+
+
+    function nextMakeupClass(
+      child: Child
+    ): AttendanceItem | null {
+
+      const today =
+        jakartaToday();
+
+
+      return (
+        child.attendance
+          .filter(
+            item => {
+
+              if (
+                !item.is_makeup ||
+                item.attendance_status !==
+                  'pending'
+              ) {
+                return false;
+              }
+
+
+              const date =
+                new Date(
+                  `${item.class_date}T00:00:00`
+                );
+
+
+              return (
+                date.getTime() >=
+                today.getTime()
+              );
+
+            }
+          )
+          .sort(
+            (
+              a,
+              b
+            ) => {
+
+              const dateDiff =
+                a.class_date
+                  .localeCompare(
+                    b.class_date
+                  );
+
+
+              if (
+                dateDiff !== 0
+              ) {
+                return dateDiff;
+              }
+
+
+              return (
+                (a.start_time || '')
+                  .localeCompare(
+                    b.start_time || ''
+                  )
+              );
+
+            }
+          )[0] ||
+        null
+      );
+
+    }
+
+
+    async function requireParent():
+      Promise<void> {
+
+      const {
+        data: {
+          user
+        }
+      } =
+        await supabase.auth
+          .getUser();
+
+
+      if (!user) {
+
+        window.location.href =
+          '/portal/';
+
+        throw new Error(
+          'Not authenticated'
+        );
+
+      }
+
+
+      const {
+        data: profile,
+        error
+      } =
+        await supabase
+          .from('profiles')
+          .select(
+            'role, active'
+          )
+          .eq(
+            'id',
+            user.id
+          )
+          .single();
+
+
+      if (
+        error ||
+        !profile ||
+        profile.role !== 'parent' ||
+        profile.active !== true
+      ) {
+
+        await supabase.auth
+          .signOut();
+
+
+        window.location.href =
+          '/portal/';
+
+
+        throw new Error(
+          'Parent access required'
+        );
+
+      }
+
+    }
+
+
+    async function loadDashboard():
+      Promise<void> {
+
+      const {
+        data,
+        error
+      } =
+        await supabase.rpc(
+          'get_parent_portal_dashboard'
+        );
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      dashboard =
+        data as ParentDashboard;
+
+
+      if (
+        !dashboard ||
+        !dashboard.parent
+      ) {
+        throw new Error(
+          'Parent profile could not be loaded.'
+        );
+      }
+
+
+      setText(
+        '#parentName',
+        dashboard.parent.name
+      );
+
+
+      setText(
+        '#accountEmail',
+        dashboard.parent.email ||
+        'No email recorded'
+      );
+
+
+      if (
+        dashboard.children.length === 0
+      ) {
+
+        renderNoLinkedStudents();
+
+        return;
+
+      }
+
+
+      selectedChildId =
+        dashboard.children[0].id;
+
+
+      renderChildSelector();
+
+      renderSelectedChild();
+
+    }
+
+
+    function renderNoLinkedStudents():
+      void {
+
+      getEl<HTMLElement>(
+        '#studentHero'
+      ).innerHTML = `
+        <div class="empty-state large">
+          <strong>
+            No student linked yet
+          </strong>
+          <p>
+            Please contact Santutor admin to connect
+            your child to this parent account.
+          </p>
+        </div>
+      `;
+
+
+      setText(
+        '#remainingSessions',
+        '—'
+      );
+
+
+      setText(
+        '#nextClassDate',
+        '—'
+      );
+
+
+      setText(
+        '#attendanceRate',
+        '—'
+      );
+
+
+      setText(
+        '#paymentStatus',
+        '—'
+      );
+
+
+      getEl<HTMLElement>(
+        '#scheduleList'
+      ).innerHTML =
+        emptyHtml(
+          'No schedule available.'
+        );
+
+
+      getEl<HTMLElement>(
+        '#attendanceList'
+      ).innerHTML =
+        emptyHtml(
+          'No attendance available.'
+        );
+
+
+      getEl<HTMLElement>(
+        '#reportList'
+      ).innerHTML =
+        emptyHtml(
+          'No reports available.'
+        );
+
+
+      getEl<HTMLElement>(
+        '#packageDetail'
+      ).innerHTML =
+        emptyHtml(
+          'No package available.'
+        );
+
+
+      getEl<HTMLElement>(
+        '#paymentList'
+      ).innerHTML =
+        emptyHtml(
+          'No payment history available.'
+        );
+
+    }
+
+
+    function renderChildSelector():
+      void {
+
+      if (!dashboard) return;
+
+
+      const wrap =
+        getEl<HTMLElement>(
+          '#childSelectorWrap'
+        );
+
+
+      const selector =
+        getEl<HTMLSelectElement>(
+          '#childSelector'
+        );
+
+
+      selector.innerHTML =
+        dashboard.children
+          .map(
+            child => `
+              <option
+                value="${escapeHtml(child.id)}"
+              >
+                ${escapeHtml(child.name)}
+              </option>
+            `
+          )
+          .join('');
+
+
+      selector.value =
+        selectedChildId || '';
+
+
+      wrap.hidden =
+        dashboard.children.length <= 1;
+
+    }
+
+
+    function renderSelectedChild():
+      void {
+
+      const child =
+        currentChild();
+
+
+      if (!child) return;
+
+
+      setText(
+        '#studentAvatar',
+        initials(child.name)
+      );
+
+
+      setText(
+        '#studentName',
+        child.name
+      );
+
+
+      const meta =
+        [
+          child.grade,
+          child.school,
+          child.curriculum
+        ]
+          .filter(Boolean)
+          .join(' · ');
+
+
+      setText(
+        '#studentMeta',
+        meta || 'Santutor student'
+      );
+
+
+      setText(
+        '#studentCode',
+        child.student_code || '—'
+      );
+
+
+      renderStats(child);
+
+      renderSchedule(child);
+
+      renderAttendance(child);
+
+      renderReports(child);
+
+      renderPackage(child);
+
+      renderPayments(child);
+
+    }
+
+
+    function renderStats(
+      child: Child
+    ): void {
+
+      const pkg =
+        activePackage(child);
+
+
+      setText(
+        '#remainingSessions',
+        pkg
+          ? pkg.remaining_sessions
+          : '—'
+      );
+
+
+      setText(
+        '#packageName',
+        pkg
+          ? pkg.package_name
+          : 'No active package'
+      );
+
+
+      const completed =
+        child.attendance.filter(
+          item =>
+            item.attendance_status ===
+              'present' ||
+            item.attendance_status ===
+              'absent'
+        );
+
+
+      const present =
+        completed.filter(
+          item =>
+            item.attendance_status ===
+            'present'
+        ).length;
+
+
+      const rate =
+        completed.length > 0
+          ? Math.round(
+              (
+                present /
+                completed.length
+              ) * 100
+            )
+          : null;
+
+
+      setText(
+        '#attendanceRate',
+        rate === null
+          ? '—'
+          : `${rate}%`
+      );
+
+
+      setText(
+        '#attendanceCount',
+        completed.length > 0
+          ? `${present} present of ${completed.length} recorded classes`
+          : 'No completed attendance yet'
+      );
+
+
+      setText(
+        '#paymentStatus',
+        pkg
+          ? titleCase(
+              pkg.payment_status
+            )
+          : '—'
+      );
+
+
+      setText(
+        '#paymentAmount',
+        pkg && pkg.price !== null
+          ? formatCurrency(
+              pkg.price
+            )
+          : 'No active package'
+      );
+
+
+      const makeup =
+        nextMakeupClass(child);
+
+
+      if (makeup) {
+
+        setText(
+          '#nextClassDate',
+          formatDate(
+            makeup.class_date
+          )
+        );
+
+
+        setText(
+          '#nextClassDetail',
+          `${formatTime(makeup.start_time)} · ${makeup.subject || 'Make-up class'}`
+        );
+
+
+        return;
+
+      }
+
+
+      const next =
+        nextRegularClass(child);
+
+
+      if (!next) {
+
+        setText(
+          '#nextClassDate',
+          '—'
+        );
+
+
+        setText(
+          '#nextClassDetail',
+          'No upcoming class'
+        );
+
+
+        return;
+
+      }
+
+
+      setText(
+        '#nextClassDate',
+        formatShortDate(
+          next.date
+        )
+      );
+
+
+      setText(
+        '#nextClassDetail',
+        `${formatTime(next.schedule.start_time)} · ${next.schedule.subject || 'Class'}`
+      );
+
+    }
+
+
+    function renderSchedule(
+      child: Child
+    ): void {
+
+      const container =
+        getEl<HTMLElement>(
+          '#scheduleList'
+        );
+
+
+      if (
+        child.schedules.length === 0
+      ) {
+
+        container.innerHTML =
+          emptyHtml(
+            'No active weekly schedule.'
+          );
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        child.schedules
+          .map(
+            item => `
+              <article class="schedule-row">
+
+                <div class="day-badge">
+                  ${escapeHtml(
+                    item.day_of_week
+                      .slice(0, 3)
+                      .toUpperCase()
+                  )}
+                </div>
+
+                <div class="row-main">
+
+                  <strong>
+                    ${escapeHtml(
+                      item.subject ||
+                      'Class'
+                    )}
+                  </strong>
+
+                  <span>
+                    ${escapeHtml(
+                      item.tutor_name ||
+                      'Santutor Tutor'
+                    )}
+                    ·
+                    ${escapeHtml(
+                      titleCase(
+                        item.class_mode
+                      )
+                    )}
+                  </span>
+
+                </div>
+
+                <div class="row-time">
+
+                  <strong>
+                    ${escapeHtml(
+                      formatTime(
+                        item.start_time
+                      )
+                    )}
+                  </strong>
+
+                  <span>
+                    ${escapeHtml(
+                      formatTime(
+                        item.end_time
+                      )
+                    )}
+                  </span>
+
+                </div>
+
+              </article>
+            `
+          )
+          .join('');
+
+    }
+
+
+    function attendanceBadge(
+      status: string
+    ): string {
+
+      return `
+        <span
+          class="status-badge ${escapeHtml(status)}"
+        >
+          ${escapeHtml(
+            titleCase(status)
+          )}
+        </span>
+      `;
+
+    }
+
+
+    function renderAttendance(
+      child: Child
+    ): void {
+
+      const container =
+        getEl<HTMLElement>(
+          '#attendanceList'
+        );
+
+
+      const recent =
+        child.attendance
+          .filter(
+            item =>
+              item.attendance_status !==
+              'pending'
+          )
+          .slice(0, 8);
+
+
+      if (
+        recent.length === 0
+      ) {
+
+        container.innerHTML =
+          emptyHtml(
+            'No attendance records yet.'
+          );
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        recent
+          .map(
+            item => `
+              <article class="attendance-row">
+
+                <div class="date-box">
+
+                  <strong>
+                    ${escapeHtml(
+                      formatDate(
+                        item.class_date
+                      )
+                    )}
+                  </strong>
+
+                  <span>
+                    ${escapeHtml(
+                      formatTime(
+                        item.start_time
+                      )
+                    )}
+                  </span>
+
+                </div>
+
+                <div class="row-main">
+
+                  <strong>
+                    ${escapeHtml(
+                      item.subject ||
+                      'Class'
+                    )}
+
+                    ${
+                      item.is_makeup
+                        ? '<span class="makeup-tag">MAKE-UP</span>'
+                        : ''
+                    }
+                  </strong>
+
+                  <span>
+                    ${escapeHtml(
+                      item.tutor_name ||
+                      'Santutor Tutor'
+                    )}
+                  </span>
+
+                </div>
+
+                <div>
+                  ${attendanceBadge(
+                    item.attendance_status
+                  )}
+                </div>
+
+              </article>
+            `
+          )
+          .join('');
+
+    }
+
+
+    function renderStars(
+      rating: number | null
+    ): string {
+
+      if (
+        rating === null ||
+        rating < 1
+      ) {
+        return '—';
+      }
+
+
+      return (
+        '★'.repeat(
+          Math.min(
+            rating,
+            5
+          )
+        ) +
+        '☆'.repeat(
+          Math.max(
+            0,
+            5 - rating
+          )
+        )
+      );
+
+    }
+
+
+    function renderReports(
+      child: Child
+    ): void {
+
+      const container =
+        getEl<HTMLElement>(
+          '#reportList'
+        );
+
+
+      if (
+        child.reports.length === 0
+      ) {
+
+        container.innerHTML =
+          emptyHtml(
+            'No published learning reports yet.'
+          );
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        child.reports
+          .slice(0, 5)
+          .map(
+            report => `
+              <article class="report-card">
+
+                <div class="report-head">
+
+                  <div>
+
+                    <span class="report-date">
+                      ${escapeHtml(
+                        formatDate(
+                          report.report_date
+                        )
+                      )}
+                    </span>
+
+                    <h3>
+                      ${escapeHtml(
+                        report.topic ||
+                        report.subject ||
+                        'Learning Report'
+                      )}
+                    </h3>
+
+                    <p>
+                      ${escapeHtml(
+                        report.subject ||
+                        'General Learning'
+                      )}
+                      ·
+                      ${escapeHtml(
+                        report.tutor_name ||
+                        'Santutor Tutor'
+                      )}
+                    </p>
+
+                  </div>
+
+                  <div class="ratings">
+
+                    <span>
+                      Engagement
+                      <b>
+                        ${escapeHtml(
+                          renderStars(
+                            report.engagement_rating
+                          )
+                        )}
+                      </b>
+                    </span>
+
+                    <span>
+                      Understanding
+                      <b>
+                        ${escapeHtml(
+                          renderStars(
+                            report.understanding_rating
+                          )
+                        )}
+                      </b>
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                ${
+                  report.summary
+                    ? `
+                      <div class="report-summary">
+                        ${escapeHtml(
+                          report.summary
+                        )}
+                      </div>
+                    `
+                    : ''
+                }
+
+
+                <div class="report-detail-grid">
+
+                  ${
+                    report.strengths
+                      ? detailBlock(
+                          'Strengths',
+                          report.strengths
+                        )
+                      : ''
+                  }
+
+                  ${
+                    report.areas_for_improvement
+                      ? detailBlock(
+                          'Areas to Improve',
+                          report.areas_for_improvement
+                        )
+                      : ''
+                  }
+
+                  ${
+                    report.homework
+                      ? detailBlock(
+                          'Homework',
+                          report.homework
+                        )
+                      : ''
+                  }
+
+                  ${
+                    report.next_focus
+                      ? detailBlock(
+                          'Next Focus',
+                          report.next_focus
+                        )
+                      : ''
+                  }
+
+                </div>
+
+              </article>
+            `
+          )
+          .join('');
+
+    }
+
+
+    function detailBlock(
+      title: string,
+      body: string
+    ): string {
+
+      return `
+        <div class="report-detail">
+          <span>
+            ${escapeHtml(title)}
+          </span>
+          <p>
+            ${escapeHtml(body)}
+          </p>
+        </div>
+      `;
+
+    }
+
+
+    function renderPackage(
+      child: Child
+    ): void {
+
+      const container =
+        getEl<HTMLElement>(
+          '#packageDetail'
+        );
+
+
+      const pkg =
+        activePackage(child);
+
+
+      if (!pkg) {
+
+        container.innerHTML =
+          emptyHtml(
+            'No package information available.'
+          );
+
+        return;
+
+      }
+
+
+      const used =
+        Math.max(
+          0,
+          pkg.total_sessions -
+          pkg.remaining_sessions
+        );
+
+
+      const percent =
+        pkg.total_sessions > 0
+          ? Math.min(
+              100,
+              Math.round(
+                (
+                  used /
+                  pkg.total_sessions
+                ) * 100
+              )
+            )
+          : 0;
+
+
+      container.innerHTML = `
+        <div class="package-card">
+
+          <div class="package-head">
+
+            <div>
+
+              <span class="package-code">
+                ${escapeHtml(
+                  pkg.package_code ||
+                  'PACKAGE'
+                )}
+              </span>
+
+              <h3>
+                ${escapeHtml(
+                  pkg.package_name
+                )}
+              </h3>
+
+            </div>
+
+            <span
+              class="package-status ${escapeHtml(pkg.status)}"
+            >
+              ${escapeHtml(
+                titleCase(
+                  pkg.status
+                )
+              )}
+            </span>
+
+          </div>
+
+
+          <div class="session-balance">
+
+            <strong>
+              ${escapeHtml(
+                pkg.remaining_sessions
+              )}
+            </strong>
+
+            <span>
+              of
+              ${escapeHtml(
+                pkg.total_sessions
+              )}
+              sessions remaining
+            </span>
+
+          </div>
+
+
+          <div class="progress-track">
+            <div
+              class="progress-bar"
+              style="width:${percent}%"
+            ></div>
+          </div>
+
+
+          <div class="package-info-grid">
+
+            <div>
+              <span>Payment</span>
+              <strong>
+                ${escapeHtml(
+                  titleCase(
+                    pkg.payment_status
+                  )
+                )}
+              </strong>
+            </div>
+
+            <div>
+              <span>Package Price</span>
+              <strong>
+                ${escapeHtml(
+                  pkg.price !== null
+                    ? formatCurrency(
+                        pkg.price
+                      )
+                    : '—'
+                )}
+              </strong>
+            </div>
+
+            <div>
+              <span>Start Date</span>
+              <strong>
+                ${escapeHtml(
+                  formatDate(
+                    pkg.start_date
+                  )
+                )}
+              </strong>
+            </div>
+
+            <div>
+              <span>Expiry</span>
+              <strong>
+                ${escapeHtml(
+                  formatDate(
+                    pkg.expiry_date
+                  )
+                )}
+              </strong>
+            </div>
+
+          </div>
+
+        </div>
+      `;
+
+    }
+
+
+    function renderPayments(
+      child: Child
+    ): void {
+
+      const container =
+        getEl<HTMLElement>(
+          '#paymentList'
+        );
+
+
+      const items =
+        child.payments.slice(0, 6);
+
+
+      if (
+        items.length === 0
+      ) {
+
+        container.innerHTML =
+          emptyHtml(
+            'No recorded payments yet.'
+          );
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        items
+          .map(
+            item => `
+              <article class="payment-row">
+
+                <div>
+
+                  <strong>
+                    ${escapeHtml(
+                      formatCurrency(
+                        item.amount
+                      )
+                    )}
+                  </strong>
+
+                  <span>
+                    ${escapeHtml(
+                      formatDate(
+                        item.payment_date
+                      )
+                    )}
+                    ·
+                    ${escapeHtml(
+                      titleCase(
+                        item.payment_method
+                      )
+                    )}
+                  </span>
+
+                </div>
+
+                <span
+                  class="payment-badge ${escapeHtml(item.status)}"
+                >
+                  ${escapeHtml(
+                    titleCase(
+                      item.status
+                    )
+                  )}
+                </span>
+
+              </article>
+            `
+          )
+          .join('');
+
+    }
+
+
+    function emptyHtml(
+      message: string
+    ): string {
+
+      return `
+        <div class="empty-state">
+          <strong>
+            Nothing to show yet
+          </strong>
+          <p>
+            ${escapeHtml(message)}
+          </p>
+        </div>
+      `;
+
+    }
+
+
+    function showError(
+      message: string
+    ): void {
+
+      const panel =
+        getEl<HTMLElement>(
+          '#errorPanel'
+        );
+
+
+      panel.hidden =
+        false;
+
+
+      setText(
+        '#errorText',
+        message
+      );
+
+    }
+
+
+    async function signOut():
+      Promise<void> {
+
+      await supabase.auth
+        .signOut();
+
+
+      window.location.href =
+        '/portal/';
+
+    }
+
+
+    function setupMobileMenu():
+      void {
+
+      const drawer =
+        getEl<HTMLElement>(
+          '#mobileDrawer'
+        );
+
+
+      const backdrop =
+        getEl<HTMLElement>(
+          '#mobileBackdrop'
+        );
+
+
+      const button =
+        getEl<HTMLButtonElement>(
+          '#mobileMenuButton'
+        );
+
+
+      function close():
+        void {
+
+        drawer.classList
+          .remove('open');
+
+
+        drawer.setAttribute(
+          'aria-hidden',
+          'true'
+        );
+
+
+        backdrop.classList
+          .remove('visible');
+
+
+        backdrop.hidden =
+          true;
+
+
+        button.setAttribute(
+          'aria-expanded',
+          'false'
+        );
+
+
+        document.body
+          .classList
+          .remove(
+            'mobile-menu-open'
+          );
+
+      }
+
+
+      function open():
+        void {
+
+        backdrop.hidden =
+          false;
+
+
+        drawer.classList
+          .add('open');
+
+
+        drawer.setAttribute(
+          'aria-hidden',
+          'false'
+        );
+
+
+        requestAnimationFrame(
+          () =>
+            backdrop.classList
+              .add('visible')
+        );
+
+
+        button.setAttribute(
+          'aria-expanded',
+          'true'
+        );
+
+
+        document.body
+          .classList
+          .add(
+            'mobile-menu-open'
+          );
+
+      }
+
+
+      button.addEventListener(
+        'click',
+        open
+      );
+
+
+      getEl<HTMLButtonElement>(
+        '#mobileCloseButton'
+      )
+        .addEventListener(
+          'click',
+          close
+        );
+
+
+      backdrop.addEventListener(
+        'click',
+        close
+      );
+
+
+      document
+        .querySelectorAll<HTMLAnchorElement>(
+          '.mobile-nav-item'
+        )
+        .forEach(
+          link => {
+            link.addEventListener(
+              'click',
+              close
+            );
+          }
+        );
+
+    }
+
+
+    async function initPage():
+      Promise<void> {
+
+      try {
+
+        await requireParent();
+
+        await loadDashboard();
+
+        getEl<HTMLElement>(
+          '#loadingScreen'
+        )
+          .setAttribute(
+            'style',
+            'display:none'
+          );
+
+
+        getEl<HTMLElement>(
+          '#app'
+        )
+          .removeAttribute(
+            'hidden'
+          );
+
+      } catch (error) {
+
+        console.error(error);
+
+
+        getEl<HTMLElement>(
+          '#loadingScreen'
+        )
+          .setAttribute(
+            'style',
+            'display:none'
+          );
+
+
+        getEl<HTMLElement>(
+          '#app'
+        )
+          .removeAttribute(
+            'hidden'
+          );
+
+
+        showError(
+          error instanceof Error
+            ? error.message
+            : 'Unknown parent portal error.'
+        );
+
+      }
+
+    }
+
+
+    getEl<HTMLSelectElement>(
+      '#childSelector'
+    )
+      .addEventListener(
+        'change',
+        event => {
+
+          const target =
+            event.currentTarget as
+              HTMLSelectElement;
+
+
+          selectedChildId =
+            target.value;
+
+
+          renderSelectedChild();
+
+        }
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#logoutButton'
+    )
+      .addEventListener(
+        'click',
+        () => {
+          void signOut();
+        }
+      );
+
+
+    getEl<HTMLButtonElement>(
+      '#mobileLogoutButton'
+    )
+      .addEventListener(
+        'click',
+        () => {
+          void signOut();
+        }
+      );
+
+
+
+
+    getEl<HTMLFormElement>(
+      '#changePasswordForm'
+    )
+      .addEventListener(
+        'submit',
+        async event => {
+
+          event.preventDefault();
+
+
+          const message =
+            getEl<HTMLElement>(
+              '#accountMessage'
+            );
+
+
+          message.hidden =
+            true;
+
+
+          const password =
+            getEl<HTMLInputElement>(
+              '#accountNewPassword'
+            )
+              .value;
+
+
+          const confirmPassword =
+            getEl<HTMLInputElement>(
+              '#accountConfirmPassword'
+            )
+              .value;
+
+
+          if (
+            password.length <
+            8
+          ) {
+
+            message.hidden =
+              false;
+
+            message.className =
+              'account-message error';
+
+            message.textContent =
+              'Password must be at least 8 characters.';
+
+            return;
+
+          }
+
+
+          if (
+            password !==
+            confirmPassword
+          ) {
+
+            message.hidden =
+              false;
+
+            message.className =
+              'account-message error';
+
+            message.textContent =
+              'The two passwords do not match.';
+
+            return;
+
+          }
+
+
+          const button =
+            getEl<HTMLButtonElement>(
+              '#changePasswordButton'
+            );
+
+
+          button.disabled =
+            true;
+
+          button.textContent =
+            'Updating...';
+
+
+          try {
+
+            const {
+              error
+            } =
+              await supabase.auth
+                .updateUser({
+                  password
+                });
+
+
+            if (error) {
+              throw error;
+            }
+
+
+            getEl<HTMLFormElement>(
+              '#changePasswordForm'
+            )
+              .reset();
+
+
+            message.hidden =
+              false;
+
+            message.className =
+              'account-message success';
+
+            message.textContent =
+              'Password changed successfully.';
+
+          } catch (error) {
+
+            message.hidden =
+              false;
+
+            message.className =
+              'account-message error';
+
+            message.textContent =
+              error instanceof Error
+                ? error.message
+                : 'Unable to change password.';
+
+          } finally {
+
+            button.disabled =
+              false;
+
+            button.textContent =
+              'Change Password';
+
+          }
+
+        }
+      );
+
+    setupMobileMenu();
+
+    void initPage();
+
+  </script>
+
+
+  <style is:global>
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    :root {
+      --navy: #17375e;
+      --navy-dark: #102a4b;
+      --orange: #f28b2d;
+      --bg: #f5f7fb;
+      --line: #e2e8ef;
+      --text: #20324b;
+      --muted: #8794a6;
+      --green: #258457;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      margin: 0;
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background: var(--bg);
+      color: var(--text);
+    }
+
+
+    .loading-screen {
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 12px;
+
+      color: var(--muted);
+    }
+
+
+    .loader {
+      width: 30px;
+      height: 30px;
+
+      border-radius: 50%;
+
+      border:
+        3px solid #e2e7ed;
+
+      border-top-color:
+        var(--orange);
+
+      animation:
+        spin .8s linear infinite;
+    }
+
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+
+    .app {
+      min-height: 100vh;
+
+      display: grid;
+
+      grid-template-columns:
+        240px minmax(0,1fr);
+    }
+
+
+    /* SIDEBAR */
+
+    .sidebar {
+      min-height: 100vh;
+      height: 100vh;
+
+      position: sticky;
+      top: 0;
+
+      padding:
+        24px 15px;
+
+      display: flex;
+      flex-direction: column;
+
+      background:
+        linear-gradient(
+          180deg,
+          var(--navy) 0%,
+          var(--navy-dark) 100%
+        );
+
+      color: white;
+    }
+
+
+    .brand {
+      padding:
+        4px 10px 27px;
+    }
+
+
+    .logo-box {
+      width: 172px;
+
+      padding:
+        8px 12px;
+
+      border-radius: 12px;
+
+      background: white;
+    }
+
+
+    .brand img {
+      width: 100%;
+      display: block;
+    }
+
+
+    .portal-label {
+      display: block;
+
+      margin-top: 12px;
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          .5
+        );
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: .17em;
+    }
+
+
+    .sidebar nav {
+      display: flex;
+      flex-direction: column;
+
+      gap: 4px;
+    }
+
+
+    .nav-item {
+      padding:
+        11px 12px;
+
+      border-radius: 10px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 11px;
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          .72
+        );
+
+      text-decoration: none;
+
+      font-size: 13px;
+    }
+
+
+    .nav-item:hover,
+    .nav-item.active {
+      color: white;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .1
+        );
+    }
+
+
+    .nav-item.active {
+      font-weight: 750;
+
+      box-shadow:
+        inset 3px 0
+        var(--orange);
+    }
+
+
+    .nav-icon {
+      width: 22px;
+      text-align: center;
+    }
+
+
+    .sidebar-bottom {
+      margin-top: auto;
+    }
+
+
+    .logout-button,
+    .mobile-logout-button {
+      width: 100%;
+
+      min-height: 44px;
+
+      border:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          .14
+        );
+
+      border-radius: 10px;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .07
+        );
+
+      color: white;
+
+      font: inherit;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 8px;
+    }
+
+
+    /* MAIN */
+
+    .main {
+      width: 100%;
+      max-width: 1450px;
+
+      margin: 0 auto;
+
+      padding:
+        38px 40px 64px;
+    }
+
+
+    .page-header {
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        flex-end;
+
+      gap: 24px;
+
+      margin-bottom: 24px;
+    }
+
+
+    .eyebrow,
+    .section-label {
+      margin:
+        0 0 6px;
+
+      color: var(--orange);
+
+      font-size: 10px;
+      font-weight: 850;
+
+      letter-spacing: .14em;
+    }
+
+
+    h1 {
+      margin: 0;
+
+      color: var(--navy);
+
+      font-size: 36px;
+      line-height: 1.1;
+
+      letter-spacing: -.02em;
+    }
+
+
+    h2 {
+      margin: 0;
+
+      color: var(--navy);
+
+      font-size: 20px;
+    }
+
+
+    .subtitle,
+    .panel-description {
+      margin:
+        7px 0 0;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+
+    .child-selector-wrap {
+      min-width: 210px;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 6px;
+    }
+
+
+    .child-selector-wrap[hidden] {
+      display: none !important;
+    }
+
+
+    .child-selector-wrap label {
+      color: #7e8b9d;
+
+      font-size: 10px;
+      font-weight: 750;
+
+      text-transform: uppercase;
+
+      letter-spacing: .07em;
+    }
+
+
+    .child-selector-wrap select {
+      min-height: 44px;
+
+      padding:
+        0 38px 0 13px;
+
+      border:
+        1px solid #dce3eb;
+
+      border-radius: 10px;
+
+      background: white;
+
+      color: var(--navy);
+
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+
+    /* STUDENT HERO */
+
+    .student-hero {
+      min-height: 112px;
+
+      padding:
+        20px 22px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          120deg,
+          #ffffff 0%,
+          #f8fbff 100%
+        );
+
+      display: flex;
+      align-items: center;
+
+      gap: 17px;
+
+      box-shadow:
+        0 4px 16px
+        rgba(
+          23,
+          55,
+          94,
+          .035
+        );
+
+      margin-bottom: 17px;
+    }
+
+
+    .student-avatar {
+      width: 64px;
+      height: 64px;
+
+      border:
+        1px solid #d5e1ee;
+
+      border-radius: 18px;
+
+      background: #eef5fc;
+
+      color: var(--navy);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      font-size: 21px;
+      font-weight: 850;
+    }
+
+
+    .student-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+
+    .student-title-row {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+    }
+
+
+    .student-title-row h2 {
+      font-size: 24px;
+    }
+
+
+    .student-title-row p {
+      margin:
+        4px 0 0;
+
+      color: #8794a6;
+
+      font-size: 12px;
+    }
+
+
+    .student-code {
+      padding:
+        6px 9px;
+
+      border-radius: 8px;
+
+      background: #f0f4f8;
+
+      color: #748398;
+
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+
+    /* STATS */
+
+    .stats-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          4,
+          minmax(0,1fr)
+        );
+
+      gap: 15px;
+
+      margin-bottom: 20px;
+    }
+
+
+    .stat-card {
+      min-height: 116px;
+
+      padding: 17px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 15px;
+
+      background: white;
+
+      display: flex;
+      align-items: center;
+
+      gap: 14px;
+    }
+
+
+    .stat-icon {
+      width: 45px;
+      height: 45px;
+
+      border-radius: 12px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      font-size: 17px;
+    }
+
+
+    .package-icon {
+      background: #fff2e6;
+    }
+
+
+    .next-icon {
+      background: #eef4fb;
+    }
+
+
+    .attendance-icon {
+      background: #eaf8f0;
+      color: var(--green);
+    }
+
+
+    .payment-icon {
+      background: #f3effb;
+    }
+
+
+    .stat-label {
+      display: block;
+
+      color: #7e8b9d;
+
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+
+    .stat-card strong {
+      display: block;
+
+      margin:
+        5px 0;
+
+      color: var(--navy);
+
+      font-size: 25px;
+      line-height: 1.05;
+    }
+
+
+    .stat-card strong.small-stat {
+      font-size: 16px;
+    }
+
+
+    .stat-note {
+      display: block;
+
+      color: #a0a8b4;
+
+      font-size: 9px;
+      line-height: 1.4;
+    }
+
+
+    /* PANELS */
+
+    .dashboard-panel {
+      margin-bottom: 20px;
+
+      padding:
+        24px 26px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 18px;
+
+      background: white;
+
+      scroll-margin-top: 20px;
+    }
+
+
+    .panel-top {
+      margin-bottom: 18px;
+    }
+
+
+    /* ROWS */
+
+    .schedule-list,
+    .attendance-list,
+    .payment-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    .schedule-row,
+    .attendance-row {
+      min-height: 68px;
+
+      padding:
+        11px 0;
+
+      border-bottom:
+        1px solid #edf1f5;
+
+      display: grid;
+
+      align-items: center;
+
+      gap: 13px;
+    }
+
+
+    .schedule-row {
+      grid-template-columns:
+        52px minmax(0,1fr) auto;
+    }
+
+
+    .attendance-row {
+      grid-template-columns:
+        118px minmax(0,1fr) auto;
+    }
+
+
+    .schedule-row:last-child,
+    .attendance-row:last-child {
+      border-bottom: none;
+    }
+
+
+    .day-badge {
+      width: 44px;
+      height: 44px;
+
+      border-radius: 11px;
+
+      background: #eef4fb;
+
+      color: var(--navy);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 10px;
+      font-weight: 850;
+    }
+
+
+    .date-box {
+      min-width: 0;
+    }
+
+
+    .date-box strong {
+      display: block;
+
+      color: var(--text);
+
+      font-size: 12px;
+      line-height: 1.25;
+
+      white-space: nowrap;
+    }
+
+
+    .row-main {
+      min-width: 0;
+    }
+
+
+    .row-main strong {
+      display: block;
+
+      color: var(--text);
+
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+
+    .date-box span,
+    .row-main span,
+    .row-time span {
+      display: block;
+
+      margin-top: 3px;
+
+      color: #929eae;
+
+      font-size: 9px;
+    }
+
+
+    .row-time {
+      text-align: right;
+    }
+
+
+    .row-time strong {
+      color: var(--navy);
+
+      font-size: 12px;
+    }
+
+
+    .status-badge,
+    .payment-badge,
+    .package-status {
+      display: inline-flex;
+
+      padding:
+        5px 8px;
+
+      border-radius: 999px;
+
+      font-size: 9px;
+      font-weight: 800;
+
+      text-transform: capitalize;
+    }
+
+
+    .status-badge.present,
+    .payment-badge.received,
+    .package-status.active {
+      background: #eaf8ef;
+      color: #267c4e;
+    }
+
+
+    .status-badge.absent,
+    .payment-badge.refunded {
+      background: #fdeaea;
+      color: #b34545;
+    }
+
+
+    .status-badge.cancelled,
+    .payment-badge.cancelled,
+    .package-status.cancelled {
+      background: #eff1f4;
+      color: #737e8c;
+    }
+
+
+    .status-badge.rescheduled {
+      background: #eaf0fa;
+      color: #416ea6;
+    }
+
+
+    .makeup-tag {
+      margin-left: 5px;
+
+      padding:
+        2px 5px;
+
+      border-radius: 999px;
+
+      background: #fff0df;
+
+      color: #d66d00;
+
+      font-size: 7px;
+      font-weight: 900;
+
+      vertical-align: middle;
+    }
+
+
+    /* REPORTS */
+
+    .report-list {
+      display: grid;
+      gap: 13px;
+    }
+
+
+    .report-card {
+      padding: 18px;
+
+      border:
+        1px solid #e7ebf0;
+
+      border-radius: 13px;
+
+      background: #fbfcfe;
+    }
+
+
+    .report-head {
+      display: flex;
+
+      align-items: flex-start;
+      justify-content: space-between;
+
+      gap: 18px;
+    }
+
+
+    .report-date {
+      color: var(--orange);
+
+      font-size: 9px;
+      font-weight: 850;
+
+      letter-spacing: .04em;
+    }
+
+
+    .report-card h3 {
+      margin:
+        4px 0 0;
+
+      color: var(--navy);
+
+      font-size: 15px;
+    }
+
+
+    .report-card h3 + p {
+      margin:
+        4px 0 0;
+
+      color: #8995a6;
+
+      font-size: 10px;
+    }
+
+
+    .ratings {
+      min-width: 175px;
+
+      display: grid;
+
+      gap: 5px;
+    }
+
+
+    .ratings span {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      color: #8692a3;
+
+      font-size: 9px;
+    }
+
+
+    .ratings b {
+      color: #f2a53c;
+      letter-spacing: .04em;
+    }
+
+
+    .report-summary {
+      margin-top: 14px;
+
+      padding:
+        11px 13px;
+
+      border-left:
+        3px solid var(--orange);
+
+      background: white;
+
+      color: #53647a;
+
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+
+    .report-detail-grid {
+      margin-top: 13px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(0,1fr)
+        );
+
+      gap: 9px;
+    }
+
+
+    .report-detail {
+      padding:
+        10px 11px;
+
+      border:
+        1px solid #edf0f4;
+
+      border-radius: 9px;
+
+      background: white;
+    }
+
+
+    .report-detail span {
+      color: #7e8a9b;
+
+      font-size: 8px;
+      font-weight: 850;
+
+      text-transform: uppercase;
+
+      letter-spacing: .06em;
+    }
+
+
+    .report-detail p {
+      margin:
+        5px 0 0;
+
+      color: #59697f;
+
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+
+    /* PACKAGE */
+
+    .package-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0,1.15fr)
+        minmax(280px,.85fr);
+
+      gap: 22px;
+    }
+
+
+    .package-card {
+      padding: 18px;
+
+      border:
+        1px solid #e5eaf0;
+
+      border-radius: 14px;
+
+      background: #fbfcfe;
+    }
+
+
+    .package-head {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-start;
+
+      gap: 15px;
+    }
+
+
+    .package-code {
+      color: var(--orange);
+
+      font-size: 8px;
+      font-weight: 850;
+    }
+
+
+    .package-head h3 {
+      margin:
+        4px 0 0;
+
+      color: var(--navy);
+
+      font-size: 16px;
+    }
+
+
+    .session-balance {
+      margin-top: 20px;
+
+      display: flex;
+      align-items: baseline;
+
+      gap: 7px;
+    }
+
+
+    .session-balance strong {
+      color: var(--navy);
+
+      font-size: 34px;
+      line-height: 1;
+    }
+
+
+    .session-balance span {
+      color: #8491a3;
+
+      font-size: 10px;
+    }
+
+
+    .progress-track {
+      height: 7px;
+
+      margin-top: 11px;
+
+      border-radius: 999px;
+
+      overflow: hidden;
+
+      background: #e8edf2;
+    }
+
+
+    .progress-bar {
+      height: 100%;
+
+      border-radius: inherit;
+
+      background: var(--orange);
+    }
+
+
+    .package-info-grid {
+      margin-top: 18px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(0,1fr)
+        );
+
+      gap: 11px;
+    }
+
+
+    .package-info-grid div {
+      padding:
+        10px;
+
+      border:
+        1px solid #edf0f4;
+
+      border-radius: 9px;
+
+      background: white;
+    }
+
+
+    .package-info-grid span {
+      display: block;
+
+      color: #929cab;
+
+      font-size: 8px;
+
+      text-transform: uppercase;
+
+      letter-spacing: .05em;
+    }
+
+
+    .package-info-grid strong {
+      display: block;
+
+      margin-top: 4px;
+
+      color: #42546b;
+
+      font-size: 10px;
+    }
+
+
+    .subheading {
+      margin:
+        0 0 8px;
+
+      color: var(--navy);
+
+      font-size: 13px;
+    }
+
+
+    .payment-row {
+      min-height: 54px;
+
+      padding:
+        10px 0;
+
+      border-bottom:
+        1px solid #edf0f4;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 12px;
+    }
+
+
+    .payment-row:last-child {
+      border-bottom: none;
+    }
+
+
+    .payment-row strong {
+      display: block;
+
+      color: var(--text);
+
+      font-size: 11px;
+    }
+
+
+    .payment-row span:not(
+      .payment-badge
+    ) {
+      display: block;
+
+      margin-top: 3px;
+
+      color: #929eae;
+
+      font-size: 9px;
+    }
+
+
+
+
+    /* ACCOUNT */
+
+    .account-layout {
+      display: grid;
+
+      grid-template-columns:
+        minmax(220px,.8fr)
+        minmax(320px,1.2fr);
+
+      gap: 26px;
+
+      align-items: start;
+    }
+
+
+    .account-info {
+      padding: 17px;
+
+      border:
+        1px solid #e6eaf0;
+
+      border-radius: 13px;
+
+      background: #f9fbfd;
+    }
+
+
+    .account-label {
+      display: block;
+
+      color: #8d99a9;
+
+      font-size: 8px;
+      font-weight: 850;
+
+      letter-spacing: .07em;
+
+      text-transform: uppercase;
+    }
+
+
+    .account-info strong {
+      display: block;
+
+      margin-top: 6px;
+
+      color: #17375e;
+
+      font-size: 13px;
+    }
+
+
+    .account-info p {
+      margin:
+        6px 0 0;
+
+      color: #8c98a8;
+
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+
+    .password-form {
+      display: grid;
+      gap: 13px;
+    }
+
+
+    .password-form label {
+      color: #56677d;
+
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+
+    .password-form input {
+      width: 100%;
+      min-height: 43px;
+
+      margin-top: 6px;
+
+      padding:
+        0 12px;
+
+      border:
+        1px solid #dce3eb;
+
+      border-radius: 9px;
+
+      outline: none;
+
+      font: inherit;
+      font-size: 12px;
+
+      background: white;
+    }
+
+
+    .password-form input:focus {
+      border-color: #8aa5c4;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(
+          23,
+          55,
+          94,
+          .06
+        );
+    }
+
+
+    .account-save-button {
+      min-height: 43px;
+
+      border: none;
+
+      border-radius: 9px;
+
+      background: #17375e;
+
+      color: white;
+
+      font: inherit;
+      font-size: 11px;
+      font-weight: 800;
+
+      cursor: pointer;
+    }
+
+
+    .account-save-button:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
+
+
+    .account-message {
+      padding:
+        9px 11px;
+
+      border-radius: 8px;
+
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+
+    .account-message.success {
+      border:
+        1px solid #bde1cc;
+
+      background: #edf9f2;
+
+      color: #28754d;
+    }
+
+
+    .account-message.error {
+      border:
+        1px solid #efc0c0;
+
+      background: #fff1f1;
+
+      color: #a43f3f;
+    }
+
+
+
+    .empty-state {
+      width: 100%;
+
+      padding:
+        28px 15px;
+
+      text-align: center;
+
+      color: #929eae;
+    }
+
+
+    .empty-state.large {
+      padding:
+        12px;
+    }
+
+
+    .empty-state strong {
+      display: block;
+
+      color: #58687d;
+
+      font-size: 12px;
+    }
+
+
+    .empty-state p {
+      margin:
+        5px 0 0;
+
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+
+    .error-panel {
+      padding:
+        13px 15px;
+
+      border:
+        1px solid #edb8b8;
+
+      border-radius: 11px;
+
+      background: #fff2f2;
+
+      color: #a03b3b;
+
+      font-size: 11px;
+    }
+
+
+    .error-panel p {
+      margin:
+        5px 0 0;
+    }
+
+
+    /* MOBILE MENU */
+
+    .mobile-topbar,
+    .mobile-drawer,
+    .mobile-backdrop {
+      display: none;
+    }
+
+
+    @media
+    (max-width: 1050px) {
+
+      .stats-grid {
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0,1fr)
+          );
+      }
+
+
+      .package-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media
+    (max-width: 760px) {
+
+      body.mobile-menu-open {
+        overflow: hidden;
+      }
+
+
+      .app {
+        display: block;
+      }
+
+
+      .sidebar {
+        display: none;
+      }
+
+
+      .mobile-topbar {
+        height: 64px;
+
+        padding:
+          8px 16px;
+
+        border-bottom:
+          1px solid #1f2937;
+
+        background: white;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        position: sticky;
+        top: 0;
+
+        z-index: 60;
+      }
+
+
+      .mobile-brand {
+        width: 142px;
+
+        display: flex;
+        align-items: center;
+      }
+
+
+      .mobile-brand img {
+        width: 100%;
+        display: block;
+      }
+
+
+      .mobile-menu-button {
+        width: 42px;
+        height: 42px;
+
+        border: none;
+
+        border-radius: 8px;
+
+        background: transparent;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 5px;
+
+        cursor: pointer;
+
+        touch-action: manipulation;
+      }
+
+
+      .mobile-menu-button span {
+        width: 22px;
+        height: 2px;
+
+        border-radius: 99px;
+
+        background: #111827;
+      }
+
+
+      .mobile-backdrop {
+        position: fixed;
+        inset: 0;
+
+        z-index: 70;
+
+        background:
+          rgba(
+            9,
+            24,
+            42,
+            .52
+          );
+
+        opacity: 0;
+
+        pointer-events: none;
+      }
+
+
+      .mobile-backdrop.visible {
+        display: block;
+
+        opacity: 1;
+
+        pointer-events: auto;
+      }
+
+
+      .mobile-backdrop[hidden] {
+        display: none !important;
+      }
+
+
+      .mobile-drawer {
+        width:
+          min(
+            84vw,
+            320px
+          );
+
+        height: 100dvh;
+
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        z-index: 80;
+
+        transform:
+          translateX(-102%);
+
+        transition:
+          transform .2s ease;
+
+        background:
+          linear-gradient(
+            180deg,
+            var(--navy) 0%,
+            var(--navy-dark) 100%
+          );
+
+        color: white;
+
+        flex-direction: column;
+
+        pointer-events: none;
+      }
+
+
+      .mobile-drawer.open {
+        display: flex;
+
+        transform:
+          translateX(0);
+
+        pointer-events: auto;
+
+        box-shadow:
+          18px 0 44px
+          rgba(
+            8,
+            29,
+            51,
+            .28
+          );
+      }
+
+
+      .mobile-drawer-header {
+        min-height: 78px;
+
+        padding:
+          14px 16px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        border-bottom:
+          1px solid
+          rgba(
+            255,
+            255,
+            255,
+            .08
+          );
+      }
+
+
+      .drawer-logo {
+        width: 148px;
+
+        padding:
+          6px 9px;
+
+        border-radius: 9px;
+
+        background: white;
+      }
+
+
+      .drawer-logo img {
+        width: 100%;
+        display: block;
+      }
+
+
+      .mobile-close-button {
+        width: 40px;
+        height: 40px;
+
+        border: none;
+
+        border-radius: 9px;
+
+        background:
+          rgba(
+            255,
+            255,
+            255,
+            .08
+          );
+
+        color: white;
+
+        font-size: 26px;
+
+        cursor: pointer;
+      }
+
+
+      .mobile-nav {
+        padding:
+          14px 12px;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 4px;
+      }
+
+
+      .mobile-nav-item {
+        min-height: 46px;
+
+        padding:
+          10px 12px;
+
+        border-radius: 10px;
+
+        display: flex;
+        align-items: center;
+
+        gap: 12px;
+
+        color:
+          rgba(
+            255,
+            255,
+            255,
+            .78
+          );
+
+        text-decoration: none;
+
+        font-size: 14px;
+      }
+
+
+      .mobile-nav-item span {
+        width: 24px;
+        text-align: center;
+      }
+
+
+      .mobile-nav-item.active {
+        color: white;
+
+        background:
+          rgba(
+            255,
+            255,
+            255,
+            .14
+          );
+
+        font-weight: 800;
+
+        box-shadow:
+          inset 3px 0
+          var(--orange);
+      }
+
+
+      .mobile-drawer-footer {
+        margin-top: auto;
+
+        padding:
+          14px 12px 20px;
+      }
+
+
+      .main {
+        padding:
+          25px 15px 45px;
+      }
+
+
+      .page-header {
+        align-items: stretch;
+        flex-direction: column;
+
+        gap: 15px;
+      }
+
+
+      h1 {
+        font-size: 29px;
+      }
+
+
+      .child-selector-wrap {
+        width: 100%;
+      }
+
+
+      .student-hero {
+        padding: 16px;
+
+        align-items: flex-start;
+      }
+
+
+      .student-avatar {
+        width: 52px;
+        height: 52px;
+
+        border-radius: 14px;
+
+        font-size: 17px;
+      }
+
+
+      .student-title-row {
+        align-items: flex-start;
+      }
+
+
+      .student-title-row h2 {
+        font-size: 19px;
+      }
+
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+
+        gap: 9px;
+      }
+
+
+      .stat-card {
+        min-height: 94px;
+
+        padding: 14px;
+      }
+
+
+      .dashboard-panel {
+        padding:
+          20px 16px;
+
+        scroll-margin-top:
+          78px;
+      }
+
+
+      .schedule-row {
+        grid-template-columns:
+          46px minmax(0,1fr);
+
+        gap: 10px;
+      }
+
+
+      .attendance-row {
+        grid-template-columns:
+          104px minmax(0,1fr);
+
+        gap: 10px;
+        align-items: start;
+      }
+
+
+      .row-time {
+        grid-column: 2;
+        text-align: left;
+      }
+
+
+      .attendance-row > div:last-child {
+        grid-column: 2;
+        text-align: left;
+        margin-top: 2px;
+      }
+
+
+      .date-box {
+        min-width: 0;
+      }
+
+
+      .date-box strong {
+        white-space: normal;
+        font-size: 11px;
+      }
+
+
+      .report-head {
+        flex-direction: column;
+      }
+
+
+      .ratings {
+        width: 100%;
+        min-width: 0;
+      }
+
+
+      .report-detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .package-info-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+
+      .account-layout {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+    }
+
+  </style>
+
+</body>
+</html>

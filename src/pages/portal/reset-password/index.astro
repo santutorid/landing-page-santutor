@@ -1,0 +1,715 @@
+---
+import logoSrc from '../../../assets/logo.svg';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+  <meta
+    name="robots"
+    content="noindex,nofollow,noarchive"
+  />
+  <title>Reset Password | Santutor</title>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <section class="card">
+
+      <div class="brand">
+        <img
+          src={logoSrc.src}
+          alt="Santutor Learning Studio"
+        />
+        <p>SECURE PASSWORD RESET</p>
+      </div>
+
+
+      <div class="heading">
+        <p class="eyebrow">ACCOUNT SECURITY</p>
+        <h1>Create a new password</h1>
+        <p>
+          Choose a new password for your Santutor account.
+        </p>
+      </div>
+
+
+      <div
+        id="checkingState"
+        class="checking"
+      >
+        Verifying your reset link...
+      </div>
+
+
+      <form
+        id="resetForm"
+        hidden
+      >
+
+        <label>
+          New Password
+          <input
+            id="newPasswordInput"
+            type="password"
+            autocomplete="new-password"
+            minlength="8"
+            required
+          />
+        </label>
+
+
+        <label>
+          Confirm New Password
+          <input
+            id="confirmPasswordInput"
+            type="password"
+            autocomplete="new-password"
+            minlength="8"
+            required
+          />
+        </label>
+
+
+        <p class="hint">
+          Use at least 8 characters.
+        </p>
+
+
+        <button
+          id="saveButton"
+          class="primary-button"
+          type="submit"
+        >
+          Save New Password
+        </button>
+
+
+        <div
+          id="message"
+          class="message"
+          hidden
+        ></div>
+
+      </form>
+
+
+      <div
+        id="invalidState"
+        class="invalid-state"
+        hidden
+      >
+        <strong>
+          This reset link is invalid or has expired.
+        </strong>
+
+        <p>
+          Return to the login page and request a new reset link.
+        </p>
+
+        <a href="/portal/">
+          Back to Login
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    import {
+      supabase
+    } from '../../../lib/supabase';
+
+
+    function getEl<T extends Element>(
+      selector: string
+    ): T {
+
+      const element =
+        document.querySelector<T>(
+          selector
+        );
+
+
+      if (!element) {
+        throw new Error(
+          `Element not found: ${selector}`
+        );
+      }
+
+
+      return element;
+
+    }
+
+
+    function showMessage(
+      message: string,
+      type:
+        'success' |
+        'error'
+    ): void {
+
+      const element =
+        getEl<HTMLElement>(
+          '#message'
+        );
+
+
+      element.hidden =
+        false;
+
+      element.textContent =
+        message;
+
+      element.className =
+        `message ${type}`;
+
+    }
+
+
+    async function verifyRecoverySession():
+      Promise<void> {
+
+      let sessionFound =
+        false;
+
+
+      const {
+        data: {
+          session
+        }
+      } =
+        await supabase.auth
+          .getSession();
+
+
+      if (session) {
+        sessionFound =
+          true;
+      }
+
+
+      if (!sessionFound) {
+
+        await new Promise<void>(
+          resolve => {
+
+            const timeout =
+              window.setTimeout(
+                () => {
+                  resolve();
+                },
+                2200
+              );
+
+
+            const {
+              data: listener
+            } =
+              supabase.auth
+                .onAuthStateChange(
+                  (
+                    event,
+                    session
+                  ) => {
+
+                    if (
+                      event ===
+                        'PASSWORD_RECOVERY' ||
+                      session
+                    ) {
+
+                      sessionFound =
+                        true;
+
+                      window.clearTimeout(
+                        timeout
+                      );
+
+                      listener
+                        .subscription
+                        .unsubscribe();
+
+                      resolve();
+
+                    }
+
+                  }
+                );
+
+          }
+        );
+
+      }
+
+
+      getEl<HTMLElement>(
+        '#checkingState'
+      ).hidden =
+        true;
+
+
+      if (!sessionFound) {
+
+        getEl<HTMLElement>(
+          '#invalidState'
+        ).hidden =
+          false;
+
+        return;
+
+      }
+
+
+      getEl<HTMLFormElement>(
+        '#resetForm'
+      ).hidden =
+        false;
+
+    }
+
+
+    getEl<HTMLFormElement>(
+      '#resetForm'
+    )
+      .addEventListener(
+        'submit',
+        async event => {
+
+          event.preventDefault();
+
+
+          const newPassword =
+            getEl<HTMLInputElement>(
+              '#newPasswordInput'
+            )
+              .value;
+
+
+          const confirmPassword =
+            getEl<HTMLInputElement>(
+              '#confirmPasswordInput'
+            )
+              .value;
+
+
+          if (
+            newPassword.length <
+            8
+          ) {
+
+            showMessage(
+              'Password must be at least 8 characters.',
+              'error'
+            );
+
+            return;
+
+          }
+
+
+          if (
+            newPassword !==
+            confirmPassword
+          ) {
+
+            showMessage(
+              'The two passwords do not match.',
+              'error'
+            );
+
+            return;
+
+          }
+
+
+          const button =
+            getEl<HTMLButtonElement>(
+              '#saveButton'
+            );
+
+
+          button.disabled =
+            true;
+
+          button.textContent =
+            'Saving...';
+
+
+          try {
+
+            const {
+              error
+            } =
+              await supabase.auth
+                .updateUser({
+                  password:
+                    newPassword
+                });
+
+
+            if (error) {
+              throw error;
+            }
+
+
+            showMessage(
+              'Password updated successfully. Redirecting to login...',
+              'success'
+            );
+
+
+            await supabase.auth
+              .signOut();
+
+
+            window.setTimeout(
+              () => {
+                window.location.href =
+                  '/portal/';
+              },
+              1300
+            );
+
+          } catch (error) {
+
+            showMessage(
+              error instanceof Error
+                ? error.message
+                : 'Unable to update password.',
+              'error'
+            );
+
+          } finally {
+
+            button.disabled =
+              false;
+
+            button.textContent =
+              'Save New Password';
+
+          }
+
+        }
+      );
+
+
+    void verifyRecoverySession();
+
+  </script>
+
+
+  <style is:global>
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+      margin: 0;
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background: #f5f7fb;
+      color: #20324b;
+    }
+
+
+    .page {
+      min-height: 100vh;
+
+      padding: 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .card {
+      width:
+        min(
+          100%,
+          430px
+        );
+
+      padding: 34px;
+
+      border:
+        1px solid #e1e7ee;
+
+      border-radius: 20px;
+
+      background: white;
+
+      box-shadow:
+        0 16px 50px
+        rgba(
+          23,
+          55,
+          94,
+          .08
+        );
+    }
+
+
+    .brand {
+      margin-bottom: 28px;
+    }
+
+
+    .brand img {
+      width: 180px;
+      display: block;
+    }
+
+
+    .brand p {
+      margin:
+        8px 0 0;
+
+      color: #8b97a8;
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: .14em;
+    }
+
+
+    .heading {
+      margin-bottom: 22px;
+    }
+
+
+    .eyebrow {
+      margin:
+        0 0 6px;
+
+      color: #f28b2d;
+
+      font-size: 10px;
+      font-weight: 850;
+
+      letter-spacing: .14em;
+    }
+
+
+    h1 {
+      margin: 0;
+
+      color: #17375e;
+
+      font-size: 27px;
+    }
+
+
+    .heading > p:last-child {
+      margin:
+        8px 0 0;
+
+      color: #8794a6;
+
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+
+    label {
+      color: #56677d;
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+
+    input {
+      width: 100%;
+      min-height: 46px;
+
+      margin-top: 7px;
+
+      padding:
+        0 13px;
+
+      border:
+        1px solid #d9e1ea;
+
+      border-radius: 10px;
+
+      outline: none;
+
+      font: inherit;
+      font-size: 13px;
+    }
+
+
+    input:focus {
+      border-color: #8aa5c4;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(
+          23,
+          55,
+          94,
+          .07
+        );
+    }
+
+
+    .hint {
+      margin:
+        -5px 0 0;
+
+      color: #99a3b0;
+
+      font-size: 10px;
+    }
+
+
+    .primary-button {
+      min-height: 48px;
+
+      border: none;
+
+      border-radius: 11px;
+
+      background: #17375e;
+
+      color: white;
+
+      font: inherit;
+      font-weight: 800;
+
+      cursor: pointer;
+    }
+
+
+    .primary-button:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
+
+
+    .checking,
+    .invalid-state {
+      padding:
+        16px;
+
+      border:
+        1px solid #e3e8ee;
+
+      border-radius: 10px;
+
+      background: #f8fafc;
+
+      color: #7d899b;
+
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+
+    .invalid-state strong {
+      color: #9e3d3d;
+    }
+
+
+    .invalid-state p {
+      margin:
+        6px 0 12px;
+    }
+
+
+    .invalid-state a {
+      color: #17375e;
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+
+    .message {
+      padding:
+        11px 12px;
+
+      border-radius: 9px;
+
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+
+    .message.error {
+      border:
+        1px solid #efc0c0;
+
+      background: #fff1f1;
+
+      color: #a43f3f;
+    }
+
+
+    .message.success {
+      border:
+        1px solid #bde1cc;
+
+      background: #edf9f2;
+
+      color: #28754d;
+    }
+
+
+    [hidden] {
+      display: none !important;
+    }
+
+
+    @media
+    (max-width: 520px) {
+
+      .page {
+        padding: 14px;
+      }
+
+
+      .card {
+        padding:
+          27px 21px;
+      }
+
+
+      .brand img {
+        width: 160px;
+      }
+
+    }
+
+  </style>
+
+</body>
+</html>
